@@ -1,0 +1,105 @@
+@import '../../styles/common.scss';
+
+.Header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 774px;
+  background: #999;
+
+  header {
+    width: 1280px;
+    height: 100%;
+    background: #777;
+    position: relative;
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 37px;
+      background: #ddd;
+
+      div {
+        width: 130px;
+        height: 100%;
+        background: #444;
+      }
+    }
+    
+    .logoHeader {
+      width: 100%;
+      height: 97px;
+      background: #888;
+      display: flex;;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      h1 {
+        width: 100%;
+        height: 25px;
+        background: #555;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+
+        img {
+          width: 220px;
+        }
+      }
+
+      .searchContainer {
+        position: absolute;
+        right: 0;
+        top: 25px;
+        // width: 218px;
+        // height: 40px;
+        background: #222;
+  
+        input {
+          width: 218px;
+          height: 40px;
+          position: relative;
+          border: 1px solid #dedede;
+          border-radius: 20px;
+          padding-left: 12px;
+          font-size: 12px;
+        }
+  
+        img {
+          width: 16px;
+          position: absolute;
+          top: 13px;
+          right: 10px;
+          opacity: .5;
+        }
+      }
+    }
+
+    .topMenu {
+      width: 100%;
+      height: 48px;
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        img {
+          width: 9px;
+          transform: rotate(90deg);
+          margin-left: 7px;
+        }
+      }
+    }
+
+  }
+}

@@ -2,18 +2,27 @@
 
 
 .Main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
 
   .visualContainer {
     width: 100%;
-    // height: 600px;
     position: absolute;
+  }
+
+  .Header {
+    .searchContainer input {
+      background: none;
+      border: 1px solid #555;
+    }
   }
 
   .middleContainer {
     width: 100%;
     height: 1800px;
-    // position: absolute;
     background: #000;
     margin-top: 800px;
   }

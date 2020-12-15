@@ -1,5 +1,4 @@
 import React from 'react'
-// import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
 import './Main.scss'
 
@@ -8,7 +7,6 @@ class Main extends React.Component {
   render() {
     return (
       <>
-        <Header />
         <div className="visualContainer">
           <div className="visualImages">
             <img alt="Slider image" className="sliderImage"/>
@@ -24,9 +22,10 @@ class Main extends React.Component {
             <img alt="arrow" />
           </div>
         </div>
-    </>
+        <Footer />
+      </>
     )
   }
 }
 
-export default Main
+export default Main;

@@ -1,0 +1,257 @@
+.ImgPurchInfo{
+    display: flex;
+    justify-content: space-between;
+
+    .imgEx{
+        width: 540px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid rgba(237,237,237,0.7);
+
+        .bigImgContainer{
+            width: 100%;
+            border-bottom: 1px solid rgba(237,237,237,0.7);
+
+            .bigImg{
+                margin: auto;      
+                max-width: 510px;
+                max-height: 510px;    
+            }
+        }
+
+        .smallImgContainer{
+            margin: 12px auto;
+
+            .smallImg{
+                width: 28px;
+                height: 27px;
+            }
+        }
+    }
+
+    .purchInfo{
+        width: 540px;
+        border: 1px solid rgba(237,237,237,0.7);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .nameAndPrice{
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+
+            .productName{
+                font-size: 20px;
+            }
+            
+            .priceContainer{
+                text-align: right;
+                padding: 20px 10px;
+                font-weight: bold;
+                color: rgb(102, 133, 209);
+
+                .priceNumber{
+                    font-size: 20px;
+                }
+
+                .priceWon{
+                    font-size: 18px;
+                   
+                }
+            }
+        }
+
+        .benefitPointsContainer{
+            width: 430px;
+            border: 1.5px solid gray;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            font-size: 13px;
+
+            .benefits{
+                font-size: 16px;
+                font-weight: bold;
+                padding: 13px 16px;
+            }
+            
+            .points{
+                display: flex;
+                justify-content: space-between;
+                padding: 13px 16px;
+                border-top: 1.5px solid rgba(237,237,237,0.7);               
+            }
+
+            .basicFund{
+                ul{
+                    list-style: none;
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 1px 16px 13px 16px;
+
+                    li{
+                        font-size: 12px;
+                        color: rgba(164,164,164,1);
+                    }
+                }
+            }
+
+            .extraPointsContainer{
+                width: 370px;
+                margin: 0 auto;
+                margin-bottom: 15px;
+                padding: 13px 16px;
+                border: 1px solid rgba(237,237,237,0.7);
+                background-color: rgb(246, 247, 249);
+
+                .extraPointsTop{
+                    display: flex;
+                    justify-content: space-between;
+
+                    .extraTop{
+                        font-weight: bold;
+
+                        .tip{
+                            color: red;
+                            font-style: italic;
+                        }
+                    }
+                }
+
+                .extraPointsList{
+                    
+                    padding: 10px 0;
+                    
+                    li{
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 3px;
+                        color: rgba(164,164,164,1);
+                    }
+                }
+            }
+        }
+
+        .sizeButton{
+            width: 434px;
+            border-top: 1px solid lightgray;
+            padding-top: 15px;
+
+            button{
+                width: 100%;
+                padding: 10px;
+                text-align: left;
+                background-color: #ffffff;
+                border: 1px solid lightgray;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .size{
+                i{
+                    font-size: 20px;
+                    opacity: 0.3;
+                }
+
+                &:hover{
+                    border: 1px solid black;
+                    cursor: pointer;
+                }
+             }
+
+             .singleItemHide{
+                border-top: none;
+                opacity: 0;
+            }
+
+            .singleItemShow{
+                border-top: none;
+                opacity: 1;
+
+                &:hover{
+                    background-color: rgb(200, 204, 208);
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+        .PurchCartButtons{
+            width: 430px;
+            
+            .totalQP{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                padding-bottom: 10px;
+
+                .totPriceSpan{
+                    font-size: 13px;
+                    font-weight: bold;
+
+                    i{
+                        margin: 1px;
+                        padding: 2px;
+                        background-color: #ffffff;
+                        border: 1px solid rgba(237,237,237,0.3);
+
+                        &:hover{
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .totQuantity{
+                    font-size: 13px;
+                    color: gray;
+
+                    .totPrice{
+                        font-size: 24px;
+                        color: rgb(102, 133, 209);
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            .purchBtn{
+                width: 100%;
+                height: 50px;
+                background-color: rgb(50, 190, 0);
+                font-size: 15px;
+                color: white;
+                border: none;
+            }
+
+            .cartLike{
+                width: 101%;
+                display: flex;
+                justify-content: space-evenly;
+
+                button{
+                    margin-top: 10px;
+                    height: 50px;
+                    width: 49%;
+                    background-color: rgb(76, 76, 76);
+                    font-size: 15px;
+                    color: white;
+                    border: none;
+                }
+            }
+        }
+        
+        .shopWarning{
+            font-size: 13px;
+            display: flex;
+            color:  rgb(50, 190, 0);
+            margin-left: 40px;
+            padding: 15px;
+            align-self: stretch;
+            
+            .warning{
+                color: gray;
+                padding-right: 10px;
+            }
+        }
+    }
+} 

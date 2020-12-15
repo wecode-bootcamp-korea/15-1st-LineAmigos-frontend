@@ -1,0 +1,23 @@
+@import '../../styles/common.scss';
+
+#DetailPageContainer{
+    width: 1080px;
+    margin: 30px auto;
+
+    .topContainer{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+        margin-top: 100px; //나중에 지우기
+
+        i{
+            font-size: 20px;
+            padding: 3px;
+            margin: 3px;
+            background-color: rgb(50, 190, 0);
+            color: white;
+            border-radius: 5px;
+        }
+    }
+}

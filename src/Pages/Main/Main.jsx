@@ -10,11 +10,13 @@ class Main extends React.Component {
   render() {
     return (
       <div className="Main">
-      <div className="visualContainer">
-        <MainSlider />
-      </div>
+        <div className="visualContainer">
+          <MainSlider />
+        </div>
         <Header />
-
+        <div className="middleContainer">
+        
+        </div>
         <Footer />
       </div>
     )

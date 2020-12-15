@@ -27,7 +27,6 @@ class Header extends React.Component {
       <div className='Header'>
         <header>
           <nav>
-
             <div className="navIconLeft">
               <img alt="Naver logo" src="/images/naver-logo.png" />
               <div>
@@ -35,12 +34,10 @@ class Header extends React.Component {
                 <span>네이버쇼핑</span>
               </div>
             </div>
-
             <div className="navIconRight">
               <span>로그인</span>
               <img alt="Menu" src="/images/menu.png" />
             </div>
-
           </nav>
           <div className="logoHeader">
             <h1 className="logoAndSearch">
@@ -51,7 +48,6 @@ class Header extends React.Component {
               <img alt="Search Icon" src="/images/search.png"/>
             </div>
           </div>
-
           <ul className="topMenu">
             {
               categories.map((category, index) => {

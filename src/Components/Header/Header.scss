@@ -6,13 +6,11 @@
   align-items: center;
   width: 100vw;
   height: 206px;
-  // background: #999;
   border-bottom: 1px solid #dbdbdb;
 
   header {
     width: 1280px;
     height: 100%;
-    // background: #777;
     position: relative;
 
     nav {
@@ -21,19 +19,16 @@
       align-items: center;
       width: 100%;
       height: 37px;
-      // background: #ddd;
 
       .navIconLeft {
         display: flex;
         justify-content: center;
         align-items: center;
-        // width: 130px;
         height: 100%;
-        // background: #444;
 
         img {
           width: 46px;
-          -webkit-filter: grayscale(100%) brightness(50%); /* Safari 6.0 - 9.0 */
+          -webkit-filter: grayscale(100%) brightness(50%);
           filter: grayscale(100%) brightness(98%);
         }
 
@@ -41,7 +36,6 @@
           display: flex;
           justify-content: center;
           align-items: center;
-          // width: 66px;
           margin-left: 12px;
 
           img {
@@ -58,9 +52,7 @@
       }
 
       .navIconRight {
-        // width: 130px;
         height: 100%;
-        // background: #444;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -68,7 +60,6 @@
         span {
           width: 46px;
           height: 20px;
-          // background: #999;
           border: #bdbdbd;
           font-size: 11px;
           color: #444;
@@ -89,8 +80,7 @@
     .logoHeader {
       width: 100%;
       height: 97px;
-      // background: #888;
-      display: flex;;
+      display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
@@ -98,24 +88,18 @@
       h1 {
         width: 100%;
         height: 25px;
-        // background: #555;
         display: flex;
         justify-content: center;
         align-items: center;
         position: absolute;
 
-        img {
-          width: 200px;
-        }
+        img {width: 200px;}
       }
 
       .searchContainer {
         position: absolute;
         right: 0;
         top: 30px;
-        // width: 218px;
-        // height: 40px;
-        // background: #222;
   
         input {
           width: 218px;
@@ -123,7 +107,6 @@
           background: #f5f5f5;
           position: relative;
           border: none;
-          // border: 1px solid #dedede;
           border-radius: 20px;
           padding-left: 16px;
           font-size: 12px;
@@ -144,7 +127,6 @@
     .topMenu {
       width: 100%;
       height: 48px;
-      background: white;
       display: flex;
       justify-content: space-between;
       align-items: center;

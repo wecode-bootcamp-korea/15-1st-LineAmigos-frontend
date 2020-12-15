@@ -1,5 +1,4 @@
 import React from 'react'
-// import { withRouter } from 'react-router-dom';
 import './Header.scss'
 
 class Header extends React.Component {

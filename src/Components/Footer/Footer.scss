@@ -4,9 +4,6 @@
   width: 100vw;
   height: 1000px;
   background: white;
-  position: absolute;
-  bottom: 0;
-  left: 0;
 
   .brandDescription {
     width: 100%;
@@ -52,6 +49,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
 
         i {margin-right: 6px;}
       }
@@ -67,6 +65,7 @@
         font-size: $font-size-small;
         font-weight: $font-weight-regular;
         color: white;
+        cursor: pointer;
 
         margin-left: 10px;
       }

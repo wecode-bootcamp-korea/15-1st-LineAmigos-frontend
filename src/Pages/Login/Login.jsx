@@ -56,6 +56,7 @@ class Login extends Component {
     })
   }
 
+
   render() {
     console.log(this.state.onOffBtn)
     return (
@@ -98,12 +99,12 @@ class Login extends Component {
               ></i>
               <span>로그인 상태 유지</span>
             </div>
-            <div className="ipSecurity">
-              <span>IP 보안</span>
-              <span 
-              className={this.state.onOffBtn ? "onBtn" : "offBtn"}
-              onClick={this.handleOnOffBtn}>{this.state.onOffBtn ? "ON" : "OFF"}
-              </span>
+          <div className="ipSecurity">
+            <span>IP 보안</span>
+            <span 
+            className={this.state.onOffBtn ? "onBtn" : "offBtn"}
+            onClick={this.handleOnOffBtn}>{this.state.onOffBtn ? "ON" : "OFF"}
+            </span>
             </div>
           </div>
         </div>

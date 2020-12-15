@@ -1,102 +1,193 @@
 @import '../../styles/common.scss';
 
-.container {
-  width: 1280px;
+* {
+  box-sizing: border-box;
+  border: 1px solid lightgrey;
 
-  header {
-    .logoImg {
-      display: block;
-      margin: 0 auto;
-      width: 300px;
-      height: 40px;
-      margin-bottom: 60px;
-      object-fit: contain;
-    }
-  }
-  .signUpForm {
-    display: block;
-    margin: 0 auto;
-    width: 450px;
-    padding-bottom: 30px;
+  .container {
+    width: 1280px;
 
-    .idBox {
-      width: 450px;
-      height: 50px;
-      margin-bottom: 20px;
+    header {
+      .logoImg {
+        display: block;
+        margin: 0 auto;
+        width: 300px;
+        height: 40px;
+        margin-bottom: 60px;
+        object-fit: contain;
+      }
     }
-    .idBox::placeholder {
-      text-align: end;
-      color: $font-color-lightgray;
+
+    .label {
+      font-size: $font-size-small;
       font-weight: $font-weight-bold;
     }
 
-    .pwBox {
+    .signUpForm {
+      display: block;
+      margin: 0 auto;
       width: 450px;
-      height: 50px;
-      margin-bottom: 20px;
+      padding-bottom: 30px;
+
+      .idBox {
+        width: 450px;
+        height: 50px;
+        margin-bottom: 20px;
+      }
+
+      .idBox::placeholder {
+        padding-right: 5px;
+        text-align: end;
+        color: $font-color-lightgray;
+        font-weight: $font-weight-bold;
+      }
+
+      .pwBox {
+        width: 450px;
+        height: 50px;
+        margin-bottom: 20px;
+      }
+
+      .rePwBox {
+        width: 450px;
+        height: 50px;
+        margin-bottom: 20px;
+      }
     }
 
-    .rePwBox {
+    .userInfoForm {
+      display: block;
+      margin: 0 auto;
       width: 450px;
-      height: 50px;
-      margin-bottom: 20px;
-    }
-  }
+      padding-bottom: 30px;
 
-  .userInfoForm {
-    display: block;
-    margin: 0 auto;
-    width: 450px;
-    padding-bottom: 30px;
+      .name {
+        width: 450px;
+        height: 50px;
+        margin-bottom: 20px;
+      }
+      .birthDate {
+        display: flex;
+        justify-content: space-between;
+        width: 450px;
+        height: 50px;
+        margin-bottom: 20px;
 
-    .name {
-      width: 450px;
-      height: 50px;
-      margin-bottom: 20px;
-    }
-    .birthDate {
-      width: 450px;
-      height: 50px;
-      margin-bottom: 20px;
-    }
+        .birthYear {
+          width: 146px;
+          height: 50px;
+        }
 
-    .gender {
-      width: 450px;
-      height: 50px;
-      margin-bottom: 20px;
-    }
-    .emailAdress {
-      width: 450px;
-      height: 50px;
-      margin-bottom: 20px;
-    }
-  }
+        .birthMonth {
+          width: 146px;
+          height: 50px;
+        }
 
-  .phoneValidationForm {
-    display: block;
-    margin: 0 auto;
-    width: 450px;
-    padding-bottom: 30px;
+        .birthDay {
+          width: 146px;
+          height: 50px;
+        }
 
-    .countryNumber {
-      width: 450px;
-      height: 50px;
-      margin-bottom: 20px;
-    }
+        .birthYear,
+        .birthMonth,
+        .birthDay {
+          padding: 10px 10px;
+        }
+      }
 
-    .phoneNumber {
-      width: 450px;
-      height: 50px;
-      margin-bottom: 20px;
-    }
-
-    .validationBtn {
+      .gender {
+        width: 450px;
+        height: 50px;
+        margin-bottom: 20px;
+      }
+      .emailAdress {
+        width: 450px;
+        height: 50px;
+        margin-bottom: 20px;
+        padding: 10px 10px;
+      }
     }
 
-    .validationNumber {
+    .phoneValidationForm {
+      display: block;
+      margin: 0 auto;
       width: 450px;
-      height: 50px;
-      margin-bottom: 20px;
+      padding-bottom: 30px;
+
+      .countryNumber {
+        width: 450px;
+        height: 50px;
+        margin-bottom: 20px;
+      }
+
+      .phoneNumber {
+        width: 335px;
+        height: 50px;
+        margin-bottom: 20px;
+        margin-right: 5px;
+        padding: 10px 10px;
+      }
+
+      .validationBtn {
+        all: unset;
+        width: 110px;
+        height: 50px;
+        margin-bottom: 20px;
+        color: white;
+        text-align: center;
+        background-color: $primary-color;
+        cursor: pointer;
+      }
+
+      .validationNumber {
+        width: 450px;
+        height: 50px;
+        margin-bottom: 20px;
+        padding: 10px 10px;
+      }
+    }
+
+    .signUpBtnForm {
+      display: block;
+      margin: 0 auto;
+      width: 450px;
+      padding-bottom: 30px;
+
+      .signUpBtn {
+        all: unset;
+        width: 450px;
+        height: 50px;
+        text-align: center;
+        color: white;
+        background-color: $primary-color;
+      }
+    }
+
+    footer {
+      display: block;
+      margin: 0 auto;
+      width: 450px;
+      color: $font-color-gray;
+      text-align: center;
+
+      .footer {
+        display: flex;
+        justify-content: center;
+        font-size: $font-size-extrasmall;
+
+        li {
+          margin-left: 5px;
+          margin-bottom: 10px;
+
+          a {
+            text-decoration: none;
+          }
+        }
+
+        .companyName {
+          font-size: $font-size-supersmall;
+        }
+      }
     }
   }
 }

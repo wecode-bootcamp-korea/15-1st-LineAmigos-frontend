@@ -27,12 +27,24 @@ class Header extends React.Component {
       <div className='Header'>
         <header>
           <nav>
-            <div className="navIconLeft"></div>
-            <div className="navIconRight"></div>
+
+            <div className="navIconLeft">
+              <img alt="Naver logo" src="/images/naver-logo.png" />
+              <div>
+                <img alt="Shop" src="/images/shop-bold.png" />
+                <span>네이버쇼핑</span>
+              </div>
+            </div>
+
+            <div className="navIconRight">
+              <span>로그인</span>
+              <img alt="Menu" src="/images/menu.png" />
+            </div>
+
           </nav>
           <div className="logoHeader">
             <h1 className="logoAndSearch">
-              <img alt="Line Amigos Logo" src="/images/line-amigos-logo.png"/>
+              <img alt="Line Amigos Logo" src="/images/line-amigos-logo-black.png"/>
             </h1>
             <div className="searchContainer">
               <input type="text" placeholder="검색어를 입력해보세요"></input>
@@ -46,27 +58,12 @@ class Header extends React.Component {
                 return (
                   <li key={index}>
                     <div>{category}</div>
-                    <img alt="Down arrow" src="/images/arrow-right.png" />
+                    <img alt="Down arrow" src="/images/arrow-right-bold.png" />
                   </li>
                 )
               })
             }
           </ul>
-          <div className="visualContainer">
-            <div className="visualImages">
-              <img alt="Slider image" className="sliderImage"/>
-              <img alt="Slider image" className="sliderImage"/>
-              <img alt="Slider image" className="sliderImage"/>
-            </div>
-            <div className="visualText">
-              <img alt="Slider text" className="sliderText"/>
-              <img alt="Slider text" className="sliderText"/>
-              <img alt="Slider text" className="sliderText"/>
-            </div>
-            <div className="arrowContainer">
-              <img alt="arrow" />
-            </div>
-          </div>
         </header>
       </div>
     )

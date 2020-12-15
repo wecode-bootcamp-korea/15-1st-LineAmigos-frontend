@@ -6,7 +6,7 @@
   align-items: center;
   width: 100vw;
   height: 206px;
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid rgba(0,0,0,.2);
 
   header {
     width: 1280px;
@@ -40,12 +40,12 @@
 
           img {
             width: 14px;
-            opacity: .5;
+            opacity: .6;
           }
 
           span {
             font-size: 11px;
-            color: #999;
+            color: rgba(0,0,0,.6);
             margin-left: 3px;
           }
         }
@@ -60,9 +60,9 @@
         span {
           width: 46px;
           height: 20px;
-          border: #bdbdbd;
+          border: rgba(0,0,0,.4);
           font-size: 11px;
-          color: #444;
+          color: rgba(0,0,0,.8);
           border: 1px solid #bbb;
           display: flex;
           justify-content: center;

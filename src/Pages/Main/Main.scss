@@ -11,7 +11,33 @@
   .visualContainer {
     width: 100%;
     position: absolute;
+
+    .slick-slider button{
+      width: 70px;
+      height: 150px;
+      background: rgba(255,255,255,.1);
+      z-index: 10;
+      transition: all .2s ease;
+      &:hover{
+        background: rgba(255,255,255,.2);
+      }
+      &:first-of-type {
+        left: 180px;
+      }
+      &:last-of-type {
+        right: 180px;
+      }
+      &.slick-prev::before {
+        font-size: 40px;
+        opacity: .4;
+      }
+      &.slick-next::before {
+        font-size: 40px;
+        opacity: .4;
+      }
+    }
   }
+  
 
   .Header {
     .searchContainer input {
@@ -20,10 +46,10 @@
     }
   }
 
-  .middleContainer {
+  .newProducts {
     width: 100%;
     height: 1800px;
-    background: #000;
+    background: #eee;
     margin-top: 800px;
   }
 }

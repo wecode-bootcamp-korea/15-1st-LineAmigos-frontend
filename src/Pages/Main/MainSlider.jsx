@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import './MainSlider.scss'
 
-export default class MainSlider extends Component {
+class MainSlider extends Component {
   render() {
     const settings = {
-      dots: false,
+      dots: true,
       fade: true,
       infinite: true,
       speed: 700,
@@ -16,11 +16,11 @@ export default class MainSlider extends Component {
     };
 
     const images = [
-      {id: 1, url:'/images/Main/main-slider-01.jpg'},
+      {id: 1, url:'/images/Main/main-slider-05.jpg'},
       {id: 2, url:'/images/Main/main-slider-02.jpg'},
       {id: 3, url:'/images/Main/main-slider-03.jpg'},
       {id: 4, url:'/images/Main/main-slider-04.jpg'},
-      {id: 5, url:'/images/Main/main-slider-05.jpg'},
+      {id: 5, url:'/images/Main/main-slider-01.jpg'},
       {id: 6, url:'/images/Main/main-slider-06.jpg'},
     ]
 
@@ -41,3 +41,5 @@ export default class MainSlider extends Component {
     );
   }
 }
+
+export default MainSlider

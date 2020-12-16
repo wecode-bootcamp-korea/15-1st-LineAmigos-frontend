@@ -1,0 +1,142 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "url": "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1409&q=80",
+      "saleAmount": "40%",
+      "price": "25000",
+      "productName": "올인 한달 귀걸이 2단 미러박스 보관함 세트"
+    },
+    {
+      "id": 2,
+      "url": "https://images.unsplash.com/photo-1516919549054-e08258825f80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "saleAmount": "50%",
+      "price": "25000",
+      "productName": "접이식 액자 테이블 모음 3size"
+    },
+    {
+      "id": 3,
+      "url": "https://images.unsplash.com/photo-1525268771113-32d9e9021a97?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80",
+      "saleAmount": "34%",
+      "price": "25000",
+      "productName": "스틱 티 세트(8개입)"
+    },
+    {
+      "id": 4,
+      "url": "https://images.unsplash.com/photo-1524672353063-4f66ee1f385e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80",
+      "saleAmount": "50%",
+      "price": "25000",
+      "productName": "LED 무드등 별자리"
+    },
+    {
+      "id": 5,
+      "url": "https://images.unsplash.com/photo-1576072446584-4955dfe17b86?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80",
+      "saleAmount": "40%",
+      "price": "25000",
+      "productName": "곰돌이 러그 테디베어 인조 사계절 침실러그"
+    },
+    {
+      "id": 6,
+      "url": "https://images.unsplash.com/photo-1523992038393-d5ab874a077e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "saleAmount": "20%",
+      "price": "25000",
+      "productName": "귀여운 몸뚱이 위풍당당 알파카 곰돌이인형"
+    }
+  ],
+  "categories": [
+    {
+      "category": "NEW",
+      "imageUrl": "https://images.unsplash.com/photo-1527214438108-c976a390d361?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "category": "홀리데이",
+      "imageUrl": "https://images.unsplash.com/photo-1527275393322-8ddae8bd5de9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "category": "선물추천",
+      "imageUrl": "https://images.unsplash.com/photo-1535992165812-68d1861aa71e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=637&q=80"
+    },
+    {
+      "category": "BABY",
+      "imageUrl": "https://images.unsplash.com/photo-1525268771113-32d9e9021a97?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "category": "SALE",
+      "imageUrl": "https://images.unsplash.com/photo-1607083206968-13611e3d76db?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1389&q=80"
+    },
+    {
+      "category": "토이",
+      "imageUrl": "https://images.unsplash.com/photo-1584609970614-21ba8f643f83?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "category": "디자인문구",
+      "imageUrl": "https://images.unsplash.com/photo-1606636660488-16a8646f012c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+    },
+    {
+      "category": "디지털",
+      "imageUrl": "https://images.unsplash.com/photo-1511367667796-a88d106800b0?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1231&q=80"
+    },
+    {
+      "category": "패션의류",
+      "imageUrl": "https://images.unsplash.com/photo-1534337711732-1c9ae62389e2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "category": "패션잡화",
+      "imageUrl": "https://images.unsplash.com/photo-1525197635744-498f5dba62bd?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      "category": "더보기",
+      "imageUrl": "https://images.unsplash.com/photo-1559139011-7ecdc76280aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
+    }
+  ],
+  "reviews" : [
+    {
+      "productName" :"귀여운 위풍당당 루돌프 곰돌이인형",
+      "rate" : 5.0,
+      "text" : "아 너무 귀여워요ㅠㅠ 무슨 단체가족사진 같아요! 초코 연보라 컵은 오른손잡이가 사용하면 캐릭터가 저를 보는 방향이 아니더라고요 그건 조금 아쉽네욤 ㅎㅎ",
+      "imgUrl" : "https://images.unsplash.com/photo-1525268771113-32d9e9021a97?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "createdAt" : "2020-12-12 21:23:23.223456",
+      "userId" : "xjaqmffj"
+    },
+    {
+      "productName": "LED 무드등 별자리",
+      "rate" : 5.0,
+      "text" : "휴대하고 다니기 딱 좋은 사이즈에요. 보온도 잘 되고 차망이 있어서 안에 생강차 넣어도 흐르지 않아서 좋아요. 제가 가지고 다니는 물건들이 보라색이라 잘어울려요",
+      "imgUrl" : "https://images.unsplash.com/photo-1516919549054-e08258825f80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "createdAt" : "2020-12-12 21:23:23.223456",
+      "userId" : "seulgiii"
+    },
+    {
+      "productName" :"스틱 티 세트(8개입)",
+      "rate" : 4.0,
+      "text" : "집에서 매일 밥먹고 후식을 먹으니 살이 너무 찌는 것 같아서 후식으로 차를 마셔보려고 주문했어요. 배송도 빠르고 향도 너무 좋아요.",
+      "imgUrl" : "https://images.unsplash.com/photo-1525268771113-32d9e9021a97?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80",
+      "createdAt" : "2020-12-12 21:23:23.223456",
+      "userId" : "glaemfek"
+    },
+    {
+      "productName" :"테디베어 사계절 침실러그",
+      "rate" : 5.0,
+      "text" : "와 제 자취방이 너무나 포근하게 바뀌었어요. 바닥이 뭔가 딱딱하고 삭막한 느낌이 들었는데 사길 잘 했어요 빠른 배송 감사합니다",
+      "imgUrl" : "https://images.unsplash.com/photo-1479740030693-66ad10f3a7b0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "createdAt" : "2020-12-12 21:23:23.223456",
+      "userId" : "skehgkffo"
+    },
+    {
+      "productName" :"접이식 액자 테이블 모음 3size",
+      "rate" : 5.0,
+      "text" : "우연히 뜬 광고에 사게 됐는데요 제가 주말엔 침대에서 거의 생활하다 보니 이런 접이식 테이블이 정말 유용하거든요. 새거 사고 싶었는데 잘됐어요",
+      "imgUrl" : "https://images.unsplash.com/photo-1534337711732-1c9ae62389e2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "createdAt" : "2020-12-12 21:23:23.223456",
+      "userId" : "sleepya"
+    },
+    {
+      "productName" :"올인 한달 귀걸이 2단 미러박스 보관함 세트",
+      "rate" : 5.0,
+      "text" : "귀걸이 없이는 나가질 않는 사람으로서 이 보관함은 정말 강추드리고 싶습니다 보관함 자체도 이쁘고 너무 유용하게 잘 쓸 것 같아요",
+      "imgUrl" : "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1409&q=80",
+      "createdAt" : "2020-12-12 21:23:23.223456",
+      "userId" : "mmylifee"
+    }
+  ]
+}

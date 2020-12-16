@@ -90,7 +90,11 @@
       font-size: $font-size-small;
       font-weight: $font-weight-medium;
 
-      i {font-size: 12px;}
+      i {
+        margin-right: 6px;
+        color: #999;
+        font-size: 12px;
+      }
 
       span {
         margin-left: 16px;

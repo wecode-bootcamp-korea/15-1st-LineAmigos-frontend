@@ -1,9 +1,16 @@
 import React from 'react';
 import './ProductDetail.scss'
 import ImgPurchInfo from './Component/ImgPurchInfo';
+import PhotoReviewList from './Component/PhotoReviewList';
 
 class ProductDetail extends React.Component{
 
+    constructor(){
+        super();
+        this.state={
+            reviews: "",
+        };
+    }
 
    
     render(){
@@ -23,7 +30,7 @@ class ProductDetail extends React.Component{
                     </div>
                </div>
                 <ImgPurchInfo />
-               
+                <PhotoReviewList />
             </div>
         );
     }

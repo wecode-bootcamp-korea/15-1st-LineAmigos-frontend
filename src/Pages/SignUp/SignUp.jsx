@@ -30,8 +30,7 @@ class SignUp extends Component {
       this.handleRePwValidation(),
       this.handleNameValidation(),
       this.handleBirthYearValidation(),
-      this.handleDropValidation(),
-      this.handleDropNoneValidation()
+      this.handleDropValidation()
     )
   }
 

@@ -141,6 +141,10 @@
         cursor: pointer;
       }
 
+      .validationBtn:hover {
+        opacity: 0.8;
+      }
+
       .validationNumber {
         width: 450px;
         height: 50px;
@@ -162,6 +166,11 @@
         text-align: center;
         color: white;
         background-color: $primary-color;
+        cursor: pointer;
+      }
+
+      .signUpBtn:hover {
+        opacity: 0.8;
       }
     }
 

@@ -16,15 +16,14 @@ class Header extends React.Component {
         this.setState({
           categories: data.categories
         })
-        // console.log(data.categories)
       }).catch(err => console.log(err))
   }
 
   render() {
     const {categories} = this.state
     return (
-      <div className='Header'>
-        <header>
+      <header className='Header'>
+        <div className="innerContainer">
           <nav>
             <div className="navIconLeft">
               <img alt="Naver logo" src="/images/naver-logo.png" />
@@ -59,8 +58,8 @@ class Header extends React.Component {
               })
             }
           </ul>
-        </header>
-      </div>
+        </div>
+      </header>
     )
   }
 }

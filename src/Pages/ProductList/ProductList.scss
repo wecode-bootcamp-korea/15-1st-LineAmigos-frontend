@@ -1,0 +1,66 @@
+@import '../../styles/common.scss';
+
+* {
+  box-sizing: border-box;
+
+  .container {
+    header {
+      display: block;
+      margin: 0 auto;
+      width: 1280px;
+
+      .banner {
+        display: block;
+        margin: 0 auto;
+        width: 1280px;
+        height: 200px;
+        margin-top: 50px;
+      }
+    }
+    .filterContainer {
+      display: block;
+      margin: 0 auto;
+      width: 1280px;
+      background-color: lightgreen;
+    }
+
+    .productListContainer {
+      display: block;
+      margin: 0 auto;
+      width: 1280px;
+
+      .productList {
+        display: flex;
+        flex-direction: column;
+        width: 262px;
+        height: 282px;
+        margin: 20px 0;
+        padding: 0 15px;
+
+        .product {
+          width: 232px;
+          height: 232px;
+        }
+
+        .productNameContainer {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 15px;
+
+          .productName {
+            font-weight: bold;
+          }
+
+          .far,
+          .fa-heart {
+            right: 0;
+          }
+        }
+        .productPrice {
+          margin-top: 5px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

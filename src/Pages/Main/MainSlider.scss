@@ -12,8 +12,7 @@
     &:hover{background: rgba(255,255,255,.2);}
     &:first-of-type {left: 180px;}
     &:last-of-type {right: 180px;}
-    &.slick-prev::before {font-size: 40px;}
-    &.slick-next::before {font-size: 40px;}
+    &.slick-arrow::before {font-size: 40px;}
   }
 }
 

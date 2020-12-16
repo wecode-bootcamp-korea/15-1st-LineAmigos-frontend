@@ -17,9 +17,8 @@ class ImgPurchInfo extends Component {
         })
     }
 
-
-    startCalculate = () => {
-        console.log("working")
+    doNothing = () => {
+        return;
     }
 
     render() {
@@ -89,7 +88,7 @@ class ImgPurchInfo extends Component {
                         <button className="size" onClick={this.handleClick}>사이즈
                             <i className="fas fa-angle-down"></i>
                         </button>
-                        <button className={sizeBtn ? "singleItemHide":"singleItemShow"} onClick={sizeBtn? {} : this.startCalculate()}>단품</button>
+                        <button className={sizeBtn ? "singleItemHide":"singleItemShow"}>단품</button>
                         {/* 단품 클릭 시 가격정보 띄우는거 생각해보기 */}
                     </div>
                     <div className="PurchCartButtons">

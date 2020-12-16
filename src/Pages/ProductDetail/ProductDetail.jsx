@@ -1,7 +1,8 @@
 import React from 'react';
 import './ProductDetail.scss'
 import ImgPurchInfo from './Component/ImgPurchInfo';
-import PhotoReviewList from './Component/PhotoReviewList';
+
+const API = 'http://localhost:3000/data/data.json';
 
 class ProductDetail extends React.Component{
 
@@ -9,9 +10,25 @@ class ProductDetail extends React.Component{
         super();
         this.state={
             reviews: "",
+            id: "",
+            productImgUrl: "",
+            price: 0,
+            dataList:[],
         };
     }
 
+    componentDidMount() {
+        fetch(API, {
+            method: "GET",
+        })
+        .then((res) => res.json())
+        .then((res) => {
+            this.setState({
+                dataList: res,
+            })
+            console.log('this is what i got', this.state.dataList);
+        })
+    }
    
     render(){
         return(
@@ -30,7 +47,7 @@ class ProductDetail extends React.Component{
                     </div>
                </div>
                 <ImgPurchInfo />
-                <PhotoReviewList />
+                {/* 나중에 이름 수정 */}
             </div>
         );
     }

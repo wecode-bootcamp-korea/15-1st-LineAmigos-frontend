@@ -20,7 +20,7 @@
     display: block;
     margin: 0 auto;
     width: 450px;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
     border-bottom: 2px solid whitesmoke;
 
     .idBox,
@@ -94,6 +94,14 @@
           color: $primary-color;
         }
       }
+
+      .signUpLink {
+        display: block;
+        margin-top: 10px;
+        text-align: center;
+        text-decoration: none;
+      }
+
       .ipSecurity {
         .offBtn {
           margin-left: 3px;
@@ -109,5 +117,11 @@
         }
       }
     }
+  }
+  .signUpLink {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
   }
 }

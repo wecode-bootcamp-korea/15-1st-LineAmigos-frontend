@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import './MultipleSlider.scss'
+import './NewProductsSlider.scss';
 
-class MultipleSlider extends Component {
-
+class NewProductsSlider extends Component {
   constructor() {
-    super() 
+    super()
     this.state = {
-      products: []
+      products: [],
     }
   }
 
@@ -15,9 +14,8 @@ class MultipleSlider extends Component {
     fetch('/data/productInfos.json')
       .then(response => response.json())
       .then(data => {
-        console.log(data.products[0])
         this.setState({
-            products: data.products,
+          products: data.products,
         })
       }).catch(err => console.log(err))
   }
@@ -25,15 +23,19 @@ class MultipleSlider extends Component {
   render() {
     const { products } = this.state
     const settings = {
-      dots: true,
+      dots: false,
       infinite: true,
-      speed: 500,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      speed: 800,
       slidesToShow: 4,
-      slidesToScroll: 4
+      slidesToScroll: 4,
+      draggable: true,
     };
 
     return (
-      <div className="MultipleSlider">
+      <div className="NewProductsSlider">
+        <h3>새로 나왔어요</h3>
         <Slider {...settings}>
         {products &&
           products.map((product, index) => {
@@ -56,4 +58,4 @@ class MultipleSlider extends Component {
   }
 }
 
-export default MultipleSlider
+export default NewProductsSlider

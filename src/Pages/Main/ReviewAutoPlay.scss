@@ -1,0 +1,90 @@
+@import '../../styles/common.scss';
+
+.ReviewAutoPlay {
+  width: 100vw;
+  height: 700px;
+
+  h3 {
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    font-weight: $font-weight-medium;
+    margin-bottom: 54px;
+  }
+
+  li {
+    width: 408px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-right: 28px;
+    position: relative;
+    &:nth-of-type(2),
+    &:nth-of-type(5) {
+      top: 40px;
+      left: 0;
+    }
+
+    img {
+      width: 408px;
+      height: 408px;
+      border-radius: 18px;
+      margin-bottom: 24px;
+      object-fit: cover;
+    }
+
+    .productName {
+      font-size: 24px;
+      font-weight: $font-weight-medium;
+      margin-bottom: 12px;
+    }
+
+    .reviewRate {
+      margin: 12px 0 16px 0;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      i {
+        font-size: $font-size-regular;
+        color: #e01b1b;
+        margin: 0 2px;
+      }
+
+      span {
+        font-size: 20px;
+        font-weight: $font-weight-bold;
+        margin: 0;
+        margin-left: 4px;
+      }
+    }
+    .reviewContents {
+      width: 408px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+
+      p {
+        font-size: $font-size-small;
+        font-weight: $font-weight-regular;
+        line-height: 20px;
+      }
+
+      img {
+        width: 60px;
+        height: 60px;
+        border-radius: 4px;
+        margin: 0;
+        margin-left: 8px;
+      }
+    }
+
+    .idAndCreatedAt span {
+      font-size: 11px;
+      color: #777;
+      margin-right: 4px;
+    }
+  }
+}

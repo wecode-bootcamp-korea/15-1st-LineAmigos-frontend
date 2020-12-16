@@ -3,8 +3,28 @@ import Slider from "react-slick";
 import './MainSlider.scss'
 
 class MainSlider extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      mainSliderImages: []
+    }
+  }
+
+  componentDidMount = () => {
+    fetch('/data/productInfos.json')
+      .then(response => response.json())
+      .then(data => {
+        // console.log(data)
+        this.setState({
+          mainSliderImages: data.mainSliderImages
+        })
+      }).catch(err => console.log(err))
+  }
+
   render() {
-    const settings = {
+    const { mainSliderImages } = this.state
+    const SETTING = {
       dots: true,
       fade: true,
       infinite: true,
@@ -12,30 +32,22 @@ class MainSlider extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 3000,
-    };
-
-    const images = [
-      {id: 1, url:'/images/Main/main-slider-05.jpg'},
-      {id: 2, url:'/images/Main/main-slider-02.jpg'},
-      {id: 3, url:'/images/Main/main-slider-03.jpg'},
-      {id: 4, url:'/images/Main/main-slider-04.jpg'},
-      {id: 5, url:'/images/Main/main-slider-01.jpg'},
-      {id: 6, url:'/images/Main/main-slider-06.jpg'},
-    ]
-
+      autoplaySpeed: 2000,
+      draggable: true,
+    }
+    
     return (
-      <div className="MainSlider">
-        <Slider {...settings}>
-          {
-            images.map(image => {
+    <div className="MainSlider">
+        <Slider {...SETTING}>
+          {mainSliderImages &&
+            mainSliderImages.map(image => {
               return (
                 <div key={image.id}>
                   <img src={image.url} />
                 </div>
               )
             })
-        }
+          }
         </Slider>
       </div>
     );

@@ -3,35 +3,46 @@ import './Footer.scss'
 
 class Footer extends React.Component {
   render() {
+
+    const footerMenu = [
+      "네이버 약관",
+      "네이버페이 약관",
+      "전자금융거래 이용약관",
+      "개인정보처리방침",
+      "청소년보호정책",
+      "지식재산권신고센터",
+      "안전거래 가이드",
+      "쇼핑&페이",
+      "고객센터"
+    ]
+
     return (
-      <div className="Footer">
-        <div className="brandDescription">
+      <footer className="Footer">
+        <section className="brandDescription">
           <img alt="logo" src="/images/line-amigos-logo-white.png" />
-          <span>
+          <div className="adComments">
             <p>끝없는 득템의 재미</p>
             <p>라인프렌즈 공식 브랜드스토어</p>
             <p>#라인프렌즈 #BT21 #브롤스타즈</p>
-          </span>
+          </div>
           <div className="icons">
             <div className="like"><i class="far fa-heart" />찜하기 122,232</div>
             <div className="share">공유</div>
           </div>
-        </div>
-
-        <footer>
+        </section>
+        <section className="brandInformation">
           <div className="notice">
             <i class="fas fa-exclamation-circle" />반품 배송비, 반품 배송주소 등은 해당 상품 페이지 내 안내를 참고해주세요
             <span>라인프렌즈 주식회사 고객센터 1544-5921</span>
           </div>
           <ul className="footerMenu">
-            <li>네이버 약관</li>
-            <li>네이버페이 약관</li>
-            <li>전자금융거래 이용약관</li>
-            <li className="bold">개인정보처리방침</li>
-            <li>청소년보호정책</li>
-            <li>지식재산권신고센터</li>
-            <li>안전거래 가이드</li>
-            <li>쇼핑&페이 고객센터</li>
+          {
+            footerMenu.map((item) => {
+              return(
+                <li>{item}</li>
+              )
+            })
+          }
           </ul>
           <div className="brandContact">
             <div className="naver">
@@ -61,9 +72,8 @@ class Footer extends React.Component {
             <img alt="Naver logo" src="/images/naver-logo.png" />
             <p>Copyright ©NAVER Corp.All Rights Reserved.</p>
           </div>
-        </footer>
-        
-      </div>
+        </section>
+      </footer>
     );
   }
 }

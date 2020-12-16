@@ -1,112 +1,112 @@
 @import '../../styles/common.scss';
-@import '../../styles/reset.scss';
 
-* {
-  box-sizing: border-box;
+.container {
+  display: block;
+  margin: 0 auto;
+  width: 1280px;
+  padding: 80px;
 
-  .container {
-    display: block;
-    margin: 0 auto;
-    width: 1280px;
-    padding: 80px;
-
-    header {
-      .logoImg {
-        display: block;
-        margin: 0 auto;
-        width: 300px;
-        height: 40px;
-        margin-bottom: 60px;
-        object-fit: contain;
-      }
-    }
-    .loginForm {
+  header {
+    .logoImg {
       display: block;
       margin: 0 auto;
+      width: 300px;
+      height: 40px;
+      margin-bottom: 60px;
+      object-fit: contain;
+    }
+  }
+  .loginForm {
+    display: block;
+    margin: 0 auto;
+    width: 450px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid whitesmoke;
+
+    .idBox,
+    .pwBox {
       width: 450px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid whitesmoke;
+      height: 50px;
+      margin-top: 8px;
+      padding-left: 10px;
+      border: 1px solid lightgray;
+      cursor: focus;
+    }
 
-      .idBox,
-      .pwBox {
-        width: 450px;
-        height: 50px;
-        margin-top: 8px;
-        padding-left: 10px;
-        border: 1px solid lightgray;
-        cursor: focus;
-      }
+    .idBox::placeholder,
+    .pwBox::placeholder {
+      color: $font-color-gray;
+      font-weight: $font-weight-medium;
+      font-size: $font-size-small;
+    }
 
-      .idBox::placeholder,
-      .pwBox::placeholder {
-        color: $font-color-gray;
-        font-weight: $font-weight-medium;
-        font-size: $font-size-small;
-      }
+    .validationMessage {
+      color: red;
+      font-size: $font-size-supersmall;
+    }
 
-      .validationMessage {
-        color: red;
-        font-size: $font-size-supersmall;
-      }
+    .loginBtn {
+      all: unset;
+      width: 450px;
+      height: 60px;
+      margin-top: 8px;
+      background-color: $primary-color;
+      color: white;
+      font-weight: $font-weight-bold;
+      text-align: center;
+      cursor: pointer;
+    }
 
-      .loginBtn {
-        all: unset;
-        width: 450px;
-        height: 60px;
-        margin-top: 8px;
-        background-color: $primary-color;
-        color: white;
-        font-weight: $font-weight-bold;
-        text-align: center;
-        cursor: pointer;
-      }
+    .loginBtn:hover {
+      opacity: 0.8;
+    }
 
-      .loginBtn:hover {
-        opacity: 0.8;
-      }
+    .bottomContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 450px;
+      margin-top: 15px;
 
-      .bottomContainer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 450px;
-        margin-top: 15px;
+      .KeepLoginMark {
+        vertical-align: center;
 
-        .KeepLoginMark {
-          vertical-align: center;
-
-          .far {
-            margin-right: 3px;
-            font-size: 20px;
-            color: $font-color-lightgray;
-            cursor: pointer;
-          }
-
-          .fas {
-            margin-right: 3px;
-            font-size: 20px;
-            color: $primary-color;
-            cursor: pointer;
-          }
+        .far,
+        .fas {
+          margin-right: 3px;
+          font-size: 20px;
+          color: $font-color-gray;
+          cursor: pointer;
         }
-        .ipSecurity {
-          .offBtn {
-            margin-left: 3px;
-            color: $font-color-gray;
-            font-weight: bold;
-            cursor: pointer;
-          }
-          .onBtn {
-            margin-left: 3px;
-            color: $primary-color;
-            font-weight: bold;
-            cursor: pointer;
-          }
+
+        .far,
+        .fas {
+          margin-right: 3px;
+          font-size: 20px;
+          cursor: pointer;
         }
-        // .fa-check-circle {
-        //   width: 10px;
-        //   color: gray;
-        // }
+
+        .far {
+          color: $font-color-lightgray;
+        }
+
+        .fas {
+          color: $primary-color;
+        }
+      }
+      .ipSecurity {
+        .offBtn {
+          margin-left: 3px;
+          color: $font-color-gray;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        .onBtn {
+          margin-left: 3px;
+          color: $primary-color;
+          font-weight: bold;
+          cursor: pointer;
+        }
       }
     }
   }

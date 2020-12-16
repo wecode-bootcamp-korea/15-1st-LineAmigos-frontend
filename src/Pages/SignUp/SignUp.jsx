@@ -28,8 +28,10 @@ class SignUp extends Component {
     return (
       this.handleEmailValidation(),
       this.handlePwValidation(),
+      this.handleRePwValidation(),
       this.handleNameValidation(),
-      this.handleBirthYearValidation()
+      this.handleBirthYearValidation(),
+      this.handleDropNoneValidation()
     )
   }
 
@@ -37,28 +39,24 @@ class SignUp extends Component {
     this.setState({
       email: event.target.value,
     })
-    this.handleEmailValidation()
   }
 
   handlePwChange = (event) => {
     this.setState({
       pw: event.target.value,
     })
-    this.handlePwValidation()
   }
 
   handleRePwChange = (event) => {
     this.setState({
       rePw: event.target.value,
     })
-    // this.handleRePwValidation()
   }
 
   handleNameChange = (event) => {
     this.setState({
       name: event.target.value,
     })
-    this.handleNameValidation()
   }
 
   handleBirthYearChange = (event) => {
@@ -94,10 +92,10 @@ class SignUp extends Component {
         emailValidationMassage:
           '5~20자의 영문 대/소문자, 숫자와 특수기호(_)만 사용 가능합니다.',
       })
-    } else if (emailValidation.test(checkEmail)) {
-      this.setState({
-        emailValidationMassage: '멋진 아이디네요!',
-      })
+      // } else if (emailValidation.test(checkEmail)) {
+      //   this.setState({
+      //     emailValidationMassage: '멋진 아이디네요!',
+      //   })
     }
   }
 
@@ -132,17 +130,17 @@ class SignUp extends Component {
     }
   }
 
-  // handleRePwValidation = () => {
-  //   if(this.state.rePw !== this.state.pw){
-  //     this.setState({
-  //       rePwValidationMassage: "비밀번호가 일치하지 않습니다."
-  //     })
-  //   } else if (this.state.rePw === this.state.pw) {
-  //     this.setState({
-  //       rePwValidationMassage: "일치합니다ㅠㅠㅠ"
-  //     })
-  //   }
-  // }
+  handleRePwValidation = () => {
+    if (this.state.rePw !== this.state.pw) {
+      this.setState({
+        rePwValidationMassage: '비밀번호가 일치하지 않습니다.',
+      })
+    } else {
+      this.setState({
+        rePwValidationMassage: '',
+      })
+    }
+  }
 
   handleBirthYearValidation = () => {
     const checkBirthYear = this.state.birthYear.length === 4
@@ -184,7 +182,13 @@ class SignUp extends Component {
     }
   }
 
-  handleDropdown = () => {
+  handleDropNoneValidation = () => {
+    this.setState({
+      genderValidationMassage: '필수 정보입니다.',
+    })
+  }
+
+  handleGenderDropdown = () => {
     this.setState({
       dropdown: !this.state.dropdown,
     })
@@ -197,6 +201,7 @@ class SignUp extends Component {
     this.setState({
       dropdownInput: '선택안함',
     })
+    this.handleDropNoneValidation()
   }
 
   handleDropFemale = () => {
@@ -206,6 +211,9 @@ class SignUp extends Component {
     this.setState({
       dropdownInput: '여성',
     })
+    this.setState({
+      genderValidationMassage: '',
+    })
   }
 
   handleDropMale = () => {
@@ -214,6 +222,9 @@ class SignUp extends Component {
     })
     this.setState({
       dropdownInput: '남성',
+    })
+    this.setState({
+      genderValidationMassage: '',
     })
   }
 
@@ -235,6 +246,7 @@ class SignUp extends Component {
             placeholder='@lineamigos.com'
             value={this.state.email}
             onChange={this.handleEmailChange}
+            onKeyUp={this.handleEmailValidation}
           ></input>
           <span className='validationMassage'>
             {this.state.emailValidationMassage}
@@ -242,9 +254,10 @@ class SignUp extends Component {
           <span className='label'>비밀번호</span>
           <input
             className='pwBox'
-            type='text'
+            type='password'
             value={this.state.pw}
             onChange={this.handlePwChange}
+            onKeyUp={this.handlePwValidation}
           ></input>
           <span className='validationMassage'>
             {this.state.pwValidationMassage}
@@ -252,9 +265,10 @@ class SignUp extends Component {
           <span className='label'>비밀번호 재확인</span>
           <input
             className='rePwBox'
-            type='text'
+            type='password'
             value={this.state.rePw}
             onChange={this.handleRePwChange}
+            onKeyUp={this.handleRePwValidation}
           ></input>
           <span className='validationMassage'>
             {this.state.rePwValidationMassage}
@@ -267,6 +281,7 @@ class SignUp extends Component {
             type='text'
             value={this.state.name}
             onChange={this.handleNameChange}
+            onKeyUp={this.handleNameValidation}
           ></input>
           <span className='validationMassage'>
             {this.state.nameValidationMassage}
@@ -313,7 +328,7 @@ class SignUp extends Component {
               className='dropbtn'
               type='text'
               placeholder={this.state.dropdownInput}
-              onClick={this.handleDropdown}
+              onClick={this.handleGenderDropdown}
             ></input>
             <span className='validationMassage'>
               {this.state.genderValidationMassage}

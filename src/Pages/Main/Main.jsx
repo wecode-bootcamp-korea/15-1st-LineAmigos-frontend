@@ -1,6 +1,4 @@
 import React from 'react'
-import Header from '../../Components/Header/Header'
-import Footer from '../../Components/Footer/Footer'
 import MainSlider from './MainSlider'
 import NewProductsSlider from './NewProductsSlider'
 import CategoriesSlider from './CategoriesSlider'
@@ -8,42 +6,12 @@ import ReviewAutoPlay from './ReviewAutoPlay'
 import './Main.scss'
 
 class Main extends React.Component {
-
-  constructor() {
-    super()
-    this.state = {
-      productInfos: {
-        products: [],
-        categories: [],
-        reviews: [],
-      }
-    }
-  }
-
-  componentDidMount = () => {
-    fetch('/data/productInfos.json')
-      .then(response => response.json())
-      .then(data => {
-        // console.log(data.products)
-        this.setState({
-          productInfos: {
-            products: data.products,
-            categories: data.categories,
-            reviews: data.reviews,
-          }
-        })
-      }).catch(err => console.log(err))
-  }
-
-  render() {
-    const { products, categories, reviews } = this.state.productInfos
-    
+  render() {    
     return (
       <div className="Main">
         <section className="visualContainer">
           <MainSlider />
         </section>
-        <Header />
         <section className="newProductsSection">
           <ul className="newProducts">
             <NewProductsSlider />
@@ -101,7 +69,6 @@ class Main extends React.Component {
         <section className="reviewContainer">
           <ReviewAutoPlay />
         </section>
-        <Footer />
       </div>
     )
   }

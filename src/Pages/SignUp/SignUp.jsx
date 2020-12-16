@@ -19,8 +19,7 @@ class SignUp extends Component {
       birthMonthValidationMassage: '',
       birthDayValidationMassage: '',
       genderValidationMassage: '',
-      dropdown: false,
-      dropdownInput: '선택안함',
+      genderDropdown: 'genderDropdown',
     }
   }
 
@@ -31,6 +30,7 @@ class SignUp extends Component {
       this.handleRePwValidation(),
       this.handleNameValidation(),
       this.handleBirthYearValidation(),
+      this.handleDropValidation(),
       this.handleDropNoneValidation()
     )
   }
@@ -81,7 +81,7 @@ class SignUp extends Component {
   //인풋에 글 썼다 지웠을때 validation문구 변경될 수있도록(pw도)
   handleEmailValidation = () => {
     const checkEmail = this.state.email
-    const emailValidation = /^[a-zA-z0-9]{5,20}$/
+    const emailValidation = /^[a-z0-9_-]{5,20}$/
 
     if (!checkEmail) {
       this.setState({
@@ -90,12 +90,12 @@ class SignUp extends Component {
     } else if (!emailValidation.test(checkEmail)) {
       this.setState({
         emailValidationMassage:
-          '5~20자의 영문 대/소문자, 숫자와 특수기호(_)만 사용 가능합니다.',
+          '5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.',
       })
-      // } else if (emailValidation.test(checkEmail)) {
-      //   this.setState({
-      //     emailValidationMassage: '멋진 아이디네요!',
-      //   })
+    } else if (emailValidation.test(checkEmail)) {
+      this.setState({
+        emailValidationMassage: '',
+      })
     }
   }
 
@@ -144,7 +144,8 @@ class SignUp extends Component {
 
   handleBirthYearValidation = () => {
     const checkBirthYear = this.state.birthYear.length === 4
-    if (!checkBirthYear) {
+    const checkBirthYear2 = this.state.birthYear >= 1900
+    if (!checkBirthYear || !checkBirthYear2) {
       this.setState({
         birthYearValidationMassage: '태어난 년도 4자리를 정확하게 입력하세요.',
       })
@@ -157,7 +158,8 @@ class SignUp extends Component {
 
   handleBirthMonthValidation = () => {
     const checkBirthMonth = this.state.birthMonth.length === 2
-    if (!checkBirthMonth) {
+    const checkBirthMonth2 = this.state.birthMonth <= 12
+    if (!checkBirthMonth || !checkBirthMonth2) {
       this.setState({
         birthMonthValidationMassage: '태어난 월 2자리를 정확하게 입력하세요.',
       })
@@ -170,7 +172,8 @@ class SignUp extends Component {
 
   handleBirthDayValidation = () => {
     const checkBirthDay = this.state.birthDay.length === 2
-    if (!checkBirthDay) {
+    const checkBirthDay2 = this.state.birthDay <= 31
+    if (!checkBirthDay || !checkBirthDay2) {
       this.setState({
         birthDayValidationMassage:
           '태어난 일(날짜) 2자리를 정확하게 입력하세요.',
@@ -182,49 +185,22 @@ class SignUp extends Component {
     }
   }
 
-  handleDropNoneValidation = () => {
+  handleDropNoneValidation = (event) => {
+    const genderCheck = event.target.value //none
+    if (genderCheck === 'none') {
+      this.setState({
+        genderValidationMassage: '필수 정보입니다.',
+      })
+    } else {
+      this.setState({
+        genderValidationMassage: '',
+      })
+    }
+  }
+
+  handleDropValidation = () => {
     this.setState({
       genderValidationMassage: '필수 정보입니다.',
-    })
-  }
-
-  handleGenderDropdown = () => {
-    this.setState({
-      dropdown: !this.state.dropdown,
-    })
-  }
-
-  handleDropNone = () => {
-    this.setState({
-      dropdown: this.state.dropdown === false,
-    })
-    this.setState({
-      dropdownInput: '선택안함',
-    })
-    this.handleDropNoneValidation()
-  }
-
-  handleDropFemale = () => {
-    this.setState({
-      dropdown: this.state.dropdown === false,
-    })
-    this.setState({
-      dropdownInput: '여성',
-    })
-    this.setState({
-      genderValidationMassage: '',
-    })
-  }
-
-  handleDropMale = () => {
-    this.setState({
-      dropdown: this.state.dropdown === false,
-    })
-    this.setState({
-      dropdownInput: '남성',
-    })
-    this.setState({
-      genderValidationMassage: '',
     })
   }
 
@@ -323,34 +299,17 @@ class SignUp extends Component {
             {this.state.birthDayValidationMassage}
           </span>
           <span className='label'>성별</span>
-          <div className='dropdown'>
-            <input
-              className='dropbtn'
-              type='text'
-              placeholder={this.state.dropdownInput}
-              onClick={this.handleGenderDropdown}
-            ></input>
-            <span className='validationMassage'>
-              {this.state.genderValidationMassage}
-            </span>
-            <div
-              className={
-                this.state.dropdown ? 'dropdownContent' : 'displayNone'
-              }
-            >
-              <ul>
-                <li className='dropList' onClick={this.handleDropNone}>
-                  선택안함
-                </li>
-                <li className='dropList' onClick={this.handleDropFemale}>
-                  여성
-                </li>
-                <li className='dropList' onClick={this.handleDropMale}>
-                  남성
-                </li>
-              </ul>
-            </div>
-          </div>
+          <select
+            className={this.state.genderDropdown}
+            onChange={this.handleDropNoneValidation}
+          >
+            <option value='none'>선택안함</option>
+            <option value='female'>여성</option>
+            <option value='male'>남성</option>
+          </select>
+          <span className='validationMassage'>
+            {this.state.genderValidationMassage}
+          </span>
         </div>
         <div className='phoneValidationForm'>
           <span className='label'>휴대전화</span>
@@ -400,7 +359,9 @@ class SignUp extends Component {
               <a href=''>회원정보 고객센터</a>
             </li>
           </ul>
-          <span className='companyName'>&copy; Line Amigos Corp.</span>
+          <span className='copyright'>Copyright &copy; </span>
+          <span className='companyName'>Line Amigos Corp. </span>
+          <span className='rights'>All Rights Reserved.</span>
         </footer>
       </div>
     )

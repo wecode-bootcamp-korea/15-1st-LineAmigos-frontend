@@ -2,7 +2,6 @@
 
 .MainSlider {
   width: 100%;
-  // height: 600px;
 
   .slick-slider button{
     width: 70px;
@@ -10,23 +9,11 @@
     background: rgba(255,255,255,.05);
     z-index: 10;
     transition: all .2s ease;
-    &:hover{
-      background: rgba(255,255,255,.2);
-    }
-    &:first-of-type {
-      left: 180px;
-    }
-    &:last-of-type {
-      right: 180px;
-    }
-    &.slick-prev::before {
-      font-size: 40px;
-      // display: none;
-    }
-    &.slick-next::before {
-      font-size: 40px;
-      // display: none;
-    }
+    &:hover{background: rgba(255,255,255,.2);}
+    &:first-of-type {left: 180px;}
+    &:last-of-type {right: 180px;}
+    &.slick-prev::before {font-size: 40px;}
+    &.slick-next::before {font-size: 40px;}
   }
 }
 

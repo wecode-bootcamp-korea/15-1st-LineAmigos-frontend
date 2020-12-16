@@ -18,25 +18,11 @@
         background: rgba(255, 255, 255, 0.05);
         z-index: 10;
         transition: all 0.2s ease;
-        &:hover {
-          background: rgba(255, 255, 255, 0.2);
-        }
-        &:first-of-type {
-          left: 0;
-        }
-        &:last-of-type {
-          right: 0;
-        }
-        &.slick-prev::before {
-          display: none;
-          // font-size: 40px;
-          // opacity: 0.4;
-        }
-        &.slick-next::before {
-          display: none;
-          // font-size: 40px;
-          // opacity: 0.4;
-        }
+        &:hover {background: rgba(255, 255, 255, 0.2);}
+        &:first-of-type {left: 0;}
+        &:last-of-type {right: 0;}
+        &.slick-prev::before {display: none;}
+        &.slick-next::before {display: none;}
       }
 
       ul {
@@ -45,11 +31,8 @@
 
         li {
           background: none;
-          button {
-            background: none;
-            &:hover {
-              background: none;
-            }
+          button {background: none;
+            &:hover {background: none;}
             &::before {
               font-size: 10px;
               color: #666;
@@ -67,9 +50,7 @@
     }
   }
 
-  .newProductsSection {
-    margin: 680px 0 70px 0;
-  }
+  .newProductsSection {margin: 680px 0 70px 0;}
 
   .clickToSee {
     width: 1280px;
@@ -109,7 +90,6 @@
         div {
           width: 80px;
           height: 35px;
-          // background: #000;
           position: absolute;
           top: 0;
           left: 0;
@@ -121,33 +101,6 @@
               border: 3px solid white;
               top: 250px;
               left: 120px;
-              animation: flux 2s linear infinite;
-              -moz-animation: flux 2s linear infinite;
-              -webkit-animation: flux 2s linear infinite;
-              -o-animation: flux 2s linear infinite;
-
-              // .flux {
-              //   animation: flux 2s linear infinite;
-              //   -moz-animation: flux 2s linear infinite;
-              //   -webkit-animation: flux 2s linear infinite;
-              //   -o-animation: flux 2s linear infinite;
-              // }
-
-              @keyframes flux {
-                0%,
-                100% {
-                  text-shadow: 0 0 1vw #1041ff, 0 0 3vw #1041ff,
-                    0 0 10vw #1041ff, 0 0 10vw #1041ff, 0 0 0.4vw #8bfdfe,
-                    0.5vw 0.5vw 0.1vw #147280;
-                  color: #28d7fe;
-                }
-                50% {
-                  text-shadow: 0 0 0.5vw #082180, 0 0 1.5vw #082180,
-                    0 0 5vw #082180, 0 0 5vw #082180, 0 0 0.2vw #082180,
-                    0.5vw 0.5vw 0.1vw #0a3940;
-                  color: #146c80;
-                }
-              }
             }
           }
 
@@ -224,11 +177,8 @@
         position: absolute;
         bottom: 14px;
 
-        button {
-          background: none;
-          &:hover {
-            background: none;
-          }
+        button {background: none;
+          &:hover {background: none;}
           &::before {
             font-size: 10px;
             color: #666;
@@ -238,11 +188,7 @@
     }
   }
 
-  .categoriesShortcut {
-    margin: 80px 0;
-  }
+  .categoriesShortcut {margin: 80px 0;}
 
-  .reviewContainer {
-    margin: 80px 0 140px 0;
-  }
+  .reviewContainer {margin: 80px 0 140px 0;}
 }

@@ -25,7 +25,6 @@ class ReviewAutoPlay extends Component {
     const { reviews } = this.state
     const rateStar = <i class="fas fa-star" />
     const settings = {
-      // dots: true,
       infinite: true,
       slidesToShow: 4,
       slidesToScroll: 1,

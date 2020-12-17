@@ -25,8 +25,7 @@ class CategoriesSlider extends Component {
     const settings = {
       dots: false,
       infinite: true,
-      autoplay: true,
-      autoplaySpeed: 3000,
+      autoplay: false,
       speed: 800,
       slidesToShow: 4,
       slidesToScroll: 4,

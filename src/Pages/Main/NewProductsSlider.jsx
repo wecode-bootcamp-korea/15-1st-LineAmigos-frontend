@@ -25,7 +25,7 @@ class NewProductsSlider extends Component {
     const settings = {
       dots: false,
       infinite: true,
-      autoplay: true,
+      autoplay: false,
       autoplaySpeed: 3000,
       speed: 800,
       slidesToShow: 4,

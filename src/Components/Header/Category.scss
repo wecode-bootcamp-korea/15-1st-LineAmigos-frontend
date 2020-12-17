@@ -1,0 +1,67 @@
+@import '../../styles/common.scss';
+
+.Category li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  cursor: pointer;
+  &:hover > div {
+    font-weight: $font-weight-bold;
+    color: #6c83c7;
+  }
+  &:hover > img {
+    -webkit-filter: opacity(.5) drop-shadow(0 0 0 #5a6faf);
+    filter: opacity(.5) drop-shadow(0 0 0 #6c83c7);
+  }
+
+  div {
+    font-size: $font-size-small;
+    font-weight: $font-weight-medium;
+  }
+
+  img {
+    margin-left: 7px;
+    width: 8px;
+    transform: rotate(90deg);
+  }
+
+  .navDropdown {
+    width: 180px;
+    height: 240px;
+    background: white;
+    border: 1px solid #ccc;
+    // box-shadow: 10px,10px,10px,black;
+    border-radius: 4px;
+    z-index: 20;
+    position: absolute;
+    top: 50px;
+    left: -64px;
+    display: none;
+
+    .subCategories {
+      &.open {
+        display: block;
+      }
+      li{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 34px;
+        padding: 0 20px;
+        &:first-of-type {
+          margin-top: 12px;
+        }
+        &:last-of-type {
+          border: none;
+          margin-bottom: 20px;
+        }
+        &:hover {
+          background: #fafafa;
+          transition: all .2s ease;
+        }
+      }
+    }
+
+  }
+}

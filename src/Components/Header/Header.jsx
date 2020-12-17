@@ -1,4 +1,5 @@
 import React from 'react'
+import Category from './Category'
 import './Header.scss'
 
 class Header extends React.Component {
@@ -8,6 +9,7 @@ class Header extends React.Component {
       categories: [],
       searchValue : '',
       searchList: [],
+      isCategoryOpen: false,
     }
   }
   
@@ -15,6 +17,18 @@ class Header extends React.Component {
     this.setState({
       searchValue: e.target.value,
     })
+  }
+
+  handleCategoryOpen = (id) => {
+    // const openedCategories = this.state.categories.map((category, index) => {
+    //   if (category[index] === idx) {
+    //     // this.setState({
+    //     //   isCategoryOpen: !this.state.isCategoryOpen
+    //     // })
+    //     console.log(index)
+    //   }
+    // })
+    console.log(this.state.categories[id - 1])
   }
 
   componentDidMount = () => {
@@ -30,13 +44,13 @@ class Header extends React.Component {
 
   render() {
 
-    const {categories, searchValue, searchList} = this.state
+    const {categories, searchValue, searchList, isCategoryOpen} = this.state
+    const {handleCategoryOpen} = this
     const filteredList = searchList.filter((product) => {
       if (product.productName.toLowerCase().includes(searchValue.toLowerCase())) {
         return product
       }
     })
-    console.log(filteredList)
 
     return (
       <header className='Header'>
@@ -54,8 +68,8 @@ class Header extends React.Component {
               <img alt="Menu" src="/images/menu.png" />
             </div>
           </nav>
-          <div className="logoHeader">
-            <h1 className="logoAndSearch">
+          <div className="logoAndSearch">
+            <h1>
               <img alt="Line Amigos Logo" src="/images/line-amigos-logo-black.png"/>
             </h1>
             <div className="searchContainer">
@@ -85,23 +99,35 @@ class Header extends React.Component {
             {categories &&
               categories.map((navCategory, index) => {
                 return (
-                  <li key={index}>
-                    <div>{navCategory.category}</div>
-                    <img alt="Down arrow" src="/images/arrow-right-bold.png" />
-                  </li>
+                  <Category 
+                    key={index}
+                    id={navCategory.categoryId}
+                    category={navCategory.category}
+                    subCategories={navCategory.subCategories}
+                    handleCategoryOpen={handleCategoryOpen}
+                    // isCategoryOpen={isCategoryOpen}
+                    />
+                  // <li key={index}>
+                  //   <div>{navCategory.category}</div>
+                  //   <img alt="Down arrow" src="/images/arrow-right-bold.png" />
+                  //   <div className="navDropdown">
+                  //     <ul className="subCategories">
+                  //       {navCategory.subCategories &&
+                  //         navCategory.subCategories.map((subCategory, index) => {
+                  //           return (
+                  //             // console.log(subCategory)
+                  //             <li key={index}>{subCategory}</li>
+                  //           )
+                  //         })
+                  //       }
+                  //       테스트
+                  //     </ul>
+                  //   </div>
+                  // </li>
                 )
               })
             }
           </ul>
-          <div className="navDropdown">
-            <ul>
-              <li>subcategory1</li>
-              <li>subcategory2</li>
-              <li>subcategory3</li>
-              <li>subcategory4</li>
-              <li>subcategory5</li>
-            </ul>
-          </div>
         </div>
       </header>
     )

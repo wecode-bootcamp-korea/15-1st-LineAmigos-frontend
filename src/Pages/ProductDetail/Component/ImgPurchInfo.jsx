@@ -22,8 +22,7 @@ class ImgPurchInfo extends Component {
     }
 
     render() {
-        const {sizeBtn, price, quantity} = this.state
-
+        const {sizeBtn, price, quantity} = this.state;
         return (
             <div className="ImgPurchInfo">
                 <div className="imgEx">
@@ -31,11 +30,7 @@ class ImgPurchInfo extends Component {
                         <img className="bigImg" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdBUkL6CL9geDn8RcmxCtrjLzSIfL3seMFA&usqp=CAU"/>
                     </div>
                     <div className="smallImgContainer">
-                        <img className="smallImg" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdBUkL6CL9geDn8RcmxCtrjLzSIfL3seMFA&usqp=CAU"/>
-                        <img className="smallImg" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdBUkL6CL9geDn8RcmxCtrjLzSIfL3seMFA&usqp=CAU"/>
-                        <img className="smallImg" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdBUkL6CL9geDn8RcmxCtrjLzSIfL3seMFA&usqp=CAU"/>
-                        <img className="smallImg" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdBUkL6CL9geDn8RcmxCtrjLzSIfL3seMFA&usqp=CAU"/>
-                        <img className="smallImg" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdBUkL6CL9geDn8RcmxCtrjLzSIfL3seMFA&usqp=CAU"/>
+                        {[...Array(5)].map((e, id) => <img key={id} alt="smallImgExamples" className="smallImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdBUkL6CL9geDn8RcmxCtrjLzSIfL3seMFA&usqp=CAU" />)}
                     </div>           
                 </div>
                 <div className="purchInfo">
@@ -95,7 +90,7 @@ class ImgPurchInfo extends Component {
                         <div className="totalQP">
                             <span className="totPriceSpan">
                                 총 상품 금액 
-                                <i class="fas fa-question"></i>
+                                <i className="fas fa-question"></i>
                             </span>
                             <span className="totQuantity">
                                 총 수량 {quantity}개 |
@@ -104,7 +99,7 @@ class ImgPurchInfo extends Component {
                         </div>
                         <div className="PCBtns">
                             <button className="purchBtn">
-                                <i class="fab fa-node-js"></i>
+                                <i className="fab fa-node-js"></i>
                                 구매하기
                             </button>
                             <div className="cartLike">
@@ -119,7 +114,7 @@ class ImgPurchInfo extends Component {
                     </div>
                     <div className="shopWarning">
                         <div className="warning">
-                            <i class="fas fa-info-circle"></i>
+                            <i className="fas fa-info-circle"></i>
                             <span>쇼핑할 때 필독</span>
                         </div>
                         <span>안전거래TIP &gt;</span>

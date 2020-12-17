@@ -1,0 +1,27 @@
+.product{
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+    .productImg{
+        img{
+            width: 100%;
+        }
+    }
+
+    .nameAndPrice{
+        display: flex;
+        flex-direction: column;
+
+        .productName{
+            font-size: 13px;
+        }
+
+        .price{
+            font-weight: bold;
+            padding: 10px 0;
+        }
+    }
+}

@@ -23,7 +23,6 @@ class Main extends React.Component {
             <div className="buttonPlate">
               <img alt="My home cafe" src="/images/Main/main-slider-03.jpg" />
               <ul className="buttons">
-                
                 <li className="button01">
                   <span className="target01"></span>
                   <div className="price01"></div>

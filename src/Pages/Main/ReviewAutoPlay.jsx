@@ -14,7 +14,6 @@ class ReviewAutoPlay extends Component {
     fetch('/data/productInfos.json')
       .then(response => response.json())
       .then(data => {
-        console.log(data.reviews)
         this.setState({
           reviews: data.reviews,
         })

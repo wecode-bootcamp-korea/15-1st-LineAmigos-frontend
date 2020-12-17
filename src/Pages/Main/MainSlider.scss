@@ -3,16 +3,47 @@
 .MainSlider {
   width: 100%;
 
-  .slick-slider button{
-    width: 70px;
-    height: 70px;
-    background: rgba(255,255,255,.05);
-    z-index: 10;
-    transition: all .2s ease;
-    &:hover{background: rgba(255,255,255,.2);}
-    &:first-of-type {left: 180px;}
-    &:last-of-type {right: 180px;}
-    &.slick-arrow::before {font-size: 40px;}
+  .slick-slider {
+    button {
+      width: 200px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      z-index: 10;
+      transition: all 0.2s ease;
+      &:hover {background: rgba(255, 255, 255, 0.2);}
+      &:first-of-type {left: 0;}
+      &:last-of-type {right: 0;}
+      &.slick-arrow::before {display: none;}
+    }
+
+    ul {
+      position: absolute;
+      bottom: 40px;
+
+      li {
+        background: none;
+        button {background: none;
+          &:hover {background: none;}
+          &::before {
+            font-size: 10px;
+            color: #666;
+          }
+        }
+      }
+    }
+  }
+
+  .ads {
+    position: relative;
+    top: -540px;
+    left: 320px;
+    z-index: 100;
+    width: 240px;
+    background: #999;
+
+    .adTitle {
+      font-size: 40px;
+    }
   }
 }
 

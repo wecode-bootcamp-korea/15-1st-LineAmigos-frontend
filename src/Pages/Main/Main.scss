@@ -11,35 +11,35 @@
     width: 100%;
     position: absolute;
 
-    .slick-slider {
-      button {
-        width: 200px;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.05);
-        z-index: 10;
-        transition: all 0.2s ease;
-        &:hover {background: rgba(255, 255, 255, 0.2);}
-        &:first-of-type {left: 0;}
-        &:last-of-type {right: 0;}
-        &.slick-arrow::before {display: none;}
-      }
+    // .slick-slider {
+    //   button {
+    //     width: 200px;
+    //     height: 100%;
+    //     background: rgba(255, 255, 255, 0.05);
+    //     z-index: 10;
+    //     transition: all 0.2s ease;
+    //     &:hover {background: rgba(255, 255, 255, 0.2);}
+    //     &:first-of-type {left: 0;}
+    //     &:last-of-type {right: 0;}
+    //     &.slick-arrow::before {display: none;}
+    //   }
 
-      ul {
-        position: absolute;
-        bottom: 40px;
+    //   ul {
+    //     position: absolute;
+    //     bottom: 40px;
 
-        li {
-          background: none;
-          button {background: none;
-            &:hover {background: none;}
-            &::before {
-              font-size: 10px;
-              color: #666;
-            }
-          }
-        }
-      }
-    }
+    //     li {
+    //       background: none;
+    //       button {background: none;
+    //         &:hover {background: none;}
+    //         &::before {
+    //           font-size: 10px;
+    //           color: #666;
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   .Header {

@@ -12,7 +12,7 @@ class MainSlider extends Component {
   }
 
   componentDidMount = () => {
-    fetch('/data/productInfos.json')
+    fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
         // console.log(data)
@@ -41,11 +41,17 @@ class MainSlider extends Component {
         <Slider {...SETTING}>
           {mainSliderImages &&
             mainSliderImages.map(image => {
+              console.log(image.promotion)
               return (
                 <div key={image.id}>
                   <img src={image.url} />
+                  <div className="ads">
+                    <p className="adTitle">{image.promotion}</p>
+                    <p className="adSubTitle">{image.subPromotion}</p>
+                  </div>
                 </div>
               )
+              
             })
           }
         </Slider>

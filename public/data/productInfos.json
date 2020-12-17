@@ -140,29 +140,82 @@
     }
   ],
   "mainSliderImages": [
-    { 
-      "id": 1, 
-      "url": "/images/Main/main-slider-05.jpg" 
+    {
+      "id": 1,
+      "url": "/images/Main/main-slider-05.jpg"
     },
-    { 
-      "id": 2, 
-      "url": "/images/Main/main-slider-02.jpg" 
+    {
+      "id": 2,
+      "url": "/images/Main/main-slider-02.jpg"
     },
-    { 
-      "id": 3, 
-      "url": "/images/Main/main-slider-03.jpg" 
+    {
+      "id": 3,
+      "url": "/images/Main/main-slider-03.jpg"
     },
-    { 
-      "id": 4, 
-      "url": "/images/Main/main-slider-04.jpg" 
+    {
+      "id": 4,
+      "url": "/images/Main/main-slider-04.jpg"
     },
-    { 
-      "id": 5, 
-      "url": "/images/Main/main-slider-01.jpg" 
+    {
+      "id": 5,
+      "url": "/images/Main/main-slider-01.jpg"
     },
-    { 
-      "id": 6, 
-      "url": "/images/Main/main-slider-06.jpg" 
+    {
+      "id": 6,
+      "url": "/images/Main/main-slider-06.jpg"
     }
+  ],
+  "navCategories": [
+    {"캐릭터" : [
+        "브라운프렌즈",
+        "BT21",
+        "홀리스타즈"
+    ]},
+    "NEW",
+    "선물추천",
+    {"THEME" : [
+      "미니프렌즈",
+      "맥시프렌즈"
+    ]},
+    {"BABY" : [
+      "문구",
+      "리빙",
+      "디지털",
+      "패션잡화"
+    ]},
+    "SALE",
+    {"토이": [
+      "중형인형 이상",
+      "미니인형",
+      "쿠션",
+      "피규어"
+    ]},
+    {"디자인문구": [
+      "다이어리, 플래너",
+      "노트, 메모지",
+      "필기류, 케이스",
+      "데코레이션",
+      "스티커시리즈"
+    ]},
+    {"디지털": [
+      "폰케이스",
+      "주변기기",
+      "스마트기기",
+      "디지털케이스"
+    ]},
+    {"패션의류": [
+      "반팔의류",
+      "긴팔의류",
+      "라운지웨어",
+      "양말, 슬리퍼"
+    ]},
+    {"패션잡화": [
+      "가방",
+      "키홀더",
+      "뷰티",
+      "모자, 마스크",
+      "지갑, 파우치"
+    ]},
+    "더보기"
   ]
 }

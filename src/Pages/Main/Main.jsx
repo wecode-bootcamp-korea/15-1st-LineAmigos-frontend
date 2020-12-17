@@ -2,6 +2,7 @@ import React from 'react'
 import MainSlider from './MainSlider'
 import NewProductsSlider from './NewProductsSlider'
 import CategoriesSlider from './CategoriesSlider'
+import BannerSlider from './BannerSlider'
 import ReviewAutoPlay from './ReviewAutoPlay'
 import './Main.scss'
 
@@ -60,7 +61,7 @@ class Main extends React.Component {
           </div>
         </section>
         <section className="bannerContainer">
-          <MainSlider />
+          <BannerSlider />
         </section>
         <section className="categoriesShortcut">
           <CategoriesSlider />

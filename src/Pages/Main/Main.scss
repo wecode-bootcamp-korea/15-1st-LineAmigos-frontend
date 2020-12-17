@@ -21,8 +21,7 @@
         &:hover {background: rgba(255, 255, 255, 0.2);}
         &:first-of-type {left: 0;}
         &:last-of-type {right: 0;}
-        &.slick-prev::before {display: none;}
-        &.slick-next::before {display: none;}
+        &.slick-arrow::before {display: none;}
       }
 
       ul {

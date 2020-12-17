@@ -115,12 +115,73 @@
           &:focus { outline: none; }
         }
   
-        img {
+        .searchIcon {
           position: absolute;
           top: 11px;
           right: 18px;
           width: 16px;
           opacity: .8;
+        }
+
+        .searchListContainer {
+          padding: 16px 0;
+          position: absolute;
+          top: 50px;
+          right: 0;
+          z-index: 30;
+          width: 280px;
+          background: white;
+          border: 1px solid #ccc;
+          border-radius: 12px;
+          display: none;
+          &.open {
+            display: block;
+          }
+
+          li {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 12px;
+            width: 268px;
+            height: 64px;
+            // background: #bbb;
+            &:hover {
+              background: rgba(0,0,0,.03);
+              transition: all .2s ease;
+            }
+
+            .itemImg {
+              width: 54px;
+              height: 54px;
+              object-fit: cover;
+              border-radius: 4px;
+              // margin: 0;
+
+            }
+            div {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: flex-start;
+              padding: 0 8px 0 8px;
+              width: 100%;
+              font-size: $font-size-small;
+              font-weight: $font-weight-medium;
+              word-break: break-all;
+              
+              .productName {
+                margin-bottom: 3px;
+                font-weight: $font-weight-medium;
+                line-height: 18px;
+                word-break: break-all;
+              }
+
+              .price {
+                font-size: $font-size-extrasmall;
+              }
+            }
+          }
         }
       }
     }
@@ -136,6 +197,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 50px;
         cursor: pointer;
         &:hover > div {
           font-weight: $font-weight-bold;
@@ -156,6 +218,44 @@
           width: 8px;
           transform: rotate(90deg);
         }
+      }
+    }
+
+    .navDropdown {
+      width: 180px;
+      height: 240px;
+      background: white;
+      border: 1px solid #ccc;
+      // box-shadow: 10px,10px,10px,black;
+      border-radius: 4px;
+      z-index: 20;
+      position: absolute;
+      top: 180px;
+      left: -64px;
+      // display: none;
+
+      ul {
+        li{
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          height: 34px;
+          padding: 0 20px;
+          &:first-of-type {
+            margin-top: 16px;
+          }
+          &:last-of-type {
+            border: none;
+            margin-bottom: 20px;
+          }
+          &:hover {
+            background: #fafafa;
+            transition: all .2s ease;
+          }
+        }
+      }
+      &:hover {
+        display: block;
       }
     }
   }

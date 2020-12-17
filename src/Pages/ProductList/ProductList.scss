@@ -4,61 +4,83 @@
   box-sizing: border-box;
 
   .container {
-    header {
-      display: block;
-      margin: 0 auto;
-      width: 1280px;
+    display: block;
+    margin: 0 auto;
+    width: 1280px;
 
+    header {
       .banner {
-        display: block;
-        margin: 0 auto;
         width: 1280px;
         height: 200px;
         margin-top: 50px;
+        margin-bottom: 20px;
+      }
+
+      .headerName {
+        display: flex;
+        justify-content: space-between;
+
+        .listName {
+          font-size: 22px;
+          font-weight: bold;
+        }
+
+        .home {
+          color: $font-color-gray;
+          font-size: $font-size-regular;
+        }
+
+        .listDropDown {
+          border: none;
+          cursor: pointer;
+
+          // .dropDownOption {
+          //   background-color: white;
+          // }
+        }
       }
     }
     .filterContainer {
-      display: block;
-      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
       width: 1280px;
-      background-color: lightgreen;
-    }
+      margin-top: 50px;
 
-    .productListContainer {
-      display: block;
-      margin: 0 auto;
-      width: 1280px;
-
-      .productList {
+      .productFilter {
         display: flex;
-        flex-direction: column;
-        width: 262px;
-        height: 282px;
-        margin: 20px 0;
-        padding: 0 15px;
+        list-style: none;
+        cursor: pointer;
 
-        .product {
-          width: 232px;
-          height: 232px;
+        .fas {
         }
 
-        .productNameContainer {
+        li {
+          margin-right: 5px;
+        }
+      }
+
+      .viewFilterContainer {
+        display: flex;
+
+        .viewDropdown {
+          border: none;
+          margin: 10px;
+          cursor: pointer;
+        }
+
+        .viewIconContainer {
           display: flex;
-          justify-content: space-between;
-          margin-top: 15px;
+          color: gray;
+          // color: white;
 
-          .productName {
-            font-weight: bold;
+          .iconBox {
+            width: 32px;
+            height: 32px;
+            padding: 8px;
+            border: 1px solid lightgray;
+            cursor: pointer;
+            // background-color: #302e30;
           }
-
-          .far,
-          .fa-heart {
-            right: 0;
-          }
-        }
-        .productPrice {
-          margin-top: 5px;
-          font-weight: bold;
         }
       }
     }

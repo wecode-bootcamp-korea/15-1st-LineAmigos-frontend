@@ -1,0 +1,35 @@
+{
+  "data": [
+    { 
+      "id": "wecode",
+      "src1": "images/cecilia/story.png",
+      "src2": "images/cecilia/wecode.png" 
+    },
+    { 
+      "id": "mina_.___._",
+      "src1": "images/cecilia/story.png", 
+      "src2": "images/cecilia/mina.jpg" 
+    },
+    { 
+      "id": "daehoieem", 
+      "src1": "images/cecilia/story.png", 
+      "src2": "images/cecilia/daeho.jpg" 
+    },
+    { 
+      "id": "kingth_man", 
+      "src1": "images/cecilia/story.png", 
+      "src2": "images/cecilia/taehyun.jpg" 
+    },
+    { "id": "we_founder", 
+      "src1": "images/cecilia/story.png", 
+      "src2": "images/cecilia/eunwoo.jpg" 
+    },
+    { 
+      "id": "soral216", 
+      "src1": "images/cecilia/story.png", 
+      "src2": "images/cecilia/byunggon.png" 
+    }
+  ]
+}
+
+  

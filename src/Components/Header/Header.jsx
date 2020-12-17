@@ -10,11 +10,12 @@ class Header extends React.Component {
   }
   
   componentDidMount = () => {
-    fetch('http://localhost:3000/data/data.json')
+    fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
+        // console.log(data)
         this.setState({
-          categories: data.categories
+          categories: data.navCategories
         })
       }).catch(err => console.log(err))
   }
@@ -47,7 +48,7 @@ class Header extends React.Component {
             </div>
           </div>
           <ul className="topMenu">
-            {
+            {/*{
               categories.map((category, index) => {
                 return (
                   <li key={index}>
@@ -56,7 +57,7 @@ class Header extends React.Component {
                   </li>
                 )
               })
-            }
+            }*/}
           </ul>
           <div className="navDropdown">
             <ul>

@@ -79,7 +79,6 @@ class Header extends React.Component {
           categoriesList: categories,
           searchList: data.products,
         })
-        console.log(this.state.categoriesList)
       }).catch(err => console.log(err))
   }
 

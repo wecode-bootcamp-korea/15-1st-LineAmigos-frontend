@@ -68,10 +68,6 @@
       }
     }
 
-    .productImg:hover + .hoverContainer {
-      display: block;
-    }
-
     .hoverContainer:hover {
       display: block;
     }
@@ -127,6 +123,10 @@
         color: #6b90dd;
       }
     }
+  }
+
+  .productList:hover > .hoverContainer {
+    display: block;
   }
 }
 .nextPageContainer {

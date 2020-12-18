@@ -10,10 +10,12 @@ class Product extends Component {
       price: '',
     }
   }
+
   handleWishBtn = () => {
     this.setState({
       wishBtn: !this.state.wishBtn,
     })
+    this.setState({})
   }
 
   componentDidMount = () => {
@@ -33,10 +35,7 @@ class Product extends Component {
   }
 
   render() {
-    console.log(this.props.product.review)
-    console.log(this.props.product.price)
-
-    const { src, name, price, review, rate } = this.props.product
+    const { src, name, review, rate } = this.props.product
     return (
       <div className='productContainer'>
         <li className='productList'>

@@ -6,6 +6,7 @@ class Product extends Component {
     super()
     this.state = {
       wishBtn: false,
+      reviewRateContainer: true,
     }
   }
   handleWishBtn = () => {
@@ -13,7 +14,18 @@ class Product extends Component {
       wishBtn: !this.state.wishBtn,
     })
   }
+
+  componentDidMount = () => {
+    if (this.props.product.review === 0) {
+      this.setState({
+        reviewRateContainer: false,
+      })
+    }
+  }
+
   render() {
+    console.log(this.props.product.review)
+
     const { src, name, price, review, rate } = this.props.product
     return (
       <div className='productContainer'>
@@ -36,12 +48,18 @@ class Product extends Component {
             />
           </div>
           <span className='productPrice'>{price}원</span>
-          <div className='reviewRateContainer'>
+          <div
+            className={
+              this.state.reviewRateContainer
+                ? 'reviewRateContainer'
+                : 'noneReviewRateContainer'
+            }
+          >
             <span className='reviewText'>리뷰</span>
             <span className='reviewNums'>{review}</span>
-            <span className='rateText'>평점</span>
+            <span className='rateText'> - 평점 </span>
             <span className='rateNums'>{rate}</span>
-            <span className='rateText'>/5</span>
+            <span className='rateText'> / 5</span>
           </div>
         </li>
       </div>

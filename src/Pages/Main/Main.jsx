@@ -13,10 +13,13 @@ class Main extends React.Component {
     this.state = {
       productsList: [],
       categoriesList: [],
-      reviewsList: []
+      reviewsList: [],
+      scrollTop: 0,
+      isNavFixed: false,
     }
   }
   componentDidMount = () => {
+    window.addEventListener('scroll', this.handleScroll)
     fetch('/data/productsInfos.json')
      .then(response => response.json())
      .then(data => {
@@ -27,17 +30,23 @@ class Main extends React.Component {
        })
      })
   }
-
-  componentDidMount = () => {
-    window.addEventListener('scroll', this.handleScroll);
-}
-
+  
   componentWillUnmount = () => {
-      window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll)
+  }
+
+  handleScroll = (e) => {
+    const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop)
+    this.setState({
+      scrollTop,
+      isNavFixed: scrollTop > 160 ? true : false
+    })
   }
 
   render() {  
-    const { productList, categoriesList, reviewsList } = this.state
+    console.log(this.state.scrollTop)
+    console.log(this.state.isNavFixed)
+    const { productList, categoriesList, reviewsList, scrollTop, isNavFixed } = this.state
     
     return (
       <div className="Main">

@@ -43,6 +43,10 @@ class Header extends React.Component {
     })
   }
 
+  goToMainPage = () => {
+    this.props.history.push("/")
+  }
+
   goToLogInPage = () => {
     if (!this.state.isloggedIn) {
       this.props.history.push("/login")
@@ -81,7 +85,7 @@ class Header extends React.Component {
 
   render() {
     const { categoriesList, searchValue, searchList, isloggedIn } = this.state
-    const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult } = this
+    const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult, goToMainPage } = this
     const filteredList = searchList.filter((product) => {
       if (product.productName.toLowerCase().includes(searchValue.toLowerCase())) {
         return product
@@ -109,7 +113,10 @@ class Header extends React.Component {
           </nav>
           <div className="logoAndSearch">
             <h1>
-              <img alt="Line Amigos Logo" src="/images/line-amigos-logo-black.png"/>
+              <img 
+                alt="Line Amigos Logo" 
+                src="/images/line-amigos-logo-black.png"
+                onClick={goToMainPage}/>
             </h1>
             <div className="searchContainer">
               <form onSubmit={goToSearchResult}>

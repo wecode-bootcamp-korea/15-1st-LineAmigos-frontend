@@ -88,8 +88,6 @@ class Header extends React.Component {
       }
     })
     localStorage.getItem('token') && this.setState({isloggedIn: true})
-    // console.log('istokentrue: ' + localStorage.getItem('token'))
-    // console.log('searchvalue: ' + searchValue)
 
     return (
       <header className='Header'>

@@ -83,8 +83,8 @@
 
       .productName {
         margin-bottom: 10px;
-        font-size: $font-size-regular;
-        font-weight: $font-weight-bold;
+        font-size: $font-size-small;
+        font-weight: bold;
         cursor: pointer;
       }
 
@@ -99,7 +99,8 @@
       }
     }
     .productPrice {
-      font-weight: $font-weight-bold;
+      font-size: $font-size-small;
+      font-weight: bold;
     }
 
     .noneReviewRateContainer {

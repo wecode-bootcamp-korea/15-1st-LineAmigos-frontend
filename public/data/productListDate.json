@@ -4,7 +4,7 @@
       "id" : 1,
       "src": "https://shop-phinf.pstatic.net/20201211_187/1607676544582vyQbn_JPEG/18453428_54643025.jpg?type=f232_232",
       "name": "라인프렌즈 귀염둥이 분홍토끼",
-      "price": 55000,
+      "price": 50000.00,
       "review" : 1,
       "rate" : 5.0
     },
@@ -12,7 +12,7 @@
       "id" : 2,
       "src": "https://shop-phinf.pstatic.net/20201211_42/1607676540483Xc94i_JPEG/18453382_54643014.jpg?type=f232_232",
       "name": "라인프렌즈 귀염둥이 분홍토끼",
-      "price": 55000,
+      "price": 45000.00,
       "review" : 2,
       "rate" : 5.0
     },

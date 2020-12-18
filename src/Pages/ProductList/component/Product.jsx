@@ -7,6 +7,7 @@ class Product extends Component {
     this.state = {
       wishBtn: false,
       reviewRateContainer: true,
+      price: '',
     }
   }
   handleWishBtn = () => {
@@ -16,15 +17,24 @@ class Product extends Component {
   }
 
   componentDidMount = () => {
+    const priceComma = this.props.product.price
+      .toString()
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
     if (this.props.product.review === 0) {
       this.setState({
         reviewRateContainer: false,
+      })
+    }
+    if (this.props.product.price !== null) {
+      this.setState({
+        price: priceComma,
       })
     }
   }
 
   render() {
     console.log(this.props.product.review)
+    console.log(this.props.product.price)
 
     const { src, name, price, review, rate } = this.props.product
     return (
@@ -47,7 +57,7 @@ class Product extends Component {
               onClick={this.handleWishBtn}
             />
           </div>
-          <span className='productPrice'>{price}원</span>
+          <span className='productPrice'>{this.state.price}원</span>
           <div
             className={
               this.state.reviewRateContainer

@@ -1,0 +1,43 @@
+.filterContainer {
+  // display: flex;
+  // justify-content: space-between;
+  // width: 1280px;
+  margin-top: 50px;
+
+  .fasNone {
+    display: none;
+  }
+
+  .fasBlock {
+    display: block;
+  }
+  .filter {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .viewFilterContainer {
+    display: flex;
+
+    .viewDropdown {
+      border: none;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .viewIconContainer {
+      display: flex;
+      color: gray;
+      // color: white;
+
+      .iconBox {
+        width: 32px;
+        height: 32px;
+        padding: 8px;
+        border: 1px solid lightgray;
+        cursor: pointer;
+        // background-color: #302e30;
+      }
+    }
+  }
+}

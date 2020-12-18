@@ -1,26 +1,15 @@
 import React, { Component } from 'react'
 import Products from './component/Products'
+// import Filter from './component/Filter'
+import Filters from './component/Filters'
 import './ProductList.scss'
-
-// const customStyles = (value) => ({
-//   control: (provided, state) => ({
-//     ...provided,
-//     backgroundColor: value ? 'gray' : 'white',
-//   }),
-// })
-
-// const options = [
-//   { value: '캐릭터', label: '캐릭터' },
-//   { value: '캐릭터', label: '캐릭터' },
-//   { value: '캐릭터', label: '캐릭터' },
-// ]
 
 class ProductList extends Component {
   constructor() {
     super()
     this.state = {
       productArr: [],
-      productFilterBtn: false,
+      filterArr: [],
     }
   }
 
@@ -32,21 +21,28 @@ class ProductList extends Component {
           productArr: result.productListData,
         })
       })
+    fetch('http://localhost:3000/data/filterData.json')
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+          filterArr: res.filterData,
+        })
+      })
   }
 
-  // handleWishBtn = () => {
-  //   this.setState({
-  //     wishBtn: !this.state.wishBtn,
-  //   })
+  // componentDidMount = () => {
+  //   fetch('http://localhost:3000/data/filterData.json')
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       this.setState({
+  //         filterArr: res.filterData,
+  //       })
+  //     })
   // }
 
-  handleProductFilterBtn = () => {
-    this.setState({
-      productFilterBtn: !this.state.productFilterBtn,
-    })
-  }
-
   render() {
+    console.log(this.state.productArr)
+    console.log(this.state.filterArr)
     return (
       <div className='container'>
         <header>
@@ -77,45 +73,7 @@ class ProductList extends Component {
             </div>
           </div>
         </header>
-        <div className='filterContainer'>
-          <div className='productFilter'>
-            <i class={this.state.productFilterBtn ? 'fas fa-check' : ''} />
-            <li onClick={this.handleProductFilterBtn}>인기도순</li>
-            <li>|</li>
-            <i class='fas fa-check' />
-            <li>낮은가격순</li>
-            <li>|</li>
-            <i class='fas fa-check' />
-            <li>리뷰많은순</li>
-            <li>|</li>
-            <i class='fas fa-check' />
-            <li>평점높은순</li>
-          </div>
-          <div className='viewFilterContainer'>
-            <select className='viewDropdown'>
-              <option>20개씩보기</option>
-              <option value selected>
-                40개씩보기
-              </option>
-              <option>60개씩보기</option>
-              <option>80개씩보기</option>
-            </select>
-            <div className='viewIconContainer'>
-              <div className='iconBox'>
-                <i class='fas fa-list' />
-              </div>
-              <div className='iconBox'>
-                <i class='fas fa-stop' />
-              </div>
-              <div className='iconBox'>
-                <i class='fas ffa-th-large' />
-              </div>
-              <div className='iconBox'>
-                <i class='fas fa-th' />
-              </div>
-            </div>
-          </div>
-        </div>
+        <Filters filterArr={this.state.filterArr} />
         <Products productArr={this.state.productArr} />
       </div>
     )

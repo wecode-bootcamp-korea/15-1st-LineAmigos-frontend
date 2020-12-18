@@ -9,9 +9,10 @@ class Header extends React.Component {
       categoriesList: [],
       searchValue : '',
       searchList: [],
+      isloggedIn: false,
     }
   }
-  
+
   handleSearchValue = (e) => {
     this.setState({
       searchValue: e.target.value,
@@ -21,13 +22,40 @@ class Header extends React.Component {
   handleCategoryOpen = (id) => {
     const openedCategoryList = this.state.categoriesList.map((category) => {
       if (category.id === id) {
-        category.isCategoryOpen = !category.isCategoryOpen
+        category.isCategoryOpen = true
       }
       return category
     })
     this.setState({
       categoriesList: openedCategoryList
     })
+  }
+
+  handleCategoryClose = (id) => {
+    const openedCategoryList = this.state.categoriesList.map((category) => {
+      if (category.id === id) {
+        category.isCategoryOpen = false
+      }
+      return category
+    })
+    this.setState({
+      categoriesList: openedCategoryList
+    })
+  }
+
+  goToLogInPage = () => {
+    if (!this.state.isloggedIn) {
+      this.props.history.push("/login")
+    }
+  }
+
+  goToProductList = (id) => {
+    this.props.history.push(`/productlist/${id}`)
+  }
+
+  goToSearchResult = (e) => {
+    e.preventDefault()
+    this.props.history.push(`/productlist/${this.state.searchValue}`)
   }
 
   componentDidMount = () => {
@@ -52,13 +80,16 @@ class Header extends React.Component {
   }
 
   render() {
-    const { categoriesList, searchValue, searchList } = this.state
-    const { handleSearchValue, handleCategoryOpen } = this
+    const { categoriesList, searchValue, searchList, isloggedIn } = this.state
+    const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult } = this
     const filteredList = searchList.filter((product) => {
       if (product.productName.toLowerCase().includes(searchValue.toLowerCase())) {
         return product
       }
     })
+    localStorage.getItem('token') && this.setState({isloggedIn: true})
+    // console.log('istokentrue: ' + localStorage.getItem('token'))
+    // console.log('searchvalue: ' + searchValue)
 
     return (
       <header className='Header'>
@@ -71,8 +102,10 @@ class Header extends React.Component {
                 <span>네이버쇼핑</span>
               </div>
             </div>
-            <div className="navIconRight">
-              <span>로그인</span>
+            <div 
+              className="navIconRight"
+              onClick={goToLogInPage}>
+              <span className="logIn">{isloggedIn ? '로그아웃' : '로그인'}</span>
               <img alt="Menu" src="/images/menu.png" />
             </div>
           </nav>
@@ -81,11 +114,15 @@ class Header extends React.Component {
               <img alt="Line Amigos Logo" src="/images/line-amigos-logo-black.png"/>
             </h1>
             <div className="searchContainer">
-              <input 
-                type="text" 
-                placeholder="검색어를 입력해보세요"
-                onChange={handleSearchValue} />
-              <img alt="Search Icon" src="/images/search.png" className="searchIcon"/>
+              <form onSubmit={goToSearchResult}>
+                <input 
+                  type="text" 
+                  placeholder="검색어를 입력해보세요"
+                  onChange={handleSearchValue} />
+                <button>
+                  <img alt="Search Icon" src="/images/search.png" className="searchIcon"/>
+                </button>
+              </form>
               <ul className={!searchValue || filteredList.length === 0 ? "searchListContainer " : "searchListContainer open"}>
                 {filteredList &&
                   filteredList.map(item => {
@@ -113,25 +150,10 @@ class Header extends React.Component {
                     category={category.category}
                     subCategories={category.subCategories}
                     handleCategoryOpen={handleCategoryOpen}
+                    handleCategoryClose={handleCategoryClose}
                     isCategoryOpen={category.isCategoryOpen}
+                    goToCategoryList={goToProductList}
                     />
-                  // <li key={index}>
-                  //   <div>{navCategory.category}</div>
-                  //   <img alt="Down arrow" src="/images/arrow-right-bold.png" />
-                  //   <div className="navDropdown">
-                  //     <ul className="subCategories">
-                  //       {navCategory.subCategories &&
-                  //         navCategory.subCategories.map((subCategory, index) => {
-                  //           return (
-                  //             // console.log(subCategory)
-                  //             <li key={index}>{subCategory}</li>
-                  //           )
-                  //         })
-                  //       }
-                  //       테스트
-                  //     </ul>
-                  //   </div>
-                  // </li>
                 )
               })
             }

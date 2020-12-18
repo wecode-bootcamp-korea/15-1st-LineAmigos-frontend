@@ -5,20 +5,24 @@ class Category extends React.Component {
 
 
   render() {
-    const {id, category, subCategories, handleCategoryOpen, isCategoryOpen } = this.props
-    console.log(id)
-    isCategoryOpen ? console.log('yes') : console.log('no')
+    const {id, category, subCategories, handleCategoryOpen, handleCategoryClose, isCategoryOpen, goToProductList } = this.props
     return (
       <div className="Category">
-        <li onClick={() => handleCategoryOpen(id)}>
-          <div>{category}</div>
-          <img alt="Down arrow" src="/images/arrow-right-bold.png" />
-          <div className={isCategoryOpen ? "navDropdown open" : "navDropdown"}>
-            <ul>
+        <li 
+          onMouseOver={() => handleCategoryOpen(id)}
+          onMouseLeave={() => handleCategoryClose(id)}>
+          <div className="categoryItem">{category}</div>
+          <img 
+            alt="Down arrow" 
+            src="/images/arrow-right-bold.png" 
+            className={subCategories.length>1 ? 'show' : 'hide'}/>
+          <div className={subCategories.length>1 && isCategoryOpen ? "navDropdown open" : "navDropdown"}>
+            <ul 
+              onClick={() => goToProductList(id)}
+              className="subCategories">
               {subCategories &&
                 subCategories.map((subCategory, index) => {
                   return (
-                    // console.log(subCategory)
                     <li key={index}>{subCategory}</li>
                   )
                 })

@@ -64,8 +64,6 @@ class Review extends Component {
 
     render() {
         const {reviewRate} = this.props;
-        console.log(reviewRate);
-        
         return (
             <div>
                 <div className="reviewEventContainer">
@@ -113,27 +111,6 @@ class Review extends Component {
                         <span className="ratingType">평점 비율</span>
                         <ul>
                             {reviewRate.length>0&&this.printThermo()}
-                            {/* <li>
-                                <span className="thermoGraph">{reviewRate.length>0&&
-                                this.countRate(5)}</span>
-                                <span className="points">5점</span>
-                            </li>
-                            <li>
-                                <span className="thermoGraph">{fullThermo}</span>
-                                <span className="points">4점</span>
-                            </li>
-                            <li>
-                                <span className="thermoGraph">{fullThermo}</span>
-                                <span className="points">3점</span>
-                            </li>
-                            <li>
-                                <span className="thermoGraph">{fullThermo}</span>
-                                <span className="points">2점</span>
-                            </li>
-                            <li>
-                                <span className="thermoGraph">{fullThermo}</span>
-                                <span className="points">1점</span>
-                            </li> */}
                         </ul>
                     </div>
                 </div>

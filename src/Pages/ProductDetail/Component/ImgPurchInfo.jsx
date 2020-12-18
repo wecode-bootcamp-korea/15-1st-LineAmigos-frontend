@@ -73,7 +73,6 @@ class ImgPurchInfo extends Component {
 
     render() {
         const {sizeBtn, price, count} = this.state;
-        console.log('a', this.state.showCalComp);
         return (
             <div className="ImgPurchInfo">
                 <div className="imgEx">

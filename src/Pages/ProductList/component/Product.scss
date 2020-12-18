@@ -25,7 +25,7 @@
       height: 60px;
       display: none;
 
-      .hoverWishBox {
+      .falseHoverWishBox {
         position: absolute;
         width: 50px;
         height: 50px;
@@ -37,11 +37,32 @@
         z-index: 1;
         cursor: pointer;
 
-        .hoverWish {
+        .falseHoverWish {
           position: absolute;
           bottom: 8px;
           left: 10px;
           color: $font-color-lightgray;
+          font-size: 30px;
+        }
+      }
+
+      .treuHoverWishBox {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        bottom: 5px;
+        left: 20px;
+        border-radius: 60px;
+        background-color: red;
+        opacity: 0.9;
+        z-index: 1;
+        cursor: pointer;
+
+        .tureHoverWish {
+          position: absolute;
+          bottom: 8px;
+          left: 10px;
+          color: white;
           font-size: 30px;
         }
       }

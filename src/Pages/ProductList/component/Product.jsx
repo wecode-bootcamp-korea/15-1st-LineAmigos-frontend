@@ -15,7 +15,6 @@ class Product extends Component {
     this.setState({
       wishBtn: !this.state.wishBtn,
     })
-    this.setState({})
   }
 
   componentDidMount = () => {
@@ -41,8 +40,19 @@ class Product extends Component {
         <li className='productList'>
           <img alt='product' className='productImg' src={src} />
           <div className='hoverContainer'>
-            <div className='hoverWishBox'>
-              <i className='far fa-heart hoverWish' />
+            <div
+              className={
+                this.state.wishBtn ? 'treuHoverWishBox' : 'falseHoverWishBox'
+              }
+              onClick={this.handleWishBtn}
+            >
+              <i
+                className={
+                  this.state.wishBtn
+                    ? 'far fa-heart tureHoverWish'
+                    : 'far fa-heart falseHoverWish'
+                }
+              />
             </div>
             <div className='hoverViewBox'>
               <span className='hoverView'>+</span>

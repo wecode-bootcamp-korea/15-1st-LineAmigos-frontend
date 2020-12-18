@@ -10,6 +10,9 @@ class Header extends React.Component {
       searchValue : '',
       searchList: [],
       isloggedIn: false,
+      scrollTop: 0,
+      isNavFixed: false,
+      isNavShowing: false,
     }
   }
 
@@ -62,7 +65,27 @@ class Header extends React.Component {
     this.props.history.push(`/productlist/${this.state.searchValue}`)
   }
 
+  handleScroll = (e) => {
+    const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop)
+    this.setState({
+      scrollTop,
+      isNavFixed: scrollTop > 135 ? true : false
+    })
+    if (this.state.scrollTop--) {
+      this.setState({isNavShowing: true})
+    } else {
+      this.setState({isNavShowing: false})
+    }
+  }
+
+  hideHeaderTest = () => {
+    this.setState({
+      isNavShowing: !this.state.isNavShowing
+    })
+  }
+
   componentDidMount = () => {
+    window.addEventListener('scroll', this.handleScroll)
     fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
@@ -81,19 +104,24 @@ class Header extends React.Component {
         })
       }).catch(err => console.log(err))
   }
+  
+  componentWillUnmount = () => {
+    window.removeEventListener('scroll', this.handleScroll)
+  }
 
   render() {
-    const { categoriesList, searchValue, searchList, isloggedIn } = this.state
-    const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult, goToMainPage } = this
+    const { categoriesList, searchValue, searchList, isloggedIn, scrollTop, isNavFixed,  isNavShowing } = this.state
+    const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult, goToMainPage, hideHeaderTest } = this
     const filteredList = searchList.filter((product) => {
       if (product.productName.toLowerCase().includes(searchValue.toLowerCase())) {
         return product
       }
     })
     localStorage.getItem('token') && this.setState({isloggedIn: true})
+    console.log(this.state.isNavShowing)
 
     return (
-      <header className='Header'>
+      <header className={`Header ${isNavShowing ? 'show' : ''}`}>
         <div className="innerContainer">
           <nav>
             <div className="navIconLeft">
@@ -144,7 +172,7 @@ class Header extends React.Component {
               </ul>
             </div>
           </div>
-          <ul className="topMenu">
+          <ul className="topMenu" onClick={hideHeaderTest}>
             {categoriesList &&
               categoriesList.map((category, index) => {
                 return (
@@ -153,11 +181,10 @@ class Header extends React.Component {
                     id={category.id}
                     category={category.category}
                     subCategories={category.subCategories}
+                    isCategoryOpen={category.isCategoryOpen}
                     handleCategoryOpen={handleCategoryOpen}
                     handleCategoryClose={handleCategoryClose}
-                    isCategoryOpen={category.isCategoryOpen}
-                    goToCategoryList={goToProductList}
-                    />
+                    goToCategoryList={goToProductList}/>
                 )
               })
             }

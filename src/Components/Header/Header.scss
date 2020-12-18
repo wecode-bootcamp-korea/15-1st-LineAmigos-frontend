@@ -1,12 +1,30 @@
 @import '../../styles/common.scss';
 
 .Header {
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 206px;
   border-bottom: 1px solid rgba(0,0,0,.1);
+  transform: translateY(-180px);
+  transition: transform .5s ease;
+  &.show {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-140px);
+    background: #fafafa;
+  }
+  // &.fixed {
+  //   position: fixed;
+  //   top: -135px;
+  //   left: 0;
+  //   background: #fafafa;
+  // }
 
   .innerContainer {
     position: relative;

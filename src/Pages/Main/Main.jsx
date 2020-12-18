@@ -28,6 +28,14 @@ class Main extends React.Component {
      })
   }
 
+  componentDidMount = () => {
+    window.addEventListener('scroll', this.handleScroll);
+}
+
+  componentWillUnmount = () => {
+      window.removeEventListener('scroll', this.handleScroll);
+  }
+
   render() {  
     const { productList, categoriesList, reviewsList } = this.state
     

@@ -15,7 +15,7 @@ import React, { Component } from "react";
       subHoverAction: false,
     };
 
-    componentDidMount() {
+    componentDidMount = () => {
       window.addEventListener("scroll", this.handleScroll);
     }
     componentWillUnMount = () => {
@@ -33,33 +33,32 @@ import React, { Component } from "react";
       });
     };
 
-    render() {
+    render(
       <>
-      <div className="header">
-      <div className={`gnb ${this.state.fix ? "fix" : ""}`}>
-        <div className="gnb__search">
-          <input />
+        <div className="header">
+          <div className={`gnb ${this.state.fix ? "fix" : ""}`}>
+            <div className="gnb__search">
+              <input />
+          </div>
+          <div className="gnb__cart">
+            <img src="https://res.kurly.com/pc/ico/1908/ico_cart_x2_v2.png"></img>
+          </div>
+          <div className={`gnbInnerBox ${this.state.subHoverAction ? "hoverd" : ""}`}>
+          </div>
+          <div className={`gnb__subMenu ${this.state.hoverAction ? "hoverd" : ""}`}>
+            <ul>
+              {this.state.gnbSubMenudata.map(data => {
+                return (
+                  <li onClick={this.subMenuMoues} key={data.id}>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
       </div>
-      <div className="gnb__cart">
-        <img src="https://res.kurly.com/pc/ico/1908/ico_cart_x2_v2.png"></img>
-      </div>
-      <div className={`gnbInnerBox ${this.state.subHoverAction ? "hoverd" : ""}`}>
-
-      </div>
-  <div className={`gnb__subMenu ${this.state.hoverAction ? "hoverd" : ""}`}>
-  <ul>
-    {this.state.gnbSubMenudata.map(data => {
-      return (
-        <li onClick={this.subMenuMoues} key={data.id}>
-        </li>
-      );
-    })}
-  </ul>
-  </div>
-  </div>
-  </div>
-  </>
-  }
+    </>
+    )
 }
   
 

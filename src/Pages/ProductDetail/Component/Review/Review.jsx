@@ -3,14 +3,69 @@ import './Review.scss';
 
 
 const fullStar = <i className="fas fa-star"/>;
-// const emptyStar = <i className="far fa-star"/>;
-// const halfStar = <i className="fas fa-star-half-alt"/>;
+const emptyStar = <i className="far fa-star"/>;
 
-const fullThermo = <i class="fas fa-thermometer-full"/>;
+const fullThermo = <i className="fas fa-thermometer-full"/>;
+const halfThermo = <i className="fas fa-thermometer-half"/>;
+const emptyThermo = <i className="fas fa-thermometer-empty"/>;
 
 class Review extends Component {
+
+    printStars= (ratingArr)=>{
+       const ave = Math.floor((ratingArr.reduce((acc, curr)=> acc+curr))/ratingArr.length);
+       const starArr = [];
+
+       for(let i=0; i<ave; i++){
+           starArr.push(fullStar)
+       }
+       for(let i=0; i<5-ave; i++){
+           starArr.push(emptyStar)
+       }
+
+       return starArr
+    }
+
+    countRate= (rate) => {
+        let rateCount = 0;
+        
+        for(let i=0; i<this.props.reviewRate.length; i++){
+            if(this.props.reviewRate[i] === rate){
+                rateCount ++;
+            }
+        }
+
+        return rateCount
+    }
+
+    printThermo= ()=>{
+        let rateArr = [];
+        
+        for(let i=5; i>0; i--){
+            rateArr.push(this.countRate(i))
+        }
+
+        let maxIdx = rateArr.indexOf(Math.max(...rateArr));
+        let minIdx = rateArr.indexOf(Math.min(...rateArr));
+
+        for(let i=0; i<rateArr.length; i++){
+            if(i === maxIdx){
+                rateArr[i] = <li><span className="thermoGraph">{fullThermo}</span><span className="points">{5-i}점</span></li>
+            }
+            else if(i===minIdx){
+                rateArr[i] = <li><span className="thermoGraph">{emptyThermo}</span><span className="points">{5-i}점</span></li>
+            }
+            else{
+                rateArr[i] = <li><span className="thermoGraph">{halfThermo}</span><span className="points">{5-i}점</span></li>
+            }
+        }
+
+        return rateArr
+    }
+
     render() {
-        const {dataList} = this.props;
+        const {reviewRate} = this.props;
+        console.log(reviewRate);
+        
         return (
             <div>
                 <div className="reviewEventContainer">
@@ -42,19 +97,25 @@ class Review extends Component {
                 <div className="reviewRatings">
                     <div className="starRatings">
                         <span className="ratingType">사용자 총 평점</span>
-                        <span className="stars">{fullStar}{fullStar}{fullStar}{fullStar}{fullStar}</span>
-                        <span className="ratingPoint">5.0/5</span>
+                        <span className="stars">{reviewRate.length>0 &&
+                            this.printStars(reviewRate)
+                        }
+                        </span>
+                        <span className="ratingPoint">{reviewRate.length>0 &&
+                            Math.floor((reviewRate.reduce((acc, curr)=> acc+curr))/reviewRate.length)}.0/5</span>
                     </div>
                     <div className="totalReviews">
                         <span className="ratingType">전체 리뷰수</span>
-                        <i class="far fa-comment-dots"/>
-                        <span className="count">{dataList.length}</span>
+                        <i className="far fa-comment-dots"/>
+                        <span className="count">{reviewRate.length}</span>
                     </div>
                     <div className="graphRatings">
                         <span className="ratingType">평점 비율</span>
                         <ul>
-                            <li>
-                                <span className="thermoGraph">{fullThermo}</span>
+                            {reviewRate.length>0&&this.printThermo()}
+                            {/* <li>
+                                <span className="thermoGraph">{reviewRate.length>0&&
+                                this.countRate(5)}</span>
                                 <span className="points">5점</span>
                             </li>
                             <li>
@@ -72,13 +133,13 @@ class Review extends Component {
                             <li>
                                 <span className="thermoGraph">{fullThermo}</span>
                                 <span className="points">1점</span>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
                 <div className="reviewContents">
                     <div className="reviewContentsTop">
-                        <span>리뷰 {dataList.length}건</span>
+                        <span>리뷰 {reviewRate.length}건</span>
                         <div className="reviewFilter">
                             <span>랭킹순</span>
                             <span>최신순</span>
@@ -98,7 +159,7 @@ class Review extends Component {
                             <li>성능</li>
                         </ul>
                         <div className="reviewList">
-                            <i class="far fa-comment-dots"/>
+                            <i className="far fa-comment-dots"/>
                             <span>조건에 맞는 리뷰가 없습니다.</span>
                         </div>         
                     </div>

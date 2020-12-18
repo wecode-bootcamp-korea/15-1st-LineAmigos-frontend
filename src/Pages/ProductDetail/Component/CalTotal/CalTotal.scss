@@ -1,0 +1,35 @@
+.CalTotal{
+    width: 430px;
+    margin: 20px 0;
+    padding: 30px 0;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+
+    .btnPriceContainter{
+        padding: 30px 0;
+        display: flex;
+        justify-content: space-between;
+
+        .quantBtns{
+            width: 102px;
+            height: 34px;
+            display: flex;
+            border: 1px solid lightgray;
+
+            input{
+                width: 34px;
+                padding: 10px 0;
+                text-align: center;
+            }
+
+            button{
+                width: 34px;
+                border: none;
+            }
+        }
+    }
+
+    .calTotPrice{
+        font-size: 33px;
+    }
+}

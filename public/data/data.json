@@ -6,7 +6,7 @@
         "date": "20.11.22",
         "size": "단품",
         "imgUrl": "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
-        "reviewRate": 5,
+        "reviewRate": 1,
         "reviewContent": "good",
         "price": 12000,
         "productName": "라인"
@@ -16,7 +16,7 @@
         "userName": "wecode2",
         "date": "20.11.22",
         "imgUrl": "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
-        "reviewRate": 4,
+        "reviewRate": 1,
         "reviewContent": "good",
         "price": 11000,
         "productName": "라인"
@@ -26,7 +26,7 @@
         "userName": "wecode3",
         "date": "20.11.22",
         "imgUrl": "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
-        "reviewRate": 3,
+        "reviewRate": 1,
         "reviewContent": "good",
         "price": 10000,
         "productName": "라인"
@@ -36,7 +36,7 @@
         "userName": "wecode4",
         "date": "20.11.22",
         "imgUrl": "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
-        "reviewRate": 2,
+        "reviewRate": 1,
         "reviewContent": "good",
         "price": 9000,
         "productName": "라인"

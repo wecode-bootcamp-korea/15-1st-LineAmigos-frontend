@@ -19,7 +19,7 @@ class ProductDetail extends React.Component{
             dataList:[],
         };
     }
-
+    
     componentDidMount() {
         fetch(API, {
             method: "GET",
@@ -29,9 +29,6 @@ class ProductDetail extends React.Component{
             this.setState({
                 dataList: res.data,
             })
-
-            console.log('test',this.state.dataList.reviewRate);
-
         })
     }
    
@@ -45,7 +42,6 @@ class ProductDetail extends React.Component{
                         <i className="far fa-bookmark"></i>
                         <i className="fas fa-share-square"></i>
                     </div>
-
                     <div className="smallCategory">
                         <span>home - char - BT21 | 다른 상품 보기</span>
                         {/* 나중에 링크로 정리 */}
@@ -62,7 +58,7 @@ class ProductDetail extends React.Component{
                 </nav>
 
                 <ProductDescriptions dataList={this.state.dataList}/>
-                <Review dataList={this.state.dataList}/>
+                <Review reviewRate={this.state.dataList.map(el=>{return(el.reviewRate)})}/>
             </div>
         );
     }

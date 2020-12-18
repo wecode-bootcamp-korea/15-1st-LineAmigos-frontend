@@ -11,12 +11,11 @@ class Recommandations extends Component {
             <div>
                 <header>베스트 상품</header>
                 {/* 헤더 상품 리스트에 따라 변경 가능하게 해야될듯 */}
-                <div className="productList">
+                <ul className="productList">
                     {dataList && 
                         dataList.map(el=> {
                             return(
-                                <li><Product 
-                                    key={el.id}
+                                <li key={el.id}><Product 
                                     imgUrl={el.imgUrl}
                                     productName={el.productName}
                                     price = {el.price}
@@ -24,7 +23,7 @@ class Recommandations extends Component {
                             )
                         })
                     }
-                </div>
+                </ul>
             </div>
         );
     }

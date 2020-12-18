@@ -6,9 +6,27 @@ class ImgPurchInfo extends Component {
         super();
         this.state={
             price: 22000,
-            quantity: 0,
+            count: 1,
             sizeBtn: true,
+            showCalComp: false,
         }
+    }
+
+    showComp = () =>{
+        this.handleClick();
+        if(this.state.showCalComp === true){
+            alert ("이미 선택한 옵션입니다.")
+        }
+
+        this.setState({
+            showCalComp: true,
+        });
+    }
+
+    hideComp = () => {
+        this.setState({
+            showCalComp: false,
+        })
     }
 
     handleClick = () =>{
@@ -17,12 +35,45 @@ class ImgPurchInfo extends Component {
         })
     }
 
-    doNothing = () => {
-        return;
+    countChange = (e) =>{
+        if(e.target.value>1){
+        this.setState({
+            count: e.target.value,
+        })}
+        else{
+            this.setState({
+                count: 1,
+            })
+        }
+    }
+
+    Minus = () => {
+        if(this.state.count>1){
+        this.setState({
+            count: this.state.count-1,
+        })}
+        else{
+            this.setState({
+                count: 1,
+            })
+        }
+    }
+
+    Plus  = () => {
+        if(this.state.count>0){
+            this.setState({
+                count: this.state.count+1,
+            })}
+            else{
+                this.setState({
+                    count: 1,
+                })
+            }
     }
 
     render() {
-        const {sizeBtn, price, quantity} = this.state;
+        const {sizeBtn, price, count} = this.state;
+        console.log('a', this.state.showCalComp);
         return (
             <div className="ImgPurchInfo">
                 <div className="imgEx">
@@ -31,7 +82,17 @@ class ImgPurchInfo extends Component {
                     </div>
                     <div className="smallImgContainer">
                         {[...Array(5)].map((e, id) => <img key={id} alt="smallImgExamples" className="smallImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdBUkL6CL9geDn8RcmxCtrjLzSIfL3seMFA&usqp=CAU" />)}
-                    </div>           
+                    </div>
+                    <div className="smallReviewRatings">
+                        <div>
+                            <span>리뷰수</span>
+                            <span className="smallCount">0</span>
+                        </div>
+                        <div>
+                            <span>사용자 총 평점</span>
+                            <span className="smallCount">0.0/5</span>
+                        </div>
+                    </div>        
                 </div>
                 <div className="purchInfo">
                     <div className="nameAndPrice">
@@ -82,10 +143,24 @@ class ImgPurchInfo extends Component {
                     <div className="sizeButton">
                         <button className="size" onClick={this.handleClick}>사이즈
                             <i className="fas fa-angle-down"></i>
-                        </button>
-                        <button className={sizeBtn ? "singleItemHide":"singleItemShow"}>단품</button>
-                        {/* 단품 클릭 시 가격정보 띄우는거 생각해보기 */}
+                        </button> 
+                        <button className={sizeBtn ? "singleItemHide":"singleItemShow"} onClick={this.showComp}>단품</button>            
                     </div>
+                        <div className={this.state.showCalComp ? "CalTotal" : "HideCalTotal"}>
+                        <span>단품</span>
+                        <div className="btnPriceContainter">
+                            <div className="quantBtns">
+                                <button className="minusplus" onClick={this.Minus}>-</button>
+                                <input type="number" value={this.state.count} onChange={this.countChange}/>
+                                <button className="minusplus"onClick={this.Plus}>+</button>
+                            </div>
+                            <div className="calTotPrice">
+                                <span>{this.state.count*price}원</span>
+                                <button onClick={this.hideComp}>X</button>
+                            </div>
+                        </div>
+                    </div>
+                    {/* {this.state.showCalComp&& <CalTotal />}      */}
                     <div className="PurchCartButtons">
                         <div className="totalQP">
                             <span className="totPriceSpan">
@@ -93,8 +168,8 @@ class ImgPurchInfo extends Component {
                                 <i className="fas fa-question"></i>
                             </span>
                             <span className="totQuantity">
-                                총 수량 {quantity}개 |
-                                <span className="totPrice"> {price * quantity}원</span>
+                                총 수량 {count}개 |
+                                <span className="totPrice"> {price * count}원</span>
                             </span>
                         </div>
                         <div className="PCBtns">

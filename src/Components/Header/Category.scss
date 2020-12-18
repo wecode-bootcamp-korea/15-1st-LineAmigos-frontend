@@ -38,11 +38,12 @@
     top: 50px;
     left: -64px;
     display: none;
+    &.open {
+      display: block;
+    }
 
     .subCategories {
-      &.open {
-        display: block;
-      }
+
       li{
         display: flex;
         justify-content: flex-start;

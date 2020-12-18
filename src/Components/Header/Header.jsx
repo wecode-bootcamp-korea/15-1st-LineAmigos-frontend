@@ -6,10 +6,9 @@ class Header extends React.Component {
   constructor() {
     super()
     this.state = {
-      categories: [],
+      categoriesList: [],
       searchValue : '',
       searchList: [],
-      isCategoryOpen: false,
     }
   }
   
@@ -20,32 +19,41 @@ class Header extends React.Component {
   }
 
   handleCategoryOpen = (id) => {
-    // const openedCategories = this.state.categories.map((category, index) => {
-    //   if (category[index] === idx) {
-    //     // this.setState({
-    //     //   isCategoryOpen: !this.state.isCategoryOpen
-    //     // })
-    //     console.log(index)
-    //   }
-    // })
-    console.log(this.state.categories[id - 1])
+    const openedCategoryList = this.state.categoriesList.map((category) => {
+      if (category.id === id) {
+        category.isCategoryOpen = !category.isCategoryOpen
+      }
+      return category
+    })
+    this.setState({
+      categoriesList: openedCategoryList
+    })
   }
 
   componentDidMount = () => {
     fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
+        const categories = data.navCategories.map((item) => {
+          const category = {
+            id: item.categoryId,
+            category: item.categoryName,
+            subCategories: item.subCategories,
+            isCategoryOpen: false,
+          }
+          return category
+        })
         this.setState({
-          categories: data.navCategories,
+          categoriesList: categories,
           searchList: data.products,
         })
+        console.log(this.state.categoriesList)
       }).catch(err => console.log(err))
   }
 
   render() {
-
-    const {categories, searchValue, searchList, isCategoryOpen} = this.state
-    const {handleCategoryOpen} = this
+    const { categoriesList, searchValue, searchList } = this.state
+    const { handleSearchValue, handleCategoryOpen } = this
     const filteredList = searchList.filter((product) => {
       if (product.productName.toLowerCase().includes(searchValue.toLowerCase())) {
         return product
@@ -76,7 +84,7 @@ class Header extends React.Component {
               <input 
                 type="text" 
                 placeholder="검색어를 입력해보세요"
-                onChange={this.handleSearchValue} />
+                onChange={handleSearchValue} />
               <img alt="Search Icon" src="/images/search.png" className="searchIcon"/>
               <ul className={!searchValue || filteredList.length === 0 ? "searchListContainer " : "searchListContainer open"}>
                 {filteredList &&
@@ -96,16 +104,16 @@ class Header extends React.Component {
             </div>
           </div>
           <ul className="topMenu">
-            {categories &&
-              categories.map((navCategory, index) => {
+            {categoriesList &&
+              categoriesList.map((category, index) => {
                 return (
                   <Category 
                     key={index}
-                    id={navCategory.categoryId}
-                    category={navCategory.category}
-                    subCategories={navCategory.subCategories}
+                    id={category.id}
+                    category={category.category}
+                    subCategories={category.subCategories}
                     handleCategoryOpen={handleCategoryOpen}
-                    // isCategoryOpen={isCategoryOpen}
+                    isCategoryOpen={category.isCategoryOpen}
                     />
                   // <li key={index}>
                   //   <div>{navCategory.category}</div>

@@ -168,35 +168,35 @@
   "navCategories": [
     {
       "categoryId": 1,
-      "category": "캐릭터",
+      "categoryName": "캐릭터",
       "subCategories": ["브라운프렌즈", "BT21", "홀리스타즈"]
     }, {
       "categoryId": 2,
-      "category": "NEW",
+      "categoryName": "NEW",
       "subCategories": []
     }, {
       "categoryId": 3,
-      "category": "선물추천",
+      "categoryName": "선물추천",
       "subCategories": []
     }, {
       "categoryId": 4,
-      "category": "THEME",
+      "categoryName": "THEME",
       "subCategories": ["미니프렌즈", "맥시프렌즈"]
     },{
       "categoryId": 5,
-      "category": "BABY",
+      "categoryName": "BABY",
       "subCategories": ["문구", "리빙", "디지털", "패션잡화"]
     },{
       "categoryId": 6,
-      "category": "SALE",
+      "categoryName": "SALE",
       "subCategories": []
     },{
       "categoryId": 7,
-      "category": "토이",
+      "categoryName": "토이",
       "subCategories": ["중형인형 이상", "미니인형", "쿠션", "피규어"]
     },{
       "categoryId": 8,
-      "category": "디자인문구",
+      "categoryName": "디자인문구",
       "subCategories": [
         "다이어리, 플래너",
         "노트, 메모지",
@@ -206,19 +206,19 @@
       ]
     },{
       "categoryId": 9,
-      "category": "디지털",
+      "categoryName": "디지털",
       "subCategories": ["폰케이스", "주변기기", "스마트기기", "디지털케이스"]
     },{
       "categoryId": 10,
-      "category": "패션의류",
+      "categoryName": "패션의류",
       "subCategories": ["반팔의류", "긴팔의류", "라운지웨어", "양말, 슬리퍼"]
     },{
       "categoryId": 11,
-      "category": "패션잡화",
+      "categoryName": "패션잡화",
       "subCategories": ["가방", "키홀더", "뷰티", "모자, 마스크", "지갑, 파우치"]
     },{
       "categoryId": 12,
-      "category": "더보기",
+      "categoryName": "더보기",
       "subCategories": []
     }
   ]

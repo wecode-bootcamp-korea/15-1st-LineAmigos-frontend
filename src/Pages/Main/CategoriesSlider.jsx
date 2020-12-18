@@ -11,7 +11,7 @@ class CategoriesSlider extends Component {
   }
 
   componentDidMount = () => {
-    fetch('/data/productInfos.json')
+    fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
         this.setState({
@@ -20,8 +20,13 @@ class CategoriesSlider extends Component {
       }).catch(err => console.log(err))
   }
 
+  gotoProductList = (id) => {
+    this.props.history.push(`/productList/${id}`)
+  }
+
   render() {
     const { categories } = this.state
+    const { gotoProductList } = this
     const settings = {
       dots: false,
       infinite: true,
@@ -39,10 +44,13 @@ class CategoriesSlider extends Component {
         {categories &&
           categories.map((category, index) => {
             return(
-              <li key={index} className="category">
+              <li 
+                key={index} 
+                className="category"
+                onClick={() => gotoProductList(category.id)}>
                   <img alt="Category" src={category.imageUrl} />
                   <span className="productInfo">{category.category}
-                  <i class="fas fa-chevron-right" />
+                  <i className="fas fa-chevron-right" />
                   </span>
               </li>
             )

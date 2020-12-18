@@ -15,7 +15,6 @@ class MainSlider extends Component {
     fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
-        // console.log(data)
         this.setState({
           mainSliderImages: data.mainSliderImages
         })
@@ -41,17 +40,16 @@ class MainSlider extends Component {
         <Slider {...SETTING}>
           {mainSliderImages &&
             mainSliderImages.map(image => {
-              console.log(image.promotion)
               return (
                 <div key={image.id}>
                   <img src={image.url} />
-                  <div className="ads">
-                    <p className="adTitle">{image.promotion}</p>
+                  <span className="ads">
+                    <p className="adTitle">{image.promotionLine1}</p>
+                    <p className="adTitle">{image.promotionLine2}</p>
                     <p className="adSubTitle">{image.subPromotion}</p>
-                  </div>
+                  </span>
                 </div>
               )
-              
             })
           }
         </Slider>

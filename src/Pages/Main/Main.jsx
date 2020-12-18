@@ -7,7 +7,30 @@ import ReviewAutoPlay from './ReviewAutoPlay'
 import './Main.scss'
 
 class Main extends React.Component {
-  render() {    
+
+  constructor() {
+    super()
+    this.state = {
+      productsList: [],
+      categoriesList: [],
+      reviewsList: []
+    }
+  }
+  componentDidMount = () => {
+    fetch('/data/productsInfos.json')
+     .then(response => response.json())
+     .then(data => {
+       this.setState({
+         productsList: data.products,
+         categoriesList: data.categoriesList,
+         reviewsList: [],
+       })
+     })
+  }
+
+  render() {  
+    const { productList, categoriesList, reviewsList } = this.state
+    
     return (
       <div className="Main">
         <section className="visualContainer">
@@ -24,26 +47,16 @@ class Main extends React.Component {
             <div className="buttonPlate">
               <img alt="My home cafe" src="/images/Main/main-slider-03.jpg" />
               <ul className="buttons">
-                <li className="button01">
-                  <span className="target01"></span>
-                  <div className="price01"></div>
-                </li>
-                <li className="button02">
-                  <span className="target02"></span>
-                  <div className="price02"></div>
-                </li>
-                <li className="button03">
-                  <span className="target03"></span>
-                  <div className="price03"></div>
-                </li>
-                <li className="button04">
-                  <span className="target04"></span>
-                  <div className="price04"></div>
-                </li>
-                <li className="button05">
-                  <span className="target05"></span>
-                  <div className="price05"></div>
-                </li>
+                {productList &&
+                  productList.map((product, index) => {
+                    return (
+                      <li key={index} className="button `button${product.id}`">
+                        <span className="target `target${product.id}`" />
+                        <div className="price `price${product.id}`">{product.price}</div>
+                      </li>
+                    )
+                  })
+                }
               </ul>
             </div>
             <div className="descriptions">

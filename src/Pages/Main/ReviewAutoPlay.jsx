@@ -11,7 +11,7 @@ class ReviewAutoPlay extends Component {
   }
 
   componentDidMount = () => {
-    fetch('/data/productInfos.json')
+    fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
         this.setState({
@@ -22,7 +22,12 @@ class ReviewAutoPlay extends Component {
 
   render() {
     const { reviews } = this.state
-    const rateStar = <i class="fas fa-star" />
+    const createdAtString = (createdAt) => {
+      const splittedDate =  createdAt.split(' ')[0].split('-')
+      return `${splittedDate[0]}년 ${splittedDate[1]}월 ${splittedDate[2]}일`
+    }
+    const hiddenId = (userId) => `${userId.slice(0, 4)}***`
+    const rateStar = <i className="fas fa-star" />
     const settings = {
       infinite: true,
       slidesToShow: 4,
@@ -58,8 +63,8 @@ class ReviewAutoPlay extends Component {
                   <img alt="Review photo" src="/images/Main/main-slider-04.jpg"/>
                 </div>
                 <div className="idAndCreatedAt">
-                  <span>{review.userId}</span>
-                  <span>{review.createdAt}</span>
+                  <span>{hiddenId(review.userId)}</span>
+                  <span>{createdAtString(review.createdAt)}</span>
                 </div>
               </li>
             )

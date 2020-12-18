@@ -143,27 +143,29 @@
     {
       "id": 1,
       "url": "/images/Main/main-slider-05.jpg",
-      "promotion": "몽실몽실 꿈에서 만나요",
+      "promotionLine1": "몽실몽실",
+      "promotionLine2": "꿈에서 만나요",
       "subPromotion": "라인 아미고스 Dream of baby"
     },
     {
       "id": 2,
       "url": "/images/Main/main-slider-02.jpg",
-      "promotion": "내가 있는 곳이 카페가 된다",
+      "promotionLine1": "내가 있는 곳이",
+      "promotionLine2": "카페가 된다",
       "subPromotion": "텀블러와 스틱커피가 무려 60% 할인중!"
     },
     {
       "id": 3,
       "url": "/images/Main/main-slider-03.jpg",
-      "promotion": "해피 홀리데이!",
+      "promotionLine1": "해피",
+      "promotionLine2": "홀리데이!",
       "subPromotion": "무슨 선물할지 고민된다면, GO!"
     },
     {
       "id": 4,
       "url": "/images/Main/main-slider-04.jpg",
-      "promotionLine1": "우리집 댕댕이를.",
-      "promotionLine2": "소개합니다.",
-      "promotion": "이젠 스포츠까지 점령한 라인 아미고스",
+      "promotionLine1": "이젠 스포츠까지 점령한",
+      "promotionLine2": "라인 아미고스",
       "subPromotion": "지금 타임딜 스포츠 상품을 확인하세요"
     },
     {

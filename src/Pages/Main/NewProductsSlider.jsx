@@ -11,7 +11,7 @@ class NewProductsSlider extends Component {
   }
 
   componentDidMount = () => {
-    fetch('/data/productInfos.json')
+    fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
         this.setState({
@@ -20,8 +20,14 @@ class NewProductsSlider extends Component {
       }).catch(err => console.log(err))
   }
 
+  goToProductDetail = (id) => {
+    this.props.history.push(`/product/${id}`)
+  }
+
   render() {
     const { products } = this.state
+    const { goToProductDetail } = this
+    const wonPrice = (num) => `${num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
     const settings = {
       dots: false,
       infinite: true,
@@ -40,11 +46,15 @@ class NewProductsSlider extends Component {
         {products &&
           products.map((product, index) => {
             return(
-              <li key={index} className="newProduct">
+              <li 
+                key={index} 
+                className="newProduct"
+                onClick={goToProductDetail}>
                 <img alt="Product" src={product.url} />
                 <div className="productInfo">
                   <span className="saleRate">{product.saleAmount}</span>
-                  <span className="price">{product.price}원</span>
+                  <span className="salePrice">{wonPrice(product.price)}</span>
+                  <span className="originalPrice">{wonPrice(product.price)}</span>
                 </div>
                 <span className="productInfo">{product.productName}
                 </span>

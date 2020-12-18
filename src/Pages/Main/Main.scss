@@ -10,43 +10,6 @@
   .visualContainer {
     width: 100%;
     position: absolute;
-
-    // .slick-slider {
-    //   button {
-    //     width: 200px;
-    //     height: 100%;
-    //     background: rgba(255, 255, 255, 0.05);
-    //     z-index: 10;
-    //     transition: all 0.2s ease;
-    //     &:hover {background: rgba(255, 255, 255, 0.2);}
-    //     &:first-of-type {left: 0;}
-    //     &:last-of-type {right: 0;}
-    //     &.slick-arrow::before {display: none;}
-    //   }
-
-    //   ul {
-    //     position: absolute;
-    //     bottom: 40px;
-
-    //     li {
-    //       background: none;
-    //       button {background: none;
-    //         &:hover {background: none;}
-    //         &::before {
-    //           font-size: 10px;
-    //           color: #666;
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
-  }
-
-  .Header {
-    .searchContainer input {
-      background: none;
-      border: 1px solid #555;
-    }
   }
 
   .newProductsSection {margin: 860px 0 70px 0;}
@@ -74,10 +37,12 @@
       align-items: center;
 
       .buttonPlate {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-right: 40px;
         width: 700px;
         height: 450px;
-        position: relative;
-        margin-right: 40px;
 
         img {
           width: 100%;
@@ -86,39 +51,42 @@
           object-fit: cover;
         }
 
-        div {
-          width: 80px;
-          height: 35px;
+        .buttons {
+          width: 100%;
+          height: 100%;
           position: absolute;
           top: 0;
           left: 0;
-          &.button01 {
-            .target01 {
-              width: 14px;
-              height: 14px;
-              border-radius: 50%;
+
+
+          .button {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: #000;
+            cursor: pointer;
+            &.button1 {top: 250px;left: 120px;}
+            &.button2 {top: 210px;left: 570px;}
+            &.button3 {top: 360px;left: 470px;}
+            &.button4 {top: 380px;left: 320px;}
+            &.button5 {top: 200px;left: 60px;}
+
+            .target {
+              width: 24px;
+              height: 24px;
+              background: #444;
+              // border-radius: 50%;
               border: 3px solid white;
-              top: 250px;
-              left: 120px;
+            }
+            
+            .price {
+              width: 140px;
+              height: 50px;
+              background: red;
+              color: white;
             }
           }
-
-          &.button02 {
-            top: 210px;
-            left: 570px;
-          }
-          &.button03 {
-            top: 360px;
-            left: 470px;
-          }
-          &.button04 {
-            top: 380px;
-            left: 320px;
-          }
-          &.button05 {
-            top: 200px;
-            left: 60px;
-          }
+          
         }
       }
 

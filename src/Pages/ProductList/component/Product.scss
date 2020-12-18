@@ -1,66 +1,146 @@
 @import '../../../styles/common.scss';
 
-.container {
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    width: 1310px;
+.productContainer {
+  // width: 1310px;
 
-    .productList {
-      width: 262px;
-      height: 282px;
-      margin: 20px 0;
-      padding: 0 15px;
+  .productList {
+    position: relative;
+    width: 262px;
+    height: 315px;
+    margin: 20px 0;
+    padding: 0 15px;
 
-      .productImg {
-        width: 232px;
-        height: 232px;
+    .productImg {
+      width: 232px;
+      height: 232px;
+      cursor: pointer;
+      // z-index: -1;
+    }
+
+    .hoverContainer {
+      position: absolute;
+      left: 60px;
+      bottom: 100px;
+      width: 150px;
+      height: 60px;
+      display: none;
+
+      .hoverWishBox {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        bottom: 5px;
+        left: 20px;
+        border-radius: 60px;
+        background-color: white;
+        opacity: 0.9;
+        z-index: 1;
+        cursor: pointer;
+
+        .hoverWish {
+          position: absolute;
+          bottom: 8px;
+          left: 10px;
+          color: $font-color-lightgray;
+          font-size: 30px;
+        }
+      }
+
+      .hoverViewBox {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        bottom: 5px;
+        right: 20px;
+        border-radius: 60px;
+        background-color: white;
+        opacity: 0.9;
+        z-index: 1;
+        cursor: pointer;
+
+        .hoverView {
+          position: absolute;
+          bottom: -4px;
+          right: 11px;
+          color: $font-color-lightgray;
+          font-size: 50px;
+        }
+      }
+    }
+
+    .productImg:hover + .hoverContainer {
+      display: block;
+    }
+
+    .hoverContainer:hover {
+      display: block;
+    }
+
+    .productNameContainer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+
+      .productName {
+        margin-bottom: 10px;
+        font-size: $font-size-regular;
+        font-weight: $font-weight-bold;
         cursor: pointer;
       }
 
-      .productNameContainer {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 15px;
-
-        .productName {
-          margin-bottom: 10px;
-          font-size: $font-size-regular;
-          font-weight: $font-weight-bold;
-          cursor: pointer;
-        }
-
-        .far,
-        .fa-heart {
-          color: $font-color-lightgray;
-          cursor: pointer;
-        }
+      .fas {
+        color: red;
+        cursor: pointer;
       }
-      .productPrice {
-        font-weight: $font-weight-bold;
+
+      .far {
+        color: $font-color-lightgray;
+        cursor: pointer;
+      }
+    }
+    .productPrice {
+      font-weight: $font-weight-bold;
+    }
+
+    .reviewRateContainer {
+      .reviewText {
+        font-size: $font-size-supersmall;
+        margin-right: 10px;
+      }
+
+      .reviewNums {
+        font-size: $font-size-supersmall;
+        color: #6b90dd;
+      }
+      .rateText {
+        font-size: $font-size-supersmall;
+      }
+      .rateNums {
+        font-size: $font-size-supersmall;
+        color: #6b90dd;
       }
     }
   }
-  .nextPageContainer {
-    display: flex;
-    margin: 50px 580px;
-    width: 1280px;
+}
+.nextPageContainer {
+  display: flex;
+  margin: 50px 580px;
+  width: 1280px;
 
-    .nextPageBox {
-      width: 34px;
-      height: 34px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  .nextPageBox {
+    width: 34px;
+    height: 34px;
+    font-weight: bold;
+    cursor: pointer;
+  }
 
-    &.nextPageNow {
-      width: 32px;
-      height: 32px;
-      padding: 8px;
-      font-weight: bold;
-      color: white;
-      background-color: black;
-      cursor: pointer;
-    }
+  &.nextPageNow {
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    cursor: pointer;
   }
 }

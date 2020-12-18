@@ -2,44 +2,48 @@ import React, { Component } from 'react'
 import '../component/Product.scss'
 
 class Product extends Component {
-  handleNextPage = () => {}
-
+  constructor() {
+    super()
+    this.state = {
+      wishBtn: false,
+    }
+  }
+  handleWishBtn = () => {
+    this.setState({
+      wishBtn: !this.state.wishBtn,
+    })
+  }
   render() {
+    const { src, name, price, review, rate } = this.props.product
     return (
-      <div className='container'>
-        <ul className='productListContainer'>
-          {this.props.productArr.map((product) => {
-            return (
-              <li className='productList'>
-                <img alt='product' className='productImg' src={product.src} />
-                <div className='productNameContainer'>
-                  <span className='productName'>{product.name}</span>
-                  <i className='far fa-heart'></i>
-                </div>
-                <span className='productPrice'>{product.price}원</span>
-              </li>
-            )
-          })}
-        </ul>
-        <div className='nextPageContainer'>
-          <div className='nextPageBox'>
-            <span className='nextPageNum' onClick={this.handleNextPage}>
-              1
-            </span>
+      <div className='productContainer'>
+        <li className='productList'>
+          <img alt='product' className='productImg' src={src} />
+          <div className='hoverContainer'>
+            <div className='hoverWishBox'>
+              <i className='far fa-heart hoverWish' />
+            </div>
+            <div className='hoverViewBox'>
+              <span className='hoverView'>+</span>
+              {/* <i className='fas fa-plus hoverView' /> */}
+            </div>
           </div>
-          <div className='nextPageBox'>
-            <span className='nextPageNum'>2</span>
+          <div className='productNameContainer'>
+            <span className='productName'>{name}</span>
+            <i
+              className={this.state.wishBtn ? 'fas fa-heart' : 'far fa-heart'}
+              onClick={this.handleWishBtn}
+            />
           </div>
-          <div className='nextPageBox'>
-            <span className='nextPageNum'>3</span>
+          <span className='productPrice'>{price}원</span>
+          <div className='reviewRateContainer'>
+            <span className='reviewText'>리뷰</span>
+            <span className='reviewNums'>{review}</span>
+            <span className='rateText'>평점</span>
+            <span className='rateNums'>{rate}</span>
+            <span className='rateText'>/5</span>
           </div>
-          <div className='nextPageBox'>
-            <span className='nextPageNum'>4</span>
-          </div>
-          <div className='nextPageBox'>
-            <span className='nextPageNum'>5</span>
-          </div>
-        </div>
+        </li>
       </div>
     )
   }

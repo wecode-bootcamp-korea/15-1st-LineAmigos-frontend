@@ -29,14 +29,9 @@
           color: $font-color-gray;
           font-size: $font-size-regular;
         }
-
         .listDropDown {
           border: none;
           cursor: pointer;
-
-          // .dropDownOption {
-          //   background-color: white;
-          // }
         }
       }
     }
@@ -49,6 +44,7 @@
       .productFilter {
         display: flex;
         list-style: none;
+        font-size: $font-size-extrasmall;
         cursor: pointer;
 
         .fas {

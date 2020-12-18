@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Product from './component/Product'
+import Products from './component/Products'
 import './ProductList.scss'
 
 // const customStyles = (value) => ({
@@ -20,17 +20,30 @@ class ProductList extends Component {
     super()
     this.state = {
       productArr: [],
+      productFilterBtn: false,
     }
   }
 
   componentDidMount = () => {
-    fetch('http://localhost:3004/data/productListDate.json')
+    fetch('http://localhost:3000/data/productListDate.json')
       .then((response) => response.json())
       .then((result) => {
         this.setState({
           productArr: result.productListData,
         })
       })
+  }
+
+  // handleWishBtn = () => {
+  //   this.setState({
+  //     wishBtn: !this.state.wishBtn,
+  //   })
+  // }
+
+  handleProductFilterBtn = () => {
+    this.setState({
+      productFilterBtn: !this.state.productFilterBtn,
+    })
   }
 
   render() {
@@ -45,7 +58,7 @@ class ProductList extends Component {
           <div className='headerName'>
             <span className='listName'>NEW</span>
             <div>
-              <span className='home'>홈 ></span>
+              <span className='home'>홈 > </span>
               <select className='listDropDown'>
                 <option>캐릭터</option>
                 <option value selected>
@@ -66,8 +79,8 @@ class ProductList extends Component {
         </header>
         <div className='filterContainer'>
           <div className='productFilter'>
-            <i class='fas fa-check' />
-            <li>인기도순</li>
+            <i class={this.state.productFilterBtn ? 'fas fa-check' : ''} />
+            <li onClick={this.handleProductFilterBtn}>인기도순</li>
             <li>|</li>
             <i class='fas fa-check' />
             <li>낮은가격순</li>
@@ -103,7 +116,7 @@ class ProductList extends Component {
             </div>
           </div>
         </div>
-        <Product productArr={this.state.productArr} />
+        <Products productArr={this.state.productArr} />
       </div>
     )
   }

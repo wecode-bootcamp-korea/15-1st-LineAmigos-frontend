@@ -20,7 +20,6 @@ $primary-color: #01b901;
     width: 70px;
     height: 70px;
     position: relative;
-    transition: all 0.2s ease;
     cursor: pointer;
     &{opacity: .2;}
     &:hover{opacity: .8;}
@@ -38,7 +37,7 @@ $primary-color: #01b901;
         left: 32px;
         content: ' ';
         height: 26px;
-        width: 1px;
+        width: 2px;
     }
     &::before {
         transform: rotate(45deg);

@@ -25,6 +25,7 @@ class NewProductsSlider extends Component {
   }
 
   render() {
+    const { RiHeartAddLine } = this.props
     const { products } = this.state
     const { goToProductDetail } = this
     const wonPrice = (num) => `${num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`

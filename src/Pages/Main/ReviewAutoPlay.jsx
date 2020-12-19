@@ -49,7 +49,7 @@ class ReviewAutoPlay extends Component {
             return(
               <li key={index}>
                 <img alt="product image" src={review.imgUrl} />
-                <span className="productName">{review.productName}</span>
+                <div className="productName">{review.productName}</div>
                 <div className="reviewRate">
                   {rateStar}
                   {rateStar}

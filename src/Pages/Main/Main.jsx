@@ -4,6 +4,7 @@ import NewProductsSlider from './NewProductsSlider'
 import CategoriesSlider from './CategoriesSlider'
 import BannerSlider from './BannerSlider'
 import ReviewAutoPlay from './ReviewAutoPlay'
+import { RiHeartAddLine } from "react-icons/ri"
 import './Main.scss'
 
 class Main extends React.Component {
@@ -18,6 +19,15 @@ class Main extends React.Component {
       isNavFixed: false,
     }
   }
+
+  handleScroll = (e) => {
+    const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop)
+    this.setState({
+      scrollTop,
+      isNavFixed: scrollTop > 160 ? true : false
+    })
+  }
+
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
     fetch('/data/productsInfos.json')
@@ -35,17 +45,7 @@ class Main extends React.Component {
     window.removeEventListener('scroll', this.handleScroll)
   }
 
-  handleScroll = (e) => {
-    const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop)
-    this.setState({
-      scrollTop,
-      isNavFixed: scrollTop > 160 ? true : false
-    })
-  }
-
-  render() {  
-    console.log(this.state.scrollTop)
-    console.log(this.state.isNavFixed)
+  render() {
     const { productList, categoriesList, reviewsList, scrollTop, isNavFixed } = this.state
     
     return (
@@ -55,7 +55,8 @@ class Main extends React.Component {
         </section>
         <section className="newProductsSection">
           <ul className="newProducts">
-            <NewProductsSlider />
+            <NewProductsSlider
+              heart={RiHeartAddLine}/>
           </ul>
         </section>
         <section className="clickToSee">

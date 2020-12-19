@@ -28,7 +28,6 @@ class CategoriesSlider extends Component {
     const { categories } = this.state
     const { gotoProductList } = this
     const settings = {
-      dots: false,
       infinite: true,
       autoplay: false,
       speed: 800,

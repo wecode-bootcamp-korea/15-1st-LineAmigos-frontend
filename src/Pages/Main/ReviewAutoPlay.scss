@@ -2,10 +2,10 @@
 
 .ReviewAutoPlay {
   width: 100vw;
-  height: 700px;
+  height: 740px;
 
   h3 {
-    margin-bottom: 54px;
+    margin-bottom: 70px;
     width: 100%;
     text-align: center;
     font-size: 32px;
@@ -18,16 +18,11 @@
     justify-content: flex-start;
     align-items: flex-start;
     margin-right: 36px;
-    position: relative;
+    // position: relative;
     width: 408px;
-    &:nth-of-type(2),
-    &:nth-of-type(5) {
-      margin-top: 80px;
-    }
 
     img {
       margin-bottom: 24px;
-
       width: 408px;
       height: 408px;
       border-radius: 18px;
@@ -35,10 +30,16 @@
     }
 
     .productName {
-      margin-bottom: 12px;
-
+      margin: 12px 0;
+      width: 380px;
+      height: 30px;
       font-size: 24px;
       font-weight: $font-weight-medium;
+      letter-spacing: -0.5px;
+      line-height: 30px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .reviewRate {

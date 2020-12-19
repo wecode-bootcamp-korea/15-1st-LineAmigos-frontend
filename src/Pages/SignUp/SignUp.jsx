@@ -12,6 +12,9 @@ class SignUp extends Component {
       birthYear: '',
       birthMonth: '',
       birthDay: '',
+      countryCode: '82',
+      phoneNumber: '',
+      gender: [],
       emailValidationMassage: '',
       pwValidationMassage: '',
       rePwValidationMassage: '',
@@ -19,7 +22,6 @@ class SignUp extends Component {
       birthMonthValidationMassage: '',
       birthDayValidationMassage: '',
       genderValidationMassage: '',
-      genderDropdown: 'genderDropdown',
     }
   }
 
@@ -30,8 +32,35 @@ class SignUp extends Component {
       this.handleRePwValidation(),
       this.handleNameValidation(),
       this.handleBirthYearValidation(),
-      this.handleDropValidation()
+      // this.handleDropValidation(),
+      this.handleDropValidation(),
+      this.handleSignUpClcik()
     )
+  }
+
+  handleSignUpClcik = () => {
+    fetch('http://10.168.1.140:8000/user/signup', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: this.state.email,
+        password: this.state.pw,
+        name: this.state.name,
+        gender: this.state.gender,
+        date_of_birth: `${this.state.birthYear}-${this.state.birthMonth}-${this.state.birthDay}`,
+        country_code: this.state.countryCode,
+        phone_number: this.state.phoneNumber,
+      }),
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result)
+        this.props.history.push('/login')
+        // if (result === 'SUCCESS') {
+        //   console.log(result)
+        //   alert('회원가입성공!')
+        //   this.props.history.push('/login')
+        // }
+      })
   }
 
   handleEmailChange = (event) => {
@@ -77,6 +106,12 @@ class SignUp extends Component {
     })
   }
 
+  handlePhoneNumberChange = (event) => {
+    this.setState({
+      phoneNumber: event.target.value,
+    })
+  }
+
   //인풋에 글 썼다 지웠을때 validation문구 변경될 수있도록(pw도)
   handleEmailValidation = () => {
     const checkEmail = this.state.email
@@ -108,7 +143,8 @@ class SignUp extends Component {
       })
     } else if (!pwValidation.test(checkPw)) {
       this.setState({
-        pwValidationMassage: '8~16자 영문, 숫자, 특수문자를 모두 사용하세요.',
+        pwValidationMassage:
+          '8~16자 영문 대/소문자, 숫자, 특수문자를 모두 사용하세요.',
       })
     } else if (pwValidation.test(checkPw)) {
       this.setState({
@@ -184,9 +220,21 @@ class SignUp extends Component {
     }
   }
 
-  handleDropNoneValidation = (event) => {
-    const genderCheck = event.target.value //none
-    if (genderCheck === 'none') {
+  handleGenderChange = (event) => {
+    const options = Array.from(event.target.children)
+    const selectedOptions = options.filter((option) => option.selected)
+    const selectedOptionsValue = selectedOptions.map((option) => option.value)
+    const selectedOptionsValueStr = selectedOptionsValue[0]
+
+    this.setState({
+      gender: selectedOptionsValueStr,
+    })
+    this.handleDropValidation()
+  }
+
+  handleDropValidation = () => {
+    console.log('함수실행되는중')
+    if (this.state.gender == 'none') {
       this.setState({
         genderValidationMassage: '필수 정보입니다.',
       })
@@ -197,13 +245,14 @@ class SignUp extends Component {
     }
   }
 
-  handleDropValidation = () => {
-    this.setState({
-      genderValidationMassage: '필수 정보입니다.',
-    })
-  }
+  // handleDropValidation = () => {
+  //   this.setState({
+  //     genderValidationMassage: '필수 정보입니다.',
+  //   })
+  // }
 
   render() {
+    console.log(this.state.gender)
     return (
       <div className='container'>
         <header>
@@ -299,9 +348,16 @@ class SignUp extends Component {
           </span>
           <span className='label'>성별</span>
           <select
-            className={this.state.genderDropdown}
-            onChange={this.handleDropNoneValidation}
+            // className={this.state.genderDropdown}
+            // multiple={false}
+            className='genderDropdown'
+            value={this.state.gender}
+            onChange={this.handleGenderChange}
+            // onChange={this.handleDropNoneValidation}
           >
+            {/* <option value='none'>선택안함</option>
+            <option value='female'>여성</option>
+            <option value='male'>남성</option> */}
             <option value='none'>선택안함</option>
             <option value='female'>여성</option>
             <option value='male'>남성</option>
@@ -315,12 +371,15 @@ class SignUp extends Component {
           <input
             className='countryNumber'
             type='text'
+            value={this.state.countryCode}
             placeholder='국가번호'
           ></input>
           <input
             className='phoneNumber'
             type='text'
             placeholder='전화번호 입력'
+            value={this.state.phoneNumber}
+            onChange={this.handlePhoneNumberChange}
           ></input>
           <button className='validationBtn' type='submit'>
             인증번호 받기

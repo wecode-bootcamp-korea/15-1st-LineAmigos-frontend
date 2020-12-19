@@ -1,31 +1,28 @@
 @import '../../styles/common.scss';
 
 .Header {
-  position: fixed;
-  top: 0;
-  left: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
   width: 100vw;
   height: 206px;
-  border-bottom: 1px solid rgba(0,0,0,.1);
-  // transform: translateY(-180px);
   transition: transform .5s ease;
-  &.show {
-    position: absolute;
+  &.scrolled {
+    position: fixed;
     top: 0;
     left: 0;
-    // transform: translateY(-20px);
-    background: #fafafa;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    transform: translateY(-206px);
+    &.show {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translateY(-136px);
+      background: #fafafa;
+    }
   }
-  // &.fixed {
-  //   position: fixed;
-  //   top: -135px;
-  //   left: 0;
-  //   background: #fafafa;
-  // }
-
+  
   .innerContainer {
     position: relative;
     width: 1280px;
@@ -76,7 +73,7 @@
         align-items: center;
         height: 100%;
 
-        .logIn {
+        .gnbBtn {
           display: flex;
           justify-content: center;
           align-items: center;
@@ -144,6 +141,7 @@
           right: 12px;
           background: none;
           border: none;
+          cursor: pointer;
 
           .searchIcon {
             width: 16px;
@@ -215,14 +213,25 @@
       }
     }
 
-    .topMenu {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      top: 14px;
-      width: 100%;
-      height: 48px;
+    .topMenuAndHover{
+      .topMenu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        top: 14px;
+        width: 100%;
+        height: 48px;
+      }
+      .hoverBox {
+        position: relative;
+        top: 25px;
+        left: -260px;
+        width: 100vw;
+        height: 50px;
+        // background: #000;
+      }
     }
+
   }
 }

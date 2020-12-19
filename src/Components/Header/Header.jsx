@@ -13,15 +13,7 @@ class Header extends React.Component {
       scrollTop: 0,
       isNavFixed: false,
       isNavShowing: false,
-      isNavPaused: false,
-      // timeOutScroll: 1000,
     }
-  }
-
-  handleSearchValue = (e) => {
-    this.setState({
-      searchValue: e.target.value,
-    })
   }
 
   handleCategoryOpen = (id) => {
@@ -48,42 +40,27 @@ class Header extends React.Component {
     })
   }
 
-  goToMainPage = () => {
-    this.props.history.push("/")
-  }
+  handleSearchValue = (e) => {this.setState({searchValue: e.target.value})}
 
-  goToLogInPage = () => {
-    if (!this.state.isloggedIn) {
-      this.props.history.push("/login")
-    }
-  }
-
-  goToProductList = (id) => {
-    this.props.history.push(`/productlist/${id}`)
-  }
-
+  goToMainPage = () => {this.props.history.push("/")}
+  goToLogInPage = () => {!this.state.isloggedIn 
+    ? this.props.history.push("/login")
+    : this.props.history.push("/")}
+  goToProductList = () => {this.props.history.push(`/products`)}
   goToSearchResult = (e) => {
     e.preventDefault()
-    this.props.history.push(`/productlist/${this.state.searchValue}`)
+    this.props.history.push(`/products?search=${this.state.searchValue}`)
   }
 
+  showNavBar = () => {this.setState({isNavShowing: true})}
+  hideNavBar = () => {this.setState({isNavShowing: false})}
   handleScroll = (e) => {
     const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop)
     this.setState({
       scrollTop,
-      isNavFixed: scrollTop > 135 ? true : false
+      isNavFixed: scrollTop > 140 ? true : false
     })
   }
-
-  // hideHeaderTest = () => {
-  //   this.setState({
-  //     isNavShowing: !this.state.isNavShowing
-  //   })
-  // }
-
-  showNavBar = () => {this.state.isNavShowing = true}
-  hideNavBar = () => {this.state.isNavShowing = false}
-  pauseNavBar = () => {this.setState({isNavShowing: this.state.isNavShowing})}
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
@@ -111,18 +88,18 @@ class Header extends React.Component {
   }
 
   render() {
-    const { categoriesList, searchValue, searchList, isloggedIn, scrollTop, isNavFixed,  isNavShowing } = this.state
-    const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult, goToMainPage, hideHeaderTest, showNavBar, hideNavBar, pauseNavBar } = this
-    const filteredList = searchList.filter((product) => {
-      if (product.productName.toLowerCase().includes(searchValue.toLowerCase())) {
-        return product
-      }
-    })
+    const { categoriesList, searchValue, searchList, isloggedIn, isNavFixed, isNavShowing } = this.state
+    const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult, goToMainPage, showNavBar, hideNavBar } = this
+    const filteredList = searchList.filter((product) => 
+      product.productName.toLowerCase().includes(searchValue.toLowerCase()) && product)
     localStorage.getItem('token') && this.setState({isloggedIn: true})
-    console.log(this.state.isNavShowing)
+    const myPage = isloggedIn && <span className="gnbBtn myPage">마이페이지</span>
 
     return (
-      <header className={`Header ${isNavShowing ? 'show' : ''}`}>
+      <header 
+        className={`Header ${isNavFixed && 'scrolled'} ${isNavShowing && 'show'}`}
+        onMouseOver={showNavBar}
+        onMouseLeave={hideNavBar} >
         <div className="innerContainer">
           <nav>
             <div className="navIconLeft">
@@ -135,7 +112,8 @@ class Header extends React.Component {
             <div 
               className="navIconRight"
               onClick={goToLogInPage}>
-              <span className="logIn">{isloggedIn ? '로그아웃' : '로그인'}</span>
+              {myPage}
+              <span className="gnbBtn logIn">{isloggedIn ? '로그아웃' : '로그인'}</span>
               <img alt="Menu" src="/images/menu.png" />
             </div>
           </nav>
@@ -156,7 +134,7 @@ class Header extends React.Component {
                   <img alt="Search Icon" src="/images/search.png" className="searchIcon"/>
                 </button>
               </form>
-              <ul className={!searchValue || filteredList.length === 0 ? "searchListContainer " : "searchListContainer open"}>
+              <ul className={`searchListContainer ${searchValue && filteredList.length && "open"}`}>
                 {filteredList &&
                   filteredList.map(item => {
                     return(
@@ -173,23 +151,26 @@ class Header extends React.Component {
               </ul>
             </div>
           </div>
-          <ul className="topMenu" onClick={hideHeaderTest}>
-            {categoriesList &&
-              categoriesList.map((category, index) => {
-                return (
-                  <Category 
-                    key={index}
-                    id={category.id}
-                    category={category.category}
-                    subCategories={category.subCategories}
-                    isCategoryOpen={category.isCategoryOpen}
-                    handleCategoryOpen={handleCategoryOpen}
-                    handleCategoryClose={handleCategoryClose}
-                    goToCategoryList={goToProductList}/>
-                )
-              })
-            }
-          </ul>
+          <div className="topMenuAndHover">
+            <ul className="topMenu">
+              {categoriesList &&
+                categoriesList.map((category, index) => {
+                  return (
+                    <Category 
+                      key={index}
+                      id={category.id}
+                      category={category.category}
+                      subCategories={category.subCategories}
+                      isCategoryOpen={category.isCategoryOpen}
+                      handleCategoryOpen={handleCategoryOpen}
+                      handleCategoryClose={handleCategoryClose}
+                      goToCategoryList={goToProductList}/>
+                  )
+                })
+              }
+            </ul>
+            <div className="hoverBox"/>
+          </div>
         </div>
       </header>
     )

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SignUpFooter from '../../Pages/SignUp/SignUpFooter'
 import './SignUp.scss'
 
 class SignUp extends Component {
@@ -204,10 +205,10 @@ class SignUp extends Component {
             src='/images/line-amigos-logo.png'
           />
         </header>
-        <div className='signUpForm'>
+        <div className='IdPwForm'>
           <span className='label'>아이디</span>
           <input
-            className='emailBox'
+            className='IdPwBox'
             id='email'
             type='text'
             placeholder='@lineamigos.com'
@@ -218,9 +219,10 @@ class SignUp extends Component {
           <span className='validationMassage'>
             {this.state.emailValidationMassage}
           </span>
+
           <span className='label'>비밀번호</span>
           <input
-            className='pwBox'
+            className='IdPwBox'
             id='pw'
             type='password'
             value={this.state.pw}
@@ -230,9 +232,10 @@ class SignUp extends Component {
           <span className='validationMassage'>
             {this.state.pwValidationMassage}
           </span>
+
           <span className='label'>비밀번호 재확인</span>
           <input
-            className='rePwBox'
+            className='IdPwBox'
             id='rePw'
             type='password'
             value={this.state.rePw}
@@ -349,28 +352,7 @@ class SignUp extends Component {
             가입하기
           </button>
         </div>
-        <footer>
-          <ul className='footer'>
-            <li>
-              <a href=''>이용약관</a>
-            </li>
-            <li>|</li>
-            <li>
-              <a href=''>개인정보처리방침</a>
-            </li>
-            <li>|</li>
-            <li>
-              <a href=''>책임의 한계와 법적고지</a>
-            </li>
-            <li>|</li>
-            <li>
-              <a href=''>회원정보 고객센터</a>
-            </li>
-          </ul>
-          <span className='copyright'>Copyright &copy; </span>
-          <span className='companyName'>Line Amigos Corp. </span>
-          <span className='rights'>All Rights Reserved.</span>
-        </footer>
+        <SignUpFooter />
       </div>
     )
   }

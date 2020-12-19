@@ -1,210 +1,147 @@
 @import '../../styles/common.scss';
 
-* {
-  box-sizing: border-box;
-  border: 1px solid #dadada;
+.signUp {
+  width: 1280px;
+  margin: 0 auto;
 
-  .signUp {
-    width: 1280px;
+  header {
+    .logoImg {
+      display: block;
+      margin: 0 auto;
+      width: 300px;
+      height: 40px;
+      margin-bottom: 60px;
+      object-fit: contain;
+    }
+  }
 
-    header {
-      .logoImg {
-        display: block;
-        margin: 0 auto;
-        width: 300px;
-        height: 40px;
-        margin-bottom: 60px;
-        object-fit: contain;
-      }
+  .IdPwForm {
+    display: block;
+    margin: 0 auto;
+    width: 450px;
+
+    .IdPwBox {
+      width: 450px;
+      height: 50px;
+      margin-bottom: 10px;
+      border: 1px solid #dadada;
     }
 
-    .label {
-      font-size: $font-size-small;
+    .IdPwBox::placeholder {
+      padding-right: 5px;
+      text-align: end;
+      color: $font-color-lightgray;
       font-weight: $font-weight-bold;
     }
+  }
 
-    .validationMassage {
-      display: block;
-      margin-top: 0;
-      margin-bottom: 20px;
-      font-size: $font-size-supersmall;
-      color: red;
-    }
+  .label {
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
+  }
 
-    .signUpForm {
-      display: block;
-      margin: 0 auto;
+  .validationMassage {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: $font-size-supersmall;
+    color: red;
+  }
+
+  .userInfoForm {
+    display: block;
+    margin: 0 auto;
+    width: 450px;
+    // height: 400px;
+    // padding-bottom: 30px;
+
+    .name {
       width: 450px;
-
-      .emailBox {
-        width: 450px;
-        height: 50px;
-        margin-bottom: 10px;
-      }
-
-      .emailBox::placeholder {
-        padding-right: 5px;
-        text-align: end;
-        color: $font-color-lightgray;
-        font-weight: $font-weight-bold;
-      }
-
-      .pwBox {
-        width: 450px;
-        height: 50px;
-        margin-bottom: 10px;
-      }
-
-      .rePwBox {
-        width: 450px;
-        height: 50px;
-        margin-bottom: 10px;
-      }
+      height: 50px;
+      margin-bottom: 10px;
+      border: 1px solid #dadada;
     }
-
-    .userInfoForm {
-      display: block;
-      margin: 0 auto;
+    .birthDate {
+      display: flex;
+      justify-content: space-between;
       width: 450px;
-      // height: 400px;
-      // padding-bottom: 30px;
+      height: 50px;
+      margin-bottom: 10px;
 
-      .name {
-        width: 450px;
+      .birthYear,
+      .birthMonth,
+      .birthDay {
+        width: 146px;
         height: 50px;
-        margin-bottom: 10px;
-      }
-      .birthDate {
-        display: flex;
-        justify-content: space-between;
-        width: 450px;
-        height: 50px;
-        margin-bottom: 10px;
-
-        .birthYear {
-          width: 146px;
-          height: 50px;
-        }
-
-        .birthMonth {
-          width: 146px;
-          height: 50px;
-        }
-
-        .birthDay {
-          width: 146px;
-          height: 50px;
-        }
-
-        .birthYear,
-        .birthMonth,
-        .birthDay {
-          padding: 10px 10px;
-        }
-      }
-      .genderDropdown {
-        width: 450px;
-        height: 50px;
-        margin-bottom: 10px;
-      }
-    }
-
-    .phoneValidationForm {
-      display: block;
-      margin: 0 auto;
-      width: 450px;
-      // padding-bottom: 30px;
-
-      .countryNumber {
-        width: 450px;
-        height: 50px;
-        margin-bottom: 10px;
-        padding: 10px 10px;
-      }
-
-      .phoneNumber {
-        width: 335px;
-        height: 50px;
-        margin-bottom: 10px;
-        margin-right: 5px;
-        padding: 10px 10px;
-      }
-
-      .validationBtn {
-        all: unset;
-        width: 110px;
-        height: 50px;
-        margin-bottom: 10px;
-        color: white;
-        text-align: center;
-        background-color: $primary-color;
-        cursor: pointer;
-      }
-
-      .validationBtn:hover {
-        opacity: 0.8;
-      }
-
-      .validationNumber {
-        width: 450px;
-        height: 50px;
-        margin-bottom: 10px;
+        border: 1px solid #dadada;
         padding: 10px 10px;
       }
     }
-
-    .signUpBtnForm {
-      display: block;
-      margin: 0 auto;
+    .genderDropdown {
       width: 450px;
-      padding-bottom: 30px;
+      height: 50px;
+      margin-bottom: 10px;
+      border: 1px solid #dadada;
+    }
+  }
 
-      .signUpBtn {
-        all: unset;
-        width: 450px;
-        height: 50px;
-        text-align: center;
-        color: white;
-        background-color: $primary-color;
-        cursor: pointer;
-      }
+  .phoneValidationForm {
+    display: block;
+    margin: 0 auto;
+    width: 450px;
 
-      .signUpBtn:hover {
-        opacity: 0.8;
-      }
+    .countryNumber,
+    .validationNumber {
+      width: 450px;
+      height: 50px;
+      margin-bottom: 10px;
+      padding: 10px 10px;
+      border: 1px solid #dadada;
     }
 
-    footer {
-      display: block;
-      margin: 0 auto;
-      width: 450px;
-      color: $font-color-gray;
+    .phoneNumber {
+      width: 335px;
+      height: 50px;
+      margin-bottom: 10px;
+      margin-right: 5px;
+      padding: 10px 10px;
+      border: 1px solid #dadada;
+    }
+
+    .validationBtn {
+      all: unset;
+      width: 110px;
+      height: 50px;
+      margin-bottom: 10px;
+      color: white;
       text-align: center;
-      // align-self: baseline;
+      background-color: $primary-color;
+      cursor: pointer;
+    }
 
-      .footer {
-        display: flex;
-        justify-content: center;
-        font-size: $font-size-supersmall;
-        li {
-          margin-left: 5px;
-          margin-bottom: 10px;
+    .validationBtn:hover {
+      opacity: 0.8;
+    }
+  }
 
-          a {
-            text-decoration: none;
-          }
-        }
-      }
+  .signUpBtnForm {
+    display: block;
+    margin: 0 auto;
+    width: 450px;
+    padding-bottom: 30px;
 
-      .companyName {
-        color: black;
-        font-size: $font-size-supersmall;
-        font-weight: 900;
-      }
-      .copyright,
-      .rights {
-        font-size: $font-size-supersmall;
-      }
+    .signUpBtn {
+      all: unset;
+      width: 450px;
+      height: 50px;
+      text-align: center;
+      color: white;
+      background-color: $primary-color;
+      cursor: pointer;
+    }
+
+    .signUpBtn:hover {
+      opacity: 0.8;
     }
   }
 }

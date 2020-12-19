@@ -30,6 +30,20 @@ class Main extends React.Component {
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
+
+    // fetch('cartAPI', {
+    //   headers: {
+    //     Authorization: localStorage.getItem("access_token")
+    //   }
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //   this.setState({
+    //     products: data.productId,
+    //     price: data.price
+    //   })
+    // })
+
     fetch('/data/productsInfos.json')
      .then(response => response.json())
      .then(data => {
@@ -40,6 +54,16 @@ class Main extends React.Component {
        })
      })
   }
+  
+  // addToCart = () => {
+  //   alert('장바구니에 추가되었습니다.')
+  //   fetch('cartAPI')
+  //     .then(response => response.json())
+  //     .then(data => {
+
+  //     })
+  //   this.props.history.push(/cart)
+  // }
   
   componentWillUnmount = () => {
     window.removeEventListener('scroll', this.handleScroll)

@@ -7,6 +7,8 @@ class NewProductsSlider extends Component {
     super()
     this.state = {
       products: [],
+      isWishlisted: false,
+      isInCart: false,
     }
   }
 
@@ -25,8 +27,7 @@ class NewProductsSlider extends Component {
   }
 
   render() {
-    const { RiHeartAddLine } = this.props
-    const { products } = this.state
+    const { products, isWishlisted, isInCart } = this.state
     const { goToProductDetail } = this
     const wonPrice = (num) => `${num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
     const settings = {
@@ -51,7 +52,17 @@ class NewProductsSlider extends Component {
                 key={index} 
                 className="newProduct"
                 onClick={goToProductDetail}>
-                <img alt="Product" src={product.url} />
+                <div className="productVisual">
+                  <img alt="Product" src={product.url} className="productImage" />
+                  <div className="action">
+                    <div className={`icon ${isWishlisted && 'clicked'}`}>
+                      <img alt="Add to wishlist" src='/images/add-to-wishlist.png' />
+                    </div>
+                    <div className={`icon ${isInCart && 'clicked'}`}>
+                      <img alt="Add to cart" src='/images/cart-icon.png' />
+                    </div>
+                  </div>
+                </div>
                 <div className="productInfo">
                   <span className="saleRate">{product.saleAmount}</span>
                   <span className="salePrice">{wonPrice(product.price)}</span>

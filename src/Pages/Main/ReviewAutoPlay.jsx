@@ -13,7 +13,7 @@ class ReviewAutoPlay extends Component {
   }
 
   goToProductDetail = (id) => {
-    this.props.history.push(`/product/${id}`)
+    // this.props.history.push(`/product/${id}`)
   }
 
   componentDidMount = () => {
@@ -29,6 +29,7 @@ class ReviewAutoPlay extends Component {
   render() {
     const { reviews, isWishlisted, isInCart } = this.state
     const { goToProductDetail } = this
+    const { addToCart, addToWishList } = this.props
     const createdAtString = (createdAt) => {
       const splittedDate =  createdAt.split(' ')[0].split('-')
       return `${splittedDate[0]}년 ${splittedDate[1]}월 ${splittedDate[2]}일`
@@ -62,10 +63,14 @@ class ReviewAutoPlay extends Component {
                     className="productImage"
                     onClick={goToProductDetail} />
                     <div className="action">
-                      <div className={`icon ${isWishlisted && 'clicked'}`}>
+                      <div 
+                        className={`icon ${isWishlisted && 'clicked'}`}
+                        onClick={addToWishList} >
                         <img alt="Add to wishlist" src='/images/add-to-wishlist.png' />
                       </div>
-                      <div className={`icon ${isInCart && 'clicked'}`}>
+                      <div 
+                        className={`icon ${isInCart && 'clicked'}`}
+                        onClick={addToCart} >
                         <img alt="Add to cart" src='/images/cart-icon.png' />
                       </div>
                     </div>
@@ -82,7 +87,7 @@ class ReviewAutoPlay extends Component {
                 </div>
                 <div className="reviewContents">
                   <p>{review.text}</p>
-                  <img alt="Review photo" src="/images/Main/main-slider-04.jpg"/>
+                  <img alt="Reviews" src="/images/Main/main-slider-04.jpg"/>
                 </div>
                 <div className="idAndCreatedAt">
                   <span>{hiddenId(review.userId)}</span>

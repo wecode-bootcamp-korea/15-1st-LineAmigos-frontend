@@ -4,7 +4,6 @@ import NewProductsSlider from './NewProductsSlider'
 import CategoriesSlider from './CategoriesSlider'
 import BannerSlider from './BannerSlider'
 import ReviewAutoPlay from './ReviewAutoPlay'
-import { RiHeartAddLine } from "react-icons/ri"
 import './Main.scss'
 
 class Main extends React.Component {
@@ -30,20 +29,6 @@ class Main extends React.Component {
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
-
-    // fetch('cartAPI', {
-    //   headers: {
-    //     Authorization: localStorage.getItem("access_token")
-    //   }
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //   this.setState({
-    //     products: data.productId,
-    //     price: data.price
-    //   })
-    // })
-
     fetch('/data/productsInfos.json')
      .then(response => response.json())
      .then(data => {
@@ -54,23 +39,40 @@ class Main extends React.Component {
        })
      })
   }
-  
-  // addToCart = () => {
-  //   alert('장바구니에 추가되었습니다.')
-  //   fetch('cartAPI')
-  //     .then(response => response.json())
-  //     .then(data => {
 
-  //     })
-  //   this.props.history.push(/cart)
-  // }
+  addToCart = () => {
+    console.log('Item added')
+    alert('장바구니에 추가되었습니다.')
+    // fetch('cartAPI', {
+    //   method: 'POST'
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+
+    //   })
+    // this.props.history.push('/cart')
+  }
+
+  addToWishList = () => {
+    console.log('Item added')
+    alert('위시리스트에 추가되었습니다.')
+    // fetch('wishlistAPI', {
+    //   method: 'POST'
+    // })
+    //   .then(response => response.json())
+    //   .then(data => {
+
+    //   })
+    // this.props.history.push('/cart')
+  }
   
   componentWillUnmount = () => {
     window.removeEventListener('scroll', this.handleScroll)
   }
 
   render() {
-    const { productList, categoriesList, reviewsList, scrollTop, isNavFixed } = this.state
+    const { productList } = this.state
+    const { addToWishList, addToCart } = this
     
     return (
       <div className="Main">
@@ -80,7 +82,8 @@ class Main extends React.Component {
         <section className="newProductsSection">
           <ul className="newProducts">
             <NewProductsSlider
-              heart={RiHeartAddLine}/>
+              addToCart={addToCart}
+              addToWishList={addToWishList} />
           </ul>
         </section>
         <section className="clickToSee">
@@ -92,9 +95,9 @@ class Main extends React.Component {
                 {productList &&
                   productList.map((product, index) => {
                     return (
-                      <li key={index} className="button `button${product.id}`">
-                        <span className="target `target${product.id}`" />
-                        <div className="price `price${product.id}`">{product.price}</div>
+                      <li key={index} className={`button button${product.id}`}>
+                        <span className={`target target${product.id}`} />
+                        <div className={`price price${product.id}`}>{product.price}</div>
                       </li>
                     )
                   })
@@ -122,7 +125,9 @@ class Main extends React.Component {
           <CategoriesSlider />
         </section>
         <section className="reviewContainer">
-          <ReviewAutoPlay />
+          <ReviewAutoPlay
+            addToCart={addToCart}
+            addToWishList={addToWishList} />
         </section>
       </div>
     )

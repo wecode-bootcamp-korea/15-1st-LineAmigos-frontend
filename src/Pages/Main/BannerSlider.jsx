@@ -27,7 +27,7 @@ class BannerSlider extends Component {
             mainSliderImages.map((image, index) => {
               return (
                 <div key={index}>
-                  <img src={image} />
+                  <img alt="Ads" src={image} />
                   <div className="getCoupon">쿠폰받기</div>
                 </div>
               )

@@ -42,7 +42,7 @@ class MainSlider extends Component {
             mainSliderImages.map(image => {
               return (
                 <div key={image.id}>
-                  <img src={image.url} />
+                  <img alt="Ad images" src={image.url} />
                   <span className="ads">
                     <p className="adTitle">{image.promotionLine1}</p>
                     <p className="adTitle">{image.promotionLine2}</p>

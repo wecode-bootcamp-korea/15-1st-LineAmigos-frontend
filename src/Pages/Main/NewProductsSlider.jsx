@@ -7,8 +7,6 @@ class NewProductsSlider extends Component {
     super()
     this.state = {
       products: [],
-      isWishlisted: false,
-      isInCart: false,
     }
   }
 
@@ -29,6 +27,7 @@ class NewProductsSlider extends Component {
   render() {
     const { products, isWishlisted, isInCart } = this.state
     const { goToProductDetail } = this
+    const { addToCart, addToWishList } = this.props
     const wonPrice = (num) => `${num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원`
     const settings = {
       dots: false,
@@ -55,10 +54,14 @@ class NewProductsSlider extends Component {
                 <div className="productVisual">
                   <img alt="Product" src={product.url} className="productImage" />
                   <div className="action">
-                    <div className={`icon ${isWishlisted && 'clicked'}`}>
+                    <div 
+                      className={`icon ${isWishlisted && 'clicked'}`}
+                      onClick={addToWishList} >
                       <img alt="Add to wishlist" src='/images/add-to-wishlist.png' />
                     </div>
-                    <div className={`icon ${isInCart && 'clicked'}`}>
+                    <div 
+                      className={`icon ${isInCart && 'clicked'}`}
+                      onClick={addToCart} >
                       <img alt="Add to cart" src='/images/cart-icon.png' />
                     </div>
                   </div>

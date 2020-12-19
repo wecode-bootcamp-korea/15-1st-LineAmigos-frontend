@@ -52,63 +52,18 @@ class SignUp extends Component {
       }),
     })
       .then((response) => response.json())
-      .then((result) => {
-        console.log(result)
-        this.props.history.push('/login')
-        // if (result === 'SUCCESS') {
-        //   console.log(result)
-        //   alert('회원가입성공!')
-        //   this.props.history.push('/login')
-        // }
+      .then((response) => {
+        if (response.message === 'SUCCESS') {
+          alert('라인 아미고스샵에 오실걸 환영합니다!')
+          this.props.history.push('/login')
+        }
       })
   }
 
-  handleEmailChange = (event) => {
+  handleValueChange = (event) => {
+    const { id, value } = event.target
     this.setState({
-      email: event.target.value,
-    })
-  }
-
-  handlePwChange = (event) => {
-    this.setState({
-      pw: event.target.value,
-    })
-  }
-
-  handleRePwChange = (event) => {
-    this.setState({
-      rePw: event.target.value,
-    })
-  }
-
-  handleNameChange = (event) => {
-    this.setState({
-      name: event.target.value,
-    })
-  }
-
-  handleBirthYearChange = (event) => {
-    this.setState({
-      birthYear: event.target.value,
-    })
-    // this.handleBirthYearValidation()
-  }
-
-  handleBirthMonthChange = (event) => {
-    this.setState({
-      birthMonth: event.target.value,
-    })
-  }
-
-  handleBirthDayChange = (event) => {
-    this.setState({
-      birthDay: event.target.value,
-    })
-  }
-
-  handlePhoneNumberChange = (event) => {
-    this.setState({
-      phoneNumber: event.target.value,
+      [id]: value,
     })
   }
 
@@ -154,15 +109,9 @@ class SignUp extends Component {
   }
 
   handleNameValidation = () => {
-    if (!this.state.name) {
-      this.setState({
-        nameValidationMassage: '필수 정보입니다.',
-      })
-    } else {
-      this.setState({
-        nameValidationMassage: '',
-      })
-    }
+    this.setState({
+      nameValidationMassage: this.state.name ? '' : '필수 정보입니다.',
+    })
   }
 
   handleRePwValidation = () => {
@@ -233,7 +182,7 @@ class SignUp extends Component {
   }
 
   handleDropValidation = () => {
-    console.log('함수실행되는중')
+    // console.log('함수실행되는중')
     if (this.state.gender == 'none') {
       this.setState({
         genderValidationMassage: '필수 정보입니다.',
@@ -245,16 +194,9 @@ class SignUp extends Component {
     }
   }
 
-  // handleDropValidation = () => {
-  //   this.setState({
-  //     genderValidationMassage: '필수 정보입니다.',
-  //   })
-  // }
-
   render() {
-    console.log(this.state.gender)
     return (
-      <div className='container'>
+      <div className='signUp'>
         <header>
           <img
             className='logoImg'
@@ -266,34 +208,37 @@ class SignUp extends Component {
           <span className='label'>아이디</span>
           <input
             className='emailBox'
+            id='email'
             type='text'
             placeholder='@lineamigos.com'
             value={this.state.email}
-            onChange={this.handleEmailChange}
+            onChange={this.handleValueChange}
             onKeyUp={this.handleEmailValidation}
-          ></input>
+          />
           <span className='validationMassage'>
             {this.state.emailValidationMassage}
           </span>
           <span className='label'>비밀번호</span>
           <input
             className='pwBox'
+            id='pw'
             type='password'
             value={this.state.pw}
-            onChange={this.handlePwChange}
+            onChange={this.handleValueChange}
             onKeyUp={this.handlePwValidation}
-          ></input>
+          />
           <span className='validationMassage'>
             {this.state.pwValidationMassage}
           </span>
           <span className='label'>비밀번호 재확인</span>
           <input
             className='rePwBox'
+            id='rePw'
             type='password'
             value={this.state.rePw}
-            onChange={this.handleRePwChange}
+            onChange={this.handleValueChange}
             onKeyUp={this.handleRePwValidation}
-          ></input>
+          />
           <span className='validationMassage'>
             {this.state.rePwValidationMassage}
           </span>
@@ -302,11 +247,12 @@ class SignUp extends Component {
           <span className='label'>이름</span>
           <input
             className='name'
+            id='name'
             type='text'
             value={this.state.name}
-            onChange={this.handleNameChange}
+            onChange={this.handleValueChange}
             onKeyUp={this.handleNameValidation}
-          ></input>
+          />
           <span className='validationMassage'>
             {this.state.nameValidationMassage}
           </span>
@@ -314,28 +260,31 @@ class SignUp extends Component {
           <div className='birthDate'>
             <input
               className='birthYear'
+              id='birthYear'
               type='text'
               placeholder='년(4자)'
               value={this.state.birthYear}
-              onChange={this.handleBirthYearChange}
+              onChange={this.handleValueChange}
               onKeyUp={this.handleBirthYearValidation}
-            ></input>
+            />
             <input
               className='birthMonth'
+              id='birthMonth'
               type='text'
               placeholder='월'
               value={this.state.birthMonth}
-              onChange={this.handleBirthMonthChange}
+              onChange={this.handleValueChange}
               onKeyUp={this.handleBirthMonthValidation}
-            ></input>
+            />
             <input
               className='birthDay'
+              id='birthDay'
               type='text'
               placeholder='일'
               value={this.state.birthDay}
-              onChange={this.handleBirthDayChange}
+              onChange={this.handleValueChange}
               onKeyUp={this.handleBirthDayValidation}
-            ></input>
+            />
           </div>
           <span className='validationMassage'>
             {this.state.birthYearValidationMassage}
@@ -373,14 +322,15 @@ class SignUp extends Component {
             type='text'
             value={this.state.countryCode}
             placeholder='국가번호'
-          ></input>
+          />
           <input
             className='phoneNumber'
+            id='phoneNumber'
             type='text'
             placeholder='전화번호 입력'
             value={this.state.phoneNumber}
-            onChange={this.handlePhoneNumberChange}
-          ></input>
+            onChange={this.handleValueChange}
+          />
           <button className='validationBtn' type='submit'>
             인증번호 받기
           </button>
@@ -388,7 +338,7 @@ class SignUp extends Component {
             className='validationNumber'
             type='text'
             placeholder='인증번호를 입력하세요'
-          ></input>
+          />
         </div>
         <div className='signUpBtnForm'>
           <button

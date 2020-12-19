@@ -14,7 +14,6 @@ class Login extends Component {
     }
   }
 
-  //API 받을 준비
   handleClick = () => {
     fetch('http://10.168.1.140:8000/user/signin', {
       method: 'POST',
@@ -24,25 +23,16 @@ class Login extends Component {
       }),
     })
       .then((response) => response.json())
-      .then(
-        (response) => {
-          if (response.message === 'SUCCESS') {
-            this.props.history.push('/')
-          } else {
-            alert('아이디 또는 비밀번호가 일치하지 않습니다.')
-          }
+      .then((response) => {
+        if (response.message === 'SUCCESS') {
+          this.props.history.push('/')
         }
-        // if (response.status === 200 || response.status === 201) {
-        //   console.log(response.status)
-        //   // this.props.history.push('/')
-        // } else {
-        //   console.log('200이 안오고 있어요오')
-        // }
-        //제3의 이름이 아닌 위의 인자와 같은 이름을 써도 되는 이유 질문하기
-        // if (result.Authorization) {
-        //   localStorage.setItem('token', result.Authorization)
-        // }
-      )
+        if (response.access_token) {
+          localStorage.setItem('token', response.access_token)
+        } else {
+          alert('아이디 또는 비밀번호가 일치하지 않습니다.')
+        }
+      })
   }
 
   handleIdPwChange = (event) => {
@@ -67,8 +57,7 @@ class Login extends Component {
       pwValidation: !checkPw ? '비밀번호를 입력해주세요.' : '',
     })
     if (checkId && checkPw) {
-      this.handleClick() // api 연결하면 살릴 부분
-      // this.props.history.push('/') // api연결하면 지워야하는 부분
+      this.handleClick()
     }
   }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Cart.scss';
 
 class Cart extends React.Component {
 
@@ -98,10 +99,10 @@ class Cart extends React.Component {
                 <span>장보기 전용</span>
               </div>
               <div className="rightIcons">
-                <span className="currentPage">장바구니</span>
-                <img alt="next" src="/images/arrow-right-bold.png" />
-                <span>주문/결제</span>
-                <img alt="next" src="/images/arrow-right-bold.png" />
+                <span className="currentPage">장바구니
+                <img alt="next" src="/images/arrow-right-bold.png" /></span>
+                <span>주문/결제
+                <img alt="next" src="/images/arrow-right-bold.png" /></span>
                 <span>완료</span>
               </div>
             </div>
@@ -109,7 +110,7 @@ class Cart extends React.Component {
               {
                 NOTICE.map((el, index) => {
                   return (
-                    <p key={index}>{el}</p>
+                    <li key={index}><i class="fas fa-circle"/>{el}</li>
                   )
                 })
               }

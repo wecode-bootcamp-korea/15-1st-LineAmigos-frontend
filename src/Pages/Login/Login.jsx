@@ -42,12 +42,6 @@ class Login extends Component {
     })
   }
 
-  handlePwChange = (event) => {
-    this.setState({
-      pw: event.target.value,
-    })
-  }
-
   handleValidation = (event) => {
     event.preventDefault()
     const checkId = this.state.id

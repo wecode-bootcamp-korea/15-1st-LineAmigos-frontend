@@ -13,6 +13,8 @@ class Header extends React.Component {
       scrollTop: 0,
       isNavFixed: false,
       isNavShowing: false,
+      isNavPaused: false,
+      // timeOutScroll: 1000,
     }
   }
 
@@ -71,18 +73,17 @@ class Header extends React.Component {
       scrollTop,
       isNavFixed: scrollTop > 135 ? true : false
     })
-    if (this.state.scrollTop--) {
-      this.setState({isNavShowing: true})
-    } else {
-      this.setState({isNavShowing: false})
-    }
   }
 
-  hideHeaderTest = () => {
-    this.setState({
-      isNavShowing: !this.state.isNavShowing
-    })
-  }
+  // hideHeaderTest = () => {
+  //   this.setState({
+  //     isNavShowing: !this.state.isNavShowing
+  //   })
+  // }
+
+  showNavBar = () => {this.state.isNavShowing = true}
+  hideNavBar = () => {this.state.isNavShowing = false}
+  pauseNavBar = () => {this.setState({isNavShowing: this.state.isNavShowing})}
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
@@ -111,7 +112,7 @@ class Header extends React.Component {
 
   render() {
     const { categoriesList, searchValue, searchList, isloggedIn, scrollTop, isNavFixed,  isNavShowing } = this.state
-    const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult, goToMainPage, hideHeaderTest } = this
+    const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult, goToMainPage, hideHeaderTest, showNavBar, hideNavBar, pauseNavBar } = this
     const filteredList = searchList.filter((product) => {
       if (product.productName.toLowerCase().includes(searchValue.toLowerCase())) {
         return product

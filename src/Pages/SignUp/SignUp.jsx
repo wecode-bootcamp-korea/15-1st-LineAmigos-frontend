@@ -15,7 +15,7 @@ class SignUp extends Component {
       birthDay: '',
       countryCode: '82',
       phoneNumber: '',
-      gender: [],
+      gender: '초기',
       emailValidationMassage: '',
       pwValidationMassage: '',
       rePwValidationMassage: '',
@@ -33,8 +33,6 @@ class SignUp extends Component {
       this.handleRePwValidation(),
       this.handleNameValidation(),
       this.handleBirthYearValidation(),
-      // this.handleDropValidation(),
-      this.handleDropValidation(),
       this.handleSignUpClcik()
     )
   }
@@ -68,7 +66,6 @@ class SignUp extends Component {
     })
   }
 
-  //인풋에 글 썼다 지웠을때 validation문구 변경될 수있도록(pw도)
   handleEmailValidation = () => {
     const checkEmail = this.state.email
     const emailValidation = /^[a-z0-9_-]{5,20}$/
@@ -171,20 +168,10 @@ class SignUp extends Component {
   }
 
   handleGenderChange = (event) => {
-    const options = Array.from(event.target.children)
-    const selectedOptions = options.filter((option) => option.selected)
-    const selectedOptionsValue = selectedOptions.map((option) => option.value)
-    const selectedOptionsValueStr = selectedOptionsValue[0]
-
     this.setState({
-      gender: selectedOptionsValueStr,
+      gender: event.target.value,
     })
-    this.handleDropValidation()
-  }
-
-  handleDropValidation = () => {
-    // console.log('함수실행되는중')
-    if (this.state.gender == 'none') {
+    if (event.target.value === 'none') {
       this.setState({
         genderValidationMassage: '필수 정보입니다.',
       })
@@ -206,45 +193,49 @@ class SignUp extends Component {
           />
         </header>
         <div className='IdPwForm'>
-          <span className='label'>아이디</span>
-          <input
-            className='IdPwBox'
-            id='email'
-            type='text'
-            placeholder='@lineamigos.com'
-            value={this.state.email}
-            onChange={this.handleValueChange}
-            onKeyUp={this.handleEmailValidation}
-          />
-          <span className='validationMassage'>
-            {this.state.emailValidationMassage}
-          </span>
-
-          <span className='label'>비밀번호</span>
-          <input
-            className='IdPwBox'
-            id='pw'
-            type='password'
-            value={this.state.pw}
-            onChange={this.handleValueChange}
-            onKeyUp={this.handlePwValidation}
-          />
-          <span className='validationMassage'>
-            {this.state.pwValidationMassage}
-          </span>
-
-          <span className='label'>비밀번호 재확인</span>
-          <input
-            className='IdPwBox'
-            id='rePw'
-            type='password'
-            value={this.state.rePw}
-            onChange={this.handleValueChange}
-            onKeyUp={this.handleRePwValidation}
-          />
-          <span className='validationMassage'>
-            {this.state.rePwValidationMassage}
-          </span>
+          <div className='IdBox'>
+            <span className='label'>아이디</span>
+            <input
+              className='IdPwBox'
+              id='email'
+              type='text'
+              placeholder='@lineamigos.com'
+              value={this.state.email}
+              onChange={this.handleValueChange}
+              onKeyUp={this.handleEmailValidation}
+            />
+            <span className='validationMassage'>
+              {this.state.emailValidationMassage}
+            </span>
+          </div>
+          <div className='pwBox'>
+            <span className='label'>비밀번호</span>
+            <input
+              className='IdPwBox'
+              id='pw'
+              type='password'
+              value={this.state.pw}
+              onChange={this.handleValueChange}
+              onKeyUp={this.handlePwValidation}
+            />
+            <span className='validationMassage'>
+              {this.state.pwValidationMassage}
+            </span>
+          </div>
+          <div className='rePwBox'>
+            <span className='label'>비밀번호 재확인</span>
+            <input
+              className='IdPwBox'
+              id='rePw'
+              type='password'
+              value={this.state.rePw}
+              onChange={this.handleValueChange}
+              onKeyUp={this.handleRePwValidation}
+            />
+            <span className='validationMassage'>
+              {this.state.rePwValidationMassage}
+            </span>
+          </div>
         </div>
         <div className='userInfoForm'>
           <span className='label'>이름</span>
@@ -300,16 +291,10 @@ class SignUp extends Component {
           </span>
           <span className='label'>성별</span>
           <select
-            // className={this.state.genderDropdown}
-            // multiple={false}
             className='genderDropdown'
             value={this.state.gender}
             onChange={this.handleGenderChange}
-            // onChange={this.handleDropNoneValidation}
           >
-            {/* <option value='none'>선택안함</option>
-            <option value='female'>여성</option>
-            <option value='male'>남성</option> */}
             <option value='none'>선택안함</option>
             <option value='female'>여성</option>
             <option value='male'>남성</option>
@@ -349,6 +334,7 @@ class SignUp extends Component {
             type='submit'
             onClick={this.handleAllValidation}
           >
+            {' '}
             가입하기
           </button>
         </div>

@@ -1,0 +1,14 @@
+@import '/styles/common.scss';
+
+.Cart {
+  display: flex;
+  justify-content: center;
+  
+  width: 100vw;
+  height: 100vh;
+
+  .cartContainer {
+    width: 1280px;
+    
+  }
+}

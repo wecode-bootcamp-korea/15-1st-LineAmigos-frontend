@@ -81,6 +81,14 @@ class Header extends React.Component {
           // searchList: data.products,
         })
       }).catch(err => console.log(err))
+
+      fetch('http://10.168.1.149:8000/product/products_info')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          searchList: data.PRODUCTS,
+        })
+      }).catch(err => console.log(err))
   }
   
   componentWillUnmount = () => {
@@ -91,7 +99,7 @@ class Header extends React.Component {
     const { categoriesList, searchValue, searchList, isloggedIn, isNavFixed, isNavShowing } = this.state
     const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult, goToMainPage, showNavBar, hideNavBar } = this
     const filteredList = searchList.filter((product) => 
-      product.productName.toLowerCase().includes(searchValue.toLowerCase()) && product)
+      product.name.toLowerCase().includes(searchValue.toLowerCase()) && product)
     localStorage.getItem('token') && this.setState({isloggedIn: true})
     const myPage = isloggedIn && <span className="gnbBtn myPage">마이페이지</span>
     return (
@@ -137,10 +145,10 @@ class Header extends React.Component {
                 {filteredList &&
                   filteredList.map(item => {
                     return(
-                      <li key={item.id}>
-                        <img alt={item.productName} src={item.url} className="itemImg" />
+                      <li key={item.product_id}>
+                        <img alt={item.name} src={item.product_image} className="itemImg" />
                         <div>
-                          <span className="productName">{item.productName}</span>
+                          <span className="productName">{item.name}</span>
                           <span className="price">{item.price}원</span>
                         </div>
                       </li>

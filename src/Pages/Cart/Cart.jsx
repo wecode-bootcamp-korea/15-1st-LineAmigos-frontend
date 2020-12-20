@@ -183,17 +183,19 @@ class Cart extends React.Component {
                     <li key={index} className="row items">
                       <div className="checkbox"><input type="checkbox" /></div>
                       <div className="productDetail">
+
                         <img alt={item.name} src={item.image_url} />
+
                         <div className="detailBox">
                           <div className="detail">라인아미고스</div>
-                          <div className="productName">{item.name}</div>
+                          <div className="productName productItems">{item.name}</div>
                           <div className="price">{item.price}원</div>
-                          <i 
-                            className="fas fa-times"
-                            onClick={deleteItem}></i>
+                          <i className="fas fa-times"
+                            onClick={deleteItem} />
                         </div>
                      
                       </div>
+                      
                       <div className="options">
                         <div className="option">사이즈: 단품</div>
                         <div className="modify">

@@ -5,7 +5,7 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Main from './Pages/Main/Main';
+// import Main from './Pages/Main/Main';
 import Cart from './Pages/Cart/Cart';
 // import CheckOut from './Pages/CheckOut/CheckOut'
 // import Login from './Pages/Login/Login';
@@ -19,7 +19,7 @@ class Routes extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route exact path='/' component={Main} />
+{/*          <Route exact path='/' component={Main} />*/}
           <Route exact path='/cart' component={Cart} />
 {/*          <Route exact path='/checkout' component={CheckOut} />
           <Route exact path='/login' component={Login} />

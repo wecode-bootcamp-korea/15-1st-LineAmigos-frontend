@@ -8,7 +8,7 @@ class Cart extends React.Component {
     super()
     this.state = {
       cartItems: [],
-      isAllSelected: false,
+      isSelectAllChecked: false
     }
   }
 
@@ -63,7 +63,8 @@ class Cart extends React.Component {
         // item_id: itemId
       })
     }).then(res => res.json())
-      .then(res => res.MESSAGE === "SUCCESS" && this.getCartItems())
+      .then(res => res.MESSAGE === "SUCCESS" && 
+        this.setState({cartItem: res.cartItems}))
       .catch(err => console.log(err))
   }
 
@@ -79,14 +80,14 @@ class Cart extends React.Component {
             item_id: item.id
           })
         }).then(res => res.json())
-          .then(res => res.MESSAGE === "SUCCESS" && this.getCartItems())
+          .then(res => res.MESSAGE === "SUCCESS" && this.getCartData())
           .catch(err => console.log(err))
       }
     )
   }
 
   //select cart items
-  handleSelectCartItem = (e) => {
+  selectOneCartItemHandler = (e) => {
     const { id } = e.target.id
     const { cartItems } = this.state 
     const newSelectedStatus = cartItems.map(cartItem => {
@@ -98,13 +99,12 @@ class Cart extends React.Component {
     this.setState({cartItems: newSelectedStatus})
   }
 
-  //select all items
-  handleSelectAllCartItems = () => {
-    const { cartItems } = this.state
-    const allSeletedStatus = cartItems.forEach(cartItem => {
-      cartItem.isChecked = true
-    })
-    this.setState({cartItems: allSeletedStatus})
+  //select or unselect all items
+  selectAllCartItemsHandler = () => {
+    const { cartItems, isSelectAllChecked } = this.state
+    isSelectAllChecked 
+      ? cartItems.forEach(cartItem => cartItem.isChecked = true)
+      : cartItems.forEach(cartItem => cartItem.isChecked = false)
   }
 
   //get cart data after rendered
@@ -123,8 +123,10 @@ class Cart extends React.Component {
     this.props.history.push(`/product/${targetId}`)
   }
 
+  backToMainPage = () => {this.props.history.push("/checkout")}
   backToShoppingPage = () => {this.props.history.goBack()}
   goToCheckOutPage = () => {this.props.history.push("/checkout")}
+  // goToWishListPage = () => {this.props.history.push("/wishlist")}
 
   render() {
     const { addItem, subtractItem, deleteItem } = this
@@ -146,8 +148,8 @@ class Cart extends React.Component {
           <header>
             <div className="gnbContainer">
               <div className="leftIcons">
-                <span>일반 장바구니</span>
-                <span>장보기 전용</span>
+                <span>장바구니</span>
+                <span>찜한상품</span>
               </div>
               <div className="rightIcons">
                 <span className="currentPage">장바구니

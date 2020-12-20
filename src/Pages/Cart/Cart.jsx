@@ -124,18 +124,24 @@ class Cart extends React.Component {
     this.props.history.push(`/product/${targetId}`)
   }
 
+  soldOutAlert = () => alert('현재 구매가 불가능한 상품이 있습니다. 해당 상품을 삭제하신 후 주문을 진행해 주십시오.')
+
   backToMainPage = () => {this.props.history.push("/checkout")}
   backToShoppingPage = () => {this.props.history.goBack()}
   goToCheckOutPage = () => {this.props.history.push("/checkout")}
   // goToWishListPage = () => {this.props.history.push("/wishlist")}
 
   render() {
-    const { addCartItem, subtractCartItem, deleteCartItem, selectOneCartItemHandler, goProductDetailPage, goToCheckOutPage } = this
+    const { addCartItem, subtractCartItem, deleteCartItem, selectOneCartItemHandler, goProductDetailPage, goToCheckOutPage, soldOutAlert } = this
     const { cartItems } = this.state
     const selectedItems = cartItems.filter(cartItem => cartItem.isChecked)
-    const totalPrice = selectedItems.map(cartItem => cartItem.price).reduce((a, b) => a + b, 0)
-    const discountPrice = selectedItems.reduce((a, item) => a + item.price*item.saleRate*0.01, 0)
+    const totalPrice = selectedItems.filter(item => item.isInStock).map(cartItem => cartItem.price).reduce((a, b) => a + b, 0)
+    const discountPrice = selectedItems.filter(item => item.isInStock).reduce((a, item) => a + item.price*item.saleRate*0.01, 0)
+    const commaPrice = (price) => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     const checkOutPrice = totalPrice - discountPrice
+
+    console.log(selectedItems.filter(item => item.isInStock))
+
     const NOTICE = [
       "장바구니 상품은 최대 30일간 저장됩니다.",
       "가격, 옵션 등 정보가 변경된 경우 주문이 불가할 수 있습니다.",
@@ -189,13 +195,14 @@ class Cart extends React.Component {
                     url={item.image_url}
                     amount={item.amount}
                     isChecked={item.isChecked}
-                    isInstock={item.isInstock}
+                    isInStock={item.isInStock}
                     addCartItem={addCartItem} 
                     subtractCartItem={subtractCartItem} 
                     deleteCartItem={deleteCartItem} 
                     selectOneCartItemHandler={selectOneCartItemHandler} 
                     goProductDetailPage={goProductDetailPage} 
-                    goToCheckOutPage={goToCheckOutPage} 
+                    goToCheckOutPage={goToCheckOutPage}
+                    commaPrice={commaPrice}
                     />
                 )
               })
@@ -214,28 +221,33 @@ class Cart extends React.Component {
             <div className="summary">
               <div className="totalPrice">
                 <div className="title">총 상품 금액</div>
-                <div className="total">{totalPrice}원</div>
+                <div className="total">{commaPrice(totalPrice)}원</div>
               </div>
               <i className="fas fa-plus" />
               <div className="shippingFee">
                 <div className="title">배송비</div>
-                <div className="Fee">{checkOutPrice > 30000 ? 0 : 3000}원</div>
+                <div className="Fee">{checkOutPrice > 30000 ? 0 : '3,000'}원</div>
               </div>
               <i className="fas fa-minus" />
               <div className="discounted">
                 <div className="title">총 할인 예상 금액</div>
-                <div className="discountPrice">{discountPrice}원</div>
+                <div className="discountPrice">{commaPrice(discountPrice)}원</div>
               </div>
             </div>
             <div className="checkOutPrice">
               <span className="word">총 주문금액</span>
-              <span className="price">{checkOutPrice}</span>
+              <span className="price">{commaPrice(checkOutPrice)}</span>
               <span className="word">원</span>
             </div>
           </div>
           <div className="buttons">
             <div className="toShop">쇼핑 계속하기</div>
-            <div className="toCheckout">주문하기</div>
+            <div 
+              className="toCheckout"
+              onClick={() => {cartItems.filter(item => item.isChecked && !item.isInStock).length > 0
+                ? soldOutAlert()
+                : goToCheckOutPage()}}
+              >주문하기</div>
           </div>
         </div>
       </div>

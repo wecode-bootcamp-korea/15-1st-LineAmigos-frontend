@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
+import CartItem from './CartItem'
 import './Cart.scss';
 
 class Cart extends React.Component {
@@ -129,14 +130,13 @@ class Cart extends React.Component {
   // goToWishListPage = () => {this.props.history.push("/wishlist")}
 
   render() {
-    const { addItem, subtractItem, deleteItem } = this
+    const { addCartItem, subtractCartItem, deleteCartItem, selectOneCartItemHandler, goProductDetailPage, goToCheckOutPage
+    } = this
     const { cartItems } = this.state
     const selectedItems = cartItems.filter(cartItem => cartItem.isChecked)
     const totalPrice = selectedItems.map(cartItem => cartItem.price).reduce((a, b) => a + b, 0)
     const discountPrice = selectedItems.reduce((a, item) => a + item.price*item.saleRate*0.01, 0)
     const checkOutPrice = totalPrice - discountPrice
-    const unavailable = <div className="unavailable">구매불가</div>
-    const soldOut = <div className="soldOut">품절</div>
     const NOTICE = [
       "장바구니 상품은 최대 30일간 저장됩니다.",
       "가격, 옵션 등 정보가 변경된 경우 주문이 불가할 수 있습니다.",
@@ -150,7 +150,7 @@ class Cart extends React.Component {
             <div className="gnbContainer">
               <div className="leftIcons">
                 <span>장바구니</span>
-                <span>찜한상품</span>
+                <span>찜한 상품</span>
               </div>
               <div className="rightIcons">
                 <span className="currentPage">장바구니
@@ -172,61 +172,45 @@ class Cart extends React.Component {
           </header>
           <div className="cartItemList">
             <div className="row title">
-              <div className="checkbox"><input type="checkbox" /></div>
-              <div className="productDetail"></div>
-              <div className="options"></div>
-              <div className="priceInfo"></div>
+              <div className={`checkbox ${this.state.isSelectAllChecked && 'checked'}`}><i className="fas fa-check"/></div>
+              <div className="productDetail title">상품정보</div>
+              <div className="options title">옵션</div>
+              <div className="priceInfo title">상품금액</div>
             </div>
             <ul>
               {
                 cartItems.map((item, index) => {
                   return(
-                    <li key={index} className="row items">
-                      <div className="checkbox"><input type="checkbox" /></div>
-                      <div className="productDetail items">
-
-                        <img alt={item.name} src={item.image_url} />
-
-                        <div className="detailBox">
-                          <div className="detail">라인아미고스</div>
-                          <div className="productName">{item.name}</div>
-                          <div className="price">{item.price}원</div>
-                          <div className="delete"
-                            onClick={deleteItem}></div>
-                        </div>
-                     
-                      </div>
-                      
-                      <div className="options items">
-                        <div className={`option ${!item.isInStock && 'soldOut'}`}>{!item.isInStock && unavailable}사이즈 : 단품</div>
-                        <div className="modify">
-                          <span 
-                            className={`plus ${!item.isInStock && 'soldOut'}`} 
-                            onClick={addItem}></span>
-                          <span className={`amount ${!item.isInStock && 'soldOut'}`}>{item.amount}</span> 
-                          <span 
-                            className={`subtract ${!item.isInStock && 'soldOut'}`}
-                            onClick={subtractItem}></span>
-                        </div>
-                      </div>
-                      
-                      <div className="priceInfo">
-                        <div className="price">{!item.amount && {soldOut}}{item.price}원</div>
-                        <div className={`order ${!item.isInStock && 'soldOut'}`}>주문하기</div>
-                      </div>
-                    </li>
+                    <CartItem 
+                      key={index}
+                      id={item.productId}
+                      name={item.name}
+                      price={item.price}
+                      saleRate={item.saleRate}
+                      url={item.image_url}
+                      amount={item.amount}
+                      isChecked={item.isChecked}
+                      isInstock={item.isInstock}
+                      addCartItem={addCartItem} 
+                      subtractCartItem={subtractCartItem} 
+                      deleteCartItem={deleteCartItem} 
+                      selectOneCartItemHandler={selectOneCartItemHandler} 
+                      goProductDetailPage={goProductDetailPage} 
+                      goToCheckOutPage={goToCheckOutPage} 
+                      />
                   )
                 })
               }
               </ul>
               <div className="row selectActions">
-                <div className="checkbox"><input type="checkbox" /></div>
+                <div className={`checkbox ${this.state.isSelectAllChecked && 'checked'}`}><i className="fas fa-check"/></div>
                 <div className="buttons">
-                  <div className="delete"></div>
-                  <div className="addToWishList"></div>
+                  <div className="delete">선택상품 삭제</div>
+                  <div className="addToWishList">선택상품 찜</div>
                 </div>
               </div>
             </div>
+
             <div className="calculation">
               <div className="summary">
                 <div className="totalPrice">

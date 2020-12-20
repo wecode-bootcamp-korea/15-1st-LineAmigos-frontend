@@ -1,5 +1,13 @@
 @import '../../styles/common.scss';
 
+@mixin table-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $font-size-small;
+  font-weight: $font-weight-medium;
+}
+
 .Cart {
   letter-spacing: -0.5px;
 
@@ -112,13 +120,13 @@
       margin: 30px 0;
       width: 100%;
       height: 400px;
-      // background: #fafafa;
+
       .row {
         display: flex;
         justify-content: flex-start;
         align-items: center;
         width: 100%;
-        height: 130px;
+        // height: 130px;
         &:last-of-type {
           border-bottom: 1px solid #777;
         }
@@ -126,22 +134,26 @@
           height: 48px;
           border-top: 2px solid #000;
         }
-        &.items {
-          border-top: 1px solid #ccc;
-        }
 
         .checkbox {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 24px;
-          height: 100%;
-          background: white;
-          & input {
+          width: 20px;
+          height: 20px;
+          border-radius: 3px;
+          border: 1px solid #ccc;
+          i {
+            color: #ddd;
+            font-size: 12px;
+          }
+          &.checked {
+            background: $primary-color;
             border: none;
-            border-radius: 0px;
-            width: 24px;
-            height: 24px;
+            i {
+              color: white;
+              font-size: 12px;
+            }
           }
         }
 
@@ -152,90 +164,8 @@
           align-items: center;
           width: 560px;
           height: 130px;
-          &:first-of-type {
-            height: 48px;
-          }
-          &.items {
-            border-right: 1px solid #f4f4f4;
-          }
-
-          img {
-            width: 96px;
-            height: 96px;
-            object-fit: cover;
-            cursor: pointer;
-          }
-
-          .detailBox {
-            margin: 0 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            position: relative;
-            width: 100%;
-            height: 92px;
-
-            .detail {
-              display: flex;
-              justify-content: flex-start;
-              align-items: center;
-              position: relative;
-              top: -4px;
-              left: 0;
-              width: 100%;
-              height: 24px;
-              color: #777;
-              font-size: $font-size-extrasmall;
-              font-weight: $font-weight-regular;
-              text-decoration: underline;
-              cursor: pointer;
-            }
-
-            .productName {
-              width: 100%;
-              height: 24px;
-              font-weight: $font-weight-medium;
-              font-size: $font-size-small;
-              cursor: pointer;
-            }
-
-            .price {
-              font-weight: $font-weight-bold;
-              font-size: $font-size-regular;
-            }
-
-            .delete {
-              position: absolute;
-              right: 12px;
-              top: 0;
-              color: #bbb;
-              cursor: pointer;
-              width: 15px;
-              height: 15px;
-              transform: rotate(45deg);
-              -ms-transform: rotate(45deg); /* IE 9 */
-              -webkit-transform: rotate(45deg); /* Safari and Chrome */
-              &:before,
-              &:after {
-                content: '';
-                position: absolute;
-                z-index: -1;
-                background: #c4c4c4;
-              }
-              &:before {
-                left: 9px;
-                width: 1px;
-                margin-left: -15%;
-                height: 100%;
-              }
-              &:after {
-                top: 9px;
-                height: 1px;
-                margin-top: -15%;
-                width: 100%;
-              }
-            }
+          &.title {
+            @include table-title
           }
         }
 
@@ -247,130 +177,8 @@
           width: 400px;
           height: 100%;
           background: #fefefe;
-          &.items {
-            border-right: 1px solid #f4f4f4;
-          }
-
-          .option {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-            margin-top: 19px;
-            padding-bottom: 19px;
-            font-size: $font-size-extrasmall;
-            font-weight: $font-weight-regular;
-            border-bottom: 1px solid #f4f4f4;
-            &.soldOut {
-              color: #999;
-            }
-
-            .unavailable {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              margin-right: 6px;
-              width: 56px;
-              height: 20px;
-              background: #f7552c;
-              font-size: $font-size-supersmall;
-              font-weight: $font-weight-medium;
-              color: white;
-              // border-radius: 3px;
-            }
-          }
-
-          .modify {
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-            margin-bottom: 19px;
-            width: 100%;
-            height: 50px;
-            // background: #999;
-
-            .plus,
-            .amount,
-            .subtract {
-              margin-left: 5px;
-              width: 30px;
-              height: 30px;
-            }
-
-            .plus,
-            .subtract {
-              border: 1px solid #eee;
-              cursor: pointer;
-              &.soldOut {
-                cursor: default;
-              }
-            }
-
-            .amount {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              font-size: $font-size-small;
-              font-weight: $font-weight-medium;
-              &.soldOut {
-                color: #e2e2e2;
-              }
-            }
-
-            .plus {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 30px;
-              height: 30px;
-              position: relative;
-              &:before,
-              &:after {
-                content: '';
-                position: absolute;
-                background: #aaa;
-                &.soldOut {
-                  background: #f4f4f4;
-                }
-              }
-              &:before {
-                left: 50%;
-                width: 1px;
-                height: 17px;
-              }
-
-              &:after {
-                top: 50%;
-                height: 1px;
-                width: 17px;
-              }
-              &.soldOut:after,
-              &.soldOut:before {
-                background: #e2e2e2;
-              }
-            }
-
-            .subtract {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 30px;
-              height: 30px;
-              position: relative;
-              &:before,
-              &:after {
-                content: '';
-                position: absolute;
-                background: #aaa;
-              }
-              &.soldOut:after {
-                background: #e2e2e2;
-              }
-              &:after {
-                top: 50%;
-                height: 1px;
-                width: 16px;
-              }
-            }
+          &.title {
+            @include table-title
           }
         }
 
@@ -383,29 +191,34 @@
           width: 200px;
           height: 100%;
           background: #fefefe;
-
-          .price {
-            margin-bottom: 8px;
-            font-weight: $font-weight-bold;
-            font-size: $font-size-medium;
+          &.title {
+            @include table-title
           }
+        }
+      }
 
-          .order {
+      .selectActions {
+        height: 76px;
+        border: none;
+
+        .buttons {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-left: 19px;
+          width: 200px;
+          height: 32px;
+
+          div {
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 64px;
-            height: 26px;
-            background: $primary-color;
+            width: 96px;
+            height: 32px;
             font-size: $font-size-extrasmall;
-            font-weight: $font-weight-medium;
-            color: white;
-            border-radius: 3px;
-            &.soldOut {
-              background: #fafafa;
-              border: 1px solid #f1f1f1;
-              color: #aaa;
-            }
+            color: #444;
+            border: 1px solid #ddd;
+            border-radius: 4px;
           }
         }
       }

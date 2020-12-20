@@ -1,0 +1,52 @@
+@import '../../../styles/common.scss';
+
+.sideCategotyContainer {
+  cursor: pointer;
+
+  .home {
+    position: relative;
+
+    color: $font-color-gray;
+    font-size: $font-size-regular;
+  }
+
+  .fa-caret-down {
+    margin-left: 5px;
+  }
+}
+
+.displayNone {
+  display: none;
+}
+
+.sideCategoryBox {
+  position: absolute;
+  width: 250px;
+  height: 500px;
+  right: 80px;
+  margin-top: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  border: 1px solid black;
+  z-index: 1;
+  overflow: scroll;
+
+  .listDropDown {
+    list-style: none;
+    color: $font-color-gray;
+    cursor: pointer;
+  }
+
+  li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    font-size: 15px;
+  }
+  li:hover {
+    background-color: whitesmoke;
+    color: darkslateblue;
+    font-weight: bold;
+  }
+}

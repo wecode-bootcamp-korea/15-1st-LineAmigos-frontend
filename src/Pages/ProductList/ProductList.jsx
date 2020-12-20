@@ -3,6 +3,7 @@ import Products from './component/Products'
 // import Filter from './component/Filter'
 import Filters from './component/Filters'
 import './ProductList.scss'
+import SideCategory from './component/SideCategory'
 
 class ProductList extends Component {
   constructor() {
@@ -10,39 +11,49 @@ class ProductList extends Component {
     this.state = {
       productArr: [],
       filterArr: [],
+      categoryArr: [],
+      sideCategory: false,
     }
   }
 
   componentDidMount = () => {
-    fetch('http://localhost:3000/data/productListDate.json')
+    fetch('http://localhost:3007/data/productListDate.json')
       .then((response) => response.json())
       .then((result) => {
         this.setState({
           productArr: result.productListData,
         })
       })
-    fetch('http://localhost:3000/data/filterData.json')
+    fetch('http://localhost:3007/data/filterData.json')
       .then((res) => res.json())
       .then((res) => {
         this.setState({
           filterArr: res.filterData,
         })
       })
+    fetch('http://localhost:3007/data/categories.json')
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+          categoryArr: res.categories,
+        })
+      })
   }
 
-  // componentDidMount = () => {
-  //   fetch('http://localhost:3000/data/filterData.json')
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       this.setState({
-  //         filterArr: res.filterData,
-  //       })
-  //     })
+  hadleSideCategory = () => {
+    this.setState({
+      sideCategory: !this.state.sideCategory,
+    })
+  }
+
+  // goToCategory = () => {
+  //   this.props.history('/')
   // }
 
   render() {
-    console.log(this.state.productArr)
-    console.log(this.state.filterArr)
+    // console.log(this.state.productArr)
+    // console.log(this.state.filterArr)
+    // console.log('카테고리', this.state.categoryArr)
     return (
       <div className='container'>
         <header>
@@ -53,24 +64,12 @@ class ProductList extends Component {
           />
           <div className='headerName'>
             <span className='listName'>NEW</span>
-            <div>
-              <span className='home'>홈 > </span>
-              <select className='listDropDown'>
-                <option>캐릭터</option>
-                <option value selected>
-                  NEW (총 192개)
-                </option>
-                <option>12.17 선물의 날 </option>
-                <option>WINTER SALE</option>
-                <option>브롤리데이</option>
-                <option>THEME</option>
-                <option>BTS21 BABY</option>
-                <option>선물추천</option>
-                <option>SALE</option>
-                <option>토이</option>
-                <option>디자인문구</option>
-              </select>
-            </div>
+            <SideCategory
+              categoryArr={this.state.categoryArr}
+              hadleSideCategory={this.hadleSideCategory}
+              sideCategory={this.state.sideCategory}
+              goToCategory={this.goToCategory}
+            />
           </div>
         </header>
         <Filters filterArr={this.state.filterArr} />

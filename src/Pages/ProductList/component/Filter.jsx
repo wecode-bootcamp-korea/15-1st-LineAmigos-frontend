@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import '../component/Filter.scss'
 
+const filters = [
+  { title: '인기순' },
+  { title: '세글자' },
+  { title: '뀨뀨뀨' },
+  { title: '테스트' },
+]
+
 class Filter extends Component {
   constructor() {
     super()
@@ -9,12 +16,6 @@ class Filter extends Component {
       filterBtn: false,
       filterBtn2: '',
     }
-    // const data = [
-    //   { id: 0, name: '인기도순' },
-    //   { id: 1, name: '판매량순' },
-    //   { id: 2, name: '리뷰순' },
-    //   { id: 3, name: '안녕안녕' },
-    // ]
   }
 
   // handleFilter = () => {
@@ -31,15 +32,19 @@ class Filter extends Component {
   // }
 
   handleFilter = (el) => {
-    let test = !el.target.id
+    console.log(this.props.filters)
     this.props.filters.map((item) => {
-      console.log('맵돌린애', item.id)
-      console.log('클릭당한애', el.target.id)
-      if (el.target.id == item.id) {
+      console.log('item.id', item.id)
+      console.log('target.id', el.target.id)
+
+      if (el.target.id !== item.id) {
+        this.setState({
+          filterBtn: false,
+        })
+      } else if (el.target.id === item.id) {
         this.setState({
           filterBtn: !this.state.filterBtn,
         })
-        test = true
       }
     })
     // console.log(this.state.filterBtn)
@@ -48,8 +53,8 @@ class Filter extends Component {
   }
 
   render() {
-    console.log('어레이', this.props.filters)
-    console.log(this.state.filterBtn)
+    // console.log('어레이', this.props.filters)
+    // console.log(this.state.filterBtn)
     return (
       <div className='filterContainer'>
         <i
@@ -72,3 +77,18 @@ class Filter extends Component {
 }
 
 export default Filter
+
+// <i
+// className={
+//   this.state.filterBtn
+//     ? 'fas fa-check fasBlock'
+//     : 'fas fa-check fasNone'
+// }
+// />
+// <li
+// id={this.props.filter.id}
+// className='filter'
+// onClick={this.handleFilter}
+// >
+// {this.props.filter.name}
+// </li>

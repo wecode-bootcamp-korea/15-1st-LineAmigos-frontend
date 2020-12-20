@@ -221,5 +221,47 @@
       "categoryName": "더보기",
       "subCategories": []
     }
+  ],
+  "cartItems" : [
+    {
+      "menu": "리빙",
+      "productId": 20,
+      "name": "몽글몽글 꿈나라행 베개",
+      "price": 24000,
+      "saleRate": 30,
+      "image_url": "https://images.unsplash.com/photo-1575277340599-43db25b63b6f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=3750&q=80",
+      "stock": 12,
+      "isChecked": false
+    },
+    {
+      "menu": "리빙",
+      "productId": 5,
+      "name": "혼자서도 잘해요 건강 샐러드통",
+      "price": 20000,
+      "saleRate": 25,
+      "image_url": "https://images.unsplash.com/photo-1604908814792-f3d42c558764?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1000&q=80",
+      "stock": 15,
+      "isChecked": true
+    },
+    {
+      "menu": "문구",
+      "productId": 54,
+      "name": "아이디어가 샘솟는 라인아미고스 공책 시리즈 (4세트)",
+      "price": 12500,
+      "saleRate": 0,
+      "image_url": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
+      "stock": 32,
+      "isChecked": true
+    },
+    {
+      "menu": "SALE",
+      "productId": 12,
+      "name": "[이월상품 세일] 과일모양 튜브 + 공기주입기 세트",
+      "price": 16000,
+      "saleRate": 60,
+      "image_url": "https://images.unsplash.com/photo-1528129569480-450ab57e9499?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1314&q=80",
+      "stock": 5,
+      "isChecked": false
+    }
   ]
 }

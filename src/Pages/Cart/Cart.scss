@@ -14,23 +14,23 @@
       justify-content: center;
       align-items: center;
       width: 100%;
-      background: #999;
+      // background: #999;
 
       .gnbContainer {
-        margin-top: 18px;
+        margin-top: 24px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
         height: 70px;
-        background: #999;
+        // background: #999;
 
         .leftIcons {
           height: 100%;
           display: flex;
           justify-content: flex-start;
           align-items: center;
-          background: #eee;
+          // background: #eee;
 
           span {
             font-size: 20px;
@@ -53,7 +53,7 @@
           align-items: center;
           width: 300px;
           height: 20px;
-          background: #ddd;
+          // background: #ddd;
 
           span {
             margin-left: 6px;
@@ -75,13 +75,137 @@
       }
 
       .notice {
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 4px 8px;
+        margin: 12px 0;
+        width: 1260px;
         height: 80px;
+        background: #f4f4f4;
+
+        border: 1px solid #dbdbdb;
         
         li {
-          
+          margin: 4px 0;
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          font-size: $font-size-extrasmall;
+          font-weight: $font-weight-medium;
+          color: #777;
+          list-style-type: none;
+          &:first-of-type {
+            color: $primary-color;
+          }
           i {
-            font-size: 16px;
+            margin: 0 8px;
+            font-size: 3px;
+          }
+        }
+      }
+    }
+
+    .cartItemList {
+      margin: 30px 0;
+      width: 100%;
+      height: 400px;
+      background: #fafafa;
+      .row {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: 130px;
+        background: #ddd;
+        &.title {
+          height: 48px;
+          border-top: 2px solid #000;
+        }
+        &.items {
+          border-top: 1px solid #ccc;
+        }
+
+        .checkbox {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 24px;
+          height: 100%;
+          background: white;
+          & input {
+            border: none;
+            border-radius: 0px;
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        .productDetail {
+          margin-left: 19px;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          width: 530px;
+          height: 130px;
+          border-right: 1px solid;
+          &:first-of-type {
+            height: 48px;
+          }
+
+          img {
+            width: 92px;
+            height: 92px;
+            object-fit: cover;
+            cursor: pointer;
+          }
+
+          .detailBox {
+            margin: 0 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            position: relative;
+            width: 100%;
+            // height: 24px;
+            // line-height: 30px;
+
+            .detail {
+              margin: 6px 0;
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              width: 100%;
+              height: 24px;
+              color: #777;
+              font-size: $font-size-extrasmall;
+              text-decoration: underline;
+              cursor: pointer;
+            }
+
+            .productName {
+              width: 100%;
+              height: 24px;
+              font-weight: $font-weight-bold;
+              font-size: $font-size-small;
+              cursor: pointer;
+            }
+
+            .price {
+              font-weight: $font-weight-bold;
+              font-size: $font-size-regular;
+            }
+
+            .fa-times {
+              position: absolute;
+              right: 12px;
+              top: 0;
+              color: #bbb;
+              cursor: pointer;
+            }
           }
         }
       }

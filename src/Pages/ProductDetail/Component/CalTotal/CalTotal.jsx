@@ -14,11 +14,6 @@ class CalTotal extends Component {
         this.setState({
             count: e.target.value,
         })}
-        else{
-            this.setState({
-                count: 1,
-            })
-        }
     }
 
     Minus = () => {
@@ -26,12 +21,6 @@ class CalTotal extends Component {
         this.setState({
             count: this.state.count-1,
         })}
-        else{
-            this.setState({
-                count: 1,
-            })
-        }
-        console.log(this.state.count)
     }
 
     Plus  = () => {
@@ -39,20 +28,10 @@ class CalTotal extends Component {
             this.setState({
                 count: this.state.count+1,
             })}
-            else{
-                this.setState({
-                    count: 1,
-                })
-            }
-        console.log(this.state.count)
     }
 
     render() {
-
         const {price} = this.props;
-        console.log('a', typeof(this.state.count))
-        console.log('b', typeof(this.props.price))
-        
 
         return (
             <div className="CalTotal">

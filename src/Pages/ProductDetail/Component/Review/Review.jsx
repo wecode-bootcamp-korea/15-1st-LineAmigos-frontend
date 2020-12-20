@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import './Review.scss';
 
-
-const fullStar = <i className="fas fa-star"/>;
-const emptyStar = <i className="far fa-star"/>;
-
 const fullThermo = <i className="fas fa-thermometer-full"/>;
 const halfThermo = <i className="fas fa-thermometer-half"/>;
 const emptyThermo = <i className="fas fa-thermometer-empty"/>;
@@ -12,6 +8,8 @@ const emptyThermo = <i className="fas fa-thermometer-empty"/>;
 class Review extends Component {
 
     printStars= (ratingArr)=>{
+       const fullStar = <i className="fas fa-star"/>;
+       const emptyStar = <i className="far fa-star"/>;
        const ave = Math.floor((ratingArr.reduce((acc, curr)=> acc+curr))/ratingArr.length);
        const starArr = [];
 
@@ -21,7 +19,6 @@ class Review extends Component {
        for(let i=0; i<5-ave; i++){
            starArr.push(emptyStar)
        }
-
        return starArr
     }
 
@@ -33,7 +30,6 @@ class Review extends Component {
                 rateCount ++;
             }
         }
-
         return rateCount
     }
 
@@ -48,16 +44,10 @@ class Review extends Component {
         let minIdx = rateArr.indexOf(Math.min(...rateArr));
 
         for(let i=0; i<rateArr.length; i++){
-            if(i === maxIdx){
-                rateArr[i] = <li><span className="thermoGraph">{fullThermo}</span><span className="points">{5-i}점</span></li>
-            }
-            else if(i===minIdx){
-                rateArr[i] = <li><span className="thermoGraph">{emptyThermo}</span><span className="points">{5-i}점</span></li>
-            }
-            else{
-                rateArr[i] = <li><span className="thermoGraph">{halfThermo}</span><span className="points">{5-i}점</span></li>
-            }
+            rateArr[i] = <li><span className="thermoGraph">{halfThermo}</span><span className="points">{5-i}점</span></li>
         }
+        rateArr[maxIdx] = <li><span className="thermoGraph">{fullThermo}</span><span className="points">{5-maxIdx}점</span></li>
+        rateArr[minIdx] = <li><span className="thermoGraph">{emptyThermo}</span><span className="points">{5-minIdx}점</span></li>
 
         return rateArr
     }
@@ -66,7 +56,7 @@ class Review extends Component {
         const {reviewRate} = this.props;
         return (
             <div>
-                <div className="reviewEventContainer">
+                <div id="reviewAnchor" className="reviewEventContainer">
                     <div className="reviewheader">
                     <header>상품리뷰</header>
                         <div>

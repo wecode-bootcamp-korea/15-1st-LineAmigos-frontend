@@ -3,9 +3,7 @@ import './Product.scss'
 
 class Product extends Component {
     render() {
-
         const {imgUrl, productName, price} = this.props;
-
         return (
             <div className="product">
                 <div className="productImg">

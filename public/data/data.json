@@ -6,7 +6,7 @@
         "date": "20.11.22",
         "size": "단품",
         "imgUrl": "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
-        "reviewRate": 1,
+        "reviewRate": 5,
         "reviewContent": "good",
         "price": 12000,
         "productName": "라인"
@@ -16,7 +16,7 @@
         "userName": "wecode2",
         "date": "20.11.22",
         "imgUrl": "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
-        "reviewRate": 1,
+        "reviewRate": 3,
         "reviewContent": "good",
         "price": 11000,
         "productName": "라인"

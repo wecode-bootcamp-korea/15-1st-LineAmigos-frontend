@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import ImgSlide from './ImgSlide/ImgSlide';
 import './ImgPurchInfo.scss';
 
 class ImgPurchInfo extends Component {
@@ -73,23 +76,22 @@ class ImgPurchInfo extends Component {
 
     render() {
         const {sizeBtn, price, count} = this.state;
+        const {dataList}=this.props;
         return (
             <div className="ImgPurchInfo">
                 <div className="imgEx">
-                    <div className="bigImgContainer">
-                        <img className="bigImg" alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdBUkL6CL9geDn8RcmxCtrjLzSIfL3seMFA&usqp=CAU"/>
-                    </div>
-                    <div className="smallImgContainer">
+                    <ImgSlide imgUrl={this.props.dataList.map(el=>el.imgUrl)} id={this.props.dataList.map(el=>el.id)}/>
+                    {/* <div className="smallImgContainer">
                         {[...Array(5)].map((e, id) => <img key={id} alt="smallImgExamples" className="smallImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAdBUkL6CL9geDn8RcmxCtrjLzSIfL3seMFA&usqp=CAU" />)}
-                    </div>
+                    </div> */}
                     <div className="smallReviewRatings">
                         <div>
                             <span>리뷰수</span>
-                            <span className="smallCount">0</span>
+                            <span className="smallCount">{dataList&&dataList.map(el=>el.reviewRate).length}</span>
                         </div>
                         <div>
                             <span>사용자 총 평점</span>
-                            <span className="smallCount">0.0/5</span>
+                            <span className="smallCount"> 5.0/5</span>
                         </div>
                     </div>        
                 </div>
@@ -97,7 +99,7 @@ class ImgPurchInfo extends Component {
                     <div className="nameAndPrice">
                         <span className="productName">라인프렌즈 BT21 MANG BABY 부클 버블티 백참</span>
                         <div className="priceContainer">
-                            <span className="priceNumber">22,000</span>
+                            <span className="priceNumber">{this.state.price}</span>
                             <span className="priceWon">원</span>
                         </div>
                     </div>
@@ -159,7 +161,6 @@ class ImgPurchInfo extends Component {
                             </div>
                         </div>
                     </div>
-                    {/* {this.state.showCalComp&& <CalTotal />}      */}
                     <div className="PurchCartButtons">
                         <div className="totalQP">
                             <span className="totPriceSpan">

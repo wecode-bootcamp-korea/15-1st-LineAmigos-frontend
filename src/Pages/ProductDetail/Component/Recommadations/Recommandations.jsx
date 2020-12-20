@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import './Recommandations.scss'
 import Product from '../Product';
-
-
+import './Recommandations.scss'
 
 class Recommandations extends Component {
     render() {

@@ -17,11 +17,11 @@ class ProductList extends Component {
   }
 
   componentDidMount = () => {
-    fetch('http://localhost:3007/data/productListDate.json')
+    fetch('http://10.168.1.149:8000/product/get')
       .then((response) => response.json())
-      .then((result) => {
+      .then((response) => {
         this.setState({
-          productArr: result.productListData,
+          productArr: response.PRODUCTS,
         })
       })
     fetch('http://localhost:3007/data/filterData.json')
@@ -31,11 +31,11 @@ class ProductList extends Component {
           filterArr: res.filterData,
         })
       })
-    fetch('http://localhost:3007/data/categories.json')
+    fetch('http://10.168.1.149:8000/product/get')
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          categoryArr: res.categories,
+          categoryArr: res.PRODUCTS,
         })
       })
   }
@@ -51,7 +51,7 @@ class ProductList extends Component {
   // }
 
   render() {
-    // console.log(this.state.productArr)
+    console.log(this.state.productArr.src)
     // console.log(this.state.filterArr)
     // console.log('카테고리', this.state.categoryArr)
     return (

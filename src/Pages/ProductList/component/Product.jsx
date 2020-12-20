@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
 import '../component/Product.scss'
 
 class Product extends Component {
@@ -6,6 +7,7 @@ class Product extends Component {
     super()
     this.state = {
       wishBtn: false,
+      detailModal: false,
       reviewRateContainer: true,
       price: '',
     }
@@ -14,6 +16,12 @@ class Product extends Component {
   handleWishBtn = () => {
     this.setState({
       wishBtn: !this.state.wishBtn,
+    })
+  }
+
+  handleDetailModal = () => {
+    this.setState({
+      detailModal: !this.setState.detailModal,
     })
   }
 
@@ -33,12 +41,21 @@ class Product extends Component {
     }
   }
 
+  goToDetail = () => {
+    this.props.history.push(`/productdetail/${this.props.id}`)
+  }
+
   render() {
-    const { src, name, review, rate } = this.props.product
+    const { product_image, name, review, rate } = this.props.product
     return (
       <div className='productContainer'>
         <li className='productList'>
-          <img alt='product' className='productImg' src={src} />
+          <img
+            alt='product'
+            className='productImg'
+            src={product_image}
+            onClick={this.goToDetail}
+          />
           <div className='hoverContainer'>
             <div
               className={
@@ -55,7 +72,9 @@ class Product extends Component {
               />
             </div>
             <div className='hoverViewBox'>
-              <span className='hoverView'>+</span>
+              <span className='hoverView' onClick={this.handleDetailModal}>
+                +
+              </span>
               {/* <i className='fas fa-plus hoverView' /> */}
             </div>
           </div>
@@ -86,4 +105,4 @@ class Product extends Component {
   }
 }
 
-export default Product
+export default withRouter(Product)

@@ -3,11 +3,13 @@ import Product from '../component/Product'
 import '../component/products.scss'
 class Products extends Component {
   render() {
+    console.log(this.props.proudctArr)
     return (
       <div>
         <ul>
           {this.props.productArr.map((product) => (
             <Product
+              id={product.id}
               product={product}
               // onWishBtn={this.props.onWishBtn}
               // wishBtn={this.props.wishBtn}

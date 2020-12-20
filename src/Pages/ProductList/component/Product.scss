@@ -6,14 +6,15 @@
   .productList {
     position: relative;
     width: 262px;
-    height: 315px;
+    height: 345px;
     margin: 20px 0;
     padding: 0 15px;
 
     .productImg {
       width: 232px;
-      height: 232px;
+      height: 262px;
       cursor: pointer;
+      object-fit: cover;
       // z-index: -1;
     }
 

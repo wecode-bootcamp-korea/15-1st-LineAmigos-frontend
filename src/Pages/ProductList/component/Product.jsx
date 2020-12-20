@@ -7,7 +7,6 @@ class Product extends Component {
     super()
     this.state = {
       wishBtn: false,
-      detailModal: false,
       reviewRateContainer: true,
       price: '',
     }
@@ -16,12 +15,6 @@ class Product extends Component {
   handleWishBtn = () => {
     this.setState({
       wishBtn: !this.state.wishBtn,
-    })
-  }
-
-  handleDetailModal = () => {
-    this.setState({
-      detailModal: !this.setState.detailModal,
     })
   }
 
@@ -45,7 +38,11 @@ class Product extends Component {
     this.props.history.push(`/productdetail/${this.props.id}`)
   }
 
+  handleDetailModal = () => {
+    this.props.onModal(this.props.modal)
+  }
   render() {
+    console.log('요기', this.props.onModal)
     const { product_image, name, review, rate } = this.props.product
     return (
       <div className='productContainer'>
@@ -71,10 +68,8 @@ class Product extends Component {
                 }
               />
             </div>
-            <div className='hoverViewBox'>
-              <span className='hoverView' onClick={this.handleDetailModal}>
-                +
-              </span>
+            <div className='hoverViewBox' onClick={this.handleDetailModal}>
+              <span className='hoverView'>+</span>
               {/* <i className='fas fa-plus hoverView' /> */}
             </div>
           </div>

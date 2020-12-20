@@ -11,8 +11,7 @@ class Products extends Component {
             <Product
               id={product.id}
               product={product}
-              // onWishBtn={this.props.onWishBtn}
-              // wishBtn={this.props.wishBtn}
+              onModal={this.props.onModal}
             />
           ))}
         </ul>

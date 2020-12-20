@@ -1,13 +1,6 @@
 import React, { Component } from 'react'
 import '../component/Filter.scss'
 
-const filters = [
-  { title: '인기순' },
-  { title: '세글자' },
-  { title: '뀨뀨뀨' },
-  { title: '테스트' },
-]
-
 class Filter extends Component {
   constructor() {
     super()

@@ -11,17 +11,17 @@ class CategoriesSlider extends Component {
   }
 
   componentDidMount = () => {
-    fetch('/data/productsInfos.json')
+    fetch('http://10.168.1.149:8000/product/get')
       .then(response => response.json())
       .then(data => {
         this.setState({
-          categories: data.categories,
+          categories: data.PRODUCTS,
         })
       }).catch(err => console.log(err))
   }
 
-  gotoProductList = (id) => {
-    this.props.history.push(`/productList/${id}`)
+  gotoProductList = () => {
+    this.props.history.push("/productList")
   }
 
   render() {
@@ -41,14 +41,14 @@ class CategoriesSlider extends Component {
       <h3>카테고리 바로가기</h3>
         <Slider {...settings}>
         {categories &&
-          categories.map((category, index) => {
+          categories.map((category) => {
             return(
               <li 
-                key={index} 
+                key={category.product_category} 
                 className="category"
-                onClick={() => gotoProductList(category.id)}>
-                  <img alt="Category" src={category.imageUrl} />
-                  <span className="productInfo">{category.category}
+                onClick={() => gotoProductList()}>
+                  <img alt="Category" src={category.product_image} />
+                  <span className="productInfo">{category.product_menu}
                   <i className="fas fa-chevron-right" />
                   </span>
               </li>

@@ -16,9 +16,10 @@
     filter: opacity(.5) drop-shadow(0 0 0 #6c83c7);
   }
 
-  div {
+  .categoryItem {
     font-size: $font-size-small;
     font-weight: $font-weight-medium;
+
   }
 
   img {
@@ -40,6 +41,8 @@
     position: absolute;
     top: 45px;
     left: 0;
+    font-size: $font-size-small;
+    font-weight: $font-weight-medium;
     display: none;
     &.open {
       display: block;

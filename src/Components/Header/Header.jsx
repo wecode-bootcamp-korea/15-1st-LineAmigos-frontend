@@ -64,21 +64,21 @@ class Header extends React.Component {
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
-    fetch('/data/productsInfos.json')
+    fetch('http://10.168.1.149:8000/product/menu')
       .then(response => response.json())
       .then(data => {
-        const categories = data.navCategories.map((item) => {
+        const categories = data.main.map((item) => {
           const category = {
-            id: item.categoryId,
-            category: item.categoryName,
-            subCategories: item.subCategories,
+            id: item.id,
+            category: item.menu,
+            subCategories: item.categories,
             isCategoryOpen: false,
           }
           return category
         })
         this.setState({
           categoriesList: categories,
-          searchList: data.products,
+          // searchList: data.products,
         })
       }).catch(err => console.log(err))
   }
@@ -94,7 +94,6 @@ class Header extends React.Component {
       product.productName.toLowerCase().includes(searchValue.toLowerCase()) && product)
     localStorage.getItem('token') && this.setState({isloggedIn: true})
     const myPage = isloggedIn && <span className="gnbBtn myPage">마이페이지</span>
-
     return (
       <header 
         className={`Header ${isNavFixed && 'scrolled'} ${isNavShowing && 'show'}`}

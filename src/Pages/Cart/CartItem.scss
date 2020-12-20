@@ -105,8 +105,19 @@
         }
 
         .price {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
           font-weight: $font-weight-bold;
           font-size: $font-size-regular;
+
+          .original {
+            margin-left: 6px;
+            font-weight: $font-weight-regular;
+            font-size: $font-size-extrasmall;
+            color: #777;
+            text-decoration: line-through;
+          }
         }
 
         .delete {
@@ -238,13 +249,13 @@
           &:before {
             left: 50%;
             width: 1px;
-            height: 17px;
+            height: 18px;
           }
 
           &:after {
             top: 50%;
             height: 1px;
-            width: 17px;
+            width: 18px;
           }
           &.soldOut:after,
           &.soldOut:before {

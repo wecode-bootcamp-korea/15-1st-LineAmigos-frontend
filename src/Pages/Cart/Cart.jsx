@@ -124,15 +124,51 @@ class Cart extends React.Component {
     this.props.history.push(`/product/${targetId}`)
   }
 
-  soldOutAlert = () => alert('현재 구매가 불가능한 상품이 있습니다. 해당 상품을 삭제하신 후 주문을 진행해 주십시오.')
+  // soldOutAlert = () => alert('현재 구매가 불가능한 상품이 있습니다. 해당 상품을 삭제하신 후 주문을 진행해 주십시오.')
+  // notSelectedAlert = () => alert('주문하실 상품을 선택해주세요.')
+
+  goToCheckOutPage = () => {
+    const { cartItems } = this.state
+    if (cartItems.filter(item => item.isChecked && !item.isInStock).length > 0) {
+      alert('현재 구매가 불가능한 상품이 있습니다. 해당 상품을 삭제하신 후 주문을 진행해 주십시오.')
+    } else if (cartItems.filter(item => item.isChecked).length < 1) {
+      alert('주문하실 상품을 선택해주세요.')
+    } else {
+      fetch('API', {
+        method: 'POST',
+        body: {
+          // id: id
+        }
+      }).then(res => res.json())
+        .then(res => res.MESSAGE === 'SUCCESS' &&
+          this.props.history.push("/checkout"))
+    }
+  }
+
+  goToSingleCheckOutPage = (e) => {
+    const { id } = e.target.id
+    const { cartItems } = this.state
+    const targetItem = cartItems.filter(cartItem => cartItem.productId === id)
+    if (!targetItem.isChecked) {
+      alert('')
+    } else {
+      fetch('API', {
+        method: 'POST',
+        body: {
+          // id: targetItem.id
+        }
+      }).then(res => res.json())
+        .then(res => res.MESSAGE === 'SUCCESS' &&
+          this.props.history.push("/checkout"))
+    }
+  }
 
   backToMainPage = () => {this.props.history.push("/checkout")}
   backToShoppingPage = () => {this.props.history.goBack()}
-  goToCheckOutPage = () => {this.props.history.push("/checkout")}
   // goToWishListPage = () => {this.props.history.push("/wishlist")}
 
   render() {
-    const { addCartItem, subtractCartItem, deleteCartItem, selectOneCartItemHandler, goProductDetailPage, goToCheckOutPage, soldOutAlert } = this
+    const { addCartItem, subtractCartItem, deleteCartItem, selectOneCartItemHandler, goProductDetailPage, goToCheckOutPage, soldOutAlert, notSelectedAlert } = this
     const { cartItems } = this.state
     const selectedItems = cartItems.filter(cartItem => cartItem.isChecked)
     const totalPrice = selectedItems.filter(item => item.isInStock).map(cartItem => cartItem.price).reduce((a, b) => a + b, 0)
@@ -140,7 +176,6 @@ class Cart extends React.Component {
     const commaPrice = (price) => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     const checkOutPrice = totalPrice - discountPrice
 
-    console.log(selectedItems.filter(item => item.isInStock))
 
     const NOTICE = [
       "장바구니 상품은 최대 30일간 저장됩니다.",
@@ -244,9 +279,7 @@ class Cart extends React.Component {
             <div className="toShop">쇼핑 계속하기</div>
             <div 
               className="toCheckout"
-              onClick={() => {cartItems.filter(item => item.isChecked && !item.isInStock).length > 0
-                ? soldOutAlert()
-                : goToCheckOutPage()}}
+              onClick={goToCheckOutPage}
               >주문하기</div>
           </div>
         </div>

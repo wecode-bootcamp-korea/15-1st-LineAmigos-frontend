@@ -6,6 +6,8 @@ class CartItem extends Component {
   render() {
     const { id, name, price, saleRate, url, amount, isChecked, isInStock, addCartItem, subtractCartItem, deleteCartItem, selectOneCartItemHandler, goProductDetailPage, goToCheckOutPage } = this.props
     const commaPrice = (price) => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    const discountedPrice = price*(100-saleRate)*0.01
+    const originalPriceEl = <div className='original'>{commaPrice(price)}</div>
     const unavailable = <div className="unavailable">구매불가</div>
     const ifSoldOutAddThisClass = !isInStock && 'soldOut'
 
@@ -26,7 +28,10 @@ class CartItem extends Component {
               <div 
                 className="productName"
                 onClick={goProductDetailPage}>{name}</div>
-              <div className="price">{commaPrice(price)}원</div>
+              <div className="price">
+                <div className="discounted">{commaPrice(discountedPrice)}원</div>
+                {saleRate !== 0 && originalPriceEl}
+              </div>
               <div className="delete"
                 onClick={deleteCartItem}></div>
             </div>

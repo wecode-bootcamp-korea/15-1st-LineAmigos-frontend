@@ -130,8 +130,7 @@ class Cart extends React.Component {
   // goToWishListPage = () => {this.props.history.push("/wishlist")}
 
   render() {
-    const { addCartItem, subtractCartItem, deleteCartItem, selectOneCartItemHandler, goProductDetailPage, goToCheckOutPage
-    } = this
+    const { addCartItem, subtractCartItem, deleteCartItem, selectOneCartItemHandler, goProductDetailPage, goToCheckOutPage } = this
     const { cartItems } = this.state
     const selectedItems = cartItems.filter(cartItem => cartItem.isChecked)
     const totalPrice = selectedItems.map(cartItem => cartItem.price).reduce((a, b) => a + b, 0)
@@ -179,66 +178,67 @@ class Cart extends React.Component {
             </div>
             <ul>
               {
-                cartItems.map((item, index) => {
-                  return(
-                    <CartItem 
-                      key={index}
-                      id={item.productId}
-                      name={item.name}
-                      price={item.price}
-                      saleRate={item.saleRate}
-                      url={item.image_url}
-                      amount={item.amount}
-                      isChecked={item.isChecked}
-                      isInstock={item.isInstock}
-                      addCartItem={addCartItem} 
-                      subtractCartItem={subtractCartItem} 
-                      deleteCartItem={deleteCartItem} 
-                      selectOneCartItemHandler={selectOneCartItemHandler} 
-                      goProductDetailPage={goProductDetailPage} 
-                      goToCheckOutPage={goToCheckOutPage} 
-                      />
-                  )
-                })
-              }
-              </ul>
-              <div className="row selectActions">
-                <div className={`checkbox ${this.state.isSelectAllChecked && 'checked'}`}><i className="fas fa-check"/></div>
-                <div className="buttons">
-                  <div className="delete">선택상품 삭제</div>
-                  <div className="addToWishList">선택상품 찜</div>
-                </div>
+              cartItems.map((item, index) => {
+                return(
+                  <CartItem 
+                    key={index}
+                    id={item.productId}
+                    name={item.name}
+                    price={item.price}
+                    saleRate={item.saleRate}
+                    url={item.image_url}
+                    amount={item.amount}
+                    isChecked={item.isChecked}
+                    isInstock={item.isInstock}
+                    addCartItem={addCartItem} 
+                    subtractCartItem={subtractCartItem} 
+                    deleteCartItem={deleteCartItem} 
+                    selectOneCartItemHandler={selectOneCartItemHandler} 
+                    goProductDetailPage={goProductDetailPage} 
+                    goToCheckOutPage={goToCheckOutPage} 
+                    />
+                )
+              })
+            }
+            </ul>
+            <div className="row selectActions">
+              <div className={`checkbox ${this.state.isSelectAllChecked && 'checked'}`}><i className="fas fa-check"/></div>
+              <div className="buttons">
+                <div className="delete">선택상품 삭제</div>
+                <div className="addToWishList">선택상품 찜</div>
               </div>
-            </div>
-
-            <div className="calculation">
-              <div className="summary">
-                <div className="totalPrice">
-                  <div className="title">총 상품금액</div>
-                  <div className="total">{totalPrice}원</div>
-                </div>
-                <i className="fas fa-plus" />
-                <div className="shippingFee">
-                  <div className="title">배송비</div>
-                  <div className="Fee">{checkOutPrice > 30000 ? 0 : 3000}원</div>
-                </div>
-                <i className="fas fa-minus" />
-                <div className="discounted">
-                  <div className="title">총 할인예상금액</div>
-                  <div className="discountPrice">{discountPrice}원</div>
-                </div>
-              </div>
-              <div className="checkOutPrice">
-                <span>총 주문금액</span>
-                <span>{checkOutPrice}원</span>
-              </div>
-            </div>
-            <div className="buttons">
-              <div className="toShop">쇼핑 계속하기</div>
-              <div className="toCheckout">주문하기</div>
             </div>
           </div>
+
+          <div className="calculation">
+            <div className="summary">
+              <div className="totalPrice">
+                <div className="title">총 상품 금액</div>
+                <div className="total">{totalPrice}원</div>
+              </div>
+              <i className="fas fa-plus" />
+              <div className="shippingFee">
+                <div className="title">배송비</div>
+                <div className="Fee">{checkOutPrice > 30000 ? 0 : 3000}원</div>
+              </div>
+              <i className="fas fa-minus" />
+              <div className="discounted">
+                <div className="title">총 할인 예상 금액</div>
+                <div className="discountPrice">{discountPrice}원</div>
+              </div>
+            </div>
+            <div className="checkOutPrice">
+              <span className="word">총 주문금액</span>
+              <span className="price">{checkOutPrice}</span>
+              <span className="word">원</span>
+            </div>
+          </div>
+          <div className="buttons">
+            <div className="toShop">쇼핑 계속하기</div>
+            <div className="toCheckout">주문하기</div>
+          </div>
         </div>
+      </div>
       );
   }
 }

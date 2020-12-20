@@ -136,6 +136,7 @@ class Cart extends React.Component {
     const discountPrice = selectedItems.reduce((a, item) => a + item.price*item.saleRate*0.01, 0)
     const checkOutPrice = totalPrice - discountPrice
     const unavailable = <div className="unavailable">구매불가</div>
+    const soldOut = <div className="soldOut">품절</div>
     const NOTICE = [
       "장바구니 상품은 최대 30일간 저장됩니다.",
       "가격, 옵션 등 정보가 변경된 경우 주문이 불가할 수 있습니다.",
@@ -182,35 +183,36 @@ class Cart extends React.Component {
                   return(
                     <li key={index} className="row items">
                       <div className="checkbox"><input type="checkbox" /></div>
-                      <div className="productDetail">
+                      <div className="productDetail items">
 
                         <img alt={item.name} src={item.image_url} />
 
                         <div className="detailBox">
                           <div className="detail">라인아미고스</div>
-                          <div className="productName productItems">{item.name}</div>
+                          <div className="productName">{item.name}</div>
                           <div className="price">{item.price}원</div>
-                          <i className="fas fa-times"
-                            onClick={deleteItem} />
+                          <div className="delete"
+                            onClick={deleteItem}></div>
                         </div>
                      
                       </div>
                       
-                      <div className="options">
-                        <div className="option">사이즈: 단품</div>
+                      <div className="options items">
+                        <div className={`option ${!item.isInStock && 'soldOut'}`}>{!item.isInStock && unavailable}사이즈 : 단품</div>
                         <div className="modify">
                           <span 
-                            className="plus" 
-                            onClick={addItem}/> 
-                          <span>{item.stock}</span> 
+                            className={`plus ${!item.isInStock && 'soldOut'}`} 
+                            onClick={addItem}></span>
+                          <span className={`amount ${!item.isInStock && 'soldOut'}`}>{item.amount}</span> 
                           <span 
-                            className="subtract" 
-                            onClick={subtractItem}/>
+                            className={`subtract ${!item.isInStock && 'soldOut'}`}
+                            onClick={subtractItem}></span>
                         </div>
                       </div>
+                      
                       <div className="priceInfo">
-                        <div className="price">{!item.stock && {unavailable}}{item.price}원</div>
-                        <div className="order">주문하기</div>
+                        <div className="price">{!item.amount && {soldOut}}{item.price}원</div>
+                        <div className={`order ${!item.isInStock && 'soldOut'}`}>주문하기</div>
                       </div>
                     </li>
                   )

@@ -230,8 +230,9 @@
       "price": 24000,
       "saleRate": 30,
       "image_url": "https://images.unsplash.com/photo-1575277340599-43db25b63b6f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=3750&q=80",
-      "stock": 12,
-      "isChecked": false
+      "amount": 1,
+      "isChecked": false,
+      "isInStock": true
     },
     {
       "menu": "리빙",
@@ -240,8 +241,9 @@
       "price": 20000,
       "saleRate": 25,
       "image_url": "https://images.unsplash.com/photo-1604908814792-f3d42c558764?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1000&q=80",
-      "stock": 15,
-      "isChecked": true
+      "amount": 1,
+      "isChecked": true,
+      "isInStock": true
     },
     {
       "menu": "문구",
@@ -250,8 +252,9 @@
       "price": 12500,
       "saleRate": 0,
       "image_url": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80",
-      "stock": 32,
-      "isChecked": true
+      "amount": 2,
+      "isChecked": true,
+      "isInStock": true
     },
     {
       "menu": "SALE",
@@ -260,8 +263,9 @@
       "price": 16000,
       "saleRate": 60,
       "image_url": "https://images.unsplash.com/photo-1528129569480-450ab57e9499?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1314&q=80",
-      "stock": 5,
-      "isChecked": false
+      "amount": 1,
+      "isChecked": false,
+      "isInStock": false
     }
   ]
 }

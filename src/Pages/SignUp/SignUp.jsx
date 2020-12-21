@@ -16,38 +16,33 @@ class SignUp extends Component {
       countryCode: '82',
       phoneNumber: '',
       gender: '초기',
-      emailValidationMassage: '',
-      pwValidationMassage: '',
-      rePwValidationMassage: '',
-      nameValidationMassage: '',
-      birthMonthValidationMassage: '',
-      birthDayValidationMassage: '',
-      genderValidationMassage: '',
+      isValid: false,
     }
   }
 
-  handleAllValidation = () => {
-    return (
-      this.handleEmailValidation(),
-      this.handlePwValidation(),
-      this.handleRePwValidation(),
-      this.handleNameValidation(),
-      this.handleBirthYearValidation(),
-      this.handleSignUpClcik()
-    )
-  }
-
   handleSignUpClcik = () => {
+    const {
+      email,
+      pw,
+      name,
+      gender,
+      birthYear,
+      birthMonth,
+      birthDay,
+      countryCode,
+      phoneNumber,
+    } = this.state
+
     fetch('http://10.168.1.140:8000/user/signup', {
       method: 'POST',
       body: JSON.stringify({
-        username: this.state.email,
-        password: this.state.pw,
-        name: this.state.name,
-        gender: this.state.gender,
-        date_of_birth: `${this.state.birthYear}-${this.state.birthMonth}-${this.state.birthDay}`,
-        country_code: this.state.countryCode,
-        phone_number: this.state.phoneNumber,
+        username: email,
+        password: pw,
+        name: name,
+        gender: gender,
+        date_of_birth: `${birthYear}-${birthMonth}-${birthDay}`,
+        country_code: countryCode,
+        phone_number: phoneNumber,
       }),
     })
       .then((response) => response.json())
@@ -64,107 +59,13 @@ class SignUp extends Component {
     this.setState({
       [id]: value,
     })
+    this.handleIsValid()
   }
 
-  handleEmailValidation = () => {
-    const checkEmail = this.state.email
-    const emailValidation = /^[a-z0-9_-]{5,20}$/
-
-    if (!checkEmail) {
-      this.setState({
-        emailValidationMassage: '필수 정보입니다.',
-      })
-    } else if (!emailValidation.test(checkEmail)) {
-      this.setState({
-        emailValidationMassage:
-          '5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.',
-      })
-    } else if (emailValidation.test(checkEmail)) {
-      this.setState({
-        emailValidationMassage: '',
-      })
-    }
-  }
-
-  handlePwValidation = () => {
-    const checkPw = this.state.pw
-    const pwValidation = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[~,!,@,#,$,*,(,),=,+,_,.,|]).*$/
-
-    if (!checkPw) {
-      this.setState({
-        pwValidationMassage: '필수 정보입니다.',
-      })
-    } else if (!pwValidation.test(checkPw)) {
-      this.setState({
-        pwValidationMassage:
-          '8~16자 영문 대/소문자, 숫자, 특수문자를 모두 사용하세요.',
-      })
-    } else if (pwValidation.test(checkPw)) {
-      this.setState({
-        pwValidationMassage: '',
-      })
-    }
-  }
-
-  handleNameValidation = () => {
+  handleIsValid = () => {
     this.setState({
-      nameValidationMassage: this.state.name ? '' : '필수 정보입니다.',
+      isValid: true,
     })
-  }
-
-  handleRePwValidation = () => {
-    if (this.state.rePw !== this.state.pw) {
-      this.setState({
-        rePwValidationMassage: '비밀번호가 일치하지 않습니다.',
-      })
-    } else {
-      this.setState({
-        rePwValidationMassage: '',
-      })
-    }
-  }
-
-  handleBirthYearValidation = () => {
-    const checkBirthYear = this.state.birthYear.length === 4
-    const checkBirthYear2 = this.state.birthYear >= 1900
-    if (!checkBirthYear || !checkBirthYear2) {
-      this.setState({
-        birthYearValidationMassage: '태어난 년도 4자리를 정확하게 입력하세요.',
-      })
-    } else {
-      this.setState({
-        birthYearValidationMassage: '',
-      })
-    }
-  }
-
-  handleBirthMonthValidation = () => {
-    const checkBirthMonth = this.state.birthMonth.length === 2
-    const checkBirthMonth2 = this.state.birthMonth <= 12
-    if (!checkBirthMonth || !checkBirthMonth2) {
-      this.setState({
-        birthMonthValidationMassage: '태어난 월 2자리를 정확하게 입력하세요.',
-      })
-    } else {
-      this.setState({
-        birthMonthValidationMassage: '',
-      })
-    }
-  }
-
-  handleBirthDayValidation = () => {
-    const checkBirthDay = this.state.birthDay.length === 2
-    const checkBirthDay2 = this.state.birthDay <= 31
-    if (!checkBirthDay || !checkBirthDay2) {
-      this.setState({
-        birthDayValidationMassage:
-          '태어난 일(날짜) 2자리를 정확하게 입력하세요.',
-      })
-    } else {
-      this.setState({
-        birthDayValidationMassage: '',
-      })
-    }
   }
 
   handleGenderChange = (event) => {
@@ -183,6 +84,15 @@ class SignUp extends Component {
   }
 
   render() {
+    const emailValidation = /^[a-z0-9_-]{5,20}$/
+    const pwValidation = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[~,!,@,#,$,*,(,),=,+,_,.,|]).*$/
+    const checkBirthYear = this.state.birthYear.length === 4
+    const checkBirthYear2 = this.state.birthYear >= 1900
+    const checkBirthMonth = this.state.birthMonth.length === 2
+    const checkBirthMonth2 = this.state.birthMonth <= 12
+    const checkBirthDay = this.state.birthDay.length === 2
+    const checkBirthDay2 = this.state.birthDay <= 31
+
     return (
       <div className='signUp'>
         <header>
@@ -202,10 +112,15 @@ class SignUp extends Component {
               placeholder='@lineamigos.com'
               value={this.state.email}
               onChange={this.handleValueChange}
-              onKeyUp={this.handleEmailValidation}
             />
             <span className='validationMassage'>
-              {this.state.emailValidationMassage}
+              {this.state.isValid && !this.state.email
+                ? '필수 정보입니다.'
+                : '' ||
+                  (this.state.isValid &&
+                    !emailValidation.test(this.state.email))
+                ? '5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.'
+                : ''}
             </span>
           </div>
           <div className='pwBox'>
@@ -219,7 +134,12 @@ class SignUp extends Component {
               onKeyUp={this.handlePwValidation}
             />
             <span className='validationMassage'>
-              {this.state.pwValidationMassage}
+              {
+                (this.state.isValid && !this.state.pw ? '필수 정보입니다.' : '',
+                this.state.isValid && !pwValidation.test(this.state.pw)
+                  ? '8~16자 영문 대/소문자, 숫자, 특수문자를 모두 사용하세요.'
+                  : '')
+              }
             </span>
           </div>
           <div className='rePwBox'>
@@ -230,10 +150,13 @@ class SignUp extends Component {
               type='password'
               value={this.state.rePw}
               onChange={this.handleValueChange}
-              onKeyUp={this.handleRePwValidation}
+              onKeyUp={this.handleIsValid}
             />
             <span className='validationMassage'>
               {this.state.rePwValidationMassage}
+              {this.state.isValid && this.state.rePw !== this.state.pw
+                ? '비밀번호가 일치하지않습니다.'
+                : ''}
             </span>
           </div>
         </div>
@@ -245,10 +168,9 @@ class SignUp extends Component {
             type='text'
             value={this.state.name}
             onChange={this.handleValueChange}
-            onKeyUp={this.handleNameValidation}
           />
           <span className='validationMassage'>
-            {this.state.nameValidationMassage}
+            {this.state.isValid && !this.state.name ? '필수 정보입니다.' : ''}
           </span>
           <span className='label'>생년월일</span>
           <div className='birthDate'>
@@ -259,7 +181,6 @@ class SignUp extends Component {
               placeholder='년(4자)'
               value={this.state.birthYear}
               onChange={this.handleValueChange}
-              onKeyUp={this.handleBirthYearValidation}
             />
             <input
               className='birthMonth'
@@ -268,7 +189,6 @@ class SignUp extends Component {
               placeholder='월'
               value={this.state.birthMonth}
               onChange={this.handleValueChange}
-              onKeyUp={this.handleBirthMonthValidation}
             />
             <input
               className='birthDay'
@@ -277,17 +197,26 @@ class SignUp extends Component {
               placeholder='일'
               value={this.state.birthDay}
               onChange={this.handleValueChange}
-              onKeyUp={this.handleBirthDayValidation}
             />
           </div>
           <span className='validationMassage'>
-            {this.state.birthYearValidationMassage}
+            {this.state.isValid && (!checkBirthYear || !checkBirthYear2)
+              ? '태어난 년도 4자리를 정확하게 입력하세요.'
+              : ''}
           </span>
           <span className='validationMassage'>
-            {this.state.birthMonthValidationMassage}
+            {checkBirthYear &&
+            checkBirthYear2 &&
+            (!checkBirthMonth || !checkBirthMonth2)
+              ? '태어난 월 2자리를 정확하게 입력하세요.'
+              : ''}
           </span>
           <span className='validationMassage'>
-            {this.state.birthDayValidationMassage}
+            {checkBirthMonth &&
+            checkBirthMonth &&
+            (!checkBirthDay || !checkBirthDay2)
+              ? '태어난 일(날짜) 2자리를 정확하게 입력하세요.'
+              : ''}
           </span>
           <span className='label'>성별</span>
           <select
@@ -332,9 +261,8 @@ class SignUp extends Component {
           <button
             className='signUpBtn'
             type='submit'
-            onClick={this.handleAllValidation}
+            onClick={this.handleIsValid}
           >
-            {' '}
             가입하기
           </button>
         </div>

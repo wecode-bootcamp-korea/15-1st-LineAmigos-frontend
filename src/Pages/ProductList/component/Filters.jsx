@@ -17,9 +17,8 @@ class Filters extends Component {
   }
 
   handleViewNameChange = (e) => {
-    console.log(e.target)
     this.setState({
-      viewName: e.target.text,
+      viewName: e.target.id,
     })
   }
   render() {
@@ -47,20 +46,12 @@ class Filters extends Component {
               }
               onClick={this.handleViewNameChange}
             >
-              <li>20개씩 보기</li>
-              <li>40개씩 보기</li>
-              <li>60개씩 보기</li>
-              <li>80개씩 보기</li>
+              <li id={'20개씩 보기'}>20개씩 보기</li>
+              <li id={'40개씩 보기'}>40개씩 보기</li>
+              <li id={'60개씩 보기'}>60개씩 보기</li>
+              <li id={'80개씩 보기'}>80개씩 보기</li>
             </div>
           </div>
-          {/* <div className='viewDropdown'>
-            <option>20개씩보기</option>
-            <option value selected>
-              40개씩보기
-            </option>
-            <option>60개씩보기</option>
-            <option>80개씩보기</option>
-          </div> */}
           <div className='viewIconContainer'>
             <div className='iconBox'>
               <i class='fas fa-list' />

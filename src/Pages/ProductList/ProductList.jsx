@@ -33,7 +33,7 @@ class ProductList extends Component {
     //     })
     //   })
 
-    fetch('http://localhost:3005/data/productListDate.json')
+    fetch('http://localhost:3000/data/productListDate.json')
       .then((response) => response.json())
       .then((response) => {
         this.setState({
@@ -47,7 +47,7 @@ class ProductList extends Component {
     //       productArr: response.PRODUCTS,
     //     })
     //   })
-    fetch('http://localhost:3005/data/filterData.json')
+    fetch('http://localhost:3000/data/filterData.json')
       .then((res) => res.json())
       .then((res) => {
         this.setState({
@@ -55,7 +55,7 @@ class ProductList extends Component {
         })
       })
 
-    fetch('http://localhost:3005/data/categories.json')
+    fetch('http://localhost:3000/data/categories.json')
       .then((res) => res.json())
       .then((res) => {
         this.setState({
@@ -94,7 +94,7 @@ class ProductList extends Component {
   }
 
   goToDetail = () => {
-    this.props.history.push('/productdetail') // 경오님이랑 연결 후 동적라우팅 사용
+    this.props.history.push('/productdetail/') // 경오님이랑 연결 후 동적라우팅 사용
   }
   render() {
     console.log(this.state.filterArr.id)

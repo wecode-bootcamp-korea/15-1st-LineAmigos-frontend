@@ -15,7 +15,7 @@ class SignUp extends Component {
       birthDay: '',
       countryCode: '82',
       phoneNumber: '',
-      gender: '초기',
+      gender: '',
       isValid: false,
     }
   }
@@ -59,28 +59,12 @@ class SignUp extends Component {
     this.setState({
       [id]: value,
     })
-    this.handleIsValid()
   }
 
   handleIsValid = () => {
     this.setState({
       isValid: true,
     })
-  }
-
-  handleGenderChange = (event) => {
-    this.setState({
-      gender: event.target.value,
-    })
-    if (event.target.value === 'none') {
-      this.setState({
-        genderValidationMassage: '필수 정보입니다.',
-      })
-    } else {
-      this.setState({
-        genderValidationMassage: '',
-      })
-    }
   }
 
   render() {
@@ -221,15 +205,18 @@ class SignUp extends Component {
           <span className='label'>성별</span>
           <select
             className='genderDropdown'
+            id='gender'
             value={this.state.gender}
-            onChange={this.handleGenderChange}
+            onChange={this.handleValueChange}
           >
             <option value='none'>선택안함</option>
             <option value='female'>여성</option>
             <option value='male'>남성</option>
           </select>
           <span className='validationMassage'>
-            {this.state.genderValidationMassage}
+            {this.state.isValid && this.state.gender == 'none'
+              ? '필수 정보입니다.'
+              : ''}
           </span>
         </div>
         <div className='phoneValidationForm'>

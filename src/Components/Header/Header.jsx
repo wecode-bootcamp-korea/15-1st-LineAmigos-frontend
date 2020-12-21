@@ -12,48 +12,43 @@ class Header extends React.Component {
       isloggedIn: false,
       scrollTop: 0,
       isNavFixed: false,
-      isNavShowing: false,
     }
   }
 
-  handleCategoryOpen = (id) => {
-    const openedCategoryList = this.state.categoriesList.map((category) => {
-      if (category.id === id) {
-        category.isCategoryOpen = true
-      }
-      return category
-    })
+  handleSearchValue = (e) => {
     this.setState({
-      categoriesList: openedCategoryList
+      searchValue: e.target.value
     })
   }
 
-  handleCategoryClose = (id) => {
-    const openedCategoryList = this.state.categoriesList.map((category) => {
-      if (category.id === id) {
-        category.isCategoryOpen = false
-      }
-      return category
-    })
-    this.setState({
-      categoriesList: openedCategoryList
-    })
+
+  handleLoginStatus = () => {
+    !this.state.isloggedIn ? this.props.history.push("/login") : this.props.history.push("/")
   }
 
-  handleSearchValue = (e) => {this.setState({searchValue: e.target.value})}
+  // switch (exp) {
+  //   case {!this.state.isloggedIn} :
+  //     this.props.history.push("/");
+  //     break;
+  
+  //   default: 
+  //     this.props.history.push("/");
+  //     break;
+  // }
 
-  goToMainPage = () => {this.props.history.push("/")}
-  goToLogInPage = () => {!this.state.isloggedIn 
-    ? this.props.history.push("/login")
-    : this.props.history.push("/")}
-  goToProductList = () => {this.props.history.push(`/products`)}
+  goToMainPage = () => {
+    this.props.history.push("/")
+  }
+
+  goToProductList = () => {
+    this.props.history.push(`/products`)
+  }
+
   goToSearchResult = (e) => {
     e.preventDefault()
     this.props.history.push(`/products?search=${this.state.searchValue}`)
   }
 
-  showNavBar = () => {this.setState({isNavShowing: true})}
-  hideNavBar = () => {this.setState({isNavShowing: false})}
   handleScroll = (e) => {
     const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop)
     this.setState({
@@ -68,28 +63,14 @@ class Header extends React.Component {
     fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
-        const categories = data.navCategories.map((item) => {
-          const category = {
-            id: item.categoryId,
-            category: item.categoryName,
-            subCategories: item.subCategories,
-            isCategoryOpen: false,
-          }
-          return category
-        })
-        this.setState({
-          categoriesList: categories,
-          // searchList: data.products,
-        })
+        this.setState({categoriesList: data.navCategories})
       }).catch(err => console.log(err))
 
       fetch('/data/productsInfos.json')
       // fetch('http://10.168.1.149:8000/product/products_info')
       .then(response => response.json())
       .then(data => {
-        this.setState({
-          searchList: data.products,
-        })
+        this.setState({searchList: data.products})
       }).catch(err => console.log(err))
   }
   
@@ -98,17 +79,15 @@ class Header extends React.Component {
   }
 
   render() {
-    const { categoriesList, searchValue, searchList, isloggedIn, isNavFixed, isNavShowing } = this.state
-    const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult, goToMainPage, showNavBar, hideNavBar } = this
+    const { categoriesList, searchValue, searchList, isloggedIn, isNavFixed } = this.state
+    const { handleSearchValue, goToLogInPage, goToProductList, goToSearchResult, goToMainPage } = this
     const filteredList = searchList.filter((product) => 
       product.productName.toLowerCase().includes(searchValue.toLowerCase()) && product)
     localStorage.getItem('token') && this.setState({isloggedIn: true})
-    const myPage = isloggedIn && <span className="gnbBtn myPage">마이페이지</span>
+
     return (
       <header 
-        className={`Header ${isNavFixed && 'scrolled'} ${isNavShowing && 'show'}`}
-        onMouseOver={showNavBar}
-        onMouseLeave={hideNavBar} >
+        className={`Header ${isNavFixed && 'scrolled'}`}>
         <div className="innerContainer">
           <nav>
             <div className="navIconLeft">
@@ -121,7 +100,7 @@ class Header extends React.Component {
             <div 
               className="navIconRight"
               onClick={goToLogInPage}>
-              {myPage}
+              {isloggedIn && <span className="gnbBtn cart">장바구니</span>}
               <span className="gnbBtn logIn">{isloggedIn ? '로그아웃' : '로그인'}</span>
               <img alt="Menu" src="/images/menu.png" />
             </div>
@@ -167,12 +146,9 @@ class Header extends React.Component {
                   return (
                     <Category 
                       key={index}
-                      id={category.id}
-                      category={category.category}
+                      id={category.categoryId}
+                      category={category.categoryName}
                       subCategories={category.subCategories}
-                      isCategoryOpen={category.isCategoryOpen}
-                      handleCategoryOpen={handleCategoryOpen}
-                      handleCategoryClose={handleCategoryClose}
                       goToCategoryList={goToProductList}/>
                   )
                 })

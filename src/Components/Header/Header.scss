@@ -7,14 +7,22 @@
   z-index: 1000;
   width: 100vw;
   height: 206px;
+  border-bottom: 1px solid rgba(0,0,0,.1);
   transition: transform .5s ease;
+  // transform: translateY(-206px);
+  // &:hover {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   transform: translateY(-136px);
+  //   background: #fafafa;
+  // }
   &.scrolled {
     position: fixed;
     top: 0;
     left: 0;
-    border-bottom: 1px solid rgba(0,0,0,.1);
     transform: translateY(-206px);
-    &.show {
+    &:hover {
       position: absolute;
       top: 0;
       left: 0;
@@ -85,6 +93,9 @@
           border: rgba(0,0,0,.4);
           border: 1px solid rgba(0,0,0,.2);
           cursor: pointer;
+          &.cart {
+            border: none
+          }
         }
 
         img {

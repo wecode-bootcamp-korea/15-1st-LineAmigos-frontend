@@ -15,6 +15,7 @@
     -webkit-filter: opacity(.5) drop-shadow(0 0 0 #5a6faf);
     filter: opacity(.5) drop-shadow(0 0 0 #6c83c7);
   }
+  &:hover > .navDropdown {display: block;}
 
   .categoryItem {
     font-size: $font-size-small;
@@ -44,8 +45,8 @@
     font-size: $font-size-small;
     font-weight: $font-weight-medium;
     display: none;
-    &.open {
-      display: block;
+    &.preventHover {
+      display: none;
     }
 
     .subCategories {

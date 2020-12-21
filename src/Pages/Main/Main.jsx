@@ -29,12 +29,13 @@ class Main extends React.Component {
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
-    fetch('http://10.168.1.149:8000/product/get')
+    // fetch('http://10.168.1.149:8000/product/get')
+    fetch('/data/productsInfos.json')
      .then(response => response.json())
      .then(data => {
        this.setState({
-         productsList: data.products,
-         categoriesList: data.categoriesList,
+         productsList: data.PRODUCTS,
+         categoriesList: data.main,
          reviewsList: [],
        })
      })
@@ -52,27 +53,14 @@ class Main extends React.Component {
     //   })
     // this.props.history.push('/cart')
   }
-
-  addToWishList = () => {
-    console.log('Item added')
-    alert('위시리스트에 추가되었습니다.')
-    // fetch('wishlistAPI', {
-    //   method: 'POST'
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-
-    //   })
-    // this.props.history.push('/cart')
-  }
   
   componentWillUnmount = () => {
     window.removeEventListener('scroll', this.handleScroll)
   }
 
   render() {
-    const { productList } = this.state
-    const { addToWishList, addToCart } = this
+    const { productsList, categoriesList } = this.state
+    const { addToCart } = this
     
     return (
       <div className="Main">
@@ -82,8 +70,8 @@ class Main extends React.Component {
         <section className="newProductsSection">
           <ul className="newProducts">
             <NewProductsSlider
-              addToCart={addToCart}
-              addToWishList={addToWishList} />
+              productsList={productsList}
+              addToCart={addToCart}/>
           </ul>
         </section>
         <section className="clickToSee">
@@ -92,12 +80,12 @@ class Main extends React.Component {
             <div className="buttonPlate">
               <img alt="My home cafe" src="/images/Main/main-slider-03.jpg" />
               <ul className="buttons">
-                {productList &&
-                  productList.map((product, index) => {
+                {productsList &&
+                  productsList.map((product, index) => {
                     return (
-                      <li key={index} className={`button button${product.id}`}>
-                        <span className={`target target${product.id}`} />
-                        <div className={`price price${product.id}`}>{product.price}</div>
+                      <li key={index} className={`button button${product.product_id}`}>
+                        <span className={`target target${product.product_id}`} />
+                        <div className={`price price${product.product_id}`}>{product.price}</div>
                       </li>
                     )
                   })
@@ -122,12 +110,12 @@ class Main extends React.Component {
           <BannerSlider />
         </section>
         <section className="categoriesShortcut">
-          <CategoriesSlider />
+          <CategoriesSlider
+            productsList={productsList} />
         </section>
         <section className="reviewContainer">
           <ReviewAutoPlay
-            addToCart={addToCart}
-            addToWishList={addToWishList} />
+            addToCart={addToCart}/>
         </section>
       </div>
     )

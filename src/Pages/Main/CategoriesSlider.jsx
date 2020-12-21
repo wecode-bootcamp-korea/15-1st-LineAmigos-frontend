@@ -3,30 +3,14 @@ import Slider from "react-slick";
 import './CatetoriesSlider.scss';
 
 class CategoriesSlider extends Component {
-  constructor() {
-    super()
-    this.state = {
-      categories: [],
-    }
-  }
-
-  componentDidMount = () => {
-    fetch('http://10.168.1.149:8000/product/get')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          categories: data.PRODUCTS,
-        })
-      }).catch(err => console.log(err))
-  }
 
   gotoProductList = () => {
     this.props.history.push("/productList")
   }
 
   render() {
-    const { categories } = this.state
     const { gotoProductList } = this
+    const { productsList } = this.props
     const settings = {
       infinite: true,
       autoplay: false,
@@ -40,8 +24,8 @@ class CategoriesSlider extends Component {
       <div className="CategoriesSlider">
       <h3>카테고리 바로가기</h3>
         <Slider {...settings}>
-        {categories &&
-          categories.map((category) => {
+        {productsList &&
+          productsList.map((category) => {
             return(
               <li 
                 key={category.product_category} 

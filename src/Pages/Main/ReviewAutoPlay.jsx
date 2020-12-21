@@ -29,7 +29,7 @@ class ReviewAutoPlay extends Component {
   render() {
     const { reviews, isWishlisted, isInCart } = this.state
     const { goToProductDetail } = this
-    const { addToCart, addToWishList } = this.props
+    const { addToCart } = this.props
     const createdAtString = (createdAt) => {
       const splittedDate =  createdAt.split(' ')[0].split('-')
       return `${splittedDate[0]}년 ${splittedDate[1]}월 ${splittedDate[2]}일`
@@ -64,8 +64,7 @@ class ReviewAutoPlay extends Component {
                     onClick={goToProductDetail} />
                     <div className="action">
                       <div 
-                        className={`icon ${isWishlisted && 'clicked'}`}
-                        onClick={addToWishList} >
+                        className={`icon ${isWishlisted && 'clicked'}`}>
                         <img alt="Add to wishlist" src='/images/add-to-wishlist.png' />
                       </div>
                       <div 

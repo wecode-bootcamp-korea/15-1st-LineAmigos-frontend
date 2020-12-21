@@ -25,7 +25,8 @@ class SideCategory extends Component {
         >
           {this.props.categoryArr.map((category) => (
             <div className='listDropDown'>
-              <li>{category.product_category}</li>
+              <li>{category.name}</li>
+              {/* <li>{category.product_category}</li> */}
             </div>
           ))}
         </div>

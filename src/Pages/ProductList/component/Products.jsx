@@ -15,7 +15,7 @@ class Products extends Component {
             />
           ))}
         </ul>
-        <div className='nextPageContainer'>
+        {/* <div className='nextPageContainer'>
           <div className='nextPageBox'>
             <span className='nextPageNum'>1</span>
           </div>
@@ -31,7 +31,7 @@ class Products extends Component {
           <div className='nextPageBox'>
             <span className='nextPageNum'>5</span>
           </div>
-        </div>
+        </div> */}
       </div>
     )
   }

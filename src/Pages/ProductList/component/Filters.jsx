@@ -7,6 +7,7 @@ class Filters extends Component {
     super()
     this.state = {
       viewDropdown: false,
+      viewName: '20개씩보기',
     }
   }
   handleViewDropDown = () => {
@@ -14,18 +15,25 @@ class Filters extends Component {
       viewDropdown: !this.state.viewDropdown,
     })
   }
+
+  handleViewNameChange = (e) => {
+    console.log(e.target)
+    this.setState({
+      viewName: e.target.text,
+    })
+  }
   render() {
     return (
       <div className='filtersContainer'>
         <ul>
           {this.props.filterArr.map((filter) => (
-            <Filter filter={filter} filters={this.props.filterArr} />
+            <Filter filter={filter} />
           ))}
         </ul>
         <div className='viewFilterContainer'>
           <div className='viewDropdownBox'></div>
           <div className='viewName' onClick={this.handleViewDropDown}>
-            <span> 40개씩보기</span>
+            <span>{this.state.viewName}</span>
             <i
               className={
                 this.state.viewDropdown
@@ -37,6 +45,7 @@ class Filters extends Component {
               className={
                 this.state.viewDropdown ? 'viewDropdown' : ' viewDropdown none'
               }
+              onClick={this.handleViewNameChange}
             >
               <li>20개씩 보기</li>
               <li>40개씩 보기</li>

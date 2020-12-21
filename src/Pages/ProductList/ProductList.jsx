@@ -4,6 +4,9 @@ import Products from './component/Products'
 import Filters from './component/Filters'
 import './ProductList.scss'
 import SideCategory from './component/SideCategory'
+// import Pagination from './component/Pagination'
+
+const LIMIT = 5
 
 class ProductList extends Component {
   constructor() {
@@ -19,6 +22,17 @@ class ProductList extends Component {
   }
 
   componentDidMount = () => {
+    // const nextOffset = LIMIT + nextOffset
+    // fetch(
+    //   `http://localhost:3005/data/productListDate.json/productlist?limit=${LIMIT}&offset=${nextOffset}`
+    // )
+    //   .then((response) => response.json())
+    //   .then((response) => {
+    //     this.setState({
+    //       productArr: response.productListData,
+    //     })
+    //   })
+
     fetch('http://localhost:3005/data/productListDate.json')
       .then((response) => response.json())
       .then((response) => {
@@ -40,13 +54,21 @@ class ProductList extends Component {
           filterArr: res.filterData,
         })
       })
-    fetch('http://10.168.1.149:8000/product/products_info')
+
+    fetch('http://localhost:3005/data/categories.json')
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          categoryArr: res.PRODUCTS,
+          categoryArr: res.categories,
         })
       })
+    // fetch('http://10.168.1.149:8000/product/products_info')
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     this.setState({
+    //       categoryArr: res.PRODUCTS,
+    //     })
+    //   })
   }
 
   hadleSideCategory = () => {
@@ -75,7 +97,7 @@ class ProductList extends Component {
     this.props.history.push('/productdetail') // 경오님이랑 연결 후 동적라우팅 사용
   }
   render() {
-    console.log(this.state.detailModal)
+    console.log(this.state.filterArr.id)
     return (
       <div className='ProductList'>
         <div className='container'>

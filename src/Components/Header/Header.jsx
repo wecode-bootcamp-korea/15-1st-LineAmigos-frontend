@@ -64,14 +64,15 @@ class Header extends React.Component {
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
-    fetch('http://10.168.1.149:8000/product/menu')
+    // fetch('http://10.168.1.149:8000/product/menu')
+    fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
-        const categories = data.main.map((item) => {
+        const categories = data.navCategories.map((item) => {
           const category = {
-            id: item.id,
-            category: item.menu,
-            subCategories: item.categories,
+            id: item.categoryId,
+            category: item.categoryName,
+            subCategories: item.subCategories,
             isCategoryOpen: false,
           }
           return category
@@ -82,11 +83,12 @@ class Header extends React.Component {
         })
       }).catch(err => console.log(err))
 
-      fetch('http://10.168.1.149:8000/product/products_info')
+      fetch('/data/productsInfos.json')
+      // fetch('http://10.168.1.149:8000/product/products_info')
       .then(response => response.json())
       .then(data => {
         this.setState({
-          searchList: data.PRODUCTS,
+          searchList: data.products,
         })
       }).catch(err => console.log(err))
   }
@@ -99,7 +101,7 @@ class Header extends React.Component {
     const { categoriesList, searchValue, searchList, isloggedIn, isNavFixed, isNavShowing } = this.state
     const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult, goToMainPage, showNavBar, hideNavBar } = this
     const filteredList = searchList.filter((product) => 
-      product.name.toLowerCase().includes(searchValue.toLowerCase()) && product)
+      product.productName.toLowerCase().includes(searchValue.toLowerCase()) && product)
     localStorage.getItem('token') && this.setState({isloggedIn: true})
     const myPage = isloggedIn && <span className="gnbBtn myPage">마이페이지</span>
     return (
@@ -145,10 +147,10 @@ class Header extends React.Component {
                 {filteredList &&
                   filteredList.map(item => {
                     return(
-                      <li key={item.product_id}>
-                        <img alt={item.name} src={item.product_image} className="itemImg" />
+                      <li key={item.id}>
+                        <img alt={item.productName} src={item.url} className="itemImg" />
                         <div>
-                          <span className="productName">{item.name}</span>
+                          <span className="productName">{item.productName}</span>
                           <span className="price">{item.price}원</span>
                         </div>
                       </li>

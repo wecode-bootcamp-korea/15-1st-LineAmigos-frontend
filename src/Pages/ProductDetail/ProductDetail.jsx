@@ -13,32 +13,38 @@ class ProductDetail extends React.Component{
     constructor(){
         super();
         this.state={
-            reviews: "",
-            id: "",
-            productImgUrl: "",
-            price: 0,
-            dataList:[],
             detailSelected: true,
             reviewSelected: false,
             qaSelected: false,
             targetReached: false,
+            productData: {},
+            reviewList: []
         };
     }
     
     componentDidMount() {
+        // fetch(`http://10.168.1.149:8000/product/${this.props.match.params.id}`, {
         fetch(API, {
             method: "GET",
         })
         .then((res) => res.json())
         .then((res) => {
             this.setState({
-                dataList: res.data,
+                productData: res.product_id,
             })
         });
 
+        fetch('http://localhost:3000/data/reviewData.json', {
+            method: "GET",
+        })
+        .then((res)=>res.json())
+        .then((res)=> {
+            this.setState({
+                reviewList: res.product_1
+            })
+        })
         window.addEventListener('scroll', this.onScroll)
     }
-
 
     componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); }
 
@@ -87,7 +93,8 @@ class ProductDetail extends React.Component{
     }
 
     render(){
-        const {dataList, targetReached} = this.state;
+        const {targetReached, productData, reviewList} = this.state;
+
         return(
         <div>
            <div id="DetailPageContainer">
@@ -99,34 +106,35 @@ class ProductDetail extends React.Component{
                         <i className="fas fa-share-square"/>
                     </div>
                     <div className="smallCategory">
-                        <span>home - char - BT21 | 다른 상품 보기</span>
+                        <span>home - {productData.product_menu} - {productData.product_category}</span>
                         {/* 나중에 링크로 정리 */}
                     </div>
                </div>
-                <ImgPurchInfo dataList={dataList}/>
-                <Recommandations dataList={dataList} />
+                <ImgPurchInfo productName={productData &&  productData.product_name} imgUrl={productData && productData.image} id={productData && productData.id} price={productData && productData.price} reviewArray={reviewList&& reviewList.map(el=>el.rate)}/>
+                <Recommandations reviewList={reviewList} />
                 <div className="categoryTap" onScroll={this.onScroll}>
                     <Link className={this.state.detailSelected? "clicked":"detailsTap"} to="detailAnchor" smooth={true} duration={500}onClick={this.selectBox} isDynamic={true}>상세정보</Link>
                     <Link className={this.state.reviewSelected? "clicked":"reviewTap"} to="reviewAnchor" smooth={true} duration={500} onClick={this.selectBox} isDynamic={true}>리뷰</Link>
                     <Link className={this.state.qaSelected? "clicked":"qaTap"} to="qaAnchor" duration={100} onClick={this.selectBox}>Q&A</Link>
                 </div>
-                <ProductDescriptions dataList={dataList}/>
-                <Review reviewRate={dataList.map(el=>{return(el.reviewRate)})}/>
+                <ProductDescriptions detailImg={productData && productData.image}/>
+                <Review reviewList={reviewList} rateArray={reviewList&& reviewList.map(el=>el.rate)}/>
                 <button className="scrollTop" onClick={this.scrollToTop}><i className="fas fa-chevron-up"/></button>             
             </div>
            <nav className={targetReached? "categoryNav":".hideNav"}>
                     <div className="navProduct">
                         <div className="navProductInfo">
                             <div className="imgAndPrice">
-                                <img alt="navImg" src="https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg" />
+                                <img alt="navImg" src={productData && productData.image} />
                                 <div className="navPriceInfo">
-                                    <span className="productName">라인프렌즈 BT21 MANG BABY 부클 버블티 백참</span>
-                                    <span className="productPrice">22,000원</span>
+                                    <span className="productName">{productData.product_name}</span>
+                                    <span className="productPrice">{Math.floor(productData.price)}원</span>
                                 </div>
                             </div>
                         </div>
                         <button>
-                                <i className="fab fa-node-js"/>구매하기
+                                <i className="fab fa-node-js"/>
+                                구매하기
                         </button>
                     </div>
                     <div className="navLinks">

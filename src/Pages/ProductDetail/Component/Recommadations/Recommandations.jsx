@@ -14,8 +14,8 @@ class Recommandations extends Component {
                         dataList.map(el=> {
                             return(
                                 <li key={el.id}><Product 
-                                    imgUrl={el.imgUrl}
-                                    productName={el.productName}
+                                    imgUrl={el.product_image}
+                                    productName={el.name}
                                     price = {el.price}
                                 /></li>
                             )

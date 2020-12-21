@@ -11,7 +11,7 @@ class Product extends Component {
                 </div>
                 <div className="nameAndPrice">
                     <span className="productName">{productName}</span>
-                    <span className="price">{price}원</span>
+                    <span className="price">{Math.floor(price)}원</span>
                 </div>
             </div>
         );

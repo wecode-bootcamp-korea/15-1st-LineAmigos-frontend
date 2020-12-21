@@ -1,55 +1,12 @@
 {
-    "data": [
-      {
-        "id": 1,
-        "userName": "wecode1",
-        "date": "20.11.22",
-        "size": "단품",
-        "imgUrl": "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
-        "reviewRate": 5,
-        "reviewContent": "good",
-        "price": 12000,
-        "productName": "라인"
-      },
-      {
-        "id": 2,
-        "userName": "wecode2",
-        "date": "20.11.22",
-        "imgUrl": "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
-        "reviewRate": 3,
-        "reviewContent": "good",
-        "price": 11000,
-        "productName": "라인"
-    },
-      {
-        "id": 3,
-        "userName": "wecode3",
-        "date": "20.11.22",
-        "imgUrl": "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
-        "reviewRate": 1,
-        "reviewContent": "good",
-        "price": 10000,
-        "productName": "라인"
-    },
-      {
-        "id": 4,
-        "userName": "wecode4",
-        "date": "20.11.22",
-        "imgUrl": "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
-        "reviewRate": 1,
-        "reviewContent": "good",
-        "price": 9000,
-        "productName": "라인"
-    },
-      {
-        "id": 5,
-        "userName": "wecode5",
-        "date": "20.11.22",
-        "imgUrl": "https://images.contentstack.io/v3/assets/blt731acb42bb3d1659/bltcfa4652c8d383f56/5e21837f63d1b6503160d39b/Home-page.jpg",
-        "reviewRate": 1,
-        "reviewContent": "good",
-        "price": 8000,
-        "productName": "라인"
-    }
-    ]
+  "product_id": {
+    "created_time": "2020-12-18T10:55:49.158",
+    "product_name": "귀여운 분홍토끼가 좋아하는 사탕",
+    "price": "9000.00",
+    "product_category": "브라운프렌즈",
+    "id": 1,
+    "image": " https://images.unsplash.com/photo-1567653418876-5bb0e566e1c2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
+    "product_menu": "캐릭터",
+    "sale_amount": 10
   }
+}

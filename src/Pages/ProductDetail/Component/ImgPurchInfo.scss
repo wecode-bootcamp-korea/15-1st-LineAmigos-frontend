@@ -13,28 +13,6 @@
         display: flex;
         flex-direction: column;
         border: 1px solid $border-color;
-        
-        .bigImgContainer{
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            border-bottom: 1px solid $border-color;
-
-            .bigImg{                 
-                max-width: 540px;
-                max-height: 540px;
-            }
-        }
-
-        .smallImgContainer{
-            margin: 12px auto;
-            
-            .smallImg{
-                width: 28px;
-                height: 27px;
-                padding: 10px;
-            }
-        }
 
         .smallReviewRatings{
             margin-top: 145px;
@@ -62,21 +40,20 @@
         border-left: 1px solid $border-color;
 
         .nameAndPrice{
-            font-weight: bold;
+            font-weight: 900;
             padding: 30px 15px 15px 15px;
 
             .productName{
-                font-size: 20px;
+                font-size: 22px;
             }
             
             .priceContainer{
                 text-align: right;
                 padding: 20px 10px;
-                font-weight: bold;
                 color: $font-color-blue;
 
                 .priceNumber{
-                    font-size: 20px;
+                    font-size: 22px;
                 }
 
                 .priceWon{

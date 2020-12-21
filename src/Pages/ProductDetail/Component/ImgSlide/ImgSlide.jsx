@@ -13,7 +13,7 @@ class ImgSlide extends React.Component {
     const settings = {
       customPaging: function(i){
         return(
-            <img key={i} alt= "thumbImg" src = {imgUrl[i]} />
+            <img key={i} alt= "thumbImg" src = {imgUrl} />
         );
       },
       dots: true,
@@ -28,14 +28,20 @@ class ImgSlide extends React.Component {
     return (
       <div>
       <Slider {...settings}>
-        {imgUrl.length>0 &&
+      {[...Array(5)].map(el=>{return(
+        <div className="slideContainer">
+        <img alt="slideImg" src={imgUrl} className="slideImg"/>
+      </div>
+      )})}
+        
+        {/* {imgUrl.length>0 &&
         imgUrl.map((el, idx) => {
             return (
               <div key={idx}className="slideContainer">
                   <img key={idx} alt="" src={el}  className="slideImg"/>
               </div>
             );
-          })}
+          })} */}
       </Slider >
       </div>
     );

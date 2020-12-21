@@ -196,18 +196,11 @@ $borders: rgb(240,240,240);
 
             li{
                 margin: 0 auto;
-            }
-        }
 
-        .reviewSmallCategory{
-            width: 100%;
-            display: flex;
-            padding: 20px;
-            border: 1px solid $borders;
-            background-color: $borders;
-
-            li{
-                padding: 0 20px;
+                &:hover{
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
             }
         }
 
@@ -216,7 +209,7 @@ $borders: rgb(240,240,240);
             border: 1px solid $borders;
             display: flex;
             flex-direction: column;
-            padding: 100px 20px;
+            padding: 20px;
 
             i, span{
                 margin: auto;
@@ -229,6 +222,10 @@ $borders: rgb(240,240,240);
             span{
                 font-size: 13px;
                 padding-top: 20px;
+            }
+
+            .noReview{
+                display: none;
             }
         }
     }

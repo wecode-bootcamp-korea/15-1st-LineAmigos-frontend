@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Review.scss';
+import ReviewContent from './ReviewContent/ReviewContent';
 
 const fullThermo = <i className="fas fa-thermometer-full"/>;
 const halfThermo = <i className="fas fa-thermometer-half"/>;
@@ -25,8 +26,8 @@ class Review extends Component {
     countRate= (rate) => {
         let rateCount = 0;
         
-        for(let i=0; i<this.props.reviewRate.length; i++){
-            if(this.props.reviewRate[i] === rate){
+        for(let i=0; i<this.props.rateArray.length; i++){
+            if(this.props.rateArray[i] === rate){
                 rateCount ++;
             }
         }
@@ -53,7 +54,9 @@ class Review extends Component {
     }
 
     render() {
-        const {reviewRate} = this.props;
+        const {reviewList, rateArray} = this.props;
+        const reviewTopCategories = ["전체 보기", "포토/동영상", "스토어Pick", "한달 사용 리뷰"];
+        console.log(this.props)
         return (
             <div>
                 <div id="reviewAnchor" className="reviewEventContainer">
@@ -85,28 +88,28 @@ class Review extends Component {
                 <div className="reviewRatings">
                     <div className="starRatings">
                         <span className="ratingType">사용자 총 평점</span>
-                        <span className="stars">{reviewRate.length>0 &&
-                            this.printStars(reviewRate)
+                        <span className="stars">{rateArray.length>0 &&
+                            this.printStars(rateArray)
                         }
                         </span>
-                        <span className="ratingPoint">{reviewRate.length>0 &&
-                            Math.floor((reviewRate.reduce((acc, curr)=> acc+curr))/reviewRate.length)}.0/5</span>
+                        <span className="ratingPoint">{rateArray.length>0 &&
+                            rateArray.reduce((acc, curr) => (acc+curr))/rateArray.length} /5</span>
                     </div>
                     <div className="totalReviews">
                         <span className="ratingType">전체 리뷰수</span>
                         <i className="far fa-comment-dots"/>
-                        <span className="count">{reviewRate.length}</span>
+                        <span className="count">{rateArray.length}</span>
                     </div>
                     <div className="graphRatings">
                         <span className="ratingType">평점 비율</span>
                         <ul>
-                            {reviewRate.length>0&&this.printThermo()}
+                            {rateArray.length>0&&this.printThermo()}
                         </ul>
                     </div>
                 </div>
                 <div className="reviewContents">
                     <div className="reviewContentsTop">
-                        <span>리뷰 {reviewRate.length}건</span>
+                        <span>리뷰 {reviewList.length}건</span>
                         <div className="reviewFilter">
                             <span>랭킹순</span>
                             <span>최신순</span>
@@ -116,18 +119,33 @@ class Review extends Component {
                     </div>
                     <div className="reviewContainer">
                         <ul className="reviewCategory">
-                            <li>전체보기</li>
-                            <li>포토/동영상</li>
-                            <li>스토어PICK</li>
-                            <li>한달사용리뷰</li>
-                        </ul>
-                        <ul className="reviewSmallCategory">
-                            <li>주제전체</li>
-                            <li>성능</li>
+                            {reviewTopCategories.map(el=>{
+                                return <li>{el}</li>
+                            })}
                         </ul>
                         <div className="reviewList">
-                            <i className="far fa-comment-dots"/>
-                            <span>조건에 맞는 리뷰가 없습니다.</span>
+                            <div>
+                                {reviewList&&
+                                    reviewList.map(el => {
+                                        return(
+                                            <ReviewContent 
+                                            key={el.user_id}
+                                            id={el.user_id}
+                                            date={el.reviewDate}
+                                            size={el.size}
+                                            content={el.review_content}
+                                            image={el.reviewImage}
+                                            monthlyReview={el.monthly_review}
+                                            rate ={el.rate}
+                                            />
+                                        )
+                                    })
+                                }
+                            </div>
+                            <div className={reviewList.length > 0 ? 'noReview':''}>
+                                <i className="far fa-comment-dots"/>
+                                <span>조건에 맞는 리뷰가 없습니다.</span>
+                            </div>
                         </div>         
                     </div>
                 </div>

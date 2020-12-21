@@ -58,14 +58,19 @@
     }
 
     .scrollTop{
+        width: 45px;
+        height: 45px;
+        background-color: #ffffff;
+        position: fixed;
+        bottom:40px;
+        right: 40px;
+        border: none;
+
         i{
-            position: fixed;
-            bottom:30px;
-            right: 30px;
+            width: 100%;
             font-size: 37px;
             border: 1px solid $border-color;
             padding: 5px;
-            background-color: #ffffff;
             color: lightgray;
         }
     }
@@ -74,7 +79,6 @@
 .categoryNav{
     position: fixed;
     top: 0;
-
     width: 100%;
     height: 145px;
     display: flex;
@@ -94,7 +98,7 @@
             display: flex;
             
             img{
-                max-width: 75px;
+                width: 50px;
                 padding: 20px;
             }
 
@@ -122,6 +126,7 @@
             background-color: $primary-color;
             color: white;
             font-size: 15px;
+            border: none;
         }
     }
 
@@ -153,7 +158,6 @@
                 }
             }    
     }
-
 }
 
 .hideNav{

@@ -1,6 +1,5 @@
 {
-<<<<<<< HEAD
-  "product_id": {
+    "product_id": {
     "created_time": "2020-12-18T10:55:49.158",
     "product_name": "귀여운 분홍토끼가 좋아하는 사탕",
     "price": "9000.00",
@@ -10,21 +9,4 @@
     "product_menu": "캐릭터",
     "sale_amount": 10
   }
-=======
-  "categories" : [
-    "캐릭터",
-    "NEW",
-    "브롤리데이" ,
-    "선물추천",
-    "THEME",
-    "BT21 BABY",
-    "SALE",
-    "토이",
-    "디자인문구",
-    "디지털",
-    "패션의류",
-    "패션잡화",
-    "더보기"
-  ]
->>>>>>> master
 }

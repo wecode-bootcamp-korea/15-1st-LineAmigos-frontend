@@ -175,7 +175,7 @@ class Review extends Component {
                                         )
                                     })
                                 }
-                            <div className={reviewList.length > 0 ? 'noReview':''}>
+                            <div className={reviewList.length > 0 &&'noReview'}>
                                 <i className="far fa-comment-dots"/>
                                 <span>조건에 맞는 리뷰가 없습니다.</span>
                             </div>

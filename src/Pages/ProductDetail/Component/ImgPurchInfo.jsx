@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ImgSlide from './ImgSlide/ImgSlide';
-// import {plus, minus} from './function.jsx';
+// import {plus, minus} from './function.js';
 import './ImgPurchInfo.scss';
 
 import "slick-carousel/slick/slick.css";

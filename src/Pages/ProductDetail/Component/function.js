@@ -1,4 +1,4 @@
-export function minus = () => {
+export function minus(count) {
     if(count>1){
     this.setState({
         count: this.state.count-1,
@@ -10,7 +10,7 @@ export function minus = () => {
     }
 }
 
-export function plus = () => {
+export function plus(count) {
     if(count>0){
         this.setState({
             count: this.state.count+1,
@@ -21,6 +21,3 @@ export function plus = () => {
             })
         }
 }
-
-//import {plus, minus} from ...
-//이렇게 임포트햇는데 setState undefined라고 뜨네요

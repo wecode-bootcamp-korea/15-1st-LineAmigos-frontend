@@ -26,7 +26,7 @@ class ReviewContent extends Component {
     }
 
     render() {
-        const {id, date, size, content, image, monthlyReview, rate} = this.props;
+        const {id, date, size, content, image, rate} = this.props;
         return (
             <div className="reviewContentsContainer">
                 <div className="reviewLeft">

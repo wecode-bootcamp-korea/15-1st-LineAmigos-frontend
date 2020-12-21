@@ -5,13 +5,8 @@ class ProductDescriptions extends Component {
     render() {
 
         return (
-            <div id="detailAnchor" className="dataDes" >
+            <div id="ProductDescriptions" className="dataDes" >
                 <img alt="detailImg" src={this.props.detailImg}/>
-                {/* {dataList && dataList.map((el)=>{
-                    return (
-                        <img key={el.id} alt="" src={el.imgUrl} />
-                    );
-                })} */}
             </div>
         );
     }

@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
-import './Review.scss';
 import ReviewContent from './ReviewContent/ReviewContent';
-
-const fullThermo = <i className="fas fa-thermometer-full"/>;
-const halfThermo = <i className="fas fa-thermometer-half"/>;
-const emptyThermo = <i className="fas fa-thermometer-empty"/>;
+import './Review.scss';
 
 class Review extends Component {
+    constructor(props) {
+        super(props);
+        this.state={
+            monthFilter: false,
+            revList: [],
+            clicked: {
+                photo: false,
+                storePick: false,
+                monthReview: false}
+        }
+    }
 
     printStars= (ratingArr)=>{
        const fullStar = <i className="fas fa-star"/>;
@@ -35,8 +42,13 @@ class Review extends Component {
     }
 
     printThermo= ()=>{
+
+        const fullThermo = <i className="fas fa-thermometer-full"/>;
+        const halfThermo = <i className="fas fa-thermometer-half"/>;
+        const emptyThermo = <i className="fas fa-thermometer-empty"/>;
+
         let rateArr = [];
-        
+
         for(let i=5; i>0; i--){
             rateArr.push(this.countRate(i))
         }
@@ -53,13 +65,22 @@ class Review extends Component {
         return rateArr
     }
 
+    Filter = () =>{
+        this.setState({
+            revList: this.props.reviewList.filter(el=> el.monthly_review === 'True'),
+            clicked: {
+                photo: false,
+                storePick: false,
+                monthReview: true},
+        });
+    }
+
     render() {
         const {reviewList, rateArray} = this.props;
-        const reviewTopCategories = ["전체 보기", "포토/동영상", "스토어Pick", "한달 사용 리뷰"];
-        console.log(this.props)
+        const {revList, clicked} = this.state;
         return (
-            <div>
-                <div id="reviewAnchor" className="reviewEventContainer">
+            <>
+                <div className="reviewEventContainer">
                     <div className="reviewheader">
                     <header>상품리뷰</header>
                         <div>
@@ -119,13 +140,27 @@ class Review extends Component {
                     </div>
                     <div className="reviewContainer">
                         <ul className="reviewCategory">
-                            {reviewTopCategories.map(el=>{
-                                return <li>{el}</li>
-                            })}
+                            <li>전체 보기</li>
+                            <li className="photoandVideo" onClick={this.Filter}>포토/동영상</li>
+                            <li className="storePick" onClick={this.Filter}>스토어Pick</li>
+                            <li className={clicked.monthReview? "clickedList":"monthReview"} onClick={this.Filter}>한달 사용 리뷰</li>
                         </ul>
                         <div className="reviewList">
-                            <div>
-                                {reviewList&&
+                                {clicked.monthReview?
+                                    revList.map(el => {
+                                        return(
+                                            <ReviewContent 
+                                            key={el.user_id}
+                                            id={el.user_id}
+                                            date={el.reviewDate}
+                                            size={el.size}
+                                            content={el.review_content}
+                                            image={el.reviewImage}
+                                            rate ={el.rate}
+                                            />
+                                        )
+                                    })
+                                    :
                                     reviewList.map(el => {
                                         return(
                                             <ReviewContent 
@@ -135,13 +170,11 @@ class Review extends Component {
                                             size={el.size}
                                             content={el.review_content}
                                             image={el.reviewImage}
-                                            monthlyReview={el.monthly_review}
                                             rate ={el.rate}
                                             />
                                         )
                                     })
                                 }
-                            </div>
                             <div className={reviewList.length > 0 ? 'noReview':''}>
                                 <i className="far fa-comment-dots"/>
                                 <span>조건에 맞는 리뷰가 없습니다.</span>
@@ -149,7 +182,7 @@ class Review extends Component {
                         </div>         
                     </div>
                 </div>
-           </div>
+           </>
         );
     }
 }

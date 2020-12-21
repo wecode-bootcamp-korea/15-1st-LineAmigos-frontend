@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import ImgSlide from './ImgSlide/ImgSlide';
+// import {plus, minus} from './function.jsx';
+import './ImgPurchInfo.scss';
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ImgSlide from './ImgSlide/ImgSlide';
-// import {Plus, Minus} from './function.jsx';
-import './ImgPurchInfo.scss';
 
 class ImgPurchInfo extends Component {
     constructor(){
@@ -16,19 +17,20 @@ class ImgPurchInfo extends Component {
     }
 
     showComp = () =>{
-        this.handleClick();
         if(this.state.showCalComp === true){
             alert ("이미 선택한 옵션입니다.")
         }
 
         this.setState({
             showCalComp: true,
+            sizeBtn: !this.state.sizeBtn
         });
     }
 
     hideComp = () => {
         this.setState({
             showCalComp: false,
+            count: 1
         })
     }
 
@@ -50,7 +52,7 @@ class ImgPurchInfo extends Component {
         }
     }
 
-    Minus = () => {
+    minus = () => {
         if(this.state.count>1){
         this.setState({
             count: this.state.count-1,
@@ -62,7 +64,7 @@ class ImgPurchInfo extends Component {
         }
     }
 
-    Plus  = () => {
+    plus  = () => {
         if(this.state.count>0){
             this.setState({
                 count: this.state.count+1,
@@ -87,8 +89,7 @@ class ImgPurchInfo extends Component {
                             <span className="smallCount">{reviewArray&&reviewArray.length}</span>
                         </div>
                         <div>
-                            <span></span>
-        <span className="smallCount"> {reviewArray.length>0&&(reviewArray.reduce((acc, curr)=>acc+curr)/reviewArray.length)}/5</span>
+                            <span className="smallCount"> {reviewArray.length>0&&(reviewArray.reduce((acc, curr)=>acc+curr)/reviewArray.length)}/5</span>
                         </div>
                     </div>        
                 </div>
@@ -105,12 +106,12 @@ class ImgPurchInfo extends Component {
                             <span className="benefits">라인프렌즈 고객을 위한 혜택</span>
                             <div className="points">
                                 <span>최대 적립 포인트</span>
-                                <span>{Math.floor(this.state.price*0.017)}원</span>
+                                <span>{Math.floor(price*0.017)}원</span>
                             </div>
                             <div className="basicFund">
                                 <ul>
-                                    <li>ㄴ 기본적립</li>
-                                    <li>{this.state.price*0.01}원</li>
+                                    <li>기본적립</li>
+                                    <li>{price*0.01}원</li>
                                 </ul>
                             </div>
                             <div className="extraPointsContainer">
@@ -124,15 +125,15 @@ class ImgPurchInfo extends Component {
                                 <ul className="extraPointsList">
                                         <li>
                                             <span><u>멤버십 데이 추가 8% 적립!</u>&gt;</span>
-                                            <span>{this.state.price*0.08}원</span>
+                                            <span>{price*0.08}원</span>
                                         </li>
                                         <li>
                                             <span><u>충전포인트로 결제 시</u>&gt;</span>
-                                            <span>{this.state.price*0.02}원</span>
+                                            <span>{price*0.02}원</span>
                                         </li>
                                         <li>
                                             <span><u>MY단골스토어에서 결제 시</u>&gt;</span>
-                                            <span>{this.state.price*0.02}원</span>
+                                            <span>{price*0.02}원</span>
                                         </li>
                                 </ul>
                             </div>
@@ -144,20 +145,22 @@ class ImgPurchInfo extends Component {
                         </button> 
                         <button className={sizeBtn ? "singleItemHide":"singleItemShow"} onClick={this.showComp}>단품</button>            
                     </div>
-                        <div className={this.state.showCalComp ? "CalTotal" : "HideCalTotal"}>
-                        <span>단품</span>
-                        <div className="btnPriceContainter">
-                            <div className="quantBtns">
-                                <button className="minusplus" onClick={this.Minus}>-</button>
-                                <input type="number" value={this.state.count} onChange={this.countChange}/>
-                                <button className="minusplus"onClick={this.Plus}>+</button>
+                        {this.state.showCalComp&&
+                            <div className="CalTotal">
+                                <span>단품</span>
+                                <div className="btnPriceContainter">
+                                    <div className="quantBtns">
+                                        <button className="minusplus" onClick={this.minus}>-</button>
+                                        <input type="number" value={this.state.count} onChange={this.countChange}/>
+                                        <button className="minusplus"onClick={this.plus}>+</button>
+                                    </div>
+                                    <div className="calTotPrice">
+                                        <span>{this.state.count*price}원</span>
+                                        <button onClick={this.hideComp}>X</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="calTotPrice">
-                                <span>{this.state.count*price}원</span>
-                                <button onClick={this.hideComp}>X</button>
-                            </div>
-                        </div>
-                    </div>
+                        }
                     <div className="PurchCartButtons">
                         <div className="totalQP">
                             <span className="totPriceSpan">

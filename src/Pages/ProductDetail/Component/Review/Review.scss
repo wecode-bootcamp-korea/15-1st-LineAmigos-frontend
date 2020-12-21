@@ -1,3 +1,4 @@
+@import '../../../../styles/common.scss';
 $reviewBoxColor: rgb(139,100, 227);
 $RatingColor: rgb(255, 82, 83);
 $borders: rgb(240,240,240);
@@ -199,6 +200,11 @@ $borders: rgb(240,240,240);
 
                 &:hover{
                     cursor: pointer;
+                    text-decoration: underline;
+                }
+
+                &.clickedList{
+                    color: $font-color-blue;
                     text-decoration: underline;
                 }
             }

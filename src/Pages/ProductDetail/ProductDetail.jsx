@@ -113,8 +113,8 @@ class ProductDetail extends React.Component{
                 <ImgPurchInfo productName={productData &&  productData.product_name} imgUrl={productData && productData.image} id={productData && productData.id} price={productData && productData.price} reviewArray={reviewList&& reviewList.map(el=>el.rate)}/>
                 <Recommandations reviewList={reviewList} />
                 <div className="categoryTap" onScroll={this.onScroll}>
-                    <Link className={this.state.detailSelected? "clicked":"detailsTap"} to="detailAnchor" smooth={true} duration={500}onClick={this.selectBox} isDynamic={true}>상세정보</Link>
-                    <Link className={this.state.reviewSelected? "clicked":"reviewTap"} to="reviewAnchor" smooth={true} duration={500} onClick={this.selectBox} isDynamic={true}>리뷰</Link>
+                    <Link className={this.state.detailSelected? "clicked":"detailsTap"} to="ProductDescriptions" smooth={true} duration={500}onClick={this.selectBox} isDynamic={true}>상세정보</Link>
+                    <Link className={this.state.reviewSelected? "clicked":"reviewTap"} to="reviewEventContainer" smooth={true} duration={500} onClick={this.selectBox} isDynamic={true}>리뷰</Link>
                     <Link className={this.state.qaSelected? "clicked":"qaTap"} to="qaAnchor" duration={100} onClick={this.selectBox}>Q&A</Link>
                 </div>
                 <ProductDescriptions detailImg={productData && productData.image}/>

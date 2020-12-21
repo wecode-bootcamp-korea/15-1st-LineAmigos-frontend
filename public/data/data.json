@@ -1,16 +1,5 @@
 {
-<<<<<<< HEAD
-  "product_id": {
-    "created_time": "2020-12-18T10:55:49.158",
-    "product_name": "귀여운 분홍토끼가 좋아하는 사탕",
-    "price": "9000.00",
-    "product_category": "브라운프렌즈",
-    "id": 1,
-    "image": " https://images.unsplash.com/photo-1567653418876-5bb0e566e1c2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=80",
-    "product_menu": "캐릭터",
-    "sale_amount": 10
-  }
-=======
+
   "categories" : [
     "캐릭터",
     "NEW",
@@ -26,5 +15,4 @@
     "패션잡화",
     "더보기"
   ]
->>>>>>> master
 }

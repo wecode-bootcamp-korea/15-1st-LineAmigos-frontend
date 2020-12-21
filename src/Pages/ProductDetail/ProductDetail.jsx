@@ -6,7 +6,7 @@ import Review from './Component/Review/Review'
 import Recommandations from './Component/Recommadations/Recommandations'
 import './ProductDetail.scss';
 
-const API = 'http://localhost:3000/data/data.json';
+const API = 'http://localhost:3000/data/mockData.json';
 
 class ProductDetail extends React.Component{
 

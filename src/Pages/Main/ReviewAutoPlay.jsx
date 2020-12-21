@@ -11,25 +11,11 @@ class ReviewAutoPlay extends Component {
       isInCart: false,
     }
   }
-
-  goToProductDetail = (id) => {
-    // this.props.history.push(`/product/${id}`)
-  }
-
-  componentDidMount = () => {
-    fetch('/data/productsInfos.json')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          reviews: data.reviews,
-        })
-      }).catch(err => console.log(err))
-  }
-
+  
   render() {
     const { reviews, isWishlisted, isInCart } = this.state
     const { goToProductDetail } = this
-    const { addToCart } = this.props
+    const { addToCart, reviewsList } = this.props
     const createdAtString = (createdAt) => {
       const splittedDate =  createdAt.split(' ')[0].split('-')
       return `${splittedDate[0]}년 ${splittedDate[1]}월 ${splittedDate[2]}일`
@@ -52,8 +38,8 @@ class ReviewAutoPlay extends Component {
       <div className="ReviewAutoPlay">
         <h3>생생한 리뷰</h3>
         <Slider {...settings}>
-        {reviews &&
-          reviews.map((review, index) => {
+        {reviewsList &&
+          reviewsList.map((review, index) => {
             return(
               <li key={index}>
                 <div className="productVisual">
@@ -63,8 +49,7 @@ class ReviewAutoPlay extends Component {
                     className="productImage"
                     onClick={goToProductDetail} />
                     <div className="action">
-                      <div 
-                        className={`icon ${isWishlisted && 'clicked'}`}>
+                      <div className="icon">
                         <img alt="Add to wishlist" src='/images/add-to-wishlist.png' />
                       </div>
                       <div 

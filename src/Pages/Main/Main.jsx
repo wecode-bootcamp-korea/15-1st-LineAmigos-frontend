@@ -4,6 +4,7 @@ import NewProductsSlider from './NewProductsSlider'
 import CategoriesSlider from './CategoriesSlider'
 import BannerSlider from './BannerSlider'
 import ReviewAutoPlay from './ReviewAutoPlay'
+import ItemClickPlate from './ItemClickPlate'
 import './Main.scss'
 
 class Main extends React.Component {
@@ -27,6 +28,23 @@ class Main extends React.Component {
     })
   }
 
+  // selectIndex = (totalIndex, selectingNumber) => {
+  //   let randomIndexArray = []
+  //   for (let i = 0; i < selectingNumber; i++) {
+  //     let randomNum = Math.floor(Math.random() * totalIndex)
+  //     if (randomIndexArray.indexOf(randomNum) === -1) {
+  //       randomIndexArray.push(randomNum)
+  //     } else {
+  //       i--
+  //     }
+  //   }
+  //   return randomIndexArray
+  // }
+
+  goToProductDetail = (id) => {
+    this.props.history.push(`/product/${id}`)
+  }
+
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
     // fetch('http://10.168.1.149:8000/product/get')
@@ -36,7 +54,7 @@ class Main extends React.Component {
        this.setState({
          productsList: data.PRODUCTS,
          categoriesList: data.main,
-         reviewsList: [],
+         reviewsList: data.reviews,
        })
      })
   }
@@ -59,8 +77,8 @@ class Main extends React.Component {
   }
 
   render() {
-    const { productsList, categoriesList } = this.state
-    const { addToCart } = this
+    const { productsList, reviewsList } = this.state
+    const { addToCart, goToProductDetail, selectIndex } = this
     
     return (
       <div className="Main">
@@ -71,40 +89,15 @@ class Main extends React.Component {
           <ul className="newProducts">
             <NewProductsSlider
               productsList={productsList}
+              goToProductDetail={goToProductDetail}
               addToCart={addToCart}/>
           </ul>
         </section>
         <section className="clickToSee">
-          <h3>#우리집 홈카페</h3>
-          <div className="clickContainer">
-            <div className="buttonPlate">
-              <img alt="My home cafe" src="/images/Main/main-slider-03.jpg" />
-              <ul className="buttons">
-                {productsList &&
-                  productsList.map((product, index) => {
-                    return (
-                      <li key={index} className={`button button${product.product_id}`}>
-                        <span className={`target target${product.product_id}`} />
-                        <div className={`price price${product.product_id}`}>{product.price}</div>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
-            <div className="descriptions">
-              <h4>BT21 BABY 코스터</h4>
-              <p>말랑말랑한 실리콘 코스터로 한 방에 귀여운 분위기 완성!</p>
-              <div className="products">
-                <img alt="Product" src="/images/Main/main-slider-06.jpg" />
-                <img alt="Product" src="/images/Main/main-slider-06.jpg" />
-                <img alt="Product" src="/images/Main/main-slider-06.jpg" />
-                <img alt="Product" src="/images/Main/main-slider-06.jpg" />
-                <img alt="Product" src="/images/Main/main-slider-06.jpg" />
-                <img alt="Product" src="/images/Main/main-slider-06.jpg" />
-              </div>
-            </div>
-          </div>
+          <ItemClickPlate 
+            productsList={productsList}
+            goToProductDetail={goToProductDetail}
+            addToCart={addToCart}/>
         </section>
         <section className="bannerContainer">
           <BannerSlider />
@@ -115,6 +108,8 @@ class Main extends React.Component {
         </section>
         <section className="reviewContainer">
           <ReviewAutoPlay
+            goToProductDetail={goToProductDetail}
+            reviewsList={reviewsList}
             addToCart={addToCart}/>
         </section>
       </div>

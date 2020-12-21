@@ -9,11 +9,7 @@ class NewProductsSlider extends Component {
       products: [],
     }
   }
-
-  goToProductDetail = (id) => {
-    this.props.history.push(`/product/${id}`)
-  }
-
+  
   render() {
     const { isWishlisted, isInCart } = this.state
     const { goToProductDetail } = this

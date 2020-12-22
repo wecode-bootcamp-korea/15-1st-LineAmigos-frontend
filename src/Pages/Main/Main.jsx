@@ -1,9 +1,11 @@
 import React from 'react'
+import Footer from '../../Components/Footer/Footer'
 import MainSlider from './MainSlider'
 import NewProductsSlider from './NewProductsSlider'
 import CategoriesSlider from './CategoriesSlider'
 import BannerSlider from './BannerSlider'
-import ReviewAutoPlay from './ReviewAutoPlay'
+// import ReviewAutoPlay from './ReviewAutoPlay'
+import ReviewSection from './ReviewSection'
 import ItemClickPlate from './ItemClickPlate'
 import './Main.scss'
 
@@ -18,6 +20,7 @@ class Main extends React.Component {
       scrollTop: 0,
       isNavFixed: false,
     }
+    this.myRef = React.createRef()
   }
 
   handleScroll = (e) => {
@@ -27,19 +30,6 @@ class Main extends React.Component {
       isNavFixed: scrollTop > 160 ? true : false
     })
   }
-
-  // selectIndex = (totalIndex, selectingNumber) => {
-  //   let randomIndexArray = []
-  //   for (let i = 0; i < selectingNumber; i++) {
-  //     let randomNum = Math.floor(Math.random() * totalIndex)
-  //     if (randomIndexArray.indexOf(randomNum) === -1) {
-  //       randomIndexArray.push(randomNum)
-  //     } else {
-  //       i--
-  //     }
-  //   }
-  //   return randomIndexArray
-  // }
 
   goToProductDetail = (id) => {
     this.props.history.push(`/product/${id}`)
@@ -77,9 +67,8 @@ class Main extends React.Component {
   }
 
   render() {
-    const { productsList, reviewsList } = this.state
-    const { addToCart, goToProductDetail, selectIndex } = this
-    
+    const { productsList, categoriesList, reviewsList } = this.state
+    const { addToCart, goToProductDetail } = this
     return (
       <div className="Main">
         <section className="visualContainer">
@@ -104,14 +93,21 @@ class Main extends React.Component {
         </section>
         <section className="categoriesShortcut">
           <CategoriesSlider
+            categoriesList={categoriesList}
             productsList={productsList} />
         </section>
         <section className="reviewContainer">
-          <ReviewAutoPlay
+          {/*<ReviewAutoPlay
+            goToProductDetail={goToProductDetail}
+            reviewsList={reviewsList}
+          addToCart={addToCart}/>*/}
+          <ReviewSection
+            
             goToProductDetail={goToProductDetail}
             reviewsList={reviewsList}
             addToCart={addToCart}/>
         </section>
+        <Footer />
       </div>
     )
   }

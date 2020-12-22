@@ -5,6 +5,7 @@ import './BannerSlider.scss'
 class BannerSlider extends Component {
   render() {
     const SETTING = {
+      dots: true,
       infinite: true,
       speed: 700,
       slidesToShow: 1,

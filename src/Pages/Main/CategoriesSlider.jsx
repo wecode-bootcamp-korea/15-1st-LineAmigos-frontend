@@ -10,7 +10,7 @@ class CategoriesSlider extends Component {
 
   render() {
     const { gotoProductList } = this
-    const { productsList } = this.props
+    const { categoriesList } = this.props
     const settings = {
       infinite: true,
       autoplay: false,
@@ -24,15 +24,15 @@ class CategoriesSlider extends Component {
       <div className="CategoriesSlider">
       <h3>카테고리 바로가기</h3>
         <Slider {...settings}>
-        {productsList &&
-          productsList.map((category) => {
+        {categoriesList &&
+          categoriesList.map((category) => {
             return(
               <li 
-                key={category.product_category} 
+                key={category.id} 
                 className="category"
                 onClick={() => gotoProductList()}>
                   <img alt="Category" src={category.product_image} />
-                  <span className="productInfo">{category.product_menu}
+                  <span className="productInfo">{category.menu}
                   <i className="fas fa-chevron-right" />
                   </span>
               </li>

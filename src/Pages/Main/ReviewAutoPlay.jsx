@@ -1,19 +1,20 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import ReviewCard from './MainReviews/ReviewCard.js'
 import './ReviewAutoPlay.scss'
 
 class ReviewAutoPlay extends Component {
   constructor() {
     super()
     this.state = {
-      reviews: [],
+      // reviews: [],
       isWishlisted: false,
       isInCart: false,
     }
   }
   
   render() {
-    const { reviews, isWishlisted, isInCart } = this.state
+    const { isWishlisted, isInCart } = this.state
     const { goToProductDetail } = this
     const { addToCart, reviewsList } = this.props
     const createdAtString = (createdAt) => {
@@ -41,7 +42,19 @@ class ReviewAutoPlay extends Component {
         {reviewsList &&
           reviewsList.map((review, index) => {
             return(
-              <li key={index}>
+              <ReviewCard
+                key={index}
+                review={review}
+                addToCart={addToCart}
+                isWishlisted={isWishlisted}
+                isInCart={isInCart}
+                goToProductDetail={goToProductDetail}
+                createdAtString={createdAtString}
+                hiddenId={hiddenId}
+                rateStar={rateStar}
+                 />
+                
+              /*<li key={index}>
                 <div className="productVisual">
                   <img 
                     alt="product" 
@@ -77,7 +90,7 @@ class ReviewAutoPlay extends Component {
                   <span>{hiddenId(review.userId)}</span>
                   <span>{createdAtString(review.createdAt)}</span>
                 </div>
-              </li>
+            </li>*/
             )
           })
         }

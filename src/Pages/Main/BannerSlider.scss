@@ -2,54 +2,11 @@
 
 .BannerSlider {
   width: 100%;
-
-  .slick-slider button {
-    width: 70px;
-    height: 70px;
-    transition: all 0.2s ease;
-    z-index: 10;
-    &{opacity: .2;}
-    &:hover{opacity: .8;}
-    &:first-of-type {
-      top: 170px;
-      left: 160px;
-    }
-    &:last-of-type {
-      top: 135px;
-      right: 180px;
-      transform: rotate(180deg);
-    }
-    &::before,
-    &::after {
-      position: absolute;
-      left: 32px;
-      content: ' ';
-      height: 26px;
-      width: 1px;
-    }
-    &::before {
-      transform: rotate(45deg);
-      top: 12px;
-      background-color: #fff;
-    }
-    &::after {
-      transform: rotate(-45deg);
-      top: 30px;
-      background-color: #fff;
-    }
-    &.slick-arrow {
-      border: 1px solid #fff;
-      &:hover {
-        border: 1px solid #fff;
-      }
-      &::before {
-        font-size: 40px;
-        opacity: 1;
-      }
-    }
-  }
   
   .slick-dots li button {
+    position: relative;
+    top: -70px;
+    left: 0;
     border: none;
   }
 

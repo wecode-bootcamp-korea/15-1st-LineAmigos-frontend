@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import Products from './component/Products'
-// import Filter from './component/Filter'
 import Filters from './component/Filters'
-import './ProductList.scss'
 import SideCategory from './component/SideCategory'
+import Footer from '../../Components/Footer/Footer'
+import './ProductList.scss'
+
 // import Pagination from './component/Pagination'
 
 const LIMIT = 5
@@ -219,6 +220,7 @@ class ProductList extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

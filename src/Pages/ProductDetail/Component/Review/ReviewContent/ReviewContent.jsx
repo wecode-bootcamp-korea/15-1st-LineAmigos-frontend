@@ -11,7 +11,7 @@ class ReviewContent extends Component {
 
     reviewChange = () => {
         this.setState({
-            reviewClicked: !this.state.revieWClicked
+            reviewClicked: !this.state.reviewClicked
         })
     }
 
@@ -19,30 +19,35 @@ class ReviewContent extends Component {
         let rateArr = [];
         const fullStar = <i className="fas fa-star"/>;
         const emptyStar = <i className="far fa-star"/>;
-        for(let i=0; i<rate; i++){rateArr.push(fullStar)};
-        for(let i=0; i<5-rate; i++){rateArr.push(emptyStar)};
+        for(let i=0; i<Math.floor(rate); i++){rateArr.push(fullStar)};
+        for(let i=0; i<(5-Math.floor(rate)); i++){rateArr.push(emptyStar)};
 
         return rateArr
     }
 
     render() {
+        const {reviewClicked} = this.state;
         const {id, date, size, content, image, rate} = this.props;
         return (
             <div className="reviewContentsContainer">
                 <div className="reviewLeft">
-                    <div className="stars">
-                        {this.printStars(rate)}
-                        <span>{rate}</span>
+                    <div>
+                        <div className="stars">
+                            {this.printStars(rate)}
+                            <span>{rate.toFixed(1)}</span>
+                        </div>
+                        <div className="userInfo" onClick={this.reviewChange}>
+                            <span className="userId">{id} |</span>
+                            <span>{date} |</span>
+                            <span>{size} | 신고</span>
+                            <p>{content}</p>
+                        </div>
                     </div>
-                    <div className={this.state.reviewClicked? "userInfoClicked":"userInfo"} onClick={this.reviewChange}>
-                        <span className="userId">{id} |</span>
-                        <span>{date} |</span>
-                        <span>{size} | 신고</span>
-                        <p>{content}</p>
+                    <div>
+                        <img className={reviewClicked? "" : "reviewContentImage"} key={id} alt="reviewImg" src={image} onClick={this.reviewChange}/>
                     </div>
                 </div>
                 <div className="reviewRight">
-                    <img key={id} alt="reviewImg" src={image} />
                     <button><i className="far fa-thumbs-up"/></button>
                 </div>
             </div>

@@ -76,6 +76,10 @@ class ImgPurchInfo extends Component {
             }
     }
 
+    numbersWithComma = (num) => {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
+    }
+
     render() {
         const {sizeBtn, count} = this.state;
         const {reviewArray, price}=this.props;
@@ -89,7 +93,7 @@ class ImgPurchInfo extends Component {
                             <span className="smallCount">{reviewArray&&reviewArray.length}</span>
                         </div>
                         <div>
-                            <span className="smallCount"> {reviewArray.length>0&&(reviewArray.reduce((acc, curr)=>acc+curr)/reviewArray.length)}/5</span>
+                            <span className="smallCount"> {reviewArray.length>0&&(reviewArray.reduce((acc, curr)=>acc+curr)/reviewArray.length).toFixed(1)} /5</span>
                         </div>
                     </div>        
                 </div>
@@ -97,7 +101,7 @@ class ImgPurchInfo extends Component {
                     <div className="nameAndPrice">
                         <span className="productName">{this.props.productName}</span>
                         <div className="priceContainer">
-                            <span className="priceNumber">{Math.floor(price)}</span>
+                            <span className="priceNumber">{this.numbersWithComma(Math.floor(price))}</span>
                             <span className="priceWon">원</span>
                         </div>
                     </div>
@@ -155,7 +159,7 @@ class ImgPurchInfo extends Component {
                                         <button className="minusplus"onClick={this.plus}>+</button>
                                     </div>
                                     <div className="calTotPrice">
-                                        <span>{this.state.count*price}원</span>
+                                        <span>{this.numbersWithComma(this.state.count*price)}원</span>
                                         <button onClick={this.hideComp}>X</button>
                                     </div>
                                 </div>
@@ -169,7 +173,7 @@ class ImgPurchInfo extends Component {
                             </span>
                             <span className="totQuantity">
                                 총 수량 {count}개 |
-                                <span className="totPrice"> {price * count}원</span>
+                                <span className="totPrice"> {this.numbersWithComma(price * count)}원</span>
                             </span>
                         </div>
                         <div className="PCBtns">

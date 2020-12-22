@@ -28,10 +28,10 @@ class ImgSlide extends React.Component {
     return (
       <>
       <Slider {...settings}>
-        {[...Array(5)].map(el=>{return(
-          <div className="slideContainer">
-          <img alt="slideImg" src={imgUrl} className="slideImg"/>
-        </div>
+        {[...Array(5)].map((el, idx)=>{return(
+          <div key={idx} className="slideContainer">
+            <img key={idx} alt="slideImg" src={imgUrl} className="slideImg"/>
+          </div>
         )})}
       </Slider >
       </>

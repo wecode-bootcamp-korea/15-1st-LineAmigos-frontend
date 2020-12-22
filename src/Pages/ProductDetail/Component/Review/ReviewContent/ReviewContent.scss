@@ -9,12 +9,23 @@
     .reviewLeft{
         width: 980px;
         padding: 20px;
+        display: flex;
+        justify-content: space-between;
+
         .stars{
             padding: 10px;
 
             i{
                 color: red;
-                font-size: 18px;
+                
+                &.fas{
+                    font-size: 18px;
+                    padding-right: 3px;
+                }
+
+                &.far{
+                    font-size: 18px;
+                }
             }
 
             span{
@@ -25,24 +36,36 @@
             }
         }
 
+        span{
+            font-size: 15px;
+
+            &.userId{
+                padding: 10px;
+            }
+        }
+
+        p{
+            padding: 15px 10px;
+
+            &:hover{
+                cursor: pointer;
+            } 
+        }
+
         .userInfo{
             width: 100%;
+        }
 
-            span{
-                font-size: 15px;
+        img{
+            width: 300px;
+        }
 
-                &.userId{
-                    padding: 10px;
-                }
-            }
+        .reviewContentImage{
+            width: 100px;
 
-            p{
-                padding: 15px 10px;
-
-                &:hover{
-                    cursor: pointer;
-                } 
-            }
+            &:hover{
+                cursor: pointer;
+            } 
         }
     }
 
@@ -51,14 +74,6 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-
-        img{
-            width: 100px;
-
-            &:hover{
-                cursor: pointer;
-            } 
-        }
 
         button{
             width: 61px;

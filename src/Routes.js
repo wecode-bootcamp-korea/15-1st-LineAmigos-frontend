@@ -12,7 +12,7 @@ import {
 // import SignUp from './Pages/SignUp/SignUp';
 // import MyPage from './Pages/MyPage/MyPage';
 import ProductDetail from './Pages/ProductDetail/ProductDetail'
-// import ProductList from './Pages/ProductList/ProductList'
+import ProductList from './Pages/ProductList/ProductList'
 
 class Routes extends React.Component {
   render() {
@@ -25,8 +25,8 @@ class Routes extends React.Component {
           <Route exact path='/login' component={Login} />
           <Route exact path='/signup' component={SignUp} />
           <Route exact path='/mypage' component={MyPage} /> */}
-          <Route exact path='/' component={ProductDetail} />
-          {/* <Route exact path='/' component={ProductList} /> */}
+          <Route exact path='/productdetail/:id' component={ProductDetail} />
+          <Route exact path='/' component={ProductList} />
         </Switch>
       </Router>
     )

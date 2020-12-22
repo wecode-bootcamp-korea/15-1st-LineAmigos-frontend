@@ -28,13 +28,12 @@
         justify-content: space-evenly;
         border-bottom: 1px solid black;
         background-color: $border-color;
-
         overflow: auto;
 
         .detailsTap, .reviewTap, .qaTap, .clicked{
             width: 100%;
-            margin: auto;
             text-align: center;
+            margin: auto;
             border-left: 1px solid gray;
             font-weight: bold;
             
@@ -47,7 +46,10 @@
             } 
 
             &.clicked{
-                background-color: black;
+                background-color: $font-color-lightblue;
+                opacity: 0.6;
+                padding: 13px;
+                padding-bottom: 16px;
                 color: white;
             }
         }    
@@ -80,7 +82,6 @@
     position: fixed;
     top: 0;
     width: 100%;
-    height: 145px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -98,7 +99,7 @@
             display: flex;
             
             img{
-                width: 50px;
+                width: 100px;
                 padding: 20px;
             }
 
@@ -136,27 +137,30 @@
         display: flex;
         text-align: center;
         align-items: center;
+        justify-content: space-evenly;
         border: 1px solid gray;
         border-bottom: none;
 
-        .detailsTap, .reviewTap, .qaTap, .clicked{
-                width: 100%;
-                font-weight: bold;
-                
-                &.reviewTap{
-                    border-left: 1px solid gray;
-                    border-right: 1px solid gray;
-                }
-        
-                &:hover{
-                    cursor: pointer;
-                } 
-        
-                &.clicked{
-                    background-color: gray;
-                    color: white;
-                }
-            }    
+         .detailsTap, .reviewTap, .qaTap, .clicked{
+                    width: 100%;
+                    font-weight: bold;
+                    
+                    &.reviewTap{
+                        border-left: 1px solid gray;
+                        border-right: 1px solid gray;
+                    }
+            
+                    &:hover{
+                        cursor: pointer;
+                    } 
+            
+                    &.clicked{
+                        background-color: $font-color-lightblue;
+                        opacity: 0.6;
+                        padding: 9px;
+                        color: white;
+                    }
+             }   
     }
 }
 

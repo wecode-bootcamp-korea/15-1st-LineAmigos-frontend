@@ -11,7 +11,13 @@ class Review extends Component {
             clicked: {
                 photo: false,
                 storePick: false,
-                monthReview: false}
+                monthReview: false},
+            clickedSort: {
+                rank: false,
+                date: false,
+                rateH: false,
+                rateL: false
+            }
         }
     }
 
@@ -65,15 +71,65 @@ class Review extends Component {
         return rateArr
     }
 
-    Filter = () =>{
+    Filter = (e) =>{
+        if(e.target.className === "monthReview"){
         this.setState({
-            revList: this.props.reviewList.filter(el=> el.monthly_review === 'True'),
+            revList: this.props.reviewList.filter(el=> el.is_monthly === false),
             clicked: {
                 photo: false,
                 storePick: false,
                 monthReview: true},
         });
     }
+    if(e.target.className === "storePick"){
+        this.setState({
+            revList: this.props.reviewList.filter(el=> el.review_rate === 5),
+            clicked: {
+                photo: false,
+                storePick: true,
+                monthReview: false},
+        });
+    }
+    if(e.target.className === "photoandVideo"){
+        this.setState({
+            revList: this.props.reviewList.filter(el=> el.review_image !== ""),
+            clicked: {
+                photo: true,
+                storePick: false,
+                monthReview: false},
+        });
+    }
+    if(e.target.className === "wholeReviewList"){
+        this.setState({
+            clicked: {
+                photo: false,
+                storePick: false,
+                monthReview: false},
+        });
+    }
+}
+
+sortBy = (e) => {
+
+    if(e.target.className === "dateOrder"){
+        this.setState({
+            revList: this.props.reviewList.sort((a, b)=> new Date(b.review_created_time).getTime() - new Date(a.review_created_time).getTime())
+        })
+    }
+
+    if(e.target.className === "rateOrder"){
+        this.setState({
+            revList: this.props.reviewList.sort((a,b) => b.review_rate - a.review_rate)
+        })
+    }
+
+    if(e.target.className === "rateOrderDowntoUp"){
+        this.setState({
+            revList: this.props.reviewList.sort((a,b) => a.review_rate - b.review_rate)
+        })
+    }
+
+}
 
     render() {
         const {reviewList, rateArray} = this.props;
@@ -114,7 +170,7 @@ class Review extends Component {
                         }
                         </span>
                         <span className="ratingPoint">{rateArray.length>0 &&
-                            rateArray.reduce((acc, curr) => (acc+curr))/rateArray.length} /5</span>
+                            (rateArray.reduce((acc, curr) => (acc+curr))/rateArray.length).toFixed(1)} /5</span>
                     </div>
                     <div className="totalReviews">
                         <span className="ratingType">전체 리뷰수</span>
@@ -132,50 +188,50 @@ class Review extends Component {
                     <div className="reviewContentsTop">
                         <span>리뷰 {reviewList.length}건</span>
                         <div className="reviewFilter">
-                            <span>랭킹순</span>
-                            <span>최신순</span>
-                            <span>평점 높은순</span>
-                            <span>평점 낮은순</span>
+                            <span className="rankOrder">랭킹순</span>
+                            <span className="dateOrder" onClick={this.sortBy}>최신순</span>
+                            <span className="rateOrder" onClick={this.sortBy}>평점 높은순</span>
+                            <span className="rateOrderDowntoUp" onClick={this.sortBy}>평점 낮은순</span>
                         </div>
                     </div>
                     <div className="reviewContainer">
                         <ul className="reviewCategory">
-                            <li>전체 보기</li>
-                            <li className="photoandVideo" onClick={this.Filter}>포토/동영상</li>
-                            <li className="storePick" onClick={this.Filter}>스토어Pick</li>
+                            <li className="wholeReviewList" onClick={this.Filter}>전체 보기</li>
+                            <li className={clicked.photo? "clickedList" :"photoandVideo"} onClick={this.Filter}>포토/동영상</li>
+                            <li className={clicked.storePick? "clickedList" : "storePick"} onClick={this.Filter}>스토어Pick</li>
                             <li className={clicked.monthReview? "clickedList":"monthReview"} onClick={this.Filter}>한달 사용 리뷰</li>
                         </ul>
                         <div className="reviewList">
-                                {clicked.monthReview?
-                                    revList.map(el => {
+                                {clicked.monthReview || clicked.photo || clicked.storePick?
+                                    revList.map((el,idx) => {
                                         return(
-                                            <ReviewContent 
-                                            key={el.user_id}
-                                            id={el.user_id}
-                                            date={el.reviewDate}
-                                            size={el.size}
-                                            content={el.review_content}
-                                            image={el.reviewImage}
-                                            rate ={el.rate}
-                                            />
+                                                <ReviewContent 
+                                                key={idx}
+                                                id={el.review_id}
+                                                date={el.review_created_time}
+                                                size={el.size}
+                                                content={el.review_contents}
+                                                image={el.review_image}
+                                                rate ={el.review_rate}
+                                                />
                                         )
                                     })
                                     :
-                                    reviewList.map(el => {
+                                    reviewList.map((el,idx) => {
                                         return(
-                                            <ReviewContent 
-                                            key={el.user_id}
-                                            id={el.user_id}
-                                            date={el.reviewDate}
-                                            size={el.size}
-                                            content={el.review_content}
-                                            image={el.reviewImage}
-                                            rate ={el.rate}
-                                            />
+                                                <ReviewContent 
+                                                key={idx}
+                                                id={el.review_id}
+                                                date={el.review_created_time}
+                                                size={el.size}
+                                                content={el.review_contents}
+                                                image={el.review_image}
+                                                rate ={el.review_rate}
+                                                />
                                         )
                                     })
                                 }
-                            <div className={reviewList.length > 0 &&'noReview'}>
+                            <div className={reviewList.length > 0 ? 'noReview' : ""}>
                                 <i className="far fa-comment-dots"/>
                                 <span>조건에 맞는 리뷰가 없습니다.</span>
                             </div>

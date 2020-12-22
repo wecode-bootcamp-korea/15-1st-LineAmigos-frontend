@@ -3,10 +3,11 @@ import { Link, animateScroll as scroll} from 'react-scroll';
 import ImgPurchInfo from './Component/ImgPurchInfo';
 import ProductDescriptions from './Component/ProductDescriptions/ProductDescriptions';
 import Review from './Component/Review/Review'
-import Recommandations from './Component/Recommadations/Recommandations'
 import './ProductDetail.scss';
 
-const API = 'http://localhost:3000/data/mockData.json';
+// const API = 'http://localhost:3000/data/mockData.json';
+
+const reviewAPI = 'http://localhost:3000/data/reviewData.json';
 
 class ProductDetail extends React.Component{
 
@@ -23,24 +24,24 @@ class ProductDetail extends React.Component{
     }
     
     componentDidMount() {
-        // fetch(`http://10.168.1.149:8000/product/${this.props.match.params.id}`, {
-        fetch(API, {
+        fetch(`http://10.168.1.149:8000/product/${this.props.match.params.id}`, {
+        // fetch(API, {
             method: "GET",
         })
         .then((res) => res.json())
         .then((res) => {
             this.setState({
-                productData: res.product_id,
+                productData: res.product,
             })
         });
 
-        fetch('http://localhost:3000/data/reviewData.json', {
+        fetch(reviewAPI, {
             method: "GET",
         })
         .then((res)=>res.json())
         .then((res)=> {
             this.setState({
-                reviewList: res.product_1
+                reviewList: res.all_review
             })
         })
         window.addEventListener('scroll', this.onScroll)
@@ -94,9 +95,8 @@ class ProductDetail extends React.Component{
 
     render(){
         const {targetReached, productData, reviewList} = this.state;
-
         return(
-        <div>
+        <>
            <div id="DetailPageContainer">
                <div className="topContainer">
                     <div className="topContents">
@@ -110,15 +110,14 @@ class ProductDetail extends React.Component{
                         {/* 나중에 링크로 정리 */}
                     </div>
                </div>
-                <ImgPurchInfo productName={productData &&  productData.product_name} imgUrl={productData && productData.image} id={productData && productData.id} price={productData && productData.price} reviewArray={reviewList&& reviewList.map(el=>el.rate)}/>
-                <Recommandations reviewList={reviewList} />
+                <ImgPurchInfo productName={productData &&  productData.product_name} imgUrl={productData && productData.image} id={productData && productData.id} price={productData && productData.price} reviewArray={reviewList&& reviewList.map((el)=>el.review_rate)}/>
                 <div className="categoryTap" onScroll={this.onScroll}>
                     <Link className={this.state.detailSelected? "clicked":"detailsTap"} to="ProductDescriptions" smooth={true} duration={500}onClick={this.selectBox} isDynamic={true}>상세정보</Link>
                     <Link className={this.state.reviewSelected? "clicked":"reviewTap"} to="reviewEventContainer" smooth={true} duration={500} onClick={this.selectBox} isDynamic={true}>리뷰</Link>
                     <Link className={this.state.qaSelected? "clicked":"qaTap"} to="qaAnchor" duration={100} onClick={this.selectBox}>Q&A</Link>
                 </div>
                 <ProductDescriptions detailImg={productData && productData.image}/>
-                <Review reviewList={reviewList} rateArray={reviewList&& reviewList.map(el=>el.rate)}/>
+                <Review reviewList={reviewList} rateArray={reviewList&& reviewList.map(el=>el.review_rate)}/>
                 <button className="scrollTop" onClick={this.scrollToTop}><i className="fas fa-chevron-up"/></button>             
             </div>
            <nav className={targetReached? "categoryNav":".hideNav"}>
@@ -138,12 +137,13 @@ class ProductDetail extends React.Component{
                         </button>
                     </div>
                     <div className="navLinks">
-                        <Link className={this.state.detailSelected? "clicked":"detailsTap"} to="detailAnchor" smooth={true} duration={500}onClick={this.selectBox} isDynamic={true}>상세정보</Link>
-                        <Link className={this.state.reviewSelected? "clicked":"reviewTap"} to="reviewAnchor" smooth={true} duration={500} onClick={this.selectBox} isDynamic={true}>리뷰</Link>
-                        <Link className={this.state.qaSelected? "clicked":"qaTap"} to="qaAnchor" duration={100} onClick={this.selectBox}>Q&A</Link>
+                       
+                            <Link className={this.state.detailSelected? "clicked":"detailsTap"} to="ProductDescriptions" smooth={true} duration={500}onClick={this.selectBox} isDynamic={true}>상세정보</Link>
+                            <Link className={this.state.reviewSelected? "clicked":"reviewTap"} to="reviewEventContainer" smooth={true} duration={500} onClick={this.selectBox} isDynamic={true}>리뷰</Link>
+                            <Link className={this.state.qaSelected? "clicked":"qaTap"} to="qaAnchor" duration={100} onClick={this.selectBox}>Q&A</Link>
                     </div>
             </nav>
-        </div>
+        </>
         );
     }
 }

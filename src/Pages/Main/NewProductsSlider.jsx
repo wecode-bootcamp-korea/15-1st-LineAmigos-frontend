@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import SliderCard from './SliderCard/SliderCard'
 import './NewProductsSlider.scss';
 
 class NewProductsSlider extends Component {
@@ -33,7 +34,10 @@ class NewProductsSlider extends Component {
         {productsList &&
           productsList.map((product) => {
             return(
-              <li 
+              <SliderCard
+                type={newProduct}
+                product={product}/>
+              /*<li 
                 key={product.product_id} 
                 className="newProduct"
                 onClick={goToProductDetail}>
@@ -54,12 +58,12 @@ class NewProductsSlider extends Component {
                 </div>
                 <div className="productInfo">
                   <span className="saleRate">{product.sale_amount}%</span>
-                  <span className="salePrice">{commasBetween(product.price - (product.price)*(product.sale_amount)*0.01)}원</span>
+                  <span className="salePrice">{(product.price - (product.price)*(product.sale_amount)*0.01).toLocaleString()}원</span>
                   <span className="originalPrice">{commasBetween(product.price).slice(0, -3)}원</span>
                 </div>
                 <span className="productInfo">{product.name}
                 </span>
-              </li>
+              </li>*/
             )
           })
         }

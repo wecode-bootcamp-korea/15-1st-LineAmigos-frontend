@@ -1,8 +1,35 @@
 @import '../../styles/common.scss';
 
 .BannerSlider {
-  width: 100%;
+  width: 100vw;
+  height: 350px;
+  margin: 30px 0;
   
+  .slick-slider {
+    .slick-list div img {
+      width: 100vw;
+      height: 350px;
+      margin: 0 auto;
+      object-fit: cover;
+    }
+
+    .slick-dots {
+      position: absolute;
+      bottom: 14px;
+
+      button {
+        background: none;
+        &:hover {
+          background: none;
+        }
+        &::before {
+          font-size: 10px;
+          color: #666;
+        }
+      }
+    }
+  }
+
   .slick-dots li button {
     position: relative;
     top: -70px;

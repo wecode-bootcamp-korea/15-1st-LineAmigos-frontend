@@ -2,6 +2,7 @@
 
 .MainSlider {
   width: 100%;
+  position: absolute;
 
   .slick-slider {
     button {
@@ -33,10 +34,16 @@
     }
   }
 
+  img {
+    width: 100vw;
+    height: 860px;
+    object-fit: cover;
+  }
+
   .ads {
     position: relative;
-    top: -540px;
-    left: 320px;
+    top: -520px;
+    left: 240px;
     z-index: 100;
     background: #999;
 
@@ -55,6 +62,3 @@
     }
   }
 }
-
-
-

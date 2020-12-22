@@ -1,10 +1,10 @@
 import React from 'react'
+import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
 import MainSlider from './MainSlider'
 import NewProductsSlider from './NewProductsSlider'
 import CategoriesSlider from './CategoriesSlider'
 import BannerSlider from './BannerSlider'
-// import ReviewAutoPlay from './ReviewAutoPlay'
 import ReviewSection from './ReviewSection'
 import ItemClickPlate from './ItemClickPlate'
 import './Main.scss'
@@ -44,23 +44,20 @@ class Main extends React.Component {
        this.setState({
          productsList: data.PRODUCTS,
          categoriesList: data.main,
-         reviewsList: data.reviews,
+        //  reviewsList: data.reviews,
        })
-     })
+     }).catch(err => console.log(err))
+
+    fetch('http://10.168.1.140:8000/review/reviews')
+     .then(response => response.json())
+     .then(data => {
+       this.setState({
+         reviewsList: data.review,
+       })
+     }).catch(err => console.log(err))
   }
 
-  addToCart = () => {
-    console.log('Item added')
-    alert('장바구니에 추가되었습니다.')
-    // fetch('cartAPI', {
-    //   method: 'POST'
-    // })
-    //   .then(response => response.json())
-    //   .then(data => {
-
-    //   })
-    // this.props.history.push('/cart')
-  }
+  addToCart = () => {alert('장바구니에 추가되었습니다.')}
   
   componentWillUnmount = () => {
     window.removeEventListener('scroll', this.handleScroll)
@@ -71,42 +68,23 @@ class Main extends React.Component {
     const { addToCart, goToProductDetail } = this
     return (
       <div className="Main">
-        <section className="visualContainer">
-          <MainSlider />
-        </section>
-        <section className="newProductsSection">
-          <ul className="newProducts">
-            <NewProductsSlider
-              productsList={productsList}
-              goToProductDetail={goToProductDetail}
-              addToCart={addToCart}/>
-          </ul>
-        </section>
-        <section className="clickToSee">
-          <ItemClickPlate 
-            productsList={productsList}
-            goToProductDetail={goToProductDetail}
-            addToCart={addToCart}/>
-        </section>
-        <section className="bannerContainer">
-          <BannerSlider />
-        </section>
-        <section className="categoriesShortcut">
-          <CategoriesSlider
-            categoriesList={categoriesList}
-            productsList={productsList} />
-        </section>
-        <section className="reviewContainer">
-          {/*<ReviewAutoPlay
-            goToProductDetail={goToProductDetail}
-            reviewsList={reviewsList}
-          addToCart={addToCart}/>*/}
-          <ReviewSection
-            
-            goToProductDetail={goToProductDetail}
-            reviewsList={reviewsList}
-            addToCart={addToCart}/>
-        </section>
+        <MainSlider />
+        <Header />
+        <NewProductsSlider
+          productsList={productsList}
+          goToProductDetail={goToProductDetail}
+          addToCart={addToCart}/>
+        <ItemClickPlate 
+          productsList={productsList}
+          goToProductDetail={goToProductDetail}/>
+        <BannerSlider />
+        <CategoriesSlider
+          categoriesList={categoriesList}
+          productsList={productsList} />
+        <ReviewSection
+          goToProductDetail={goToProductDetail}
+          reviewsList={reviewsList}
+          addToCart={addToCart}/>
         <Footer />
       </div>
     )

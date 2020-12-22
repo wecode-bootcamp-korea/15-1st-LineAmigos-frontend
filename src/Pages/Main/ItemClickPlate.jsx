@@ -1,63 +1,47 @@
 import React, { Component } from 'react';
+import ItemClickButton from './ItemClickButton/ItemClickButton'
 import './ItemClickPlate.scss'
 
 class ItemClickPlate extends Component {
 
-  handleViewProduct = (id) => {
-    console.log(id)
-  }
+  // handleViewProduct = (e) => {
+  //   // console.log(e.target.id)
+  //   if () {
+
+  //   }
+  // }
 
   render() {
-    const { productsList, addToCart, goToProductDetail } = this.props
+    const { productsList, goToProductDetail } = this.props
     const { handleViewProduct } = this
-    const commasBetween = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
     return (
       <div className="ItemClickPlate">
-      <h3>#우리집 홈카페</h3>
-      <div className="clickContainer">
-        <div className="buttonPlate">
-          <img alt="My home cafe" src="/images/Main/main-slider-03.jpg" />
+        <h3>#우리집 홈카페</h3>
+        <div className="clickContainer">
+          <div className="buttonPlate">
+            <img alt="My home cafe" src="/images/click-template.webp" />
+          </div>
+          <div className="descriptions">
+            <h4>BT21 BABY 코스터</h4>
+            <p>말랑말랑 귀여운 아이템으로 한 방에 귀여운 방 분위기 완성!</p>
+            <ul className="products">
+            {productsList &&
+              productsList.slice(3,9).map((product, index) => {
+                return (
+                  <ItemClickButton 
+                    key={index}
+                    index={index}
+                    product={product}
+                    isClicked={false}
+                    handleViewProduct={handleViewProduct}
+                    goToProductDetail={goToProductDetail}/>
+                )
+              })
+            }
+            </ul>
+          </div>
         </div>
-        <div className="descriptions">
-          <h4>BT21 BABY 코스터</h4>
-          <p>말랑말랑 귀여운 아이템으로 한 방에 귀여운 방 분위기 완성!</p>
-          <ul className="products">
-          {productsList &&
-            productsList.slice(3,9).map((product, index) => {
-              const { product_id, product_image, name, price, sale_amount } = product
-              return (
-                <li
-                  key={product_id}
-                  className="clickItem">
-                  <img 
-                    alt="Product" 
-                    src={product_image} />
-                  <div 
-                    key={product_id}
-                    className={`button button${index}`}>
-                    <span 
-                      className={`target target${product_id}`}
-                      id={product_id}
-                      onClick={() => handleViewProduct(product_id)} />
-                    <div className={`price price${product_id}`}>
-                      <div className="name">{name}</div>
-                      <div className="priceInfoTag">
-                        <div className="salePrice">
-                        {commasBetween(price - (price)*(sale_amount)*0.01)}원
-                        </div>
-                        <div className="originalPrice">
-                        {commasBetween(price).slice(0, -3)}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              )
-            })
-          }
-          </ul>
-        </div>
-      </div>
       </div>
     );
   }

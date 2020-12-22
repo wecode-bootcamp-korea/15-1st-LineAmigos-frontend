@@ -281,67 +281,48 @@
       "sale_amount": 10
     }
   ],
-  "mainSliderImages": [
-    {
-      "id": 1,
-      "url": "/images/Main/main-slider-05.jpg"
-    },
-    {
-      "id": 2,
-      "url": "/images/Main/main-slider-02.jpg"
-    },
-    {
-      "id": 3,
-      "url": "/images/Main/main-slider-03.jpg"
-    },
-    {
-      "id": 4,
-      "url": "/images/Main/main-slider-04.jpg"
-    },
-    {
-      "id": 5,
-      "url": "/images/Main/main-slider-01.jpg"
-    },
-    {
-      "id": 6,
-      "url": "/images/Main/main-slider-06.jpg"
-    }
-  ],
   "main": [
     {
       "categories": ["브라운프렌즈", "BT21", "홀리스타즈"],
       "id": 1,
-      "menu": "캐릭터"
+      "menu": "캐릭터",
+      "img": ""
     },
     {
       "categories": ["NEW"],
       "id": 2,
-      "menu": "NEW"
+      "menu": "NEW",
+      "img": ""
     },
     {
       "categories": ["선물추천"],
       "id": 3,
-      "menu": "선물추천"
+      "menu": "선물추천",
+      "img": ""
     },
     {
       "categories": ["미니프렌즈", "맥시프렌즈"],
       "id": 4,
-      "menu": "THEME"
+      "menu": "THEME",
+      "img": ""
     },
     {
       "categories": ["문구", "리빙", "디지털", "패션잡화"],
       "id": 5,
-      "menu": "BABY"
+      "menu": "BABY",
+      "img": ""
     },
     {
       "categories": ["SALE"],
       "id": 6,
-      "menu": "SALE"
+      "menu": "SALE",
+      "img": ""
     },
     {
       "categories": ["중형인형 이상", "미니인형", "쿠션", "피규어"],
       "id": 7,
-      "menu": "토이"
+      "menu": "토이",
+      "img": ""
     },
     {
       "categories": [
@@ -352,27 +333,32 @@
         "스티커시리즈"
       ],
       "id": 8,
-      "menu": "디자인문구"
+      "menu": "디자인문구",
+      "img": ""
     },
     {
       "categories": ["폰케이스", "주변기기", "스마트기기", "디지털케이스"],
       "id": 9,
-      "menu": "디지털"
+      "menu": "디지털",
+      "img": ""
     },
     {
       "categories": ["반팔의류", "긴팔의류", "라운지웨어", "양말, 슬리퍼"],
       "id": 10,
-      "menu": "패션의류"
+      "menu": "패션의류",
+      "img": ""
     },
     {
       "categories": ["가방", "키홀더", "뷰티", "모자"],
       "id": 11,
-      "menu": "패션잡화"
+      "menu": "패션잡화",
+      "img": ""
     },
     {
       "categories": ["묻고 답하기", "공지사항", "마이페이지"],
       "id": 12,
-      "menu": "더보기"
+      "menu": "더보기",
+      "img": ""
     }
   ],
   "cartItems": [
@@ -469,6 +455,93 @@
       "imgUrl": "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1409&q=80",
       "createdAt": "2020-12-12 21:23:23.223456",
       "userId": "mmylifee"
+    }
+  ],
+  "mainSliderImages": [
+    {
+      "id": 1,
+      "url": "/images/Main/main-slider-01.jpg",
+      "promotionLine1": "따뜻하게 집에서 즐겨요,",
+      "promotionLine2": "핑크빛 뮤직라인",
+      "subPromotion": "라인 아미고스에서 새로이 소개하는 뮤직라인"
+    },
+    {
+      "id": 2,
+      "url": "/images/Main/main-slider-02.jpg",
+      "promotionLine1": "하나만 소장해도",
+      "promotionLine2": "포근해지는 내 방",
+      "subPromotion": "인기만점 리빙템, 연말까지 최대 60% 할인"
+    },
+    {
+      "id": 3,
+      "url": "/images/Main/main-slider-03.jpg",
+      "promotionLine1": "센스만점",
+      "promotionLine2": "미니멀 연말선물",
+      "subPromotion": "취향 안 타는 연말 선물, 라인 아미고스에서 해결 끝"
+    },
+    {
+      "id": 4,
+      "url": "/images/Main/main-slider-04.jpg",
+      "promotionLine1": "무지개떡 지구본,",
+      "promotionLine2": "어디서 본 적 있지 않니?",
+      "subPromotion": "인테리어용으로, 교육용으로 센스만점"
+    }
+  ],
+  "navCategories": [
+    {
+      "categoryId": 1,
+      "categoryName": "캐릭터",
+      "subCategories": ["브라운프렌즈", "BT21", "홀리스타즈"]
+    }, {
+      "categoryId": 2,
+      "categoryName": "NEW",
+      "subCategories": []
+    }, {
+      "categoryId": 3,
+      "categoryName": "선물추천",
+      "subCategories": []
+    }, {
+      "categoryId": 4,
+      "categoryName": "THEME",
+      "subCategories": ["미니프렌즈", "맥시프렌즈"]
+    },{
+      "categoryId": 5,
+      "categoryName": "BABY",
+      "subCategories": ["문구", "리빙", "디지털", "패션잡화"]
+    },{
+      "categoryId": 6,
+      "categoryName": "SALE",
+      "subCategories": []
+    },{
+      "categoryId": 7,
+      "categoryName": "토이",
+      "subCategories": ["중형인형 이상", "미니인형", "쿠션", "피규어"]
+    },{
+      "categoryId": 8,
+      "categoryName": "디자인문구",
+      "subCategories": [
+        "다이어리, 플래너",
+        "노트, 메모지",
+        "필기류, 케이스",
+        "데코레이션",
+        "스티커시리즈"
+      ]
+    },{
+      "categoryId": 9,
+      "categoryName": "디지털",
+      "subCategories": ["폰케이스", "주변기기", "스마트기기", "디지털케이스"]
+    },{
+      "categoryId": 10,
+      "categoryName": "패션의류",
+      "subCategories": ["반팔의류", "긴팔의류", "라운지웨어", "양말, 슬리퍼"]
+    },{
+      "categoryId": 11,
+      "categoryName": "패션잡화",
+      "subCategories": ["가방", "키홀더", "뷰티", "모자, 마스크", "지갑, 파우치"]
+    },{
+      "categoryId": 12,
+      "categoryName": "더보기",
+      "subCategories": []
     }
   ]
 }

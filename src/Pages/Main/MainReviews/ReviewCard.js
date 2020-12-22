@@ -13,7 +13,6 @@ class ReviewCard extends Component {
 
   componentDidMount = () => {
     this.divElement.current.addEventListener('load', this.setSpans)
-    console.log(this.divElement.current.clientHeight)
   }
 
   setSpans = () => {
@@ -25,9 +24,14 @@ class ReviewCard extends Component {
   }
 
   render() {
-
     const { spans } = this.state
-    const { review, isInCart, addToCart, goToProductDetail, createdAtString, hiddenId, rateStar } = this.props
+    const { review, goToProductDetail } = this.props
+    const createdAtString = (createdAt) => {
+      const splittedDate =  createdAt.split('T')[0].split('-')
+      return `${splittedDate[0]}년 ${splittedDate[1]}월 ${splittedDate[2]}일`
+    }
+    const hiddenId = (userId) => `${userId.slice(0, 4)}***`
+    const rateStar = <i className="fas fa-star" />
 
     return (
       <li 
@@ -37,40 +41,29 @@ class ReviewCard extends Component {
         <div className="productVisual">
           <img 
             alt="product" 
-            src={review.imgUrl} 
+            src={review.image} 
             className="productImage"
             onClick={goToProductDetail} />
-            <div className="action">
-              <div className="icon">
-                <img alt="Add to wishlist" src='/images/add-to-wishlist.png' />
-              </div>
-              <div 
-                className={`icon ${isInCart && 'clicked'}`}
-                onClick={addToCart} >
-                <img alt="Add to cart" src='/images/cart-icon.png' />
-              </div>
-            </div>
+        </div>
+        <div className="productInfos" >
+          <div className="productName">{review.product_name}</div>
+          <div className="reviewRate">
+            {rateStar}
+            {rateStar}
+            {rateStar}
+            {rateStar}
+            {rateStar}
+            <span>{review.rate}</span>
           </div>
-
-          <div className="productInfos" >
-            <div className="productName">{review.productName}</div>
-            <div className="reviewRate">
-              {rateStar}
-              {rateStar}
-              {rateStar}
-              {rateStar}
-              {rateStar}
-              <span>{review.rate}</span>
-            </div>
-            <div className="reviewContents">
-              <p>{review.text}</p>
-              <img alt="Reviews" src="/images/Main/main-slider-04.jpg"/>
-            </div>
-            <div className="idAndCreatedAt">
-              <span>{hiddenId(review.userId)}</span>
-              <span>{createdAtString(review.createdAt)}</span>
-            </div>
+          <div className="reviewContents">
+            <p>{review.review_body}</p>
+            <img alt="Reviews" src={review.image} />
           </div>
+          <div className="idAndCreatedAt">
+            <span>{hiddenId(review.user)}</span>
+            <span>{createdAtString(review.created_time)}</span>
+          </div>
+        </div>
         
       </li>
     );

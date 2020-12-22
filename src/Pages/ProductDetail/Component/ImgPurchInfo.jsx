@@ -52,13 +52,13 @@ class ImgPurchInfo extends Component {
 
     minusCount = () => {
         this.setState({
-            count: this.state.count>1? this.state.count-1 : 1
+            count: this.state.count>=1? this.state.count-1 : 1
         })
     }
 
     plusCount  = () => {
             this.setState({
-                count: this.state.count>1? this.state.count+1 : 1
+                count: this.state.count>=1? this.state.count+1 : 1
             })
     }
 

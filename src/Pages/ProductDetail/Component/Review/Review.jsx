@@ -13,7 +13,6 @@ class Review extends Component {
                 storePick: false,
                 monthReview: false},
             clickedSort: {
-                rank: false,
                 date: false,
                 rateH: false,
                 rateL: false
@@ -111,19 +110,19 @@ sortBy = (e) => {
 
     if(e.target.className === "dateOrder"){
         this.setState({
-            revList: this.props.reviewList.sort((a, b)=> new Date(b.review_created_time).getTime() - new Date(a.review_created_time).getTime())
+            revList: this.props.reviewList.sort((a, b)=> new Date(b.review_created_time).getTime() - new Date(a.review_created_time).getTime()),
         })
     }
 
     if(e.target.className === "rateOrder"){
         this.setState({
-            revList: this.props.reviewList.sort((a,b) => b.review_rate - a.review_rate)
+            revList: this.props.reviewList.sort((a,b) => b.review_rate - a.review_rate),
         })
     }
 
     if(e.target.className === "rateOrderDowntoUp"){
         this.setState({
-            revList: this.props.reviewList.sort((a,b) => a.review_rate - b.review_rate)
+            revList: this.props.reviewList.sort((a,b) => a.review_rate - b.review_rate),
         })
     }
 
@@ -131,7 +130,7 @@ sortBy = (e) => {
 
     render() {
         const {reviewList, rateArray} = this.props;
-        const {revList, clicked} = this.state;
+        const {revList, clicked, clickedSort} = this.state;
         return (
             <>
                 <div className="reviewEventContainer">
@@ -186,10 +185,10 @@ sortBy = (e) => {
                     <div className="reviewContentsTop">
                         <span>리뷰 {reviewList.length}건</span>
                         <div className="reviewFilter">
-                            <span className="rankOrder">랭킹순</span>
-                            <span className="dateOrder" onClick={this.sortBy}>최신순</span>
-                            <span className="rateOrder" onClick={this.sortBy}>평점 높은순</span>
-                            <span className="rateOrderDowntoUp" onClick={this.sortBy}>평점 낮은순</span>
+                            <span>랭킹순</span>
+                            <span className={clickedSort.date? "sortClicked":"dateOrder"} onClick={this.sortBy}>최신순</span>
+                            <span className={clickedSort.date? "sortClicked":"rateOrder"} onClick={this.sortBy}>평점 높은순</span>
+                            <span className={clickedSort.date? "sortClicked":"rateOrderDowntoUp"} onClick={this.sortBy}>평점 낮은순</span>
                         </div>
                     </div>
                     <div className="reviewContainer">

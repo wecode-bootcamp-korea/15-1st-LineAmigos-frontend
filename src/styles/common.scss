@@ -25,11 +25,11 @@ $primary-color: #01b901;
     &{opacity: .2;}
     &:hover{opacity: .8;}
     &:first-of-type {
-        top: 225px; 
+        top: 335px; 
         left: -10px;
     }
     &:last-of-type {
-        top: -170px; 
+        top: -315px; 
         right: -580px;
         transform: rotate(180deg);
     }
@@ -51,7 +51,7 @@ $primary-color: #01b901;
         background-color: #000;
     }
     &.slick-arrow {
-        border: 1px solid #000;
+        // border: 1px solid #000;
         &:hover {
         border: 1px solid #000;
         }

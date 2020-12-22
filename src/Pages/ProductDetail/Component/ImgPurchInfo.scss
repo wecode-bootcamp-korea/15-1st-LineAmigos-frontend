@@ -2,17 +2,19 @@
 
 .ImgPurchInfo{
     width: 1280px;
+    height: 900px;
     margin-bottom: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border: 1px solid $border-color;
+    position: relative;
 
     .imgEx{
         width: 50%;
         display: flex;
         flex-direction: column;
-        border: 1px solid $border-color;
+        position: absolute;
 
         .smallReviewRatings{
             margin-top: 145px;
@@ -33,11 +35,15 @@
 
     .purchInfo{
         width: 50%;
+        height: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         align-items: center;
         border-left: 1px solid $border-color;
+        position: absolute;
+        right: 0px;
+        top: 10px;
 
         .nameAndPrice{
             font-weight: 900;

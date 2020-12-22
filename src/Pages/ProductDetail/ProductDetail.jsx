@@ -4,6 +4,7 @@ import ImgPurchInfo from './Component/ImgPurchInfo';
 import ProductDescriptions from './Component/ProductDescriptions/ProductDescriptions';
 import Review from './Component/Review/Review'
 import Footer from '../../Components/Footer/Footer'
+import Header from '../../Components/Header/Header'
 import './ProductDetail.scss';
 
 class ProductDetail extends React.Component{
@@ -21,15 +22,16 @@ class ProductDetail extends React.Component{
     }
     
     componentDidMount() {
-        fetch(`http://10.168.1.149:8000/product/${this.props.match.params.id}`)
+        // fetch(`http://10.168.1.149:8000/product/${this.props.match.params.id}`)
+        fetch('http://localhost:3000/data/mockData.json')
         .then((res) => res.json())
         .then((res) => {
             this.setState({
-                productData: res.product,
+                productData: res.product_id,
             })
         });
 
-        fetch(reviewAPI)
+        fetch('http://localhost:3000/data/reviewData.json')
         .then((res)=>res.json())
         .then((res)=> {
             this.setState({
@@ -39,7 +41,7 @@ class ProductDetail extends React.Component{
         window.addEventListener('scroll', this.onScroll)
     }
 
-    componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); }
+    componentWillUnmount() {window.removeEventListener('scroll', this.onScroll);}
 
     scrollToTop(){
         scroll.scrollToTop();
@@ -51,7 +53,7 @@ class ProductDetail extends React.Component{
             delay: 0,
         })
     }
-
+    
     onScroll = () => {
         let target = document.querySelector('.categoryTap')
         let posInfo = target.getBoundingClientRect().top;
@@ -89,6 +91,7 @@ class ProductDetail extends React.Component{
         const {targetReached, productData, reviewList} = this.state;
         return(
         <>
+        <Header />
            <div id="DetailPageContainer">
                <div className="topContainer">
                     <div className="topContents">
@@ -99,7 +102,6 @@ class ProductDetail extends React.Component{
                     </div>
                     <div className="smallCategory">
                         <span>home - {productData.product_menu} - {productData.product_category}</span>
-                        {/* 나중에 링크로 정리 */}
                     </div>
                </div>
                 <ImgPurchInfo productName={productData &&  productData.product_name} imgUrl={productData && productData.image} id={productData && productData.id} price={productData && productData.price} reviewArray={reviewList&& reviewList.map((el)=>el.review_rate)}/>
@@ -135,7 +137,6 @@ class ProductDetail extends React.Component{
                             <Link className={this.state.qaSelected? "clicked":"qaTap"} to="qaAnchor" duration={100} onClick={this.selectBox}>Q&A</Link>
                     </div>
             </nav>
-
             <Footer />
         </>
         );

@@ -6,10 +6,6 @@ import Review from './Component/Review/Review'
 import Footer from '../../Components/Footer/Footer'
 import './ProductDetail.scss';
 
-const API = 'http://localhost:3000/data/mockData.json';
-
-const reviewAPI = 'http://localhost:3000/data/reviewData.json';
-
 class ProductDetail extends React.Component{
 
     constructor(){

@@ -21,21 +21,10 @@ class Header extends React.Component {
     })
   }
 
-
   handleLoginStatus = () => {
-    !this.state.isloggedIn ? this.props.history.push("/login") : this.props.history.push("/")
+    this.props.history.push(`${!this.state.isloggedIn ? "/login" : "/"}`)
   }
-
-  // switch (exp) {
-  //   case {!this.state.isloggedIn} :
-  //     this.props.history.push("/");
-  //     break;
   
-  //   default: 
-  //     this.props.history.push("/");
-  //     break;
-  // }
-
   goToMainPage = () => {
     this.props.history.push("/")
   }
@@ -80,7 +69,7 @@ class Header extends React.Component {
 
   render() {
     const { categoriesList, searchValue, searchList, isloggedIn, isNavFixed } = this.state
-    const { handleSearchValue, goToLogInPage, goToProductList, goToSearchResult, goToMainPage } = this
+    const { handleSearchValue, handleLoginStatus, goToProductList, goToSearchResult, goToMainPage } = this
     const filteredList = searchList.filter((product) => 
       product.productName.toLowerCase().includes(searchValue.toLowerCase()) && product)
     localStorage.getItem('token') && this.setState({isloggedIn: true})
@@ -99,7 +88,7 @@ class Header extends React.Component {
             </div>
             <div 
               className="navIconRight"
-              onClick={goToLogInPage}>
+              onClick={handleLoginStatus}>
               {isloggedIn && <span className="gnbBtn cart">장바구니</span>}
               <span className="gnbBtn logIn">{isloggedIn ? '로그아웃' : '로그인'}</span>
               <img alt="Menu" src="/images/menu.png" />

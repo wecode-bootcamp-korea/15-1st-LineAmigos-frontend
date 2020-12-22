@@ -7,36 +7,46 @@
   position: relative;
   height: 50px;
   cursor: pointer;
+
   &:hover > .categoryItem {
     font-weight: $font-weight-bold;
     color: #6c83c7;
   }
+
   &:hover > img {
-    -webkit-filter: opacity(.5) drop-shadow(0 0 0 #5a6faf);
-    filter: opacity(.5) drop-shadow(0 0 0 #6c83c7);
+    -webkit-filter: opacity(0.5) drop-shadow(0 0 0 #5a6faf);
+    filter: opacity(0.5) drop-shadow(0 0 0 #6c83c7);
   }
-  &:hover > .navDropdown {display: block;}
+
+  &:hover > .navDropdown {
+    display: block;
+  }
 
   .categoryItem {
     font-size: $font-size-small;
     font-weight: $font-weight-medium;
-
   }
 
   img {
     margin-left: 7px;
     width: 8px;
     transform: rotate(90deg);
-    &.show{display: block;}
-    &.hide{display: none;}
+
+    &.show {
+      display: block;
+    }
+
+    &.hide {
+      display: none;
+    }
   }
 
   .navDropdown {
     width: 180px;
     height: 200px;
     background: white;
-    border: 1px solid rgba(0,0,0,.1);
-    box-shadow: 0 30px 90px rgba(0,0,0,0.09);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.09);
     border-radius: 4px;
     z-index: 20;
     position: absolute;
@@ -45,29 +55,30 @@
     font-size: $font-size-small;
     font-weight: $font-weight-medium;
     display: none;
+
     &.preventHover {
       display: none;
     }
 
-    .subCategories {
+    .subCategories li {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 20px;
+      height: 34px;
+      font-weight: $font-weight-regular;
 
-      li{
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0 20px;
-        height: 34px;
-        font-weight: $font-weight-regular;
-        &:first-of-type {
-          margin-top: 12px;
-        }
-        &:last-of-type {
-          border: none;
-          margin-bottom: 20px;
-        }
-        &:hover {
-          font-weight: $font-weight-medium;
-        }
+      &:first-of-type {
+        margin-top: 12px;
+      }
+
+      &:last-of-type {
+        border: none;
+        margin-bottom: 20px;
+      }
+
+      &:hover {
+        font-weight: $font-weight-medium;
       }
     }
   }

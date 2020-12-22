@@ -29,7 +29,7 @@ class Filters extends Component {
           {this.props.filterArr.map((filter) => (
             <Filter
               filter={filter}
-              // test={this.props.test}
+              onFilterMenu={this.props.onFilterMenu}
               // price={this.props.filter}
               onLowPrice={this.props.onLowPrice}
             />

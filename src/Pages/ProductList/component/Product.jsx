@@ -43,6 +43,8 @@ class Product extends Component {
   }
   render() {
     const { product_image, name, review, rate } = this.props.product
+    const newPrice = this.state.price.replace('.00', '')
+    console.log(newPrice)
     return (
       <div className='productContainer'>
         <li className='productList'>
@@ -79,7 +81,7 @@ class Product extends Component {
               onClick={this.handleWishBtn}
             />
           </div>
-          <span className='productPrice'>{this.state.price}원</span>
+          <span className='productPrice'>{newPrice}원</span>
           <div
             className={
               this.state.reviewRateContainer

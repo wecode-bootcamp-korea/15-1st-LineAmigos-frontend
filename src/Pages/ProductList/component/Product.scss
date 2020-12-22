@@ -160,20 +160,33 @@
   margin: 50px 580px;
   width: 1280px;
 
-  .nextPageBox {
-    width: 34px;
-    height: 34px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  &.nextPageNow {
+  .nextPageNow {
+    position: relative;
     width: 32px;
     height: 32px;
-    padding: 8px;
     font-weight: bold;
     color: white;
     background-color: black;
     cursor: pointer;
+
+    .nextPageNum {
+      position: absolute;
+      padding: 10px;
+      // padding-top: 10px;
+    }
+  }
+
+  .nextPageBox {
+    // position: relative;
+    width: 34px;
+    height: 34px;
+    font-weight: bold;
+    cursor: pointer;
+
+    .nextPageNum {
+      position: absolute;
+      padding: 10px;
+      // padding-top: 10px;
+    }
   }
 }

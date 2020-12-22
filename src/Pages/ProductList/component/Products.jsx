@@ -1,39 +1,37 @@
 import React, { Component } from 'react'
 import Product from '../component/Product'
 import '../component/products.scss'
+
+const PAGENUM = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }]
 class Products extends Component {
+  handlePagenation = () => {
+    this.onPageNum(this.props.onPageNum)
+  }
+
   render() {
-    // console.log(this.props.proudctArr)
     return (
       <div>
-        {/* {this.props.productArr && this.props.obj[this.props.e]} */}
         <ul>
           {this.props.productArr.map((product) => (
             <Product
               id={product.id}
               product={product}
               onModal={this.props.onModal}
-              // onLowPrice={this.props.onLowPrice}
             />
           ))}
         </ul>
-        {/* <div className='nextPageContainer'>
-          <div className='nextPageBox'>
-            <span className='nextPageNum'>1</span>
-          </div>
-          <div className='nextPageBox'>
-            <span className='nextPageNum'>2</span>
-          </div>
-          <div className='nextPageBox'>
-            <span className='nextPageNum'>3</span>
-          </div>
-          <div className='nextPageBox'>
-            <span className='nextPageNum'>4</span>
-          </div>
-          <div className='nextPageBox'>
-            <span className='nextPageNum'>5</span>
-          </div>
-        </div> */}
+
+        <div className='nextPageContainer'>
+          {PAGENUM.map((num) => (
+            <div
+              className={this.props.nextPageBox ? 'nextPageNow' : 'nextPageBox'}
+            >
+              <span className='nextPageNum' onClick={this.handlePagenation}>
+                {num.id}
+              </span>
+            </div>
+          ))}
+        </div>
       </div>
     )
   }

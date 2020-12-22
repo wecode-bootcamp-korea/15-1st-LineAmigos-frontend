@@ -17,9 +17,7 @@ class SideCategory extends Component {
   }
 
   render() {
-    // console.log(this.state.cetegoryName)
-    // console.log(category.name)
-    // console.log('넘어온 데이터', this.props.categoryArr[0].name)
+    console.log(this.props.categoryArr)
     return (
       <div>
         <div className='sideCategotyContainer'>
@@ -27,7 +25,7 @@ class SideCategory extends Component {
           <div className='sideCategory' onClick={this.props.hadleSideCategory}>
             <span className='home'>홈 > </span>
             <span className='home'>{this.state.cetegoryName}</span>
-            <span className='home'>(총 {this.props.categoryArr.length}개)</span>
+            <span className='home'>(총 {this.props.productArr.length}개)</span>
             <i className='fas fa-caret-down' />
             <div
               className={
@@ -38,8 +36,8 @@ class SideCategory extends Component {
             >
               {this.props.categoryArr.map((category) => (
                 <div className='listDropDown'>
-                  <li id={category.name} onClick={this.handleCategoryName}>
-                    {category.name}
+                  <li id={category.menu} onClick={this.handleCategoryName}>
+                    {category.menu}
                   </li>
                 </div>
               ))}

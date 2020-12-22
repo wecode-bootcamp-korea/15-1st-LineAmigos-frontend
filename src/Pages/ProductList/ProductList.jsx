@@ -19,6 +19,7 @@ class ProductList extends Component {
       detailModal: false,
       wishBtn: false,
       rowPrice: '',
+      pageNum: '',
     }
   }
 
@@ -34,21 +35,21 @@ class ProductList extends Component {
     //     })
     //   })
 
-    fetch('http://localhost:3000/data/productListDate.json')
-      .then((response) => response.json())
-      .then((response) => {
-        this.setState({
-          productArr: response.productListData,
-        })
-      })
-
-    // fetch('http://10.168.1.149:8000/product/products_info')
+    // fetch('http://localhost:3000/data/productListDate.json')
     //   .then((response) => response.json())
     //   .then((response) => {
     //     this.setState({
     //       productArr: response.PRODUCTS,
     //     })
     //   })
+
+    fetch('http://10.168.1.149:8000/product/products_info')
+      .then((response) => response.json())
+      .then((response) => {
+        this.setState({
+          productArr: response.PRODUCTS,
+        })
+      })
 
     fetch('http://localhost:3000/data/filterData.json')
       .then((res) => res.json())
@@ -58,30 +59,31 @@ class ProductList extends Component {
         })
       })
 
-    fetch('http://localhost:3000/data/categories.json')
+    fetch('http://10.168.1.149:8000/product/menu')
       .then((res) => res.json())
       .then((res) => {
         this.setState({
-          categoryArr: res.categories,
+          categoryArr: res.main,
         })
       })
-    // fetch('http://10.168.1.149:8000/product/products_info')
-    //   .then((res) => res.json())
-    //   .then((res) => {
-    //     this.setState({
-    //       categoryArr: res.PRODUCTS,
-    //     })
-    //   })
   }
 
-  test = (e) => {
+  handleFilterMenu = (e) => {
     console.log('아이디', e.target.id)
-    console.log('아이디', this.state.filterArr[0].selected)
-    // const updatededFilterArr = { ...this.state.filterArr }
+    let updatededFilterArr = [...this.state.filterArr]
+    updatededFilterArr = updatededFilterArr.map((item) => {
+      if (+e.target.id === item.id) {
+        item.selected = !item.selected
+        return item
+      } else {
+        item.selected = false
+        return item
+      }
+    })
 
-    // this.setState({
-    //   filterArr: updatededFilterArr.selected,
-    // })
+    this.setState({
+      filterArr: updatededFilterArr,
+    })
   }
 
   hadleSideCategory = () => {
@@ -111,8 +113,9 @@ class ProductList extends Component {
   }
 
   HandleLowPrice = (e) => {
+    console.log('e는 무엇인가', e)
     const sortByTotalSales = this.state.productArr.filter(
-      (item) => item.totalSales > 5
+      (item) => item.salse_amount > 5
     )
     const sortByLowerPrices = this.state.productArr.sort(
       (a, b) => a.price - b.price
@@ -146,12 +149,13 @@ class ProductList extends Component {
     }
   }
 
+  handlePageNum = () => {
+    this.setState({
+      pageNum: !this.state.pageNum,
+    })
+  }
+
   render() {
-    // const obj = {
-    //   // 0: <Products productArr={this.state.productArr} />,
-    //   낮은가격순: <Products productArr={sortByLowerPrices} />,
-    //   // 리뷰많은순: <Products productArr={sortByReview} />,
-    // }
     return (
       <div className='ProductList'>
         <div className='container'>
@@ -166,11 +170,12 @@ class ProductList extends Component {
               hadleSideCategory={this.hadleSideCategory}
               sideCategory={this.state.sideCategory}
               goToCategory={this.goToCategory}
+              productArr={this.state.productArr}
             />
           </header>
           <Filters
             filterArr={this.state.filterArr}
-            test={this.test}
+            onFilterMenu={this.handleFilterMenu}
             onLowPrice={this.HandleLowPrice}
           />
 
@@ -178,6 +183,8 @@ class ProductList extends Component {
             productArr={this.state.productArr}
             // productArr={this.HandleLowPrice}
             onModal={this.handleDetailModal}
+            onPageNum={this.handlePageNum}
+            pageNum={this.state.pageNum}
 
             // price={this.HandleLowPrice}
           />

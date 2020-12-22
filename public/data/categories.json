@@ -1,20 +1,20 @@
 {
-    "categories"  : [
-      { "name" : "캐릭터" },
-      { "name" : "NEW" },
-      { "name" : "WINTER SALE" },
-      { "name" : "브롤리데이" },
-      { "name" : "THEME" },
-      { "name" : "BTS21 BABY" },
-      { "name" : "선물추천" },
-      { "name" : "SALE" },
-      { "name" : "토이" },
-      { "name" : "디자인문구" },
-      { "name" : "THEME" },
-      { "name" : "BTS21 BABY" },
-      { "name" : "선물추천" },
-      { "name" : "SALE" },
-      { "name" : "토이" },
-      { "name" : "디자인문구" }
+    "main"  : [
+      { "menu" : "캐릭터" },
+      { "menu" : "NEW" },
+      { "menu" : "WINTER SALE" },
+      { "menu" : "브롤리데이" },
+      { "menu" : "THEME" },
+      { "menu" : "BTS21 BABY" },
+      { "menu" : "선물추천" },
+      { "menu" : "SALE" },
+      { "menu" : "토이" },
+      { "menu" : "디자인문구" },
+      { "menu" : "THEME" },
+      { "menu" : "BTS21 BABY" },
+      { "menu" : "선물추천" },
+      { "menu" : "SALE" },
+      { "menu" : "토이" },
+      { "menu" : "디자인문구" }
   ]
 }

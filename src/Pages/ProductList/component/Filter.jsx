@@ -6,9 +6,7 @@ class Filter extends Component {
     super()
     this.state = {
       filterId: '',
-      // filterBtn: false,
       isActiveFilter: '',
-      lowPrice: '',
     }
   }
 
@@ -18,8 +16,8 @@ class Filter extends Component {
     })
   }
 
-  HandleLowPrice = () => {
-    this.props.onLowPrice(this.props.filter.name)
+  handleFilterMenu = () => {
+    this.props.onFilterMenu(this.props.filter.name)
   }
 
   render() {
@@ -38,8 +36,7 @@ class Filter extends Component {
           className={this.state.filterBtn ? 'clickedColor' : 'filter'}
           onClick={
             (() => this.handleFilter(this.props.filter.id),
-            this.HandleLowPrice,
-            this.props.onFilterMenu)
+            this.handleFilterMenu)
           }
         >
           {this.props.filter.name}

@@ -18,27 +18,20 @@ class ProductList extends Component {
       detailModal: false,
       wishBtn: false,
       rowPrice: '',
-      pageNum: '',
+      pageNum: false,
       currentIdx: '',
     }
   }
 
-  //config에 API주소 변수로 담기
+  //config파일에 API주소 변수로 담아두었지만, 아래 코드는 작업을 위해 남겨놓았습니다. 머지 후 삭제하겠습니다!
   componentDidMount = () => {
-    fetch('http://10.168.1.149:8000/product/products_info')
+    fetch(`http://10.168.1.149:8000/product/products_info?limit=${LIMIT}`)
       .then((response) => response.json())
       .then((response) => {
         this.setState({
           productArr: response.PRODUCTS,
         })
       })
-    // fetch(`http://10.168.1.149:8000/product/products_info?limit=${LIMIT}`)
-    //   .then((response) => response.json())
-    //   .then((response) => {
-    //     this.setState({
-    //       productArr: response.PRODUCTS,
-    //     })
-    //   })
 
     fetch('http://10.168.1.149:8000/product/menu')
       .then((res) => res.json())
@@ -64,7 +57,7 @@ class ProductList extends Component {
       })
   }
 
-  HandleLowPrice = (e) => {
+  handleFilterMenu = (e) => {
     let updatededFilterArr = [...this.state.filterArr]
     updatededFilterArr = updatededFilterArr.map((item) => {
       if (+e.target.id === item.id) {
@@ -139,14 +132,14 @@ class ProductList extends Component {
     }
   }
 
-  handlePageNum = () => {
-    this.setState({
-      pageNum: !this.state.pageNum,
-    })
+  handlePageNum = (e) => {
+    if (this.state.currentIdx === e.target.dataset.idx)
+      this.setState({
+        pageNum: !this.state.pageNum,
+      })
   }
 
   render() {
-    console.log('어레이', this.state.productArr)
     return (
       <div className='ProductList'>
         <div className='container'>
@@ -167,7 +160,6 @@ class ProductList extends Component {
           <Filters
             filterArr={this.state.filterArr}
             onFilterMenu={this.handleFilterMenu}
-            onLowPrice={this.HandleLowPrice}
           />
 
           <Products
@@ -183,10 +175,7 @@ class ProductList extends Component {
           <div className='popup'>
             <div className='modalHeader'>
               <span>간략보기</span>
-              <button
-                clclassNameass='closeBtn'
-                onClick={this.handleDetailModal}
-              >
+              <button className='closeBtn' onClick={this.handleDetailModal}>
                 X
               </button>
             </div>

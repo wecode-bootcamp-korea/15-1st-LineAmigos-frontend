@@ -6,11 +6,23 @@ ul {
 
 .nextPageContainer {
   display: flex;
-  margin: 50px 580px;
+  justify-content: center;
   width: 1280px;
 
+  .nowPageNumBox {
+    width: 32px;
+    height: 32px;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+
+    button {
+      all: unset;
+      padding: 10px;
+    }
+  }
   .nextPageNumBox {
-    position: relative;
     width: 32px;
     height: 32px;
     font-weight: bold;
@@ -18,23 +30,9 @@ ul {
     background-color: black;
     cursor: pointer;
 
-    .nextPageNum {
-      position: absolute;
+    button {
+      all: unset;
       padding: 10px;
     }
   }
-
-  // .nextPageBox {
-  //   // position: relative;
-  //   width: 34px;
-  //   height: 34px;
-  //   font-weight: bold;
-  //   cursor: pointer;
-
-  //   .nextPageNum {
-  //     position: absolute;
-  //     padding: 10px;
-  //     // padding-top: 10px;
-  //   }
-  // }
 }

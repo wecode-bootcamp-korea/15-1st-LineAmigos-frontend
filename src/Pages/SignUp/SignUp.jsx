@@ -214,7 +214,7 @@ class SignUp extends Component {
             <option value='male'>남성</option>
           </select>
           <span className='validationMassage'>
-            {this.state.isValid && this.state.gender == 'none'
+            {this.state.isValid && this.state.gender === 'none'
               ? '필수 정보입니다.'
               : ''}
           </span>

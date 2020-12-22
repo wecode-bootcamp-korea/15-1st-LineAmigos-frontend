@@ -28,9 +28,7 @@ class Filters extends Component {
           {this.props.filterArr.map((filter) => (
             <Filter
               filter={filter}
-              onFilterMenu={this.props.onFilterMenu}
-              // price={this.props.filter}
-              onLowPrice={this.props.onLowPrice}
+              onFilterMenu={this.props.handleFilterMenu}
             />
           ))}
         </ul>
@@ -59,16 +57,16 @@ class Filters extends Component {
           </div>
           <div className='viewIconContainer'>
             <div className='iconBox'>
-              <i class='fas fa-list' />
+              <i className='fas fa-list' />
             </div>
             <div className='iconBox'>
-              <i class='fas fa-stop' />
+              <i className='fas fa-stop' />
             </div>
             <div className='iconBox'>
-              <i class='fas fa-th-large' />
+              <i className='fas fa-th-large' />
             </div>
             <div className='iconBox'>
-              <i class='fas fa-th' />
+              <i className='fas fa-th' />
             </div>
           </div>
         </div>

@@ -5,7 +5,7 @@ import '../component/products.scss'
 class Products extends Component {
   render() {
     return (
-      <div>
+      <>
         <ul>
           {this.props.productArr.map((product) => (
             <Product
@@ -16,14 +16,24 @@ class Products extends Component {
           ))}
         </ul>
         <div className='nextPageContainer'>
-          <div className='nextPagenNumBox'>
+          <div
+            className={
+              this.props.onPageNum ? 'nextPageNumBox' : 'nowPageNumBox'
+            }
+          >
             <button
               className='nextPageNum'
               data-idx='0'
-              onClick={this.props.fetchProduct}
+              onClick={(this.props.fetchProduct, this.props.onPageNum)}
             >
               1
             </button>
+          </div>
+          <div
+            className={
+              this.props.onPageNum ? 'nextPageNumBox' : 'nowPageNumBox'
+            }
+          >
             <button
               className='nextPageNum'
               data-idx='1'
@@ -31,6 +41,12 @@ class Products extends Component {
             >
               2
             </button>
+          </div>
+          <div
+            className={
+              this.props.onPageNum ? 'nextPageNumBox' : 'nowPageNumBox'
+            }
+          >
             <button
               className='nextPageNum'
               data-idx='2'
@@ -38,6 +54,12 @@ class Products extends Component {
             >
               3
             </button>
+          </div>
+          <div
+            className={
+              this.props.onPageNum ? 'nextPageNumBox' : 'nowPageNumBox'
+            }
+          >
             <button
               className='nextPageNum'
               data-idx='3'
@@ -45,6 +67,12 @@ class Products extends Component {
             >
               4
             </button>
+          </div>
+          <div
+            className={
+              this.props.onPageNum ? 'nextPageNumBox' : 'nowPageNumBox'
+            }
+          >
             <button
               className='nextPageNum'
               data-idx='4'
@@ -54,7 +82,7 @@ class Products extends Component {
             </button>
           </div>
         </div>
-      </div>
+      </>
     )
   }
 }

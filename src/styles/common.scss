@@ -51,10 +51,10 @@ $primary-color: #01b901;
         background-color: #000;
     }
     &.slick-arrow {
-        // border: 1px solid #000;
-        // &:hover {
-        // border: 1px solid #000;
-        // }
+        border: 1px solid #000;
+        &:hover {
+        border: 1px solid #000;
+        }
         &::before{
         font-size: 40px;
         opacity: 1;

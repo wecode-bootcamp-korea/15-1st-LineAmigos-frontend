@@ -31,33 +31,27 @@ class Main extends React.Component {
     })
   }
 
-  goToProductDetail = (id) => {
-    this.props.history.push(`/product/${id}`)
-  }
-
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
     // fetch('http://10.168.1.149:8000/product/get')
-    fetch('/data/productsInfos.json')
+    fetch('/public/data/productsInfos.json')
      .then(response => response.json())
      .then(data => {
        this.setState({
          productsList: data.PRODUCTS,
          categoriesList: data.main,
-        //  reviewsList: data.reviews,
+         reviewsList: data.reviews,
        })
      }).catch(err => console.log(err))
 
-    fetch('http://10.168.1.140:8000/review/reviews')
-     .then(response => response.json())
-     .then(data => {
-       this.setState({
-         reviewsList: data.review,
-       })
-     }).catch(err => console.log(err))
+    // fetch('http://10.168.1.140:8000/review/reviews')
+    //  .then(response => response.json())
+    //  .then(data => {
+    //    this.setState({
+    //      reviewsList: data.review,
+    //    })
+    //  }).catch(err => console.log(err))
   }
-
-  addToCart = () => {alert('장바구니에 추가되었습니다.')}
   
   componentWillUnmount = () => {
     window.removeEventListener('scroll', this.handleScroll)
@@ -65,26 +59,20 @@ class Main extends React.Component {
 
   render() {
     const { productsList, categoriesList, reviewsList } = this.state
-    const { addToCart, goToProductDetail } = this
     return (
       <div className="Main">
         <MainSlider />
         <Header />
         <NewProductsSlider
-          productsList={productsList}
-          goToProductDetail={goToProductDetail}
-          addToCart={addToCart}/>
+          productsList={productsList}/>
         <ItemClickPlate 
-          productsList={productsList}
-          goToProductDetail={goToProductDetail}/>
+          productsList={productsList}/>
         <BannerSlider />
         <CategoriesSlider
           categoriesList={categoriesList}
           productsList={productsList} />
         <ReviewSection
-          goToProductDetail={goToProductDetail}
-          reviewsList={reviewsList}
-          addToCart={addToCart}/>
+          reviewsList={reviewsList}/>
         <Footer />
       </div>
     )

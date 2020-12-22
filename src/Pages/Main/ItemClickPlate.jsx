@@ -4,15 +4,12 @@ import './ItemClickPlate.scss'
 
 class ItemClickPlate extends Component {
 
-  // handleViewProduct = (e) => {
-  //   // console.log(e.target.id)
-  //   if () {
+  // handleViewProduct = () => {
 
-  //   }
   // }
 
   render() {
-    const { productsList, goToProductDetail } = this.props
+    const { productsList } = this.props
     const { handleViewProduct } = this
 
     return (
@@ -34,8 +31,7 @@ class ItemClickPlate extends Component {
                     index={index}
                     product={product}
                     isClicked={false}
-                    handleViewProduct={handleViewProduct}
-                    goToProductDetail={goToProductDetail}/>
+                    handleViewProduct={handleViewProduct}/>
                 )
               })
             }

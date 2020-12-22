@@ -4,18 +4,8 @@ import SliderCard from './SliderCard/SliderCard'
 import './NewProductsSlider.scss';
 
 class NewProductsSlider extends Component {
-  constructor() {
-    super()
-    this.state = {
-      products: [],
-    }
-  }
-  
   render() {
-    const { isWishlisted, isInCart } = this.state
-    const { goToProductDetail } = this
-    const { productsList, addToCart, addToWishList } = this.props
-    const commasBetween = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    const { productsList } = this.props
     const settings = {
       dots: false,
       infinite: true,
@@ -37,13 +27,7 @@ class NewProductsSlider extends Component {
               <SliderCard
                 type={'newProduct'}
                 key={index}
-                product={product}
-                goToProductDetail={goToProductDetail}
-                isWishlisted={isWishlisted}
-                isInCart={isInCart}
-                addToWishList={addToWishList}
-                addToCart={addToCart}
-                commasBetween={commasBetween}/>
+                product={product}/>
             )
           })
         }

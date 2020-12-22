@@ -66,7 +66,6 @@ class ReviewCard extends Component {
             <span>{createdAtString(review.created_time)}</span>
           </div>
         </div>
-        
       </li>
     );
   }

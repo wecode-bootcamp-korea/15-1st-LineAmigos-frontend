@@ -3,29 +3,36 @@ import './ItemClickButton.scss'
 
 class ItemClickButton extends Component {
 
+  goToProductDetail = (id) => {
+    this.props.history.push(`/product/${id}`)
+  }
+
+  commasBetween = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
   render() {
-    const { index, handleViewProduct } = this.props
-    const { product_id, product_image, name, price, sale_amount } = this.props.product
-    const commasBetween = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    const { index, product, handleViewProduct } = this.props
+    const { goToProductDetail, commasBetween } = this
+    
     return (
         <li 
           className="ItemClickButton">
           <img 
             alt="Product" 
-            src={product_image} />
-          <div className={`button button${index}`}>
+            src={product.product_image}
+            onClick={goToProductDetail} />
+          <div className={`button button${product.index}`}>
             <span 
-              className={`target target${product_id}`}
-              id={product_id}
+              className={`target target${product.product_id}`}
+              id={product.product_id}
               onClick={handleViewProduct} />
-            <div className={`price price${product_id}`}>
-              <div className="name">{name}</div>
+            <div className={`price price${product.product_id}`}>
+              <div className="name">{product.name}</div>
               <div className="priceInfoTag">
                 <div className="salePrice">
-                {commasBetween(price - (price)*(sale_amount)*0.01)}원
+                {commasBetween(product.price - (product.price)*(product.sale_amount)*0.01)}원
                 </div>
                 <div className="originalPrice">
-                {commasBetween(price).slice(0, -3)}
+                {commasBetween(product.price).slice(0, -3)}
                 </div>
               </div>
             </div>

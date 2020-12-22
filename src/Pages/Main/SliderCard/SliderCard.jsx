@@ -2,21 +2,38 @@ import React, { Component } from 'react';
 import './SliderCard.scss'
 
 class SliderCard extends Component {
-  render() {
-    const {type, product, goToProductDetail, isWishlisted, isInCart, addToWishList, addToCart, commasBetween, category, gotoProductList} = this.props
+  
+  constructor() {
+    super()
+    this.state = {
+      isInCart: false,
+    }
+  }
 
-    if ({type} === 'newProduct') {
+  goToProductDetail = (id) => {
+    this.props.history.push(`/product/${id}`)
+  }
+
+  addToCart = () => {
+    alert('장바구니에 추가되었습니다.')
+  }
+
+  commasBetween = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+  render() {
+    const { isInCart } = this.state
+    const { goToProductDetail, addToCart, commasBetween } = this
+    const { type, product, category, gotoProductList } = this.props
+
+    // if ({type} === 'newProduct') {
       return (
         <li 
-          key={product.product_id} 
           className="SliderCard"
           onClick={goToProductDetail}>
           <div className="productVisual">
             <img alt="Product" src={product.product_image} className="productImage" />
             <div className="action">
-              <div 
-                className={`icon ${isWishlisted && 'clicked'}`}
-                onClick={addToWishList} >
+              <div className="icon">
                 <img alt="Add to wishlist" src='/images/add-to-wishlist.png' />
               </div>
               <div 
@@ -35,20 +52,20 @@ class SliderCard extends Component {
           </span>
         </li>
       );
-    } else {
-      return (
-        <li 
-          key={category.id} 
-          className="category"
-          onClick={gotoProductList}>
-            <img alt="Category" src={category.product_image} />
-            <span className="productInfo">
-              {category.menu}
-              <i className="fas fa-chevron-right" />
-            </span>
-        </li>
-      );
-    }
+    // } else if ({type} === 'category') {
+    //   return (
+    //     <li 
+    //       key={category.id} 
+    //       className="category"
+    //       onClick={gotoProductList}>
+    //         <img alt="Category" src={category.img} />
+    //         <span className="productInfo">
+    //           {category.menu}
+    //           <i className="fas fa-chevron-right" />
+    //         </span>
+    //     </li>
+    //   );
+    // }
   }
 }
 

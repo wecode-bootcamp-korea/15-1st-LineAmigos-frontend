@@ -2,12 +2,18 @@ import React, { Component } from 'react'
 import Product from '../component/Product'
 import '../component/products.scss'
 
-const PAGENUM = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }, { id: 5 }]
 class Products extends Component {
-  handlePagenation = () => {
-    this.onPageNum(this.props.onPageNum)
-  }
-
+  // constructor() {
+  //   super()
+  //   this.state = {
+  //     nextPageBox: false,
+  //   }
+  // }
+  // handlePagenation = () => {
+  //   this.setState({
+  //     nextPageBox: !this.state.nextPageBox,
+  //   })
+  // }
   render() {
     return (
       <div>
@@ -20,17 +26,44 @@ class Products extends Component {
             />
           ))}
         </ul>
-
         <div className='nextPageContainer'>
-          {PAGENUM.map((num) => (
-            <div
-              className={this.props.nextPageBox ? 'nextPageNow' : 'nextPageBox'}
+          <div className='nextPagenNumBox'>
+            <button
+              className='nextPageNum'
+              data-idx='0'
+              onClick={this.props.fetchProduct}
             >
-              <span className='nextPageNum' onClick={this.handlePagenation}>
-                {num.id}
-              </span>
-            </div>
-          ))}
+              1
+            </button>
+            <button
+              className='nextPageNum'
+              data-idx='1'
+              onClick={this.props.fetchProduct}
+            >
+              2
+            </button>
+            <button
+              className='nextPageNum'
+              data-idx='2'
+              onClick={this.props.fetchProduct}
+            >
+              3
+            </button>
+            <button
+              className='nextPageNum'
+              data-idx='3'
+              onClick={this.props.fetchProduct}
+            >
+              4
+            </button>
+            <button
+              className='nextPageNum'
+              data-idx='4'
+              onClick={this.props.fetchProduct}
+            >
+              5
+            </button>
+          </div>
         </div>
       </div>
     )

@@ -3,3 +3,39 @@ ul {
   flex-wrap: wrap;
   width: 1310px;
 }
+
+.nextPageContainer {
+  display: flex;
+  margin: 50px 580px;
+  width: 1280px;
+
+  .nextPageNumBox {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+
+    .nextPageNum {
+      position: absolute;
+      padding: 10px;
+      // padding-top: 10px;
+    }
+  }
+
+  // .nextPageBox {
+  //   // position: relative;
+  //   width: 34px;
+  //   height: 34px;
+  //   font-weight: bold;
+  //   cursor: pointer;
+
+  //   .nextPageNum {
+  //     position: absolute;
+  //     padding: 10px;
+  //     // padding-top: 10px;
+  //   }
+  // }
+}

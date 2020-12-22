@@ -1,14 +1,14 @@
 @import '../../../styles/common.scss';
 
 .productContainer {
-  // width: 1310px;
+  left: 0;
 
   .productList {
     position: relative;
     // width: 262px;
     height: 345px;
     margin: 20px 0;
-    padding: 0 15px;
+    padding-right: 30px;
     -webkit-transition: width 2s, height 2s, background-color 2s,
       -webkit-transform 2s;
     transition: width 2s, height 2s, background-color 2s, transform 2s;
@@ -18,7 +18,6 @@
       height: 262px;
       cursor: pointer;
       object-fit: cover;
-      // z-index: -1;
     }
 
     .hoverContainer {
@@ -153,40 +152,5 @@
 
   .productList:hover > .hoverContainer {
     display: block;
-  }
-}
-.nextPageContainer {
-  display: flex;
-  margin: 50px 580px;
-  width: 1280px;
-
-  .nextPageNow {
-    position: relative;
-    width: 32px;
-    height: 32px;
-    font-weight: bold;
-    color: white;
-    background-color: black;
-    cursor: pointer;
-
-    .nextPageNum {
-      position: absolute;
-      padding: 10px;
-      // padding-top: 10px;
-    }
-  }
-
-  .nextPageBox {
-    // position: relative;
-    width: 34px;
-    height: 34px;
-    font-weight: bold;
-    cursor: pointer;
-
-    .nextPageNum {
-      position: absolute;
-      padding: 10px;
-      // padding-top: 10px;
-    }
   }
 }

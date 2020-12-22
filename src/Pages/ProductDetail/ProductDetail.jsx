@@ -3,9 +3,10 @@ import { Link, animateScroll as scroll} from 'react-scroll';
 import ImgPurchInfo from './Component/ImgPurchInfo';
 import ProductDescriptions from './Component/ProductDescriptions/ProductDescriptions';
 import Review from './Component/Review/Review'
+import Footer from '../../Components/Footer/Footer'
 import './ProductDetail.scss';
 
-// const API = 'http://localhost:3000/data/mockData.json';
+const API = 'http://localhost:3000/data/mockData.json';
 
 const reviewAPI = 'http://localhost:3000/data/reviewData.json';
 
@@ -24,10 +25,7 @@ class ProductDetail extends React.Component{
     }
     
     componentDidMount() {
-        fetch(`http://10.168.1.149:8000/product/${this.props.match.params.id}`, {
-        // fetch(API, {
-            method: "GET",
-        })
+        fetch(`http://10.168.1.149:8000/product/${this.props.match.params.id}`)
         .then((res) => res.json())
         .then((res) => {
             this.setState({
@@ -35,9 +33,7 @@ class ProductDetail extends React.Component{
             })
         });
 
-        fetch(reviewAPI, {
-            method: "GET",
-        })
+        fetch(reviewAPI)
         .then((res)=>res.json())
         .then((res)=> {
             this.setState({
@@ -143,6 +139,8 @@ class ProductDetail extends React.Component{
                             <Link className={this.state.qaSelected? "clicked":"qaTap"} to="qaAnchor" duration={100} onClick={this.selectBox}>Q&A</Link>
                     </div>
             </nav>
+
+            <Footer />
         </>
         );
     }

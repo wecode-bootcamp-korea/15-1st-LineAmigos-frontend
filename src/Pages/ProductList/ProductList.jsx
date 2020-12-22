@@ -28,7 +28,7 @@ class ProductList extends Component {
                     data.map(el=>{
                         return(
                             <li>
-                                <img key={el.product_id} alt="" src={el.product_image} onClick={()=>this.props.history.push(`/productdetail/${+el.product_id}`)}/>
+                                <img key={el.product_id} alt="testImg" src={el.product_image} onClick={()=>this.props.history.push(`/productdetail/${+el.product_id}`)}/>
                             </li>
                         )
                     })

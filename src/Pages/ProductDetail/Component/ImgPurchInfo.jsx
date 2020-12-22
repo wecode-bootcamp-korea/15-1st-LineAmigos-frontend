@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import ImgSlide from './ImgSlide/ImgSlide';
-// import {plus, minus} from './function.js';
 import './ImgPurchInfo.scss';
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -52,28 +50,16 @@ class ImgPurchInfo extends Component {
         }
     }
 
-    minus = () => {
-        if(this.state.count>1){
+    minusCount = () => {
         this.setState({
-            count: this.state.count-1,
-        })}
-        else{
-            this.setState({
-                count: 1,
-            })
-        }
+            count: this.state.count>1? this.state.count-1 : 1
+        })
     }
 
-    plus  = () => {
-        if(this.state.count>0){
+    plusCount  = () => {
             this.setState({
-                count: this.state.count+1,
-            })}
-            else{
-                this.setState({
-                    count: 1,
-                })
-            }
+                count: this.state.count>1? this.state.count+1 : 1
+            })
     }
 
     numbersWithComma = (num) => {
@@ -81,7 +67,7 @@ class ImgPurchInfo extends Component {
     }
 
     render() {
-        const {sizeBtn, count} = this.state;
+        const {sizeBtn, count, showCalComp} = this.state;
         const {reviewArray, price}=this.props;
         return (
             <div className="ImgPurchInfo">
@@ -90,7 +76,7 @@ class ImgPurchInfo extends Component {
                     <div className="smallReviewRatings">
                         <div>
                             <span>리뷰수</span>
-                            <span className="smallCount">{reviewArray&&reviewArray.length}</span>
+                            <span className="reviewCount">{reviewArray&&reviewArray.length}</span>
                         </div>
                         <div>
                             <span className="smallCount"> {reviewArray.length>0&&(reviewArray.reduce((acc, curr)=>acc+curr)/reviewArray.length).toFixed(1)} /5</span>
@@ -149,17 +135,17 @@ class ImgPurchInfo extends Component {
                         </button> 
                         <button className={sizeBtn ? "singleItemHide":"singleItemShow"} onClick={this.showComp}>단품</button>            
                     </div>
-                        {this.state.showCalComp&&
+                        {showCalComp&&
                             <div className="CalTotal">
                                 <span>단품</span>
                                 <div className="btnPriceContainter">
                                     <div className="quantBtns">
-                                        <button className="minusplus" onClick={this.minus}>-</button>
-                                        <input type="number" value={this.state.count} onChange={this.countChange}/>
-                                        <button className="minusplus"onClick={this.plus}>+</button>
+                                        <button className="minusplus" onClick={this.minusCount}>-</button>
+                                        <input type="number" value={count} onChange={this.countChange}/>
+                                        <button className="minusplus"onClick={this.plusCount}>+</button>
                                     </div>
                                     <div className="calTotPrice">
-                                        <span>{this.numbersWithComma(this.state.count*price)}원</span>
+                                        <span>{this.numbersWithComma(count*price)}원</span>
                                         <button onClick={this.hideComp}>X</button>
                                     </div>
                                 </div>

@@ -48,11 +48,9 @@ class Review extends Component {
     }
 
     printThermo= ()=>{
-
         const fullThermo = <i className="fas fa-thermometer-full"/>;
         const halfThermo = <i className="fas fa-thermometer-half"/>;
         const emptyThermo = <i className="fas fa-thermometer-empty"/>;
-
         let rateArr = [];
 
         for(let i=5; i>0; i--){

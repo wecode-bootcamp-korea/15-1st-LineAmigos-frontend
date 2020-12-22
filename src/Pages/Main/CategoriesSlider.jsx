@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import SliderCard from './SliderCard/SliderCard'
 import './CatetoriesSlider.scss';
 
 class CategoriesSlider extends Component {
@@ -25,17 +26,13 @@ class CategoriesSlider extends Component {
       <h3>카테고리 바로가기</h3>
         <Slider {...settings}>
         {categoriesList &&
-          categoriesList.map((category) => {
+          categoriesList.map((category, index) => {
             return(
-              <li 
-                key={category.id} 
-                className="category"
-                onClick={() => gotoProductList()}>
-                  <img alt="Category" src={category.product_image} />
-                  <span className="productInfo">{category.menu}
-                  <i className="fas fa-chevron-right" />
-                  </span>
-              </li>
+              <SliderCard 
+                key={index}
+                type={'category'}
+                category={category}
+                gotoProductList={gotoProductList}/>
             )
           })
         }

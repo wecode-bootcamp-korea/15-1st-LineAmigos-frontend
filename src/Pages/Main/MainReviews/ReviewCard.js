@@ -23,13 +23,15 @@ class ReviewCard extends Component {
     });
   }
 
+  createdAtString = (createdAt) => {
+    const splittedDate =  createdAt.split('T')[0].split('-')
+    return `${splittedDate[0]}년 ${splittedDate[1]}월 ${splittedDate[2]}일`
+  }
+
   render() {
     const { spans } = this.state
     const { review, goToProductDetail } = this.props
-    const createdAtString = (createdAt) => {
-      const splittedDate =  createdAt.split('T')[0].split('-')
-      return `${splittedDate[0]}년 ${splittedDate[1]}월 ${splittedDate[2]}일`
-    }
+    const { createdAtString } = this
     const hiddenId = (userId) => `${userId.slice(0, 4)}***`
     const rateStar = <i className="fas fa-star" />
 

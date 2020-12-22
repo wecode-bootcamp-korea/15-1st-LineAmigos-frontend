@@ -1,9 +1,10 @@
 @import '../../../styles/common.scss';
 
-li {
+.SliderCard {
   margin-right: 20px;
   width: 300px;
   cursor: pointer;
+  list-style: none;
 
   .productVisual {
     margin-bottom: 16px;

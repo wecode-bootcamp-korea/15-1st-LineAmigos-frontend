@@ -8,9 +8,6 @@
     display: flex;
     align-items: baseline;
 
-    .viewDropdownBox {
-    }
-
     .viewName {
       position: relative;
       width: 100px;
@@ -22,11 +19,6 @@
         margin-right: 10px;
         font-size: 13px;
       }
-
-      // .fa-caret-up,
-      // .fa-caret-down {
-      //   cursor: pointer;
-      // }
 
       .viewDropdown {
         position: absolute;

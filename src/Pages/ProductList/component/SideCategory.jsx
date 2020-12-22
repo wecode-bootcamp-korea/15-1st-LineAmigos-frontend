@@ -17,13 +17,12 @@ class SideCategory extends Component {
   }
 
   render() {
-    console.log(this.props.categoryArr)
     return (
       <div>
         <div className='sideCategotyContainer'>
           <span className='listName'>{this.state.cetegoryName}</span>
           <div className='sideCategory' onClick={this.props.hadleSideCategory}>
-            <span className='home'>홈 > </span>
+            <span className='home'>홈 </span>
             <span className='home'>{this.state.cetegoryName}</span>
             <span className='home'>(총 {this.props.productArr.length}개)</span>
             <i className='fas fa-caret-down' />

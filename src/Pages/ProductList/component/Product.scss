@@ -9,6 +9,9 @@
     height: 345px;
     margin: 20px 0;
     padding: 0 15px;
+    -webkit-transition: width 2s, height 2s, background-color 2s,
+      -webkit-transform 2s;
+    transition: width 2s, height 2s, background-color 2s, transform 2s;
 
     .productImg {
       width: 232px;
@@ -92,6 +95,7 @@
 
     .hoverContainer:hover {
       display: block;
+      transition: all ease 5s 0s;
     }
 
     .productNameContainer {

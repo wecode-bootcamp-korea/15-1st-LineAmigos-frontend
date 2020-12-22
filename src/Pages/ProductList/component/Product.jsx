@@ -42,7 +42,6 @@ class Product extends Component {
     this.props.onModal(this.props.modal)
   }
   render() {
-    console.log('요기', this.props.onModal)
     const { product_image, name, review, rate } = this.props.product
     return (
       <div className='productContainer'>

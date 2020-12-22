@@ -3,15 +3,17 @@ import Product from '../component/Product'
 import '../component/products.scss'
 class Products extends Component {
   render() {
-    console.log(this.props.proudctArr)
+    // console.log(this.props.proudctArr)
     return (
       <div>
+        {/* {this.props.productArr && this.props.obj[this.props.e]} */}
         <ul>
           {this.props.productArr.map((product) => (
             <Product
               id={product.id}
               product={product}
               onModal={this.props.onModal}
+              // onLowPrice={this.props.onLowPrice}
             />
           ))}
         </ul>

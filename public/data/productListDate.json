@@ -6,7 +6,7 @@
       "name": "라인프렌즈 귀염둥이 분홍토끼",
       "price": 50000.00,
       "review" : 1,
-      "rate" : 5.0,
+      "rate" : 1.0,
       "updated_at" : "2020-12-18"
     },
     {
@@ -15,36 +15,36 @@
       "name": "라인프렌즈 귀염둥이 분홍토끼",
       "price": 45000.00,
       "review" : 2,
-      "rate" : 5.0
+      "rate" : 2.0
     },
     {
       "id" : 3,
       "product_image": "https://shop-phinf.pstatic.net/20201211_36/1607676535604eWE5t_JPEG/18453341_54643013.jpg?type=f232_232",
       "name": "라인프렌즈 귀염둥이 분홍토끼",
-      "price": 55000,
+      "price": 105000,
       "review" : 0,
-      "rate" : 5.0
+      "rate" : 3.0
     }, {
       "id" : 4,
       "product_image": "https://shop-phinf.pstatic.net/20201211_30/16076765313000ioED_JPEG/18453321_54643004.jpg?type=f232_232",
       "name": "라인프렌즈 귀염둥이 분홍토끼",
       "price": 55000,
       "review" : 3,
-      "rate" : 5.0
+      "rate" : 4.0
     },
     {
       "id" : 5,
       "product_image": "https://shop-phinf.pstatic.net/20201211_281/1607676527169L862s_JPEG/18453273_54642985.jpg?type=f232_232",
       "name": "라인프렌즈 귀염둥이 분홍토끼",
-      "price": 55000,
+      "price": 555000,
       "review" : 1,
-      "rate" : 5.0
+      "rate" : 4.5
     },
     {
       "id" : 6,
       "product_image": "https://shop-phinf.pstatic.net/20201211_187/1607676544582vyQbn_JPEG/18453428_54643025.jpg?type=f232_232",
       "name": "라인프렌즈 귀염둥이 분홍토끼",
-      "price": 55000,
+      "price": 65000,
       "review" : 0,
       "rate" : 5.0
     },
@@ -60,7 +60,7 @@
       "id" : 8,
       "product_image": "https://shop-phinf.pstatic.net/20201211_187/1607676544582vyQbn_JPEG/18453428_54643025.jpg?type=f232_232",
       "name": "라인프렌즈 귀염둥이 분홍토끼",
-      "price": 55000,
+      "price": 5500,
       "review" : 0,
       "rate" : 5.0
     },
@@ -76,7 +76,7 @@
       "id" : 10,
       "product_image": "https://shop-phinf.pstatic.net/20201211_187/1607676544582vyQbn_JPEG/18453428_54643025.jpg?type=f232_232",
       "name": "라인프렌즈 귀염둥이 분홍토끼",
-      "price": 55000,
+      "price": 5000,
       "review" : 2,
       "rate" : 5.0
     }

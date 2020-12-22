@@ -22,11 +22,17 @@ class Filters extends Component {
     })
   }
   render() {
+    console.log('프롭스', this.props.filterArr)
     return (
       <div className='filtersContainer'>
         <ul>
           {this.props.filterArr.map((filter) => (
-            <Filter filter={filter} />
+            <Filter
+              filter={filter}
+              // test={this.props.test}
+              // price={this.props.filter}
+              onLowPrice={this.props.onLowPrice}
+            />
           ))}
         </ul>
         <div className='viewFilterContainer'>

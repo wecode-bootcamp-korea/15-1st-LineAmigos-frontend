@@ -2,12 +2,55 @@
 
 .sideCategotyContainer {
   cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
 
-  .home {
+  .listName {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  .sideCategory {
     position: relative;
 
-    color: $font-color-gray;
-    font-size: $font-size-regular;
+    .home {
+      margin-right: 5px;
+      color: $font-color-gray;
+      font-size: $font-size-small;
+    }
+
+    .sideCategoryBox {
+      position: absolute;
+      width: 250px;
+      height: 500px;
+      right: 0;
+      margin-top: 5px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background-color: white;
+      border: 1px solid black;
+      z-index: 1;
+      overflow: scroll;
+
+      .listDropDown {
+        list-style: none;
+        color: $font-color-gray;
+        cursor: pointer;
+      }
+
+      li {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 25px;
+        font-size: $font-size-small;
+      }
+      li:hover {
+        color: #6b90dc;
+        background-color: #f5f7fd;
+        font-weight: bold;
+      }
+    }
   }
 
   .fa-caret-down {
@@ -17,36 +60,4 @@
 
 .displayNone {
   display: none;
-}
-
-.sideCategoryBox {
-  position: absolute;
-  width: 250px;
-  height: 500px;
-  right: 80px;
-  margin-top: 5px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  border: 1px solid black;
-  z-index: 1;
-  overflow: scroll;
-
-  .listDropDown {
-    list-style: none;
-    color: $font-color-gray;
-    cursor: pointer;
-  }
-
-  li {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 25px;
-    font-size: 15px;
-  }
-  li:hover {
-    color: #6b90dc;
-    background-color: #f5f7fd;
-    font-weight: bold;
-  }
 }

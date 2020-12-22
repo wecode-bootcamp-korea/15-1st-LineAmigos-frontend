@@ -1,0 +1,41 @@
+@import '../../styles/common.scss';
+
+footer {
+  display: block;
+  margin: 0 auto;
+  width: 1280px;
+  color: $font-color-gray;
+  text-align: center;
+  // align-self: baseline;
+
+  .footer {
+    display: flex;
+    justify-content: center;
+    font-size: $font-size-supersmall;
+
+    li {
+      margin-left: 10px;
+      margin-bottom: 10px;
+      padding-right: 5px;
+      border-right: 1px solid gray;
+
+      a {
+        text-decoration: none;
+      }
+    }
+
+    li:last-of-type {
+      border-right: none;
+    }
+  }
+
+  .companyName {
+    color: black;
+    font-size: $font-size-supersmall;
+    font-weight: 900;
+  }
+  .copyright,
+  .rights {
+    font-size: $font-size-supersmall;
+  }
+}

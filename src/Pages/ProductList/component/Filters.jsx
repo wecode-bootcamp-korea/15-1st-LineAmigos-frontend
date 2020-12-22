@@ -18,11 +18,10 @@ class Filters extends Component {
 
   handleViewNameChange = (e) => {
     this.setState({
-      viewName: e.target.id,
+      viewName: e.target.className,
     })
   }
   render() {
-    console.log('프롭스', this.props.filterArr)
     return (
       <div className='filtersContainer'>
         <ul>
@@ -52,10 +51,10 @@ class Filters extends Component {
               }
               onClick={this.handleViewNameChange}
             >
-              <li id={'20개씩 보기'}>20개씩 보기</li>
-              <li id={'40개씩 보기'}>40개씩 보기</li>
-              <li id={'60개씩 보기'}>60개씩 보기</li>
-              <li id={'80개씩 보기'}>80개씩 보기</li>
+              <li className={'20개씩 보기'}>20개씩 보기</li>
+              <li className={'40개씩 보기'}>40개씩 보기</li>
+              <li className={'60개씩 보기'}>60개씩 보기</li>
+              <li className={'80개씩 보기'}>80개씩 보기</li>
             </div>
           </div>
           <div className='viewIconContainer'>

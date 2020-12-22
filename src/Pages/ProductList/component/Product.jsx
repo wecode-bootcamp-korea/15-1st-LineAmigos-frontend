@@ -22,7 +22,7 @@ class Product extends Component {
     const priceComma = this.props.product.price
       .toString()
       .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-    if (this.props.product.review === 0) {
+    if (!this.props.product.review) {
       this.setState({
         reviewRateContainer: false,
       })
@@ -71,7 +71,6 @@ class Product extends Component {
             </div>
             <div className='hoverViewBox' onClick={this.handleDetailModal}>
               <span className='hoverView'>+</span>
-              {/* <i className='fas fa-plus hoverView' /> */}
             </div>
           </div>
           <div className='productNameContainer'>

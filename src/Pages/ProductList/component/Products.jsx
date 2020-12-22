@@ -3,17 +3,6 @@ import Product from '../component/Product'
 import '../component/products.scss'
 
 class Products extends Component {
-  // constructor() {
-  //   super()
-  //   this.state = {
-  //     nextPageBox: false,
-  //   }
-  // }
-  // handlePagenation = () => {
-  //   this.setState({
-  //     nextPageBox: !this.state.nextPageBox,
-  //   })
-  // }
   render() {
     return (
       <div>

@@ -24,7 +24,7 @@
       .viewDropdown {
         position: absolute;
         width: 120px;
-        height: 150px;
+        height: 160px;
         top: 25px;
         left: -20px;
         padding-top: 10px;
@@ -38,6 +38,7 @@
         li {
           padding: 10px;
           text-align: center;
+          font-size: 15px;
         }
       }
 
@@ -55,13 +56,11 @@
     .viewIconContainer {
       display: flex;
       color: gray;
-      // color: white;
     }
     .iconBox {
       padding: 4px;
       border: 1px solid lightgray;
       cursor: pointer;
-      // background-color: #302e30;
     }
   }
 }

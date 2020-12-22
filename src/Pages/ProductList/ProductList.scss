@@ -17,6 +17,7 @@
         height: 200px;
         margin-top: 50px;
         margin-bottom: 20px;
+        object-fit: cover;
       }
 
       .headerName {
@@ -37,7 +38,6 @@
     align-items: center;
 
     .layout {
-      // position: absolute;
       width: 100%;
       height: 100%;
       background-color: rgba(0, 0, 0, 0.6);

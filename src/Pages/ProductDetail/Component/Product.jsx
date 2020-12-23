@@ -5,9 +5,9 @@ class Product extends Component {
     render() {
         const {image, name, price} = this.props;
         return (
-            <div className="product">
+            <div className="product" onClick={()=> this.props.history.push(`/productdetail/${this.props.match.params.id}`)}>
                 <div className="productImg">
-                    <img alt="" src={image}/>
+                    <img alt="productImg" src={image}/>
                 </div>
                 <div className="nameAndPrice">
                     <span className="productName">{name}</span>

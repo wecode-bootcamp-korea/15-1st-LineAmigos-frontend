@@ -17,13 +17,10 @@ class Recommandations extends Component {
         fetch(`http://10.168.1.149:8000/product/best_products?limit=${LIMIT}`)
         .then(res => res.json())
         .then(res=> this.setState({recommandList: res.PRODUCTS}))
-
-        console.log("aaa")
     }
 
     goToPrevorNext = (e) => {
         const offset = this.state.Count;
-
        
         fetch(`http://10.168.1.149:8000/product/best_products?limit=${LIMIT}&offset=${offset*LIMIT}`)
         .then(res => res.json())
@@ -37,12 +34,10 @@ class Recommandations extends Component {
         this.setState({
             Count: this.state.Count -1
         })
-        
     }
 
     render() {
         const {recommandList}= this.state;
-        console.log(this.state.recommandList)
         return (
             <>
                 <div className="recomTop">

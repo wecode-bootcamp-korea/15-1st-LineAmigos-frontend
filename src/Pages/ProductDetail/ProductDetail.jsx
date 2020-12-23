@@ -23,11 +23,11 @@ class ProductDetail extends React.Component{
     }
     
     componentDidMount() {
-        fetch('http://localhost:3000/data/mockData.json')
+        fetch(`http://10.168.1.149:8000/product/${this.props.match.params.id}`)
         .then((res) => res.json())
         .then((res) => {
             this.setState({
-                productData: res.product_id,
+                productData: res.product,
             })
         });
 

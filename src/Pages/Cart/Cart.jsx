@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
+import header from '../../Components/Header/Header'
 import CartItem from './CartItem'
 import './Cart.scss';
 
@@ -75,12 +76,21 @@ class Cart extends React.Component {
       .catch(err => console.log(err))
   }
 
-  //단순삭제
+  //개별 삭제버튼
   deleteItem = (id) => {
     const { cartItems } = this.state
     const deletedState = cartItems.filter(item => item.productId !== id)
     this.setState({
       cartItems: deletedState
+    })
+  }
+
+  //선택삭제 버튼
+  deleteSelectedItems = () => {
+    const { cartItems } = this.state
+    const deletingItems = cartItems.filter(item => !item.isChecked)
+    this.setState({
+      cartItems: deletingItems
     })
   }
 
@@ -132,19 +142,18 @@ class Cart extends React.Component {
   //select or unselect all items
   selectAllCartItemsHandler = () => {
     const { cartItems, isSelectAllChecked } = this.state
-    // isSelectAllChecked 
-    //   ? cartItems.forEach(cartItem => cartItem.isChecked = true)
-    //   : cartItems.forEach(cartItem => cartItem.isChecked = false)
-    const selectStateBox = cartItems.forEach(item => {
+    const selectStateBox = cartItems.map(item => {
       if (isSelectAllChecked) {
         item.isChecked = false
       } else {
         item.isChecked = true
       }
+      return item
     })
     
     this.setState({
-      cartItems: selectStateBox
+      cartItems: selectStateBox,
+      isSelectAllChecked: !isSelectAllChecked,
     })
   }
 
@@ -170,9 +179,6 @@ class Cart extends React.Component {
     const targetId = cartItems.filter(cartItem => cartItem.productId === id)
     this.props.history.push(`/product/${targetId}`)
   }
-
-  // soldOutAlert = () => alert('현재 구매가 불가능한 상품이 있습니다. 해당 상품을 삭제하신 후 주문을 진행해 주십시오.')
-  // notSelectedAlert = () => alert('주문하실 상품을 선택해주세요.')
 
   goToCheckOutPage = () => {
     const { cartItems } = this.state
@@ -216,7 +222,7 @@ class Cart extends React.Component {
   // goToWishListPage = () => {this.props.history.push("/wishlist")}
 
   render() {
-    const { addCartItem, subtractCartItem, deleteCartItem, deleteItem, selectOneCartItemHandler, selectAllCartItemsHandler, goProductDetailPage, goToCheckOutPage, soldOutAlert, notSelectedAlert, selectItemHandler } = this
+    const { addCartItem, subtractCartItem, deleteCartItem, deleteItem, selectOneCartItemHandler, selectAllCartItemsHandler, goProductDetailPage, goToCheckOutPage, soldOutAlert, notSelectedAlert, selectItemHandler, deleteSelectedItems } = this
     const { cartItems } = this.state
     const selectedItems = cartItems.filter(cartItem => cartItem.isChecked)
     const totalPrice = selectedItems.filter(item => item.isInStock).map(cartItem => cartItem.price).reduce((a, b) => a + b, 0)
@@ -290,7 +296,9 @@ class Cart extends React.Component {
             <div className="row selectActions">
               <div className={`checkbox ${this.state.isSelectAllChecked && 'checked'}`}><i className="fas fa-check"/></div>
               <div className="buttons">
-                <div className="delete">선택상품 삭제</div>
+                <div 
+                  className="delete"
+                  onClick={deleteSelectedItems}>선택상품 삭제</div>
                 <div className="addToWishList">선택상품 찜</div>
               </div>
             </div>
@@ -315,7 +323,7 @@ class Cart extends React.Component {
             </div>
             <div className="checkOutPrice">
               <span className="word">총 주문금액</span>
-              <span className="price">{(selectedItems.length=0 || checkOutPrice > 30000 ? checkOutPrice.toLocaleString() : checkOutPrice + 3000).toLocaleString()}</span>
+              <span className="price">{(selectedItems.length === 0 || checkOutPrice > 27000 ? checkOutPrice.toLocaleString() : checkOutPrice + 3000).toLocaleString()}</span>
               <span className="word">원</span>
             </div>
           </div>

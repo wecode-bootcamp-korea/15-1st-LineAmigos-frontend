@@ -1,0 +1,9 @@
+  {
+    "filterData"  : [
+  { "id" : 0, "name": "인기도순", "selected": false },
+  { "id" : 1, "name": "낮은가격순", "selected": false },
+  { "id" : 2, "name": "최신등록순", "selected": false },
+  { "id" : 3, "name": "리뷰많은순","selected": false },
+  { "id" : 4, "name": "평점높은순", "selected": false }
+    ]
+  }

@@ -1,0 +1,175 @@
+@import '../../styles/common.scss';
+
+#DetailPageContainer{
+    width: 1280px;
+    margin: 30px auto;
+
+    .topContainer{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        
+        margin-top: 100px; //나중에 지우기
+
+        i{
+            padding: 3px;
+            margin: 3px;
+            background-color: $primary-color;
+            color: white;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+    }
+
+    .categoryTap{
+        width: 1280px;
+        height: 45px;
+        display: flex;
+        justify-content: space-evenly;
+        border-bottom: 1px solid black;
+        background-color: $border-color;
+        overflow: auto;
+
+        .detailsTap, .reviewTap, .qaTap, .clicked{
+            width: 100%;
+            text-align: center;
+            margin: auto;
+            font-weight: bold;
+            
+            &.detailsTap{
+                border: none;
+            }
+
+            &:hover{
+                cursor: pointer;
+            } 
+
+            &.clicked{
+                background-color: rgb(53, 54, 69);
+                opacity: 0.6;
+                padding: 13px;
+                padding-bottom: 16px;
+                color: white;
+            }
+        }    
+
+        .reviewTap{
+            border-left: 1px solid gray;
+            border-right: 1px solid gray;
+        }
+    }
+
+    .active{
+        position: fixed;
+    }
+
+    .scrollTop{
+        width: 45px;
+        height: 45px;
+        background-color: #ffffff;
+        position: fixed;
+        bottom:40px;
+        right: 40px;
+        border: none;
+
+        i{
+            width: 100%;
+            font-size: 37px;
+            border: 1px solid $border-color;
+            padding: 5px;
+            color: lightgray;
+        }
+    }
+}
+
+.categoryNav{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-bottom: 1px solid black;
+    background-color: #ffffff;
+
+    .navProduct{
+        width: 1280px;
+        display: flex;
+        justify-content: space-between;
+
+        .imgAndPrice{
+            display: flex;
+            
+            img{
+                width: 100px;
+                padding: 20px;
+            }
+
+            .navPriceInfo{
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+
+                span{
+                    padding: 5px;
+                    font-size: 15px;
+                    font-weight: 600;
+
+                    &.productPrice{
+                        color: $font-color-blue;
+                    }
+                }
+            }
+        }
+
+        button{
+            width: 162px;
+            height: 45px;
+            margin-top: 20px;
+            background-color: $primary-color;
+            color: white;
+            font-size: 15px;
+            border: none;
+        }
+    }
+
+    .navLinks{
+        width: 1280px;
+        height: 45px;
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: space-evenly;
+        border: 1px solid gray;
+        border-bottom: none;
+
+         .detailsTap, .reviewTap, .qaTap, .clicked{
+                    width: 100%;
+                    height: 100%;
+                    font-weight: bold;
+                    padding: 15px;
+                    
+                    &.reviewTap{
+                        border-left: 1px solid gray;
+                        border-right: 1px solid gray;
+                    }
+            
+                    &:hover{
+                        cursor: pointer;
+                    } 
+            
+                    &.clicked{
+                        background-color: rgb(53, 54, 69);
+                        opacity: 0.6;
+                        padding: 15px;
+                        color: white;
+                    }
+             }   
+    }
+}
+
+.hideNav{
+    display: none;
+}

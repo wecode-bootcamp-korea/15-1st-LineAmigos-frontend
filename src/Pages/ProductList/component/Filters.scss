@@ -1,0 +1,66 @@
+@import '../../../styles/common.scss';
+
+.filtersContainer {
+  display: flex;
+  align-items: baseline;
+  width: 1280px;
+
+  .viewFilterContainer {
+    display: flex;
+    align-items: baseline;
+
+    .viewName {
+      position: relative;
+      width: 100px;
+      height: 30px;
+      margin-right: 20px;
+      cursor: pointer;
+
+      span {
+        margin-right: 10px;
+        font-size: 13px;
+      }
+
+      .viewDropdown {
+        position: absolute;
+        width: 120px;
+        height: 130px;
+        top: 25px;
+        left: -20px;
+        padding-top: 10px;
+        padding-bottom: 5px;
+        border: 1px solid black;
+        background-color: white;
+        list-style: none;
+        cursor: pointer;
+        z-index: 1;
+
+        li {
+          padding: 10px;
+          text-align: center;
+          font-size: 15px;
+        }
+      }
+
+      .none {
+        display: none;
+      }
+    }
+
+    li:hover {
+      color: #6b90dc;
+      background-color: #f5f7fd;
+      font-weight: bold;
+    }
+
+    .viewIconContainer {
+      display: flex;
+      color: gray;
+    }
+    .iconBox {
+      padding: 4px;
+      border: 1px solid lightgray;
+      cursor: pointer;
+    }
+  }
+}

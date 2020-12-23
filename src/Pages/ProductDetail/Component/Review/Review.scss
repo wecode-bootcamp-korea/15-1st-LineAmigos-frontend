@@ -1,0 +1,244 @@
+@import '../../../../styles/common.scss';
+$reviewBoxColor: rgb(139,100, 227);
+$RatingColor: rgb(255, 82, 83);
+$borders: rgb(240,240,240);
+
+.reviewEventContainer{
+    padding-bottom: 20px;
+    border-bottom: 2px solid black;
+
+    .reviewheader{
+        width: 1280px;
+
+        header{
+            width: 100%;
+            padding: 15px 0;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        span{
+            padding: 5px;
+            font-size: 13px;
+            color: gray;
+            
+            &.reviewMoney{
+                color: $reviewBoxColor;
+            }
+        }
+    }
+
+    .reviewPointBox{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 30px 30px 10px 30px;;
+        margin-top: 20px;
+        border: 1px solid $reviewBoxColor;
+
+        .reviewEvent{
+            font-size: 13px;
+            font-weight: bold;
+            font-style: italic;
+            color: #ffffff;
+            background-color: $reviewBoxColor;
+            margin: auto;
+            padding: 10px;
+            border: 1px solid $reviewBoxColor;
+            border-radius: 10px;
+        }
+
+        .reviewEventText{
+            margin: 20px auto;
+
+            span{
+                font-size: 20px;
+                font-weight: bold;
+
+                &.bestBlueText{
+                    color: $reviewBoxColor;
+                }
+            }
+        }
+    }
+
+    .eventDuedate{
+        width: 1280x;
+        display: flex;
+        background-color: $reviewBoxColor;
+        padding: 20px;
+        text-align: center;
+
+        span{
+            width: 100%;
+            font-size: 13px;
+            color: white;
+        }
+
+    }
+}
+
+.reviewRatings{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    padding: 40px;
+    border-bottom: 1px solid black;
+   
+    .ratingType{
+        font-size: 13px;
+        font-weight: bold;
+    }
+
+    .starRatings{
+        display: flex;
+        flex-direction: column;
+
+        span{
+            padding: 20px;
+
+            &.stars{
+                font-size: 30px;
+                color: $RatingColor;
+            }
+
+            &.ratingPoint{
+                font-size: 40px;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .totalReviews{
+        display: flex;
+        flex-direction: column;
+
+        span{
+            padding: 20px;
+
+            &.count{
+                font-size: 40px;
+                font-weight: bold;
+            }
+        }
+
+        i{
+            font-size: 50px;
+            padding-top: 20px;
+            color: rgb(211, 214, 217);
+        }
+    }
+
+    .graphRatings{
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+
+        ul{
+            display: flex;
+
+            li{
+                display: flex;
+                flex-direction: column;
+                padding-top: 30px;
+
+                .thermoGraph{
+                    padding: 12px;
+                    font-size: 70px;
+                    color: $RatingColor;
+                }
+
+                .points{
+                    font-size: 13px;
+                }
+            }
+        } 
+    }
+
+}
+
+.reviewContents{
+    width: 1280px;
+    padding-top: 50px;
+
+    .reviewContentsTop{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        span{
+            font-size: 22px;
+            font-weight: bolder;
+        }
+
+        .reviewFilter{
+            width: 30%;
+            display: flex;
+            justify-content: space-between;
+            
+            span{
+                font-size: 18px;
+                font-weight: 0;
+                color: gray;
+            }
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+    }
+
+    .reviewContainer{
+        width: 1240px;
+        padding-top: 30px;
+        color: gray;
+
+        .reviewCategory{
+            width: 100%;
+            display: flex;
+            padding: 20px;
+            border: 1px solid $borders;
+
+            li{
+                margin: 0 auto;
+
+                &:hover{
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+
+                &.clickedList{
+                    color: $font-color-blue;
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .reviewList{
+            width: 100%;
+            border: 1px solid $borders;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+
+            i, span{
+                margin: auto;
+            }
+
+            i{
+                font-size: 50px;
+            }
+
+            span{
+                font-size: 13px;
+                padding-top: 20px;
+            }
+
+            .noReview{
+                display: none;
+            }
+        }
+    }
+}

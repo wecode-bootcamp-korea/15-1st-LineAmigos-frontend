@@ -7,14 +7,24 @@
   z-index: 1000;
   width: 100vw;
   height: 206px;
-  transition: transform .5s ease;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.5s ease;
+  // transform: translateY(-206px);
+  // &:hover {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   transform: translateY(-136px);
+  //   background: #fafafa;
+  // }
+
   &.scrolled {
     position: fixed;
     top: 0;
     left: 0;
-    border-bottom: 1px solid rgba(0,0,0,.1);
     transform: translateY(-206px);
-    &.show {
+
+    &:hover {
       position: absolute;
       top: 0;
       left: 0;
@@ -22,7 +32,7 @@
       background: #fafafa;
     }
   }
-  
+
   .innerContainer {
     position: relative;
     width: 1280px;
@@ -45,7 +55,7 @@
           width: 46px;
           -webkit-filter: grayscale(100%) brightness(0%);
           filter: grayscale(100%) brightness(0%);
-          opacity: .3;
+          opacity: 0.3;
         }
 
         div {
@@ -56,13 +66,13 @@
 
           img {
             width: 14px;
-            opacity: .6;
+            opacity: 0.6;
           }
 
           span {
             margin-left: 3px;
             font-size: 11px;
-            color: rgba(0,0,0,.6);
+            color: rgba(0, 0, 0, 0.6);
           }
         }
       }
@@ -81,19 +91,23 @@
           padding: 0 10px;
           height: 20px;
           font-size: 11px;
-          color: rgba(0,0,0,.8);
-          border: rgba(0,0,0,.4);
-          border: 1px solid rgba(0,0,0,.2);
+          color: rgba(0, 0, 0, 0.8);
+          border: rgba(0, 0, 0, 0.4);
+          border: 1px solid rgba(0, 0, 0, 0.2);
           cursor: pointer;
+
+          &.cart {
+            border: none;
+          }
         }
 
         img {
           width: 16px;
-          opacity: .6;
+          opacity: 0.6;
         }
       }
     }
-    
+
     .logoAndSearch {
       display: flex;
       justify-content: center;
@@ -121,20 +135,23 @@
         position: absolute;
         right: 0;
         top: 30px;
-  
+
         input {
           position: relative;
           width: 218px;
           height: 38px;
           background: none;
-          border: 1px solid rgba(0,0,0,.2);
+          border: 1px solid rgba(0, 0, 0, 0.2);
           border-radius: 20px;
           padding-left: 16px;
           font-size: 12px;
           color: #555;
-          &:focus { outline: none; }
+
+          &:focus {
+            outline: none;
+          }
         }
-        
+
         button {
           position: absolute;
           top: 9px;
@@ -146,7 +163,7 @@
           .searchIcon {
             width: 16px;
             height: 16px;
-            opacity: .8;
+            opacity: 0.8;
           }
         }
 
@@ -160,7 +177,9 @@
           background: white;
           border: 1px solid #ccc;
           border-radius: 12px;
+          box-shadow: 0 30px 90px rgba(0, 0, 0, 0.09);
           display: none;
+
           &.open {
             display: block;
           }
@@ -172,10 +191,11 @@
             padding-left: 12px;
             width: 268px;
             height: 64px;
-            // background: #bbb;
+            cursor: pointer;
+
             &:hover {
-              background: rgba(0,0,0,.03);
-              transition: all .2s ease;
+              background: rgba(0, 0, 0, 0.03);
+              transition: all 0.2s ease;
             }
 
             .itemImg {
@@ -194,7 +214,7 @@
               width: 100%;
               font-weight: $font-weight-medium;
               word-break: break-all;
-              
+
               .productName {
                 margin-bottom: 3px;
                 font-size: $font-size-extrasmall;
@@ -213,7 +233,8 @@
       }
     }
 
-    .topMenuAndHover{
+    .topMenuAndHover {
+
       .topMenu {
         display: flex;
         justify-content: space-between;
@@ -223,15 +244,14 @@
         width: 100%;
         height: 48px;
       }
+
       .hoverBox {
         position: relative;
         top: 25px;
         left: -260px;
         width: 100vw;
         height: 50px;
-        // background: #000;
       }
     }
-
   }
 }

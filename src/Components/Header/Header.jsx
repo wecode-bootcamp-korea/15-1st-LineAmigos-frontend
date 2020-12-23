@@ -12,48 +12,32 @@ class Header extends React.Component {
       isloggedIn: false,
       scrollTop: 0,
       isNavFixed: false,
-      isNavShowing: false,
     }
   }
 
-  handleCategoryOpen = (id) => {
-    const openedCategoryList = this.state.categoriesList.map((category) => {
-      if (category.id === id) {
-        category.isCategoryOpen = true
-      }
-      return category
-    })
+  handleSearchValue = (e) => {
     this.setState({
-      categoriesList: openedCategoryList
+      searchValue: e.target.value
     })
   }
 
-  handleCategoryClose = (id) => {
-    const openedCategoryList = this.state.categoriesList.map((category) => {
-      if (category.id === id) {
-        category.isCategoryOpen = false
-      }
-      return category
-    })
-    this.setState({
-      categoriesList: openedCategoryList
-    })
+  handleLoginStatus = () => {
+    this.props.history.push(`${!this.state.isloggedIn ? "/login" : "/"}`)
+  }
+  
+  goToMainPage = () => {
+    this.props.history.push("/")
   }
 
-  handleSearchValue = (e) => {this.setState({searchValue: e.target.value})}
+  goToProductList = () => {
+    this.props.history.push(`/products`)
+  }
 
-  goToMainPage = () => {this.props.history.push("/")}
-  goToLogInPage = () => {!this.state.isloggedIn 
-    ? this.props.history.push("/login")
-    : this.props.history.push("/")}
-  goToProductList = () => {this.props.history.push(`/products`)}
   goToSearchResult = (e) => {
     e.preventDefault()
     this.props.history.push(`/products?search=${this.state.searchValue}`)
   }
 
-  showNavBar = () => {this.setState({isNavShowing: true})}
-  hideNavBar = () => {this.setState({isNavShowing: false})}
   handleScroll = (e) => {
     const scrollTop = ('scroll', e.srcElement.scrollingElement.scrollTop)
     this.setState({
@@ -64,22 +48,18 @@ class Header extends React.Component {
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
+    // fetch('http://10.168.1.149:8000/product/menu')
     fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
-        const categories = data.navCategories.map((item) => {
-          const category = {
-            id: item.categoryId,
-            category: item.categoryName,
-            subCategories: item.subCategories,
-            isCategoryOpen: false,
-          }
-          return category
-        })
-        this.setState({
-          categoriesList: categories,
-          searchList: data.products,
-        })
+        this.setState({categoriesList: data.navCategories})
+      }).catch(err => console.log(err))
+
+      fetch('/data/productsInfos.json')
+      // fetch('http://10.168.1.149:8000/product/products_info')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({searchList: data.PRODUCTS})
       }).catch(err => console.log(err))
   }
   
@@ -88,18 +68,15 @@ class Header extends React.Component {
   }
 
   render() {
-    const { categoriesList, searchValue, searchList, isloggedIn, isNavFixed, isNavShowing } = this.state
-    const { handleSearchValue, handleCategoryOpen, handleCategoryClose, goToLogInPage, goToProductList, goToSearchResult, goToMainPage, showNavBar, hideNavBar } = this
+    const { categoriesList, searchValue, searchList, isloggedIn, isNavFixed } = this.state
+    const { handleSearchValue, handleLoginStatus, goToProductList, goToSearchResult, goToMainPage } = this
     const filteredList = searchList.filter((product) => 
-      product.productName.toLowerCase().includes(searchValue.toLowerCase()) && product)
+      product.name.toLowerCase().includes(searchValue.toLowerCase()) && product)
     localStorage.getItem('token') && this.setState({isloggedIn: true})
-    const myPage = isloggedIn && <span className="gnbBtn myPage">마이페이지</span>
 
     return (
       <header 
-        className={`Header ${isNavFixed && 'scrolled'} ${isNavShowing && 'show'}`}
-        onMouseOver={showNavBar}
-        onMouseLeave={hideNavBar} >
+        className={`Header ${isNavFixed && 'scrolled'}`}>
         <div className="innerContainer">
           <nav>
             <div className="navIconLeft">
@@ -111,8 +88,8 @@ class Header extends React.Component {
             </div>
             <div 
               className="navIconRight"
-              onClick={goToLogInPage}>
-              {myPage}
+              onClick={handleLoginStatus}>
+              {isloggedIn && <span className="gnbBtn cart">장바구니</span>}
               <span className="gnbBtn logIn">{isloggedIn ? '로그아웃' : '로그인'}</span>
               <img alt="Menu" src="/images/menu.png" />
             </div>
@@ -138,11 +115,11 @@ class Header extends React.Component {
                 {filteredList &&
                   filteredList.map(item => {
                     return(
-                      <li key={item.id}>
-                        <img alt={item.productName} src={item.url} className="itemImg" />
+                      <li key={item.product_id}>
+                        <img alt={item.name} src={item.product_image} className="itemImg" />
                         <div>
-                          <span className="productName">{item.productName}</span>
-                          <span className="price">{item.price}원</span>
+                          <span className="productName">{item.name}</span>
+                          <span className="price">{item.price.toLocaleString()}원</span>
                         </div>
                       </li>
                     )
@@ -158,12 +135,9 @@ class Header extends React.Component {
                   return (
                     <Category 
                       key={index}
-                      id={category.id}
-                      category={category.category}
+                      id={category.categoryId}
+                      category={category.categoryName}
                       subCategories={category.subCategories}
-                      isCategoryOpen={category.isCategoryOpen}
-                      handleCategoryOpen={handleCategoryOpen}
-                      handleCategoryClose={handleCategoryClose}
                       goToCategoryList={goToProductList}/>
                   )
                 })

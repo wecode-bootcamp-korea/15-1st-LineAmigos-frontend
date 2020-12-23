@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Category from './Category'
 import './Header.scss'
 
@@ -21,21 +22,9 @@ class Header extends React.Component {
     })
   }
 
-  handleLoginStatus = () => {
-    this.props.history.push(`${!this.state.isloggedIn ? "/login" : "/"}`)
-  }
-  
-  goToMainPage = () => {
-    this.props.history.push("/")
-  }
-
-  goToProductList = () => {
-    this.props.history.push(`/products`)
-  }
-
   goToSearchResult = (e) => {
     e.preventDefault()
-    this.props.history.push(`/products?search=${this.state.searchValue}`)
+    this.props.history.push(`/product/products_info?search='${this.state.searchValue}'`)
   }
 
   handleScroll = (e) => {
@@ -48,18 +37,18 @@ class Header extends React.Component {
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
-    // fetch('http://10.168.1.149:8000/product/menu')
-    fetch('/data/productsInfos.json')
+    fetch('http://10.168.1.149:8000/product/menu')
+    // fetch('/data/productsInfos.json')
       .then(response => response.json())
       .then(data => {
-        this.setState({categoriesList: data.navCategories})
+        this.setState({categoriesList: data.main})
       }).catch(err => console.log(err))
 
-      fetch('/data/productsInfos.json')
-      // fetch('http://10.168.1.149:8000/product/products_info')
+      // fetch('/data/productsInfos.json')
+      fetch('http://10.168.1.149:8000/product/products_info')
       .then(response => response.json())
       .then(data => {
-        this.setState({searchList: data.products})
+        this.setState({searchList: data.PRODUCTS})
       }).catch(err => console.log(err))
   }
   
@@ -69,10 +58,10 @@ class Header extends React.Component {
 
   render() {
     const { categoriesList, searchValue, searchList, isloggedIn, isNavFixed } = this.state
-    const { handleSearchValue, handleLoginStatus, goToProductList, goToSearchResult, goToMainPage } = this
+    const { handleSearchValue, handleLoginStatus, goToProductList, goToSearchResult } = this
     const filteredList = searchList.filter((product) => 
-      product.productName.toLowerCase().includes(searchValue.toLowerCase()) && product)
-    // localStorage.getItem('token') && this.setState({isloggedIn: true})
+      product.name.toLowerCase().includes(searchValue.toLowerCase()) && product)
+    localStorage.getItem('token') && this.setState({isloggedIn: true})
 
     return (
       <header 
@@ -90,16 +79,17 @@ class Header extends React.Component {
               className="navIconRight"
               onClick={handleLoginStatus}>
               {isloggedIn && <span className="gnbBtn cart">장바구니</span>}
-              <span className="gnbBtn logIn">{isloggedIn ? '로그아웃' : '로그인'}</span>
+              <span className="gnbBtn logIn"><Link to={isloggedIn ? "/signup" : "/"}>{isloggedIn ? '로그아웃' : '로그인'}</Link></span>
               <img alt="Menu" src="/images/menu.png" />
             </div>
           </nav>
           <div className="logoAndSearch">
             <h1>
-              <img 
-                alt="Line Amigos Logo" 
-                src="/images/line-amigos-logo-black.png"
-                onClick={goToMainPage}/>
+              <Link to="/">
+                <img 
+                  alt="Line Amigos Logo" 
+                  src="/images/line-amigos-logo-black.png"/>
+              </Link>
             </h1>
             <div className="searchContainer">
               <form onSubmit={goToSearchResult}>
@@ -112,14 +102,14 @@ class Header extends React.Component {
                 </button>
               </form>
               <ul className={`searchListContainer ${searchValue && filteredList.length && "open"}`}>
-                {filteredList &&
-                  filteredList.map(item => {
+                {filteredList.length > 0 &&
+                  filteredList.map((item) => {
                     return(
-                      <li key={item.id}>
-                        <img alt={item.productName} src={item.url} className="itemImg" />
+                      <li key={item.product_id}>
+                        <img alt={item.name} src={item.product_image} className="itemImg" />
                         <div>
-                          <span className="productName">{item.productName}</span>
-                          <span className="price">{item.price}원</span>
+                          <span className="productName">{item.name}</span>
+                          <span className="price">{(+item.price).toLocaleString()}원</span>
                         </div>
                       </li>
                     )
@@ -135,10 +125,8 @@ class Header extends React.Component {
                   return (
                     <Category 
                       key={index}
-                      id={category.categoryId}
-                      category={category.categoryName}
-                      subCategories={category.subCategories}
-                      goToCategoryList={goToProductList}/>
+                      category={category}
+                      goToProductList={goToProductList}/>
                   )
                 })
               }

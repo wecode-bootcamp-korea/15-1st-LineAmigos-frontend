@@ -1,0 +1,96 @@
+@import '../../../../../styles/common.scss';
+
+.reviewContentsContainer{
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $border-color;
+
+    .reviewLeft{
+        width: 980px;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+
+        .stars{
+            padding: 10px;
+
+            i{
+                color: red;
+                
+                &.fas{
+                    font-size: 18px;
+                    padding-right: 3px;
+                }
+
+                &.far{
+                    font-size: 18px;
+                }
+            }
+
+            span{
+                font-size: 20px;
+                margin-left: 10px;
+                font-weight: 900;
+                color: black;
+            }
+        }
+
+        span{
+            font-size: 15px;
+
+            &.userId{
+                padding: 10px;
+            }
+        }
+
+        p{
+            padding: 15px 10px;
+
+            &:hover{
+                cursor: pointer;
+            } 
+        }
+
+        .userInfo{
+            width: 100%;
+        }
+
+        img{
+            width: 300px;
+        }
+
+        .reviewContentImage{
+            width: 100px;
+
+            &:hover{
+                cursor: pointer;
+            } 
+        }
+    }
+
+    .reviewRight{
+        width: 200px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        button{
+            width: 61px;
+            height: 36px;
+            background-color: #ffffff;
+            border: 1px solid $border-color;
+            border-radius: 20px;
+            
+            & i.far{
+                color: red;
+                font-size: 18px;
+            }
+
+            &:hover{
+                cursor: pointer;
+                background-color: $border-color;
+            } 
+        }
+    }
+}

@@ -1,6 +1,7 @@
 @import '../../../styles/common.scss';
 
 .ItemClickButton {
+  box-sizing: border-box;
 
   img {
     width: 150px;
@@ -8,6 +9,10 @@
     border-radius: 18px;
     object-fit: cover;
     margin: 14px 14px 0 0;
+
+    &.click {
+      border: 6px solid rgb(142, 142, 241);
+    }
   }
 
   .button {
@@ -57,7 +62,7 @@
     border-radius: 50%;
     border: 5px solid white;
     cursor: pointer;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9);
     
     &:hover ~ .price {
       display: block;
@@ -68,8 +73,8 @@
     display: none;
     margin-left: 10px;
     padding: 12px;
-    width: 180px;
-    height: 100%;
+    width: 200px;
+    height: 120%;
     background: rgba(255,255,255,.8);
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.2);

@@ -5,7 +5,7 @@ import'./ReviewSection.scss'
 class ReviewSection extends Component {
   
   render() {
-    const { reviewsList, goToProductDetail } = this.props
+    const { reviewsList, goToProductDetail, handleViewClick } = this.props
     return (
       <div className="ReviewSection">
         <h3>생생한 리뷰</h3>

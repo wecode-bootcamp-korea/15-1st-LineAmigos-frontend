@@ -1,6 +1,7 @@
 @import '../../../styles/common.scss';
 
 .ReviewCard {
+  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -9,6 +10,8 @@
   padding-bottom: 20px;
   // position: relative;
   width: 400px;
+  min-height: 500px;
+  background: white;
   cursor: pointer;
   letter-spacing: -0.5px;
   border-radius: 16px;
@@ -16,6 +19,7 @@
 
   .productVisual {
     margin-bottom: 16px;
+    display: block;
     width: 400px;
     // height: 400px;
     // position: absolute;
@@ -35,7 +39,7 @@
     justify-content: flex-start;
     align-items: flex-start;
     width: 400px;
-    height: stretch;
+    // height: stretch;
 
     .productName {
       margin: 8px 0;
@@ -53,6 +57,7 @@
       margin-bottom: 12px;
       padding: 0 24px;
       width: 400px;
+      height: white;
   
       i {
         margin-right: 2px;

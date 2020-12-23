@@ -6,7 +6,6 @@ class ItemClickPlate extends Component {
 
   render() {
     const { productsList, handleViewClick } = this.props
-    const { clickTemp } = this
 
     return (
       <div className="ItemClickPlate">
@@ -28,7 +27,6 @@ class ItemClickPlate extends Component {
                     itemId={product.product_id}
                     product={product}
                     isClicked={false}
-                    clickTemp={clickTemp}
                     handleViewClick={handleViewClick}/>
                 )
               })

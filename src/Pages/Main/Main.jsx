@@ -15,7 +15,6 @@ class Main extends React.Component {
     super()
     this.state = {
       productsList: [],
-      categoriesList: [],
       reviewsList: [],
       scrollTop: 0,
       isNavFixed: false,
@@ -31,21 +30,32 @@ class Main extends React.Component {
     })
   }
 
-  handleViewClick = (e) => {
-    const id = e.target.id
+  handleViewClick = (id) => {
     const { productsList } = this.state
-    // const changedState = productsList.filter
-    console.log(id)
+    const filteredList = productsList.map(product => {
+      if (product.product_id === id) {
+        product.isClicked = true
+      } else {
+        product.isClicked = false
+      }
+      return product
+    })   
+    this.setState({
+      productsList: filteredList
+    })
   }
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
     fetch('http://10.168.1.149:8000/product/products_info')
     // fetch('/data/products.json')
-     .then(response => response.json())
-     .then(data => {
+      .then(response => response.json())
+      .then(data => {
+        const newProductsList = data.PRODUCTS.map(product => {
+          return {...product, isClicked: false}
+       })
        this.setState({
-         productsList: data.PRODUCTS
+         productsList: newProductsList
        })
      }).catch(err => console.log(err))
 
@@ -58,6 +68,8 @@ class Main extends React.Component {
      }).catch(err => console.log(err))
   }
   
+
+
   componentWillUnmount = () => {
     window.removeEventListener('scroll', this.handleScroll)
   }
@@ -65,7 +77,6 @@ class Main extends React.Component {
   render() {
     const { productsList, reviewsList } = this.state
     const { handleViewClick } = this
-    console.log(productsList[10])
     return (
       <div className="Main">
         <MainSlider />

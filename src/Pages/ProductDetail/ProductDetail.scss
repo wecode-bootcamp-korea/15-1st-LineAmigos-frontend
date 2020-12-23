@@ -70,15 +70,14 @@
         position: fixed;
         bottom:40px;
         right: 40px;
-        border: none;
+        border: 1px solid $border-color;
 
-        i{
+        i.fas{
             width: 100%;
+            margin: auto;
             font-size: 37px;
-            border: 1px solid $border-color;
-            padding: 5px;
             color: lightgray;
-        }
+        }        
     }
 }
 

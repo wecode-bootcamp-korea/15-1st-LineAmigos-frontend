@@ -2,27 +2,60 @@ import React, { Component } from 'react';
 import Product from '../Product';
 import './Recommandations.scss'
 
+const LIMIT = 5;
+
 class Recommandations extends Component {
+    constructor(){
+        super();
+        this.state={
+            recommandList: []
+        }
+    }
+
+    componentDidMount(){
+        fetch(`http://10.168.1.149:8000/product/best_products?limit=${LIMIT}`)
+        .then(res => res.json())
+        .then(res=> this.setState({recommandList: res.PRODUCTS}))
+
+        console.log("aaa")
+    }
+
+    goToPrevorNext = (e) => {
+        const offset = e.target.id
+
+        fetch(`http://10.168.1.149:8000/product/best_products?limit=${LIMIT}&offset=${offset*LIMIT}`)
+        .then(res => res.json())
+        .then(res=> this.setState({recommandList: res.PRODUCTS}))
+    }
+
     render() {
-        const {dataList} = this.props;
+        const {recommandList}= this.state;
+        console.log(this.state.recommandList)
         return (
-            <div>
-                <header>베스트 상품</header>
-                {/* 헤더 상품 리스트에 따라 변경 가능하게 해야될듯 */}
+            <>
+                <div className="recomTop">
+                    <span>베스트 상품</span>
+                    <div className="prevNextBtns">
+                        <button id="0" onClick={this.goToPrevorNext}>&lt;</button>
+                        <button id="1" onClick={this.goToPrevorNext}>&gt;</button>
+                    </div>
+                </div>
                 <ul className="productList">
-                    {dataList && 
-                        dataList.map(el=> {
-                            return(
-                                <li key={el.id}><Product 
-                                    imgUrl={el.product_image}
-                                    productName={el.name}
-                                    price = {el.price}
-                                /></li>
-                            )
-                        })
-                    }
+                   {recommandList&&
+                   recommandList.map((el,idx)=>{
+                       return(
+                           <li>
+                           <Product 
+                                key={idx}
+                                name ={el.name}
+                                price ={el.price}
+                                image ={el.product_image}
+                           />
+                           </li>
+                       )
+                   })}
                 </ul>
-            </div>
+            </>
         );
     }
 }

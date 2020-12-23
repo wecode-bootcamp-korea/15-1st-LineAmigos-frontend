@@ -5,6 +5,7 @@ import ProductDescriptions from './Component/ProductDescriptions/ProductDescript
 import Review from './Component/Review/Review'
 import Footer from '../../Components/Footer/Footer'
 import Header from '../../Components/Header/Header'
+import Recommandations from  './Component/Recommadations/Recommandations'
 import './ProductDetail.scss';
 
 class ProductDetail extends React.Component{
@@ -22,7 +23,6 @@ class ProductDetail extends React.Component{
     }
     
     componentDidMount() {
-        // fetch(`http://10.168.1.149:8000/product/${this.props.match.params.id}`)
         fetch('http://localhost:3000/data/mockData.json')
         .then((res) => res.json())
         .then((res) => {
@@ -31,11 +31,11 @@ class ProductDetail extends React.Component{
             })
         });
 
-        fetch('http://localhost:3000/data/reviewData.json')
+        fetch('http://10.168.1.140:8000/review/reviews')
         .then((res)=>res.json())
         .then((res)=> {
             this.setState({
-                reviewList: res.all_review
+                reviewList: res.review
             })
         })
         window.addEventListener('scroll', this.onScroll)
@@ -89,6 +89,7 @@ class ProductDetail extends React.Component{
 
     render(){
         const {targetReached, productData, reviewList} = this.state;
+        console.log(this.state.reviewList)
         return(
         <>
         <Header />
@@ -104,14 +105,15 @@ class ProductDetail extends React.Component{
                         <span>home - {productData.product_menu} - {productData.product_category}</span>
                     </div>
                </div>
-                <ImgPurchInfo productName={productData &&  productData.product_name} imgUrl={productData && productData.image} id={productData && productData.id} price={productData && productData.price} reviewArray={reviewList&& reviewList.map((el)=>el.review_rate)}/>
+                <ImgPurchInfo productName={productData &&  productData.product_name} imgUrl={productData && productData.image} id={productData && productData.id} price={productData && productData.price} reviewArray={reviewList&& reviewList.map((el)=>el.rate)}/>
+                <Recommandations />
                 <div className="categoryTap" onScroll={this.onScroll}>
                     <Link className={this.state.detailSelected? "clicked":"detailsTap"} to="ProductDescriptions" smooth={true} duration={500}onClick={this.selectBox} isDynamic={true}>상세정보</Link>
                     <Link className={this.state.reviewSelected? "clicked":"reviewTap"} to="reviewEventContainer" smooth={true} duration={500} onClick={this.selectBox} isDynamic={true}>리뷰</Link>
                     <Link className={this.state.qaSelected? "clicked":"qaTap"} to="qaAnchor" duration={100} onClick={this.selectBox}>Q&A</Link>
                 </div>
                 <ProductDescriptions detailImg={productData && productData.image}/>
-                <Review reviewList={reviewList} rateArray={reviewList&& reviewList.map(el=>el.review_rate)}/>
+                <Review reviewList={reviewList} rateArray={reviewList&& reviewList.map(el=>el.rate)}/>
                 <button className="scrollTop" onClick={this.scrollToTop}><i className="fas fa-chevron-up"/></button>             
             </div>
            <nav className={targetReached? "categoryNav":".hideNav"}>
@@ -130,8 +132,7 @@ class ProductDetail extends React.Component{
                                 구매하기
                         </button>
                     </div>
-                    <div className="navLinks">
-                       
+                    <div className="navLinks">  
                             <Link className={this.state.detailSelected? "clicked":"detailsTap"} to="ProductDescriptions" smooth={true} duration={500}onClick={this.selectBox} isDynamic={true}>상세정보</Link>
                             <Link className={this.state.reviewSelected? "clicked":"reviewTap"} to="reviewEventContainer" smooth={true} duration={500} onClick={this.selectBox} isDynamic={true}>리뷰</Link>
                             <Link className={this.state.qaSelected? "clicked":"qaTap"} to="qaAnchor" duration={100} onClick={this.selectBox}>Q&A</Link>

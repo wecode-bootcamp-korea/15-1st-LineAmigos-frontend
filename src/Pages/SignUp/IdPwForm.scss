@@ -1,0 +1,21 @@
+@import '../../styles/common.scss';
+
+.IdPwForm {
+  display: block;
+  margin: 0 auto;
+  width: 450px;
+
+  .IdPwBox {
+    width: 450px;
+    height: 50px;
+    margin-bottom: 10px;
+    border: 1px solid #dadada;
+  }
+
+  .emailBox::placeholder {
+    padding-right: 5px;
+    text-align: end;
+    color: $font-color-lightgray;
+    font-weight: $font-weight-bold;
+  }
+}

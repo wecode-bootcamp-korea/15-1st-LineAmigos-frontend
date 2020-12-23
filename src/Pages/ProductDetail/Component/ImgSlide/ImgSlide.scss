@@ -1,0 +1,33 @@
+@import '../../../../styles/common.scss';
+
+.slideContainer{
+    text-align: center;
+    position: relative;
+
+    .slideImg{
+        max-width: 540px;
+        max-height: 540px;
+        margin: 0 auto;
+    }
+}
+
+.slideContainer:focus{
+    outline: none;
+}
+
+.slick-arrow{
+
+  @include slick-slider-button
+
+}
+
+.slick-thumb{
+
+    li{
+        width: 40px;
+
+        img{
+            width: 100%;
+        }
+    }
+}

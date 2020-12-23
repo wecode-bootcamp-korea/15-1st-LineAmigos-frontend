@@ -1,0 +1,115 @@
+@import '../../../styles/common.scss';
+
+.ReviewCard {
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 48px;
+  padding-bottom: 20px;
+  // position: relative;
+  width: 400px;
+  min-height: 500px;
+  background: white;
+  cursor: pointer;
+  letter-spacing: -0.5px;
+  border-radius: 16px;
+  box-shadow: 5px 5px 30px rgba(0,0,0,.1);
+
+  .productVisual {
+    margin-bottom: 16px;
+    display: block;
+    width: 400px;
+    // height: 400px;
+    // position: absolute;
+
+    .productImage {
+      width: 100%;
+      max-height: 450px;
+      border-radius: 16px 16px 0 0;
+      // position: relative;
+      object-fit: cover;
+    }
+  }
+
+  .productInfos {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 400px;
+    // height: stretch;
+
+    .productName {
+      margin: 8px 0;
+      padding: 0 24px;
+      width: 380px;
+      font-size: 26px;
+      font-weight: $font-weight-medium;
+      line-height: 34px;
+    }
+  
+    .reviewRate {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 0 24px;
+      width: 400px;
+      height: white;
+  
+      i {
+        margin-right: 2px;
+        font-size: $font-size-regular;
+        color: #e01b1b;
+      }
+  
+      span {
+        // margin: 0;
+        margin-left: 4px;
+        font-size: 20px;
+        font-weight: $font-weight-bold;
+      }
+    }
+  
+    .reviewContents {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-bottom: 10px;
+      padding: 0 24px;
+      width: 400px;
+  
+      p {
+        font-size: $font-size-small;
+        font-weight: $font-weight-regular;
+        line-height: 20px;
+        width: 280px;
+      }
+  
+      img {
+        margin: 0;
+        margin-left: 12px;
+        width: 60px;
+        height: 60px;
+        border-radius: 4px;
+        object-fit: cover;
+      }
+    }
+  
+    .idAndCreatedAt {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin: 0 4px 16px 0;
+      padding: 0 24px;
+  
+      span {
+        margin-right: 6px;
+        font-size: $font-size-extrasmall;
+        color: #999;
+      }
+    }
+  }
+}

@@ -1,6 +1,8 @@
 
 // local mock data (eunjin) 
 export const PRODUCTS_INFO = "./public/data/productsInfos.json"
+export const REVIEWS_MAIN = "./public/data/reviews.json"
+
 // local mock data (mihyun) 
 export const FILTER_DATA = "./public/data/filterData.json"
 // local mock data (kyungoh) 

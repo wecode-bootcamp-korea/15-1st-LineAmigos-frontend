@@ -10,8 +10,8 @@ class Products extends Component {
           {this.props.productArr.length > 0 &&
             this.props.productArr.map((product) => (
               <Product
-                id={product.id}
-                key={product.id}
+                id={product.product_id}
+                key={product.product_id}
                 product={product}
                 onModal={this.props.onModal}
                 rate={this.props.reviewArr

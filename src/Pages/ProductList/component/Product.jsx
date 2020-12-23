@@ -18,31 +18,17 @@ class Product extends Component {
     })
   }
 
-  // componentDidMount = () => {
-  //   const priceComma = this.props.product.price
-  //     .toString()
-  //     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  //   if (!this.props.product.review) {
-  //     this.setState({
-  //       reviewRateContainer: false,
-  //     })
-  //   }
-  //   if (this.props.product.price !== null) {
-  //     this.setState({
-  //       price: priceComma,
-  //     })
-  //   }
-  // }
-
   goToDetail = () => {
-    this.props.history.push(`/productdetail/${this.props.id}`)
+    this.props.history.push(`/product/${this.props.id}`)
   }
 
   handleDetailModal = () => {
     this.props.onModal(this.props.modal)
   }
+
   render() {
-    const { product_image, name, price } = this.props.product
+    console.log('id', this.props.id)
+    const { product_image, name } = this.props.product
     const sum =
       this.props.rate.length > 0 &&
       (
@@ -55,6 +41,7 @@ class Product extends Component {
 
     return (
       <div className='productContainer'>
+        {/* <Link to={`/productdetail/${this.props.id}`}> */}
         <li className='productList'>
           <img
             alt='product'
@@ -103,6 +90,7 @@ class Product extends Component {
             <span className='rateText'> / 5</span>
           </div>
         </li>
+        {/* </Link> */}
       </div>
     )
   }

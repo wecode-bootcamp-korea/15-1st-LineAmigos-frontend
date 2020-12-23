@@ -3,6 +3,12 @@ import { withRouter } from 'react-router-dom'
 import CartItem from './CartItem'
 import './Cart.scss';
 
+const NOTICE = [
+  "장바구니 상품은 최대 30일간 저장됩니다.",
+  "가격, 옵션 등 정보가 변경된 경우 주문이 불가할 수 있습니다.",
+  "오늘출발 상품은 판매자 설정 시점에 따라 오늘출발 여부가 변경될 수 있으니 주문 시 꼭 다시 확인해 주시기 바랍니다.",
+]
+
 class Cart extends React.Component {
 
   constructor() {
@@ -32,7 +38,7 @@ class Cart extends React.Component {
     fetch('API', {
     // fetch('http://10.58.4.1:8000/cart', { //session example
       method: 'PATCH',
-      body: JSON.strinify({
+      body: JSON.stringify({
         // item_id: itemId
       })
     }).then(res => res.json())
@@ -46,7 +52,7 @@ class Cart extends React.Component {
     fetch('API', {
     // fetch('http://10.58.4.1:8000/cart', { //session example
       method: 'PATCH',
-      body: JSON.strinify({
+      body: JSON.stringify({
         // item_id: itemId
       })
     }).then(res => res.json())
@@ -60,13 +66,22 @@ class Cart extends React.Component {
     fetch('API', {
     // fetch('http://10.58.4.1:8000/cart', { //session example
       method: 'DELETE',
-      body: JSON.strinify({
+      body: JSON.stringify({
         // item_id: itemId
       })
     }).then(res => res.json())
       .then(res => res.MESSAGE === "SUCCESS" && 
         this.setState({cartItem: res.cartItems}))
       .catch(err => console.log(err))
+  }
+
+  //단순삭제
+  deleteItem = (id) => {
+    const { cartItems } = this.state
+    const deletedState = cartItems.filter(item => item.productId !== id)
+    this.setState({
+      cartItems: deletedState
+    })
   }
 
   //delete selected items => map selected items and deleteCartItem func 
@@ -77,7 +92,7 @@ class Cart extends React.Component {
         fetch('API', {
         // fetch('http://10.58.4.1:8000/cart', { //session example
           method: 'DELETE',
-          body: JSON.strinify({
+          body: JSON.stringify({
             item_id: item.id
           })
         }).then(res => res.json())
@@ -100,12 +115,37 @@ class Cart extends React.Component {
     this.setState({cartItems: newSelectedStatus})
   }
 
+  //토글하기
+  selectItemHandler = (id) => {
+    const { cartItems } = this.state
+    const selectedState = cartItems.map(item => {
+      if (item.productId === id) {
+        item.isChecked = !item.isChecked
+      }
+      return item
+    })
+    this.setState({
+      cartItems: selectedState
+    })
+  }
+
   //select or unselect all items
   selectAllCartItemsHandler = () => {
     const { cartItems, isSelectAllChecked } = this.state
-    isSelectAllChecked 
-      ? cartItems.forEach(cartItem => cartItem.isChecked = true)
-      : cartItems.forEach(cartItem => cartItem.isChecked = false)
+    // isSelectAllChecked 
+    //   ? cartItems.forEach(cartItem => cartItem.isChecked = true)
+    //   : cartItems.forEach(cartItem => cartItem.isChecked = false)
+    const selectStateBox = cartItems.forEach(item => {
+      if (isSelectAllChecked) {
+        item.isChecked = false
+      } else {
+        item.isChecked = true
+      }
+    })
+    
+    this.setState({
+      cartItems: selectStateBox
+    })
   }
 
   //get cart data after rendered
@@ -113,7 +153,14 @@ class Cart extends React.Component {
     //this.getCartData()
     fetch('/data/productsInfos.json')
       .then(res => res.json())
-      .then(data => this.setState({cartItems: data.cartItems}))
+      .then(data => {
+        const itemsWithState = data.cartItems.map((item) => {
+          return {...item, isChecked: false}
+        })
+        this.setState({
+          cartItems: itemsWithState
+        })
+      })
   }
 
   //go to product detail page
@@ -134,6 +181,7 @@ class Cart extends React.Component {
     } else if (cartItems.filter(item => item.isChecked).length < 1) {
       alert('주문하실 상품을 선택해주세요.')
     } else {
+      alert('결제페이지로 이동합니다.')
       fetch('API', {
         method: 'POST',
         body: {
@@ -168,20 +216,13 @@ class Cart extends React.Component {
   // goToWishListPage = () => {this.props.history.push("/wishlist")}
 
   render() {
-    const { addCartItem, subtractCartItem, deleteCartItem, selectOneCartItemHandler, goProductDetailPage, goToCheckOutPage, soldOutAlert, notSelectedAlert } = this
+    const { addCartItem, subtractCartItem, deleteCartItem, deleteItem, selectOneCartItemHandler, selectAllCartItemsHandler, goProductDetailPage, goToCheckOutPage, soldOutAlert, notSelectedAlert, selectItemHandler } = this
     const { cartItems } = this.state
     const selectedItems = cartItems.filter(cartItem => cartItem.isChecked)
     const totalPrice = selectedItems.filter(item => item.isInStock).map(cartItem => cartItem.price).reduce((a, b) => a + b, 0)
     const discountPrice = selectedItems.filter(item => item.isInStock).reduce((a, item) => a + item.price*item.saleRate*0.01, 0)
-    const commaPrice = (price) => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
     const checkOutPrice = totalPrice - discountPrice
-
-
-    const NOTICE = [
-      "장바구니 상품은 최대 30일간 저장됩니다.",
-      "가격, 옵션 등 정보가 변경된 경우 주문이 불가할 수 있습니다.",
-      "오늘출발 상품은 판매자 설정 시점에 따라 오늘출발 여부가 변경될 수 있으니 주문 시 꼭 다시 확인해 주시기 바랍니다.",
-    ]
+    const shippingFee = 3000
 
     return (
       <div className="Cart">
@@ -212,7 +253,9 @@ class Cart extends React.Component {
           </header>
           <div className="cartItemList">
             <div className="row title">
-              <div className={`checkbox ${this.state.isSelectAllChecked && 'checked'}`}><i className="fas fa-check"/></div>
+              <div 
+                className={`checkbox ${this.state.isSelectAllChecked && 'checked'}`}
+                onClick={selectAllCartItemsHandler}><i className="fas fa-check"/></div>
               <div className="productDetail title">상품정보</div>
               <div className="options title">옵션</div>
               <div className="priceInfo title">상품금액</div>
@@ -234,10 +277,11 @@ class Cart extends React.Component {
                     addCartItem={addCartItem} 
                     subtractCartItem={subtractCartItem} 
                     deleteCartItem={deleteCartItem} 
-                    selectOneCartItemHandler={selectOneCartItemHandler} 
+                    deleteItem={deleteItem}
+                    selectOneCartItemHandler={selectOneCartItemHandler}
+                    selectItemHandler={selectItemHandler} 
                     goProductDetailPage={goProductDetailPage} 
                     goToCheckOutPage={goToCheckOutPage}
-                    commaPrice={commaPrice}
                     />
                 )
               })
@@ -256,22 +300,22 @@ class Cart extends React.Component {
             <div className="summary">
               <div className="totalPrice">
                 <div className="title">총 상품 금액</div>
-                <div className="total">{commaPrice(totalPrice)}원</div>
+                <div className="total">{totalPrice.toLocaleString()}원</div>
               </div>
               <i className="fas fa-plus" />
               <div className="shippingFee">
                 <div className="title">배송비</div>
-                <div className="Fee">{checkOutPrice > 30000 ? 0 : '3,000'}원</div>
+                <div className="Fee">{(checkOutPrice > 30000 ? 0 : 3000).toLocaleString()}원</div>
               </div>
               <i className="fas fa-minus" />
               <div className="discounted">
                 <div className="title">총 할인 예상 금액</div>
-                <div className="discountPrice">{commaPrice(discountPrice)}원</div>
+                <div className="discountPrice">{discountPrice.toLocaleString()}원</div>
               </div>
             </div>
             <div className="checkOutPrice">
               <span className="word">총 주문금액</span>
-              <span className="price">{commaPrice(checkOutPrice)}</span>
+              <span className="price">{(selectedItems.length=0 || checkOutPrice > 30000 ? checkOutPrice.toLocaleString() : checkOutPrice + 3000).toLocaleString()}</span>
               <span className="word">원</span>
             </div>
           </div>
@@ -279,8 +323,7 @@ class Cart extends React.Component {
             <div className="toShop">쇼핑 계속하기</div>
             <div 
               className="toCheckout"
-              onClick={goToCheckOutPage}
-              >주문하기</div>
+              onClick={goToCheckOutPage}>주문하기</div>
           </div>
         </div>
       </div>

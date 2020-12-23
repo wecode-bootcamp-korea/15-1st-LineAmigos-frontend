@@ -49,10 +49,34 @@ class Filters extends Component {
               }
               onClick={this.handleViewNameChange}
             >
-              <li className={'20개씩 보기'}>20개씩 보기</li>
-              <li className={'40개씩 보기'}>40개씩 보기</li>
-              <li className={'60개씩 보기'}>60개씩 보기</li>
-              <li className={'80개씩 보기'}>80개씩 보기</li>
+              <li
+                className={'20개씩 보기'}
+                onClick={this.props.fetchViewFilter}
+                data-idx='0'
+              >
+                20개씩 보기
+              </li>
+              <li
+                className={'40개씩 보기'}
+                onClick={this.props.fetchViewFilter}
+                data-idx='1'
+              >
+                40개씩 보기
+              </li>
+              <li
+                className={'60개씩 보기'}
+                onClick={this.props.fetchViewFilter}
+                data-idx='2'
+              >
+                60개씩 보기
+              </li>
+              <li
+                className={'80개씩 보기'}
+                onClick={this.props.fetchViewFilter}
+                data-idx='3'
+              >
+                80개씩 보기
+              </li>
             </div>
           </div>
           <div className='viewIconContainer'>

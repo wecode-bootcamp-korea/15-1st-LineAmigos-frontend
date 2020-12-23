@@ -42,6 +42,7 @@ class ProductList extends Component {
       })
   }
 
+  //페이지네이션
   fetchProduct = (e) => {
     const offset = e?.target.dataset.idx
     fetch(
@@ -55,6 +56,69 @@ class ProductList extends Component {
           productArr: response.PRODUCTS,
         })
       })
+  }
+
+  //보기필터
+  fetchViewFilter = (e) => {
+    const offset = e.target.dataset.idx
+    if (offset === '0') {
+      fetch(
+        `http://10.168.1.149:8000/product/products_info?limit=20&offset=${
+          offset * 20
+        }`
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          this.setState({
+            productArr: response.PRODUCTS,
+          })
+        })
+    }
+    if (offset === '1') {
+      fetch('http://10.168.1.149:8000/product/products_info?limit=40&offset=0')
+        .then((response) => response.json())
+        .then((response) => {
+          this.setState({
+            productArr: response.PRODUCTS,
+          })
+        })
+    }
+    if (offset === '2') {
+      fetch('http://10.168.1.149:8000/product/products_info?limit=60&offset=0')
+        .then((response) => response.json())
+        .then((response) => {
+          this.setState({
+            productArr: response.PRODUCTS,
+          })
+        })
+    }
+
+    // if (e === 1) {
+    //   fetch(
+    //     `http://10.168.1.149:8000/product/products_info?limit=40&offset=${
+    //       offset * 40
+    //     }`
+    //   )
+    //     .then((response) => response.json())
+    //     .then((response) => {
+    //       this.setState({
+    //         productArr: response.PRODUCTS,
+    //       })
+    //     })
+    // }
+    // if (e === 2) {
+    //   fetch(
+    //     `http://10.168.1.149:8000/product/products_info?limit=60&offset=${
+    //       offset * 60
+    //     }`
+    //   )
+    //     .then((response) => response.json())
+    //     .then((response) => {
+    //       this.setState({
+    //         productArr: response.PRODUCTS,
+    //       })
+    //     })
+    // }
   }
 
   handleFilterMenu = (e) => {
@@ -160,6 +224,7 @@ class ProductList extends Component {
           <Filters
             filterArr={this.state.filterArr}
             onFilterMenu={this.handleFilterMenu}
+            fetchViewFilter={this.fetchViewFilter}
           />
 
           <Products

@@ -26,7 +26,6 @@ class ProductList extends Component {
 
   //config파일에 API주소 변수로 담아두었지만, 아래 코드는 작업을 위해 남겨놓았습니다. 머지 후 삭제하겠습니다!
   componentDidMount = () => {
-    console.log('로드안딘ㅇ?')
     fetch(`http://10.168.1.149:8000/product/products_info?limit=${LIMIT}`)
       .then((response) => response.json())
       .then((response) => {

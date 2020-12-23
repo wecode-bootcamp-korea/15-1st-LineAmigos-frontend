@@ -18,14 +18,18 @@ class SliderCard extends Component {
     alert('장바구니에 추가되었습니다.')
   }
 
-  commasBetween = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+  // commasBetween = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
   render() {
     const { isInCart } = this.state
-    const { goToProductDetail, addToCart, commasBetween } = this
+    const { goToProductDetail, addToCart } = this
     const { type, product, category, gotoProductList } = this.props
+    const commasBetween = (num) => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 
-    // if ({type} === 'newProduct') {
+    const price = +(product.price).slice(0,-3)
+    const discount = +product.discount
+    const discountedPrice = +(price*(100-discount)*0.01)
+    console.log(discount)
       return (
         <li 
           className="SliderCard"
@@ -43,19 +47,19 @@ class SliderCard extends Component {
               </div>
             </div>
           </div>
-          <div className="productInfo">
-            <span className="saleRate">{product.sale_amount}%</span>
-            <span className="salePrice">{(product.price - (product.price)*(product.sale_amount)*0.01).toLocaleString()}원</span>
-            <span className="originalPrice">{commasBetween(product.price).slice(0, -3)}원</span>
+          <div className={`productInfo ${type}`}>
+            <span className="saleRate">{discount}%</span>
+            <span className="salePrice">{discountedPrice.toLocaleString()}원</span>
+            <span className="originalPrice">{price.toLocaleString()}원</span>
           </div>
-          <span className="productInfo">{product.name}
+          <span className={`productInfo ${type}`}>
+          {/*{`type === 'newProduct' ? ${product.name} : ${category.menu}`} */}
+          {product.name}
           </span>
         </li>
       );
-    // } else if ({type} === 'category') {
     //   return (
     //     <li 
-    //       key={category.id} 
     //       className="category"
     //       onClick={gotoProductList}>
     //         <img alt="Category" src={category.img} />

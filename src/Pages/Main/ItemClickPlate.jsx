@@ -6,7 +6,7 @@ class ItemClickPlate extends Component {
 
   // handleViewProduct = () => {
 
-  // }
+  // } 
 
   render() {
     const { productsList } = this.props

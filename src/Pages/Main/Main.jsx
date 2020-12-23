@@ -39,18 +39,36 @@ class Main extends React.Component {
      .then(data => {
        this.setState({
          productsList: data.PRODUCTS,
-         categoriesList: data.main,
+        //  categoriesList: data.main,
         //  reviewsList: data.reviews,
        })
+      // console.log(data.PRODUCTS)
      }).catch(err => console.log(err))
 
-    fetch('http://10.168.1.140:8000/review/reviews')
+    fetch('http://10.168.1.149:8000/product/menu')
+    // fetch('/data/productsInfos.json')
+    .then(response => response.json())
+    .then(data => {
+      // this.setState({
+      //   categoriesList: data.main,
+      // })
+      console.log(data.main)
+    }).catch(err => console.log(err))
+
+    // fetch('http://10.168.1.140:8000/review/reviews')
+    //  .then(response => response.json())
+    //  .then(data => {
+    //    this.setState({
+    //      reviewsList: data.review,
+    //    })
+    //  }).catch(err => console.log(err))
+    fetch('/data/reviews.json')
      .then(response => response.json())
      .then(data => {
        this.setState({
-         reviewsList: data.review,
+         reviewsList: data.reviews,
        })
-       console.log(data.review)
+      // console.log(data)
      }).catch(err => console.log(err))
   }
   
@@ -70,8 +88,7 @@ class Main extends React.Component {
           productsList={productsList}/>
         <BannerSlider />
         <CategoriesSlider
-          categoriesList={categoriesList}
-          productsList={productsList} />
+          categoriesList={categoriesList}/>
         <ReviewSection
           reviewsList={reviewsList}/>
         <Footer />

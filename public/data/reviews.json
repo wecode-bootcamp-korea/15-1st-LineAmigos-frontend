@@ -1,0 +1,52 @@
+{
+  "reviews": [
+    {
+      "product_name": "귀여운 위풍당당 루돌프 곰돌이인형",
+      "rate": 5.0,
+      "reviewed_body": "아 너무 귀여워요ㅠㅠ 무슨 단체가족사진 같아요! 초코 연보라 컵은 오른손잡이가 사용하면 캐릭터가 저를 보는 방향이 아니더라고요 그건 조금 아쉽네욤 ㅎㅎ",
+      "reviewed_image": "https://images.unsplash.com/photo-1525268771113-32d9e9021a97?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "created_time": "2020-12-12T21:23:23.223456",
+      "user": "xjaqmffj"
+    },
+    {
+      "product_name": "LED 무드등 별자리",
+      "rate": 5.0,
+      "reviewed_body": "휴대하고 다니기 딱 좋은 사이즈에요. 보온도 잘 되고 차망이 있어서 안에 생강차 넣어도 흐르지 않아서 좋아요. 제가 가지고 다니는 물건들이 보라색이라 잘어울려요",
+      "reviewed_image": "https://images.unsplash.com/photo-1516919549054-e08258825f80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "created_time": "2020-12-12T21:23:23.223456",
+      "user": "seulgiii"
+    },
+    {
+      "product_name": "스틱 티 세트(8개입)",
+      "rate": 4.0,
+      "reviewed_body": "집에서 매일 밥먹고 후식을 먹으니 살이 너무 찌는 것 같아서 후식으로 차를 마셔보려고 주문했어요. 배송도 빠르고 향도 너무 좋아요.",
+      "reviewed_image": "https://images.unsplash.com/photo-1525268771113-32d9e9021a97?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80",
+      "created_time": "2020-12-12T21:23:23.223456",
+      "user": "glaemfek"
+    },
+    {
+      "product_name": "테디베어 사계절 침실러그",
+      "rate": 5.0,
+      "reviewed_body": "와 제 자취방이 너무나 포근하게 바뀌었어요. 바닥이 뭔가 딱딱하고 삭막한 느낌이 들었는데 사길 잘 했어요 빠른 배송 감사합니다",
+      "reviewed_image": "https://images.unsplash.com/photo-1479740030693-66ad10f3a7b0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+      "created_time": "2020-12-12T21:23:23.223456",
+      "userId": "skehgkffo"
+    },
+    {
+      "product_name": "접이식 액자 테이블 모음 3size",
+      "rate": 5.0,
+      "reviewed_body": "우연히 뜬 광고에 사게 됐는데요 제가 주말엔 침대에서 거의 생활하다 보니 이런 접이식 테이블이 정말 유용하거든요. 새거 사고 싶었는데 잘됐어요",
+      "reviewed_image": "https://images.unsplash.com/photo-1534337711732-1c9ae62389e2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "created_time": "2020-12-12T21:23:23.223456",
+      "user": "sleepya"
+    },
+    {
+      "product_name": "올인 한달 귀걸이 2단 미러박스 보관함 세트",
+      "rate": 5.0,
+      "reviewed_body": "귀걸이 없이는 나가질 않는 사람으로서 이 보관함은 정말 강추드리고 싶습니다 보관함 자체도 이쁘고 너무 유용하게 잘 쓸 것 같아요",
+      "reviewed_image": "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1409&q=80",
+      "created_time": "2020-12-12 21:23:23.223456",
+      "user": "mmylifee"
+    }
+  ]
+}

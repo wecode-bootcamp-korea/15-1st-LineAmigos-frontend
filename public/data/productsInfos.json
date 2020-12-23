@@ -413,7 +413,7 @@
       "rate": 5.0,
       "review_body": "아 너무 귀여워요ㅠㅠ 무슨 단체가족사진 같아요! 초코 연보라 컵은 오른손잡이가 사용하면 캐릭터가 저를 보는 방향이 아니더라고요 그건 조금 아쉽네욤 ㅎㅎ",
       "image": "https://images.unsplash.com/photo-1525268771113-32d9e9021a97?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      "created_time": "2020-12-12 21:23:23.223456",
+      "created_time": "2020-12-12T21:23:23.223456",
       "user": "xjaqmffj"
     },
     {
@@ -421,7 +421,7 @@
       "rate": 5.0,
       "review_body": "휴대하고 다니기 딱 좋은 사이즈에요. 보온도 잘 되고 차망이 있어서 안에 생강차 넣어도 흐르지 않아서 좋아요. 제가 가지고 다니는 물건들이 보라색이라 잘어울려요",
       "image": "https://images.unsplash.com/photo-1516919549054-e08258825f80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-      "created_time": "2020-12-12 21:23:23.223456",
+      "created_time": "2020-12-12T21:23:23.223456",
       "user": "seulgiii"
     },
     {
@@ -429,7 +429,7 @@
       "rate": 4.0,
       "review_body": "집에서 매일 밥먹고 후식을 먹으니 살이 너무 찌는 것 같아서 후식으로 차를 마셔보려고 주문했어요. 배송도 빠르고 향도 너무 좋아요.",
       "image": "https://images.unsplash.com/photo-1525268771113-32d9e9021a97?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80",
-      "created_time": "2020-12-12 21:23:23.223456",
+      "created_time": "2020-12-12T21:23:23.223456",
       "user": "glaemfek"
     },
     {
@@ -437,7 +437,7 @@
       "rate": 5.0,
       "review_body": "와 제 자취방이 너무나 포근하게 바뀌었어요. 바닥이 뭔가 딱딱하고 삭막한 느낌이 들었는데 사길 잘 했어요 빠른 배송 감사합니다",
       "image": "https://images.unsplash.com/photo-1479740030693-66ad10f3a7b0?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-      "created_time": "2020-12-12 21:23:23.223456",
+      "created_time": "2020-12-12T21:23:23.223456",
       "userId": "skehgkffo"
     },
     {
@@ -445,7 +445,7 @@
       "rate": 5.0,
       "review_body": "우연히 뜬 광고에 사게 됐는데요 제가 주말엔 침대에서 거의 생활하다 보니 이런 접이식 테이블이 정말 유용하거든요. 새거 사고 싶었는데 잘됐어요",
       "image": "https://images.unsplash.com/photo-1534337711732-1c9ae62389e2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      "created_time": "2020-12-12 21:23:23.223456",
+      "created_time": "2020-12-12T21:23:23.223456",
       "user": "sleepya"
     },
     {
@@ -485,63 +485,6 @@
       "promotionLine1": "무지개떡 지구본,",
       "promotionLine2": "어디서 본 적 있지 않니?",
       "subPromotion": "인테리어용으로, 교육용으로 센스만점"
-    }
-  ],
-  "navCategories": [
-    {
-      "categoryId": 1,
-      "categoryName": "캐릭터",
-      "subCategories": ["브라운프렌즈", "BT21", "홀리스타즈"]
-    }, {
-      "categoryId": 2,
-      "categoryName": "NEW",
-      "subCategories": []
-    }, {
-      "categoryId": 3,
-      "categoryName": "선물추천",
-      "subCategories": []
-    }, {
-      "categoryId": 4,
-      "categoryName": "THEME",
-      "subCategories": ["미니프렌즈", "맥시프렌즈"]
-    },{
-      "categoryId": 5,
-      "categoryName": "BABY",
-      "subCategories": ["문구", "리빙", "디지털", "패션잡화"]
-    },{
-      "categoryId": 6,
-      "categoryName": "SALE",
-      "subCategories": []
-    },{
-      "categoryId": 7,
-      "categoryName": "토이",
-      "subCategories": ["중형인형 이상", "미니인형", "쿠션", "피규어"]
-    },{
-      "categoryId": 8,
-      "categoryName": "디자인문구",
-      "subCategories": [
-        "다이어리, 플래너",
-        "노트, 메모지",
-        "필기류, 케이스",
-        "데코레이션",
-        "스티커시리즈"
-      ]
-    },{
-      "categoryId": 9,
-      "categoryName": "디지털",
-      "subCategories": ["폰케이스", "주변기기", "스마트기기", "디지털케이스"]
-    },{
-      "categoryId": 10,
-      "categoryName": "패션의류",
-      "subCategories": ["반팔의류", "긴팔의류", "라운지웨어", "양말, 슬리퍼"]
-    },{
-      "categoryId": 11,
-      "categoryName": "패션잡화",
-      "subCategories": ["가방", "키홀더", "뷰티", "모자, 마스크", "지갑, 파우치"]
-    },{
-      "categoryId": 12,
-      "categoryName": "더보기",
-      "subCategories": []
     }
   ]
 }

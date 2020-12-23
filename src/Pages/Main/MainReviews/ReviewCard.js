@@ -32,7 +32,7 @@ class ReviewCard extends Component {
     const { spans } = this.state
     const { review, goToProductDetail } = this.props
     const { createdAtString } = this
-    const hiddenId = (userId) => `${userId.slice(0, 4)}***`
+    // const hiddenId = (user) => `${user.slice(0, 4)}***`
     const rateStar = <i className="fas fa-star" />
 
     return (
@@ -62,7 +62,7 @@ class ReviewCard extends Component {
             <img alt="Reviews" src={review.reviewed_image} />
           </div>
           <div className="idAndCreatedAt">
-            <span>{hiddenId(review.user)}</span>
+            <span>{review.user}</span>
             <span>{createdAtString(review.created_time)}</span>
           </div>
         </div>

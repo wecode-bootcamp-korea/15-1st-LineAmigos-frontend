@@ -22,7 +22,7 @@ class NewProductsSlider extends Component {
         <h3>새로 나왔어요</h3>
         <Slider {...settings}>
         {productsList.length > 0 &&
-          productsList.map((product, index) => {
+          productsList.slice(12,20).map((product, index) => {
             return(
               <SliderCard
                 type={'newProduct'}

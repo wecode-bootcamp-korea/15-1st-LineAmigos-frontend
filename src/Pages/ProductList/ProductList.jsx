@@ -4,7 +4,7 @@ import Filters from './component/Filters'
 import SideCategory from './component/SideCategory'
 import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
-import ImgPurchInfo from '../ProductDetail/Component/ImgPurchInfo'
+// import ImgPurchInfo from '../ProductDetail/Component/ImgPurchInfo'
 import './ProductList.scss'
 
 const LIMIT = 20
@@ -257,7 +257,7 @@ class ProductList extends Component {
                 X
               </button>
             </div>
-            <ImgPurchInfo />
+            {/* <ImgPurchInfo /> */}
             <div className='bottomBtn'>
               <button className='detailBtn' onClick={this.goToDetail}>
                 상품 상세보기

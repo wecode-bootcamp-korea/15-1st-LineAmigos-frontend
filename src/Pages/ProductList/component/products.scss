@@ -1,0 +1,38 @@
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1310px;
+}
+
+.nextPageContainer {
+  display: flex;
+  justify-content: center;
+  width: 1280px;
+
+  .nowPageNumBox {
+    width: 32px;
+    height: 32px;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    cursor: pointer;
+
+    button {
+      all: unset;
+      padding: 10px;
+    }
+  }
+  .nextPageNumBox {
+    width: 32px;
+    height: 32px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+
+    button {
+      all: unset;
+      padding: 10px;
+    }
+  }
+}

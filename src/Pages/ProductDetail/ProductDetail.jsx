@@ -9,7 +9,6 @@ import Recommandations from  './Component/Recommadations/Recommandations'
 import './ProductDetail.scss';
 
 class ProductDetail extends React.Component{
-
     constructor(){
         super();
         this.state={
@@ -89,11 +88,11 @@ class ProductDetail extends React.Component{
 
     render(){
         const {targetReached, productData, reviewList} = this.state;
-        console.log(this.state.reviewList)
+
         return(
         <>
         <Header />
-           <div id="DetailPageContainer">
+        <div id="DetailPageContainer">
                <div className="topContainer">
                     <div className="topContents">
                         <i className="fab fa-js-square"/>
@@ -105,7 +104,7 @@ class ProductDetail extends React.Component{
                         <span>home - {productData.product_menu} - {productData.product_category}</span>
                     </div>
                </div>
-                <ImgPurchInfo productName={productData &&  productData.product_name} imgUrl={productData && productData.image} id={productData && productData.id} price={productData && productData.price} reviewArray={reviewList&& reviewList.map((el)=>el.rate)}/>
+                {productData &&  <ImgPurchInfo productName={productData.product_name} imgUrl={productData.image} id={productData.id} price={productData.price} reviewArray={reviewList&& reviewList.map((el)=>el.rate)}/>}
                 <Recommandations />
                 <div className="categoryTap" onScroll={this.onScroll}>
                     <Link className={this.state.detailSelected? "clicked":"detailsTap"} to="ProductDescriptions" smooth={true} duration={500}onClick={this.selectBox} isDynamic={true}>상세정보</Link>
@@ -116,7 +115,7 @@ class ProductDetail extends React.Component{
                 <Review reviewList={reviewList} rateArray={reviewList&& reviewList.map(el=>el.rate)}/>
                 <button className="scrollTop" onClick={this.scrollToTop}><i className="fas fa-chevron-up"/></button>             
             </div>
-           <nav className={targetReached? "categoryNav":".hideNav"}>
+        <nav className={targetReached? "categoryNav":".hideNav"}>
                     <div className="navProduct">
                         <div className="navProductInfo">
                             <div className="imgAndPrice">
@@ -138,7 +137,7 @@ class ProductDetail extends React.Component{
                             <Link className={this.state.qaSelected? "clicked":"qaTap"} to="qaAnchor" duration={100} onClick={this.selectBox}>Q&A</Link>
                     </div>
             </nav>
-            <Footer />
+        <Footer />
         </>
         );
     }

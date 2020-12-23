@@ -14,7 +14,7 @@ class Recommandations extends Component {
     }
 
     componentDidMount(){
-        fetch(`http://10.168.1.149:8000/product/best/1?limit=${LIMIT}`)
+        fetch(`http://10.168.1.149:8000/product/best?limit=${LIMIT}`)
         .then(res => res.json())
         .then(res=> this.setState({recommandList: res.PRODUCTS}))
     }
@@ -22,13 +22,15 @@ class Recommandations extends Component {
     goToPrevorNext = (e) => {
         const offset = this.state.Count;
        
-        fetch(`http://10.168.1.149:8000/product/best/1?limit=${LIMIT}&offset=${offset*LIMIT}`)
+        fetch(`http://10.168.1.149:8000/product/best?limit=${LIMIT}&offset=${offset*LIMIT}`)
         .then(res => res.json())
         .then(res=> this.setState({recommandList: res.PRODUCTS}))
 
         this.setState({
             Count: e.target.className==="nextBtns"? this.state.Count +1:this.state.Count-1
         })
+
+        console.log(this.state.recommandList)
     }
 
     render() {

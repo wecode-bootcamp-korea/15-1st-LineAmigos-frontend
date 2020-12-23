@@ -18,21 +18,21 @@ class Product extends Component {
     })
   }
 
-  componentDidMount = () => {
-    const priceComma = this.props.product.price
-      .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-    if (!this.props.product.review) {
-      this.setState({
-        reviewRateContainer: false,
-      })
-    }
-    if (this.props.product.price !== null) {
-      this.setState({
-        price: priceComma,
-      })
-    }
-  }
+  // componentDidMount = () => {
+  //   const priceComma = this.props.product.price
+  //     .toString()
+  //     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  //   if (!this.props.product.review) {
+  //     this.setState({
+  //       reviewRateContainer: false,
+  //     })
+  //   }
+  //   if (this.props.product.price !== null) {
+  //     this.setState({
+  //       price: priceComma,
+  //     })
+  //   }
+  // }
 
   goToDetail = () => {
     this.props.history.push(`/productdetail/${this.props.id}`)
@@ -42,9 +42,17 @@ class Product extends Component {
     this.props.onModal(this.props.modal)
   }
   render() {
-    const { product_image, name, review, rate } = this.props.product
-    const newPrice = this.state.price.replace('.00', '')
-    console.log(newPrice)
+    const { product_image, name, price } = this.props.product
+    const sum =
+      this.props.rate.length > 0 &&
+      (
+        this.props.rate.reduce((a, b) => {
+          return a + b
+        }) / this.props.rate.length
+      ).toFixed(1)
+
+    const deleteZero = this.props.product.price.replace('.00', '')
+
     return (
       <div className='productContainer'>
         <li className='productList'>
@@ -80,7 +88,7 @@ class Product extends Component {
               onClick={this.handleWishBtn}
             />
           </div>
-          <span className='productPrice'>{newPrice}원</span>
+          <span className='productPrice'>{deleteZero}원</span>
           <div
             className={
               this.state.reviewRateContainer
@@ -89,9 +97,9 @@ class Product extends Component {
             }
           >
             <span className='reviewText'>리뷰</span>
-            <span className='reviewNums'>{review}</span>
+            <span className='reviewNums'>{this.props.rate.length}</span>
             <span className='rateText'> - 평점 </span>
-            <span className='rateNums'>{rate}</span>
+            <span className='rateNums'>{+sum}</span>
             <span className='rateText'> / 5</span>
           </div>
         </li>

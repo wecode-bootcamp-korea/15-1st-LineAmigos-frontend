@@ -6,6 +6,7 @@ class Filter extends Component {
     super()
     this.state = {
       filterId: '',
+      filterBtn: false,
       isActiveFilter: '',
     }
   }
@@ -36,7 +37,8 @@ class Filter extends Component {
           className={this.state.filterBtn ? 'clickedColor' : 'filter'}
           onClick={
             (() => this.handleFilter(this.props.filter.id),
-            this.handleFilterMenu)
+            this.handleFilterMenu,
+            this.props.handleSorting)
           }
         >
           {this.props.filter.name}

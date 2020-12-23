@@ -29,7 +29,7 @@ class SideCategory extends Component {
         <div className='sideCategotyContainer'>
           <span className='listName'>{cetegoryName}</span>
           <div className='sideCategory' onClick={hadleSideCategory}>
-            <span className='home'>홈 </span>
+            <span className='home'>홈 > </span>
             <span className='home'>{cetegoryName}</span>
             <span className='home'>(총 {productArr.length}개)</span>
             <i className='fas fa-caret-down' />

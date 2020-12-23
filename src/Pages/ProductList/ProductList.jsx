@@ -14,6 +14,7 @@ class ProductList extends Component {
       productArr: [],
       filterArr: [],
       categoryArr: [],
+      reviewArr: [],
       sideCategory: false,
       detailModal: false,
       wishBtn: false,
@@ -25,6 +26,7 @@ class ProductList extends Component {
 
   //config파일에 API주소 변수로 담아두었지만, 아래 코드는 작업을 위해 남겨놓았습니다. 머지 후 삭제하겠습니다!
   componentDidMount = () => {
+    console.log('로드안딘ㅇ?')
     fetch(`http://10.168.1.149:8000/product/products_info?limit=${LIMIT}`)
       .then((response) => response.json())
       .then((response) => {
@@ -33,11 +35,27 @@ class ProductList extends Component {
         })
       })
 
+    fetch('http://10.168.1.140:8000/review/reviews')
+      .then((response) => response.json())
+      .then((response) => {
+        this.setState({
+          reviewArr: response.review,
+        })
+      })
+
     fetch('http://10.168.1.149:8000/product/menu')
       .then((res) => res.json())
       .then((res) => {
         this.setState({
           categoryArr: res.main,
+        })
+      })
+
+    fetch('/data/filterData.json')
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({
+          filterArr: res.filterData,
         })
       })
   }
@@ -92,36 +110,27 @@ class ProductList extends Component {
           })
         })
     }
-
-    // if (e === 1) {
-    //   fetch(
-    //     `http://10.168.1.149:8000/product/products_info?limit=40&offset=${
-    //       offset * 40
-    //     }`
-    //   )
-    //     .then((response) => response.json())
-    //     .then((response) => {
-    //       this.setState({
-    //         productArr: response.PRODUCTS,
-    //       })
-    //     })
-    // }
-    // if (e === 2) {
-    //   fetch(
-    //     `http://10.168.1.149:8000/product/products_info?limit=60&offset=${
-    //       offset * 60
-    //     }`
-    //   )
-    //     .then((response) => response.json())
-    //     .then((response) => {
-    //       this.setState({
-    //         productArr: response.PRODUCTS,
-    //       })
-    //     })
-    // }
   }
 
-  handleFilterMenu = (e) => {
+  handleSorting = (e) => {
+    // fetch('http://10.168.1.149:8000/product/products_info')
+    //   .then((response) => response.json())
+    //   .then((response) => {
+    //     this.setState({
+    //       productArr: response.PRODUCTS,
+    //     })
+    //   })
+
+    if (+e.target.id === 1) {
+      fetch('http://10.168.1.149:8000/product/products_info?sort=price')
+        .then((response) => response.json())
+        .then((response) => {
+          this.setState({
+            productArr: response.PRODUCTS,
+          })
+        })
+    }
+
     let updatededFilterArr = [...this.state.filterArr]
     updatededFilterArr = updatededFilterArr.map((item) => {
       if (+e.target.id === item.id) {
@@ -155,46 +164,46 @@ class ProductList extends Component {
     })
   }
 
-  HandleFilterMenu = (e) => {
-    fetch('http://10.168.1.149:8000/product/products_info?sort=price')
-      .then((res) => res.json())
-      .then((res) => {
-        this.setState({
-          filterArr: res.filterData,
-        })
-      })
+  // HandleFilterMenu = (e) => {
+  //   fetch('http://10.168.1.149:8000/product/products_info?sort=price')
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       this.setState({
+  //         filterArr: res.filterData,
+  //       })
+  //     })
 
-    const { productArr } = this.state
-    const sortByTotalSales = productArr.filter((item) => item.salse_amount > 5)
-    const sortByLowerPrices = productArr.sort((a, b) => a.price - b.price)
-    const sortByUpToDate = productArr.filter(
-      (item) => item.updated_at > '2020-12-01'
-    )
-    const sortByReview = productArr.filter((item) => item.review > 5)
-    const sortByRate = productArr.filter((item) => item.rate > 4)
+  //   const { productArr } = this.state
+  //   const sortByTotalSales = productArr.filter((item) => item.salse_amount > 5)
+  //   const sortByLowerPrices = productArr.sort((a, b) => a.price - b.price)
+  //   const sortByUpToDate = productArr.filter(
+  //     (item) => item.updated_at > '2020-12-01'
+  //   )
+  //   const sortByReview = productArr.filter((item) => item.review > 5)
+  //   const sortByRate = productArr.filter((item) => item.rate > 4)
 
-    if (e === '인기도순') {
-      this.setState({
-        productArr: sortByTotalSales,
-      })
-    } else if (e === '낮은가격순') {
-      this.setState({
-        productArr: sortByLowerPrices,
-      })
-    } else if (e === '최신등록순') {
-      this.setState({
-        productArr: sortByUpToDate,
-      })
-    } else if (e === '평점높은순') {
-      this.setState({
-        productArr: sortByRate,
-      })
-    } else if (e === '리뷰많은순') {
-      this.setState({
-        productArr: sortByReview,
-      })
-    }
-  }
+  //   if (e === '인기도순') {
+  //     this.setState({
+  //       productArr: sortByTotalSales,
+  //     })
+  //   } else if (e === '낮은가격순') {
+  //     this.setState({
+  //       productArr: sortByLowerPrices,
+  //     })
+  //   } else if (e === '최신등록순') {
+  //     this.setState({
+  //       productArr: sortByUpToDate,
+  //     })
+  //   } else if (e === '평점높은순') {
+  //     this.setState({
+  //       productArr: sortByRate,
+  //     })
+  //   } else if (e === '리뷰많은순') {
+  //     this.setState({
+  //       productArr: sortByReview,
+  //     })
+  //   }
+  // }
 
   handlePageNum = (e) => {
     if (this.state.currentIdx === e.target.dataset.idx)
@@ -204,6 +213,9 @@ class ProductList extends Component {
   }
 
   render() {
+    console.log(this.state.reviewArr)
+    console.log(this.state.productArr)
+
     return (
       <div className='ProductList'>
         <div className='container'>
@@ -225,10 +237,12 @@ class ProductList extends Component {
             filterArr={this.state.filterArr}
             onFilterMenu={this.handleFilterMenu}
             fetchViewFilter={this.fetchViewFilter}
+            handleSorting={this.handleSorting}
           />
 
           <Products
             productArr={this.state.productArr}
+            reviewArr={this.state.reviewArr}
             onModal={this.handleDetailModal}
             onPageNum={this.handlePageNum}
             fetchProduct={this.fetchProduct}

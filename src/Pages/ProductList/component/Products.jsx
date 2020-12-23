@@ -7,14 +7,29 @@ class Products extends Component {
     return (
       <>
         <ul>
-          {this.props.productArr.map((product) => (
-            <Product
-              id={product.id}
-              product={product}
-              onModal={this.props.onModal}
-            />
-          ))}
+          {this.props.productArr.length > 0 &&
+            this.props.productArr.map((product) => (
+              <Product
+                id={product.id}
+                key={product.id}
+                product={product}
+                onModal={this.props.onModal}
+                rate={this.props.reviewArr
+                  .filter((el) => {
+                    return el.product_name === product.name
+                  })
+                  .map((item) => item.rate)}
+              />
+            ))}
         </ul>
+        {/* <ul>
+          {this.props.reviewArr.map((review) => (
+            <Product 
+            review={review}
+            this.props.reviewArr
+             />
+          ))}
+        </ul> */}
         <div className='nextPageContainer'>
           <div
             className={

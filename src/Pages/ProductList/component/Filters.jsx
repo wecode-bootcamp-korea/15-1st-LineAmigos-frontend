@@ -28,7 +28,8 @@ class Filters extends Component {
           {this.props.filterArr.map((filter) => (
             <Filter
               filter={filter}
-              onFilterMenu={this.props.handleFilterMenu}
+              onFilterMenu={this.props.onFilterMenu}
+              handleSorting={this.props.handleSorting}
             />
           ))}
         </ul>
@@ -69,13 +70,6 @@ class Filters extends Component {
                 data-idx='2'
               >
                 60개씩 보기
-              </li>
-              <li
-                className={'80개씩 보기'}
-                onClick={this.props.fetchViewFilter}
-                data-idx='3'
-              >
-                80개씩 보기
               </li>
             </div>
           </div>

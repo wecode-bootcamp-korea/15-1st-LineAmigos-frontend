@@ -4,7 +4,8 @@ import Filters from './component/Filters'
 import SideCategory from './component/SideCategory'
 import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
-// import ImgPurchInfo from '../ProductDetail/Component/ImgPurchInfo'
+import ImgPurchInfo from '../ProductDetail/Component/ImgPurchInfo'
+import ProductDetail from '../ProductDetail/ProductDetail'
 import './ProductList.scss'
 
 const LIMIT = 20
@@ -17,12 +18,14 @@ class ProductList extends Component {
       filterArr: [],
       categoryArr: [],
       reviewArr: [],
+      pageArr: [],
       sideCategory: false,
       detailModal: false,
       wishBtn: false,
       rowPrice: '',
       pageNum: false,
       currentIdx: '',
+      pageArr: [],
     }
   }
 
@@ -57,6 +60,7 @@ class ProductList extends Component {
       .then((res) => {
         this.setState({
           filterArr: res.filterData,
+          pageArr: res.pageData,
         })
       })
   }
@@ -64,6 +68,24 @@ class ProductList extends Component {
   //페이지네이션
   fetchProduct = (e) => {
     const offset = e?.target.dataset.idx
+    console.log(offset)
+
+    let updatedPageArr = [...this.state.pageArr]
+    updatedPageArr = updatedPageArr.map((item) => {
+      console.log('셀렉어레이', updatedPageArr)
+      console.log('셀렉아이디', item.id)
+      if (+offset === item.id) {
+        item.selected = !item.selected
+        return item
+      } else {
+        item.selected = false
+        return item
+      }
+    })
+    this.setState({
+      pageArr: updatedPageArr,
+    })
+
     fetch(
       `http://10.168.1.149:8000/product/products_info?limit=20&offset=${
         offset * LIMIT
@@ -113,17 +135,46 @@ class ProductList extends Component {
     }
   }
 
+  //정렬필터
   handleSorting = (e) => {
-    // fetch('http://10.168.1.149:8000/product/products_info')
-    //   .then((response) => response.json())
-    //   .then((response) => {
-    //     this.setState({
-    //       productArr: response.PRODUCTS,
-    //     })
-    //   })
-
+    if (+e.target.id === 0) {
+      fetch('http://10.168.1.149:8000/product/products_info?sort=like')
+        .then((response) => response.json())
+        .then((response) => {
+          this.setState({
+            productArr: response.PRODUCTS,
+          })
+        })
+    }
     if (+e.target.id === 1) {
       fetch('http://10.168.1.149:8000/product/products_info?sort=price')
+        .then((response) => response.json())
+        .then((response) => {
+          this.setState({
+            productArr: response.PRODUCTS,
+          })
+        })
+    }
+    if (+e.target.id === 2) {
+      fetch('http://10.168.1.149:8000/product/products_info?ordering=-id')
+        .then((response) => response.json())
+        .then((response) => {
+          this.setState({
+            productArr: response.PRODUCTS,
+          })
+        })
+    }
+    if (+e.target.id === 3) {
+      fetch('http://10.168.1.149:8000/product/products_info?sort=review')
+        .then((response) => response.json())
+        .then((response) => {
+          this.setState({
+            productArr: response.PRODUCTS,
+          })
+        })
+    }
+    if (+e.target.id === 4) {
+      fetch('http://10.168.1.149:8000/product/products_info?sort=avg')
         .then((response) => response.json())
         .then((response) => {
           this.setState({
@@ -165,55 +216,9 @@ class ProductList extends Component {
     })
   }
 
-  // HandleFilterMenu = (e) => {
-  //   fetch('http://10.168.1.149:8000/product/products_info?sort=price')
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       this.setState({
-  //         filterArr: res.filterData,
-  //       })
-  //     })
-
-  //   const { productArr } = this.state
-  //   const sortByTotalSales = productArr.filter((item) => item.salse_amount > 5)
-  //   const sortByLowerPrices = productArr.sort((a, b) => a.price - b.price)
-  //   const sortByUpToDate = productArr.filter(
-  //     (item) => item.updated_at > '2020-12-01'
-  //   )
-  //   const sortByReview = productArr.filter((item) => item.review > 5)
-  //   const sortByRate = productArr.filter((item) => item.rate > 4)
-
-  //   if (e === '인기도순') {
-  //     this.setState({
-  //       productArr: sortByTotalSales,
-  //     })
-  //   } else if (e === '낮은가격순') {
-  //     this.setState({
-  //       productArr: sortByLowerPrices,
-  //     })
-  //   } else if (e === '최신등록순') {
-  //     this.setState({
-  //       productArr: sortByUpToDate,
-  //     })
-  //   } else if (e === '평점높은순') {
-  //     this.setState({
-  //       productArr: sortByRate,
-  //     })
-  //   } else if (e === '리뷰많은순') {
-  //     this.setState({
-  //       productArr: sortByReview,
-  //     })
-  //   }
-  // }
-
-  handlePageNum = (e) => {
-    if (this.state.currentIdx === e.target.dataset.idx)
-      this.setState({
-        pageNum: !this.state.pageNum,
-      })
-  }
-
   render() {
+    const rate = [5, 5, 5]
+    console.log(this.state.pageArr)
     return (
       <div className='ProductList'>
         <div className='container'>
@@ -246,6 +251,7 @@ class ProductList extends Component {
             onPageNum={this.handlePageNum}
             fetchProduct={this.fetchProduct}
             currentIdx={this.state.currentIdx}
+            pageArr={this.state.pageArr}
           />
         </div>
         <div className={this.state.detailModal ? 'modal' : 'modal hidden'}>
@@ -257,8 +263,16 @@ class ProductList extends Component {
                 X
               </button>
             </div>
-            {/* <ImgPurchInfo /> */}
-            <div className='bottomBtn'>
+            {this.state.productArr.map((el) => (
+              <ImgPurchInfo
+                id={el.product_id}
+                productName={el.name}
+                imgUrl={el.product_image}
+                price={el.price}
+                reviewArray={rate}
+              />
+            ))}
+            {/* <div className='bottomBtn'>
               <button className='detailBtn' onClick={this.goToDetail}>
                 상품 상세보기
               </button>
@@ -270,7 +284,7 @@ class ProductList extends Component {
                 />
                 찜
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
         <Footer />

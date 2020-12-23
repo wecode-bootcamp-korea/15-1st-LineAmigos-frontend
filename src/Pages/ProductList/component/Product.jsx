@@ -26,22 +26,19 @@ class Product extends Component {
     this.props.onModal(this.props.modal)
   }
 
-  render() {
-    console.log('id', this.props.id)
-    const { product_image, name } = this.props.product
-    const sum =
-      this.props.rate.length > 0 &&
-      (
-        this.props.rate.reduce((a, b) => {
-          return a + b
-        }) / this.props.rate.length
-      ).toFixed(1)
+  numbersWithComma = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
 
+  render() {
+    const { product_image, name } = this.props.product
+    const fixedRate =
+      this.props.product.rate_average.rate__avg !== null &&
+      this.props.product.rate_average.rate__avg.toFixed(1)
     const deleteZero = this.props.product.price.replace('.00', '')
 
     return (
       <div className='productContainer'>
-        {/* <Link to={`/productdetail/${this.props.id}`}> */}
         <li className='productList'>
           <img
             alt='product'
@@ -64,7 +61,11 @@ class Product extends Component {
                 }
               />
             </div>
-            <div className='hoverViewBox' onClick={this.handleDetailModal}>
+            <div
+              className='hoverViewBox'
+              id=''
+              onClick={this.handleDetailModal}
+            >
               <span className='hoverView'>+</span>
             </div>
           </div>
@@ -75,7 +76,9 @@ class Product extends Component {
               onClick={this.handleWishBtn}
             />
           </div>
-          <span className='productPrice'>{deleteZero}원</span>
+          <span className='productPrice'>
+            {this.numbersWithComma(deleteZero)}원
+          </span>
           <div
             className={
               this.state.reviewRateContainer
@@ -84,13 +87,14 @@ class Product extends Component {
             }
           >
             <span className='reviewText'>리뷰</span>
-            <span className='reviewNums'>{this.props.rate.length}</span>
+            <span className='reviewNums'>
+              {this.props.product.content_amount.contents__count}
+            </span>
             <span className='rateText'> - 평점 </span>
-            <span className='rateNums'>{+sum}</span>
+            <span className='rateNums'>{fixedRate}</span>
             <span className='rateText'> / 5</span>
           </div>
         </li>
-        {/* </Link> */}
       </div>
     )
   }

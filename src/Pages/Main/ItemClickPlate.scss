@@ -1,6 +1,7 @@
 @import '../../styles/common.scss';
 
 .ItemClickPlate {
+  box-sizing: border-box;
   width: 1280px;
   display: flex;
   flex-direction: column;
@@ -40,11 +41,11 @@
     }
 
     .descriptions {
-      width: 517px;
-      height: 450px;
+      width: 500px;
+      height: 440px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: space-between;
       align-items: flex-start;
 
       h4 {
@@ -61,7 +62,7 @@
       .products {
         display: flex;
         flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-content: space-between;
         position: relative;
       }
     }

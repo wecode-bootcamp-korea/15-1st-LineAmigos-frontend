@@ -75,7 +75,7 @@
   
     .reviewContents {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: flex-start;
       margin-bottom: 10px;
       padding: 0 24px;
@@ -85,6 +85,7 @@
         font-size: $font-size-small;
         font-weight: $font-weight-regular;
         line-height: 20px;
+        width: 280px;
       }
   
       img {

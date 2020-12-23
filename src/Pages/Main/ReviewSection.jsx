@@ -10,8 +10,8 @@ class ReviewSection extends Component {
       <div className="ReviewSection">
         <h3>생생한 리뷰</h3>
         <ul>
-          {
-            reviewsList.map((review, index) => {
+          {reviewsList.length > 0 &&
+            reviewsList.slice(0,6).map((review, index) => {
               return (
                 <ReviewCard
                   key={index}

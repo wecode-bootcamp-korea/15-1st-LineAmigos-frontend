@@ -21,7 +21,7 @@ class NewProductsSlider extends Component {
       <div className="NewProductsSlider">
         <h3>새로 나왔어요</h3>
         <Slider {...settings}>
-        {productsList &&
+        {productsList.length > 0 &&
           productsList.map((product, index) => {
             return(
               <SliderCard

@@ -23,19 +23,19 @@ class CategoriesSlider extends Component {
 
     return (
       <div className="CategoriesSlider">
-      <h3>카테고리 바로가기</h3>
+        <h3>카테고리 바로가기</h3>
         <Slider {...settings}>
-        {categoriesList &&
-          categoriesList.map((category, index) => {
-            return(
-              <SliderCard 
-                key={index}
-                type={'category'}
-                category={category}
-                gotoProductList={gotoProductList}/>
-            )
-          })
-        }
+          {categoriesList.length > 0 &&
+            categoriesList.map((category, index) => {
+              return(
+                <SliderCard 
+                  key={index}
+                  type={'category'}
+                  category={category}
+                  gotoProductList={gotoProductList}/>
+              )
+            })
+          }
         </Slider>
       </div>
     );

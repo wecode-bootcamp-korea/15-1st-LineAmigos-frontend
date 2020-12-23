@@ -33,24 +33,25 @@ class Main extends React.Component {
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
-    // fetch('http://10.168.1.149:8000/product/get')
-    fetch('/public/data/productsInfos.json')
+    fetch('http://10.168.1.149:8000/product/products_info')
+    // fetch('/data/productsInfos.json')
      .then(response => response.json())
      .then(data => {
        this.setState({
          productsList: data.PRODUCTS,
          categoriesList: data.main,
-         reviewsList: data.reviews,
+        //  reviewsList: data.reviews,
        })
      }).catch(err => console.log(err))
 
-    // fetch('http://10.168.1.140:8000/review/reviews')
-    //  .then(response => response.json())
-    //  .then(data => {
-    //    this.setState({
-    //      reviewsList: data.review,
-    //    })
-    //  }).catch(err => console.log(err))
+    fetch('http://10.168.1.140:8000/review/reviews')
+     .then(response => response.json())
+     .then(data => {
+       this.setState({
+         reviewsList: data.review,
+       })
+       console.log(data.review)
+     }).catch(err => console.log(err))
   }
   
   componentWillUnmount = () => {

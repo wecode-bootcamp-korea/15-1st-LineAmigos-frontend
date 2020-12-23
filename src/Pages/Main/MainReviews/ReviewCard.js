@@ -43,7 +43,7 @@ class ReviewCard extends Component {
         <div className="productVisual">
           <img 
             alt="product" 
-            src={review.image} 
+            src={review.reviewed_image} 
             className="productImage"
             onClick={goToProductDetail} />
         </div>
@@ -58,8 +58,8 @@ class ReviewCard extends Component {
             <span>{review.rate}</span>
           </div>
           <div className="reviewContents">
-            <p>{review.review_body}</p>
-            <img alt="Reviews" src={review.image} />
+            <p>{review.reviewed_body}</p>
+            <img alt="Reviews" src={review.reviewed_image} />
           </div>
           <div className="idAndCreatedAt">
             <span>{hiddenId(review.user)}</span>

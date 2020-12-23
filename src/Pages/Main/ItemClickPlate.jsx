@@ -23,7 +23,7 @@ class ItemClickPlate extends Component {
             <h4>BT21 BABY 코스터</h4>
             <p>말랑말랑 귀여운 아이템으로 한 방에 귀여운 방 분위기 완성!</p>
             <ul className="products">
-            {productsList &&
+            {productsList.length > 0 &&
               productsList.slice(3,9).map((product, index) => {
                 return (
                   <ItemClickButton 

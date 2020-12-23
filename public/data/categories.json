@@ -1,0 +1,82 @@
+{
+  "main": [
+    {
+      "subCategories": ["브라운프렌즈", "BT21", "홀리스타즈"],
+      "id": 1,
+      "category": "캐릭터",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "subCategories": ["NEW"],
+      "id": 2,
+      "category": "NEW",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "subCategories": ["선물추천"],
+      "id": 3,
+      "category": "선물추천",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "subCategories": ["미니프렌즈", "맥시프렌즈"],
+      "id": 4,
+      "category": "THEME",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "subCategories": ["문구", "리빙", "디지털", "패션잡화"],
+      "id": 5,
+      "category": "BABY",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "subCategories": ["SALE"],
+      "id": 6,
+      "category": "SALE",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "subCategories": ["중형인형 이상", "미니인형", "쿠션", "피규어"],
+      "id": 7,
+      "category": "토이",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "subCategories": [
+        "다이어리, 플래너",
+        "노트, 메모지",
+        "필기류, 케이스",
+        "데코레이션",
+        "스티커시리즈"
+      ],
+      "id": 8,
+      "category": "디자인문구",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "subCategories": ["폰케이스", "주변기기", "스마트기기", "디지털케이스"],
+      "id": 9,
+      "category": "디지털",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "subCategories": ["반팔의류", "긴팔의류", "라운지웨어", "양말, 슬리퍼"],
+      "id": 10,
+      "category": "패션의류",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "subCategories": ["가방", "키홀더", "뷰티", "모자"],
+      "id": 11,
+      "category": "패션잡화",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    },
+    {
+      "subCategories": ["묻고 답하기", "공지사항", "마이페이지"],
+      "id": 12,
+      "category": "더보기",
+      "img": "https://images.unsplash.com/photo-1535368459444-9bcff7349a3f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+    }
+  ]
+}

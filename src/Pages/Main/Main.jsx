@@ -66,8 +66,6 @@ class Main extends React.Component {
        })
      }).catch(err => console.log(err))
   }
-  
-
 
   componentWillUnmount = () => {
     window.removeEventListener('scroll', this.handleScroll)

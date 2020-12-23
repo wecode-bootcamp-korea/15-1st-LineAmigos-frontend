@@ -4,13 +4,9 @@ import './ItemClickPlate.scss'
 
 class ItemClickPlate extends Component {
 
-  // handleViewProduct = () => {
-
-  // } 
-
   render() {
-    const { productsList } = this.props
-    const { handleViewProduct } = this
+    const { productsList, handleViewClick } = this.props
+    const { clickTemp } = this
 
     return (
       <div className="ItemClickPlate">
@@ -24,14 +20,16 @@ class ItemClickPlate extends Component {
             <p>말랑말랑 귀여운 아이템으로 한 방에 귀여운 방 분위기 완성!</p>
             <ul className="products">
             {productsList.length > 0 &&
-              productsList.slice(3,9).map((product, index) => {
+              productsList.slice(26,32).map((product, index) => {
                 return (
                   <ItemClickButton 
                     key={index}
                     index={index}
+                    itemId={product.product_id}
                     product={product}
                     isClicked={false}
-                    handleViewProduct={handleViewProduct}/>
+                    clickTemp={clickTemp}
+                    handleViewClick={handleViewClick}/>
                 )
               })
             }

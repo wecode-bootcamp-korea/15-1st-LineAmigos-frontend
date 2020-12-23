@@ -7,12 +7,11 @@ class ItemClickButton extends Component {
     this.props.history.push(`/product/${id}`)
   }
 
-  commasBetween = num => num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-
   render() {
-    const { index, product, handleViewProduct } = this.props
-    const { goToProductDetail, commasBetween } = this
-    
+    const { index, product, handleViewClick, itemId, clickTemp } = this.props
+    const { goToProductDetail } = this
+    const priceWithComma = (+product.price).toLocaleString()
+
     return (
         <li 
           className="ItemClickButton">
@@ -20,19 +19,19 @@ class ItemClickButton extends Component {
             alt="Product" 
             src={product.product_image}
             onClick={goToProductDetail} />
-          <div className={`button button${product.index}`}>
+          <div className={`button button${index}`}>
             <span 
               className={`target target${product.product_id}`}
               id={product.product_id}
-              onClick={handleViewProduct} />
+              onClick={() => clickTemp(product.product_id)} />
             <div className={`price price${product.product_id}`}>
               <div className="name">{product.name}</div>
               <div className="priceInfoTag">
                 <div className="salePrice">
-                {commasBetween(product.price - (product.price)*(product.sale_amount)*0.01)}원
+                {(+product.price - (+product.price)*(+product.discount)*0.01).toLocaleString()}원
                 </div>
                 <div className="originalPrice">
-                {commasBetween(product.price).slice(0, -3)}
+                {priceWithComma}
                 </div>
               </div>
             </div>

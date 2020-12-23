@@ -17,7 +17,7 @@ class Category extends React.Component {
             <ul 
               onClick={() => goToProductList(id)}
               className="subCategories">
-              {subCategories &&
+              {subCategories.length > 0 &&
                 subCategories.map((subCategory, index) => {
                   return (
                     <li key={index}>{subCategory}</li>

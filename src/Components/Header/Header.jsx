@@ -78,7 +78,7 @@ class Header extends React.Component {
             <div 
               className="navIconRight"
               onClick={handleLoginStatus}>
-              {isloggedIn && <span className="gnbBtn cart">장바구니</span>}
+              {isloggedIn && <span className="gnbBtn cart"><Link to={"/cart"}>장바구니</Link></span>}
               <span className="gnbBtn logIn"><Link to={isloggedIn ? "/signup" : "/"}>{isloggedIn ? '로그아웃' : '로그인'}</Link></span>
               <img alt="Menu" src="/images/menu.png" />
             </div>

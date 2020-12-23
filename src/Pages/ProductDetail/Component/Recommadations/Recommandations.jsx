@@ -8,7 +8,8 @@ class Recommandations extends Component {
     constructor(){
         super();
         this.state={
-            recommandList: []
+            recommandList: [],
+            Count: 0
         }
     }
 
@@ -21,11 +22,22 @@ class Recommandations extends Component {
     }
 
     goToPrevorNext = (e) => {
-        const offset = e.target.id
+        const offset = this.state.Count;
 
+       
         fetch(`http://10.168.1.149:8000/product/best_products?limit=${LIMIT}&offset=${offset*LIMIT}`)
         .then(res => res.json())
         .then(res=> this.setState({recommandList: res.PRODUCTS}))
+
+        e.target.className==="nextBtns"?
+        this.setState({
+            Count: this.state.Count +1
+        })
+        :
+        this.setState({
+            Count: this.state.Count -1
+        })
+        
     }
 
     render() {
@@ -36,8 +48,8 @@ class Recommandations extends Component {
                 <div className="recomTop">
                     <span>베스트 상품</span>
                     <div className="prevNextBtns">
-                        <button id="0" onClick={this.goToPrevorNext}>&lt;</button>
-                        <button id="1" onClick={this.goToPrevorNext}>&gt;</button>
+                        <button className="prevBtns" onClick={this.goToPrevorNext}>&lt;</button>
+                        <button className="nextBtns"onClick={this.goToPrevorNext}>&gt;</button>
                     </div>
                 </div>
                 <ul className="productList">

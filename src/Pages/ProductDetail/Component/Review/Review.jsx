@@ -111,18 +111,33 @@ sortBy = (e) => {
     if(e.target.className === "dateOrder"){
         this.setState({
             revList: this.props.reviewList.sort((a, b)=> new Date(b.created_time).getTime() - new Date(a.rcreated_time).getTime()),
+            clickedSort: {
+                date: true,
+                rateH: false,
+                rateL: false
+            }
         })
     }
 
     if(e.target.className === "rateOrder"){
         this.setState({
             revList: this.props.reviewList.sort((a,b) => b.rate - a.rate),
+            clickedSort: {
+                date: false,
+                rateH: true,
+                rateL: false
+            }
         })
     }
 
     if(e.target.className === "rateOrderDowntoUp"){
         this.setState({
             revList: this.props.reviewList.sort((a,b) => a.rate - b.rate),
+            clickedSort: {
+                date: false,
+                rateH: false,
+                rateL: true
+            }
         })
     }
 
@@ -187,8 +202,8 @@ sortBy = (e) => {
                         <div className="reviewFilter">
                             <span>랭킹순</span>
                             <span className={clickedSort.date? "sortClicked":"dateOrder"} onClick={this.sortBy}>최신순</span>
-                            <span className={clickedSort.date? "sortClicked":"rateOrder"} onClick={this.sortBy}>평점 높은순</span>
-                            <span className={clickedSort.date? "sortClicked":"rateOrderDowntoUp"} onClick={this.sortBy}>평점 낮은순</span>
+                            <span className={clickedSort.rateH? "sortClicked":"rateOrder"} onClick={this.sortBy}>평점 높은순</span>
+                            <span className={clickedSort.rateL? "sortClicked":"rateOrderDowntoUp"} onClick={this.sortBy}>평점 낮은순</span>
                         </div>
                     </div>
                     <div className="reviewContainer">

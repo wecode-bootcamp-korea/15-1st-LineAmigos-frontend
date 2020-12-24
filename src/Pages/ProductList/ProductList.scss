@@ -36,6 +36,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
     .layout {
       width: 100%;
@@ -43,14 +44,27 @@
       background-color: rgba(0, 0, 0, 0.6);
     }
 
+    // .modalSize {
+    //   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    //   text-align: center;
+    //   padding: 30px;
+    //   position: fixed;
+    //   margin-top: 50px;
+    //   width: 1055px;
+    //   height: 500px;
+    //   background-color: white;
+    // }
+
     .popup {
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
       text-align: center;
       padding: 30px;
       position: fixed;
-      width: 70%;
-      height: 70%;
+      margin-top: 150px;
+      width: 1055px;
+      height: 800px;
       background-color: white;
+      overflow: scroll;
 
       .modalHeader {
         display: flex;

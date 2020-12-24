@@ -24,6 +24,7 @@ class SideCategory extends Component {
       categoryArr,
     } = this.props
     const { cetegoryName } = this.state
+
     return (
       <div>
         <div className='sideCategotyContainer'>

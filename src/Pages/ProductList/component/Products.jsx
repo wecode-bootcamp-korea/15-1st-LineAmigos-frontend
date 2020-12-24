@@ -23,6 +23,7 @@ class Products extends Component {
                 id={product.product_id}
                 key={product.product_id}
                 product={product}
+                handleClickedProductId={this.props.handleClickedProductId}
                 onModal={this.props.onModal}
                 rate={this.props.reviewArr
                   .filter((el) => {

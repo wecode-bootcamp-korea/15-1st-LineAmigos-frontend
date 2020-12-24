@@ -5,7 +5,6 @@ import SideCategory from './component/SideCategory'
 import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
 import ImgPurchInfo from '../ProductDetail/Component/ImgPurchInfo'
-import ProductDetail from '../ProductDetail/ProductDetail'
 import './ProductList.scss'
 
 const LIMIT = 20
@@ -20,12 +19,14 @@ class ProductList extends Component {
       reviewArr: [],
       pageArr: [],
       sideCategory: false,
-      detailModal: false,
       wishBtn: false,
       rowPrice: '',
       pageNum: false,
       currentIdx: '',
       pageArr: [],
+      modalSize: 'modalSize',
+      detailModal: false,
+      clickedId: 0,
     }
   }
 
@@ -68,7 +69,6 @@ class ProductList extends Component {
   //페이지네이션
   fetchProduct = (e) => {
     const offset = e?.target.dataset.idx
-    console.log(offset)
 
     let updatedPageArr = [...this.state.pageArr]
     updatedPageArr = updatedPageArr.map((item) => {
@@ -204,7 +204,14 @@ class ProductList extends Component {
     })
   }
 
-  handleDetailModal = () => {
+  handleClickedProductId = (clickedId) => {
+    console.log('현재 선택된 프로덕트 id: ', clickedId)
+    this.setState({
+      clickedId,
+    })
+  }
+
+  handleDetailModal = (e) => {
     this.setState({
       detailModal: !this.state.detailModal,
     })
@@ -218,11 +225,11 @@ class ProductList extends Component {
 
   render() {
     const rate = [5, 5, 5]
-    console.log(this.state.pageArr)
+
     return (
       <div className='ProductList'>
         <div className='container'>
-          <Header />
+          {/* <Header /> */}
           <header>
             <img
               alt='banner'
@@ -252,8 +259,10 @@ class ProductList extends Component {
             fetchProduct={this.fetchProduct}
             currentIdx={this.state.currentIdx}
             pageArr={this.state.pageArr}
+            handleClickedProductId={this.handleClickedProductId}
           />
         </div>
+
         <div className={this.state.detailModal ? 'modal' : 'modal hidden'}>
           <div className='layout' onClick={this.handleDetailModal}></div>
           <div className='popup'>
@@ -263,31 +272,29 @@ class ProductList extends Component {
                 X
               </button>
             </div>
-            {this.state.productArr.map((el) => (
-              <ImgPurchInfo
-                id={el.product_id}
-                productName={el.name}
-                imgUrl={el.product_image}
-                price={el.price}
-                reviewArray={rate}
-              />
-            ))}
-            {/* <div className='bottomBtn'>
-              <button className='detailBtn' onClick={this.goToDetail}>
-                상품 상세보기
-              </button>
-              <button className='wishBtn' onClick={this.handleWishBtn}>
-                <i
-                  className={
-                    this.state.wishBtn ? 'fas fa-heart' : 'far fa-heart'
-                  }
-                />
-                찜
-              </button>
-            </div> */}
+            {this.state.productArr.map((el) => {
+              if (el.product_id === this.state.clickedId) {
+                return (
+                  <ImgPurchInfo
+                    id={el.product_id}
+                    productName={el.name}
+                    imgUrl={el.product_image}
+                    price={el.price}
+                    reviewArray={rate}
+                    newClassName={this.state.modalSize}
+                  />
+                )
+              } else {
+                return null
+              }
+              //호버인덱스 클릭아이디 === el.product_id &&
+              //모달창이 떴을 때 클래스네임적용 해서 원하는 사이즈 적용
+              //클래스네임을 퍼치인포 프롭스로 넘기기
+            })}
+
+            {/* <Footer /> */}
           </div>
         </div>
-        <Footer />
       </div>
     )
   }

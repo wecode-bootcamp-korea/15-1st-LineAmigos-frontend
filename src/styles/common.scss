@@ -15,58 +15,66 @@ $font-color-lighterblack: #333;
 $font-color-lightblue: #bbd6ed;
 $font-color-blue: #1e93f2;
 $primary-color: #01b901;
+$border-color: #bdbdbd;
 
 @mixin slick-slider-button {
-    width: 70px;
-    height: 70px;
-    position: relative;
-    cursor: pointer;
-    &{opacity: .2;}
-    &:hover{opacity: .8;}
-    &:first-of-type {
-        top: 225px; 
-        left: -160px;
-    }
-    &:last-of-type {
-        top: -212px; 
-        right: -1350px;
-        transform: rotate(180deg);
-    }
-    &::before, &::after {
-        position: absolute;
-        left: 32px;
-        content: ' ';
-        height: 26px;
-        width: 2px;
+  width: 70px;
+  height: 70px;
+  position: relative;
+  cursor: pointer;
+  & {
+    opacity: 0.2;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+  &:first-of-type {
+    top: 225px;
+    left: -160px;
+  }
+  &:last-of-type {
+    top: -212px;
+    right: -1350px;
+    transform: rotate(180deg);
+  }
+  &::before,
+  &::after {
+    position: absolute;
+    left: 32px;
+    content: ' ';
+    height: 26px;
+    width: 2px;
+  }
+  &::before {
+    transform: rotate(45deg);
+    top: 12px;
+    background-color: #000;
+  }
+  &::after {
+    transform: rotate(-45deg);
+    top: 30px;
+    background-color: #000;
+  }
+  &.slick-arrow {
+    border: 1px solid #000;
+    &:hover {
+      border: 1px solid #000;
     }
     &::before {
-        transform: rotate(45deg);
-        top: 12px;
-        background-color: #000;
+      font-size: 40px;
+      opacity: 1;
     }
-    &::after {
-        transform: rotate(-45deg);
-        top: 30px;
-        background-color: #000;
-    }
-    &.slick-arrow {
-        border: 1px solid #000;
-        &:hover {
-        border: 1px solid #000;
-        }
-        &::before{
-        font-size: 40px;
-        opacity: 1;
-        }
-    }
+  }
 }
 
-body {font-family:'Open Sans' ,'Noto Sans KR', 'sans-serif';}
+body {
+  font-family: 'Open Sans', 'Noto Sans KR', 'sans-serif';
+}
 
 @font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 300;
-    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
-    unicode-range:U+0041-005A, U+0061-007A, U+0030-0039;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+  unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
 }

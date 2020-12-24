@@ -12,6 +12,16 @@ class Product extends Component {
     }
   }
 
+  componentDidMount = () => {
+    !(
+      this.props.product.rate_average.rate__avg !== null &&
+      this.props.product.rate_average.rate__avg.toFixed(1)
+    ) &&
+      this.setState({
+        reviewRateContainer: false,
+      })
+  }
+
   handleWishBtn = () => {
     this.setState({
       wishBtn: !this.state.wishBtn,
@@ -22,8 +32,9 @@ class Product extends Component {
     this.props.history.push(`/product/${this.props.id}`)
   }
 
-  handleDetailModal = () => {
-    this.props.onModal(this.props.modal)
+  handleDetailModal = (e) => {
+    this.props.onModal() // 모달 켜는 거
+    this.props.handleClickedProductId(this.props.id)
   }
 
   numbersWithComma = (num) => {
@@ -31,11 +42,13 @@ class Product extends Component {
   }
 
   render() {
+    console.log('프롭스 아읻', this.props.id.filter)
     const { product_image, name } = this.props.product
     const fixedRate =
       this.props.product.rate_average.rate__avg !== null &&
       this.props.product.rate_average.rate__avg.toFixed(1)
     const deleteZero = this.props.product.price.replace('.00', '')
+    const review = this.props.product.content_amount.contents__count
 
     return (
       <div className='productContainer'>
@@ -63,7 +76,7 @@ class Product extends Component {
             </div>
             <div
               className='hoverViewBox'
-              id=''
+              id={this.props.id}
               onClick={this.handleDetailModal}
             >
               <span className='hoverView'>+</span>
@@ -87,9 +100,7 @@ class Product extends Component {
             }
           >
             <span className='reviewText'>리뷰</span>
-            <span className='reviewNums'>
-              {this.props.product.content_amount.contents__count}
-            </span>
+            <span className='reviewNums'>{review}</span>
             <span className='rateText'> - 평점 </span>
             <span className='rateNums'>{fixedRate}</span>
             <span className='rateText'> / 5</span>

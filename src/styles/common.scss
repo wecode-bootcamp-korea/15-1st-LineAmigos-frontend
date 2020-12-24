@@ -20,25 +20,24 @@ $primary-color: #01b901;
     width: 70px;
     height: 70px;
     position: relative;
-    transition: all 0.2s ease;
     cursor: pointer;
     &{opacity: .2;}
     &:hover{opacity: .8;}
     &:first-of-type {
-        top: 335px; 
-        left: -10px;
+        top: 225px; 
+        left: -160px;
     }
     &:last-of-type {
-        top: -315px; 
-        right: -580px;
+        top: -212px; 
+        right: -1350px;
         transform: rotate(180deg);
     }
     &::before, &::after {
         position: absolute;
-        left: 34px;
+        left: 32px;
         content: ' ';
         height: 26px;
-        width: 1px;
+        width: 2px;
     }
     &::before {
         transform: rotate(45deg);
@@ -51,7 +50,7 @@ $primary-color: #01b901;
         background-color: #000;
     }
     &.slick-arrow {
-        // border: 1px solid #000;
+        border: 1px solid #000;
         &:hover {
         border: 1px solid #000;
         }
@@ -62,4 +61,12 @@ $primary-color: #01b901;
     }
 }
 
-$border-color: rgb(242, 245, 247);
+body {font-family:'Open Sans' ,'Noto Sans KR', 'sans-serif';}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 300;
+    src: url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+    unicode-range:U+0041-005A, U+0061-007A, U+0030-0039;
+}

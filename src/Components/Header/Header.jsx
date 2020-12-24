@@ -59,7 +59,7 @@ class Header extends React.Component {
       // fetch('http://10.168.1.149:8000/product/products_info')
       .then(response => response.json())
       .then(data => {
-        this.setState({searchList: data.products})
+        this.setState({searchList: data.PRODUCTS})
       }).catch(err => console.log(err))
   }
   
@@ -71,8 +71,13 @@ class Header extends React.Component {
     const { categoriesList, searchValue, searchList, isloggedIn, isNavFixed } = this.state
     const { handleSearchValue, handleLoginStatus, goToProductList, goToSearchResult, goToMainPage } = this
     const filteredList = searchList.filter((product) => 
+<<<<<<< HEAD
       product.productName.toLowerCase().includes(searchValue.toLowerCase()) && product)
       localStorage.getItem('token') && this.setState({isloggedIn: true})
+=======
+      product.name.toLowerCase().includes(searchValue.toLowerCase()) && product)
+    localStorage.getItem('token') && this.setState({isloggedIn: true})
+>>>>>>> master
 
     return (
       <header 
@@ -115,11 +120,11 @@ class Header extends React.Component {
                 {filteredList &&
                   filteredList.map(item => {
                     return(
-                      <li key={item.id}>
-                        <img alt={item.productName} src={item.url} className="itemImg" />
+                      <li key={item.product_id}>
+                        <img alt={item.name} src={item.product_image} className="itemImg" />
                         <div>
-                          <span className="productName">{item.productName}</span>
-                          <span className="price">{item.price}원</span>
+                          <span className="productName">{item.name}</span>
+                          <span className="price">{item.price.toLocaleString()}원</span>
                         </div>
                       </li>
                     )

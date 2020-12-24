@@ -34,6 +34,28 @@ class Cart extends React.Component {
       }).catch(err => console.log(err))
   }
 
+  //단순더하기
+  addItem = (id) => {
+    const { cartItems } = this.state
+    const calculatedStatus = cartItems.map(item => {
+      item.productId === id && item.amount++
+      
+      return item
+    })
+    this.setState({cartItems: calculatedStatus})
+  }
+  //단순빼기
+  subtractItem = (id) => {
+    const { cartItems } = this.state
+    const calculatedStatus = cartItems.map(item => {
+      if (item.productId === id) {
+        item.amount--
+      }
+      return item
+    })
+    this.setState({cartItems: calculatedStatus})
+  }
+
   //click to add item amount one by one 
   addCartItem = () => {
     fetch('API', {
@@ -62,20 +84,6 @@ class Cart extends React.Component {
       .catch(err => console.log(err))
   }
 
-  //delete button click
-  deleteCartItem = () => {
-    fetch('API', {
-    // fetch('http://10.58.4.1:8000/cart', { //session example
-      method: 'DELETE',
-      body: JSON.stringify({
-        // item_id: itemId
-      })
-    }).then(res => res.json())
-      .then(res => res.MESSAGE === "SUCCESS" && 
-        this.setState({cartItem: res.cartItems}))
-      .catch(err => console.log(err))
-  }
-
   //개별 삭제버튼
   deleteItem = (id) => {
     const { cartItems } = this.state
@@ -94,6 +102,21 @@ class Cart extends React.Component {
     })
   }
 
+  //delete button click
+  deleteCartItem = () => {
+    fetch('API', {
+    // fetch('http://10.58.4.1:8000/cart', { //session example
+      method: 'DELETE',
+      body: JSON.stringify({
+        // item_id: itemId
+      })
+    }).then(res => res.json())
+      .then(res => res.MESSAGE === "SUCCESS" && 
+        this.setState({cartItem: res.cartItems}))
+      .catch(err => console.log(err))
+  }
+
+
   //delete selected items => map selected items and deleteCartItem func 
   deleteSelectedCartItems = () => {
     const { cartItems } = this.state
@@ -110,19 +133,6 @@ class Cart extends React.Component {
           .catch(err => console.log(err))
       }
     )
-  }
-
-  //select cart items
-  selectOneCartItemHandler = (e) => {
-    const { id } = e.target.id
-    const { cartItems } = this.state 
-    const newSelectedStatus = cartItems.map(cartItem => {
-      if (cartItem.productId === id) {
-        cartItem.isChecked = !this.state.cartItem.isChecked
-      }
-      return cartItem
-    })
-    this.setState({cartItems: newSelectedStatus})
   }
 
   //토글하기
@@ -150,7 +160,6 @@ class Cart extends React.Component {
       }
       return item
     })
-    
     this.setState({
       cartItems: selectStateBox,
       isSelectAllChecked: !isSelectAllChecked,
@@ -173,11 +182,8 @@ class Cart extends React.Component {
   }
 
   //go to product detail page
-  goProductDetailPage = (e) => {
-    const { id } = e.target.id
-    const { cartItems } = this.state
-    const targetId = cartItems.filter(cartItem => cartItem.productId === id)
-    this.props.history.push(`/product/${targetId}`)
+  goProductDetailPage = (id) => {
+    this.props.history.push(`/productdetail/${id}`)
   }
 
   goToCheckOutPage = () => {
@@ -222,13 +228,12 @@ class Cart extends React.Component {
   // goToWishListPage = () => {this.props.history.push("/wishlist")}
 
   render() {
-    const { addCartItem, subtractCartItem, deleteCartItem, deleteItem, selectOneCartItemHandler, selectAllCartItemsHandler, goProductDetailPage, goToCheckOutPage, soldOutAlert, notSelectedAlert, selectItemHandler, deleteSelectedItems } = this
+    const { addItem, subtractItem, deleteItem, selectAllCartItemsHandler, goProductDetailPage, goToCheckOutPage, selectItemHandler, deleteSelectedItems, backToShoppingPage } = this
     const { cartItems } = this.state
     const selectedItems = cartItems.filter(cartItem => cartItem.isChecked)
-    const totalPrice = selectedItems.filter(item => item.isInStock).map(cartItem => cartItem.price).reduce((a, b) => a + b, 0)
-    const discountPrice = selectedItems.filter(item => item.isInStock).reduce((a, item) => a + item.price*item.saleRate*0.01, 0)
+    const totalPrice = selectedItems.filter(item => item.isInStock).map(cartItem => cartItem.price*cartItem.amount).reduce((a, b) => a + b, 0)
+    const discountPrice = selectedItems.filter(item => item.isInStock).reduce((a, item) => a + item.price*item.amount*item.saleRate*0.01, 0)
     const checkOutPrice = totalPrice - discountPrice
-    const shippingFee = 3000
 
     return (
       <div className="Cart">
@@ -280,11 +285,9 @@ class Cart extends React.Component {
                     amount={item.amount}
                     isChecked={item.isChecked}
                     isInStock={item.isInStock}
-                    addCartItem={addCartItem} 
-                    subtractCartItem={subtractCartItem} 
-                    deleteCartItem={deleteCartItem} 
+                    addItem={addItem}
+                    subtractItem={subtractItem}
                     deleteItem={deleteItem}
-                    selectOneCartItemHandler={selectOneCartItemHandler}
                     selectItemHandler={selectItemHandler} 
                     goProductDetailPage={goProductDetailPage} 
                     goToCheckOutPage={goToCheckOutPage}
@@ -294,7 +297,10 @@ class Cart extends React.Component {
             }
             </ul>
             <div className="row selectActions">
-              <div className={`checkbox ${this.state.isSelectAllChecked && 'checked'}`}><i className="fas fa-check"/></div>
+            <div 
+              className={`checkbox ${this.state.isSelectAllChecked && 'checked'}`}
+              onClick={selectAllCartItemsHandler}>
+                <i className="fas fa-check"/></div>
               <div className="buttons">
                 <div 
                   className="delete"
@@ -303,7 +309,6 @@ class Cart extends React.Component {
               </div>
             </div>
           </div>
-
           <div className="calculation">
             <div className="summary">
               <div className="totalPrice">
@@ -313,7 +318,7 @@ class Cart extends React.Component {
               <i className="fas fa-plus" />
               <div className="shippingFee">
                 <div className="title">배송비</div>
-                <div className="Fee">{(checkOutPrice > 30000 ? 0 : 3000).toLocaleString()}원</div>
+                <div className="Fee">{(selectedItems.length === 0 || checkOutPrice > 30000 ? 0 : 3000).toLocaleString()}원</div>
               </div>
               <i className="fas fa-minus" />
               <div className="discounted">
@@ -328,7 +333,9 @@ class Cart extends React.Component {
             </div>
           </div>
           <div className="buttons">
-            <div className="toShop">쇼핑 계속하기</div>
+            <div 
+              className="toShop"
+              onClick={backToShoppingPage}>쇼핑 계속하기</div>
             <div 
               className="toCheckout"
               onClick={goToCheckOutPage}>주문하기</div>

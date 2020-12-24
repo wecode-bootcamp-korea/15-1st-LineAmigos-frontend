@@ -8,8 +8,22 @@ ul {
   display: flex;
   justify-content: center;
   width: 1280px;
+  margin-top: 100px;
 
   .nowPageNumBox {
+    width: 32px;
+    height: 32px;
+    font-weight: bold;
+    color: white;
+    background-color: #2f2f2f;
+    cursor: pointer;
+
+    button {
+      all: unset;
+      padding: 11px;
+    }
+  }
+  .nextPageNumBox {
     width: 32px;
     height: 32px;
     font-weight: bold;
@@ -19,20 +33,7 @@ ul {
 
     button {
       all: unset;
-      padding: 10px;
-    }
-  }
-  .nextPageNumBox {
-    width: 32px;
-    height: 32px;
-    font-weight: bold;
-    color: white;
-    background-color: black;
-    cursor: pointer;
-
-    button {
-      all: unset;
-      padding: 10px;
+      padding: 11px;
     }
   }
 }

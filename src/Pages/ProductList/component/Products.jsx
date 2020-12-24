@@ -3,7 +3,17 @@ import Product from '../component/Product'
 import '../component/products.scss'
 
 class Products extends Component {
+  constructor() {
+    super()
+    this.state = {
+      pageBtn: '',
+    }
+  }
+
   render() {
+    const selectedArr = this.props.pageArr.map((el) => {
+      return el.selected
+    })
     return (
       <>
         <ul>
@@ -13,6 +23,7 @@ class Products extends Component {
                 id={product.product_id}
                 key={product.product_id}
                 product={product}
+                handleClickedProductId={this.props.handleClickedProductId}
                 onModal={this.props.onModal}
                 rate={this.props.reviewArr
                   .filter((el) => {
@@ -22,33 +33,18 @@ class Products extends Component {
               />
             ))}
         </ul>
-        {/* <ul>
-          {this.props.reviewArr.map((review) => (
-            <Product 
-            review={review}
-            this.props.reviewArr
-             />
-          ))}
-        </ul> */}
+
         <div className='nextPageContainer'>
-          <div
-            className={
-              this.props.onPageNum ? 'nextPageNumBox' : 'nowPageNumBox'
-            }
-          >
+          <div className={selectedArr[0] ? 'nowPageNumBox' : 'nextPageNumBox'}>
             <button
               className='nextPageNum'
               data-idx='0'
-              onClick={(this.props.fetchProduct, this.props.onPageNum)}
+              onClick={this.props.fetchProduct}
             >
               1
             </button>
           </div>
-          <div
-            className={
-              this.props.onPageNum ? 'nextPageNumBox' : 'nowPageNumBox'
-            }
-          >
+          <div className={selectedArr[1] ? 'nowPageNumBox' : 'nextPageNumBox'}>
             <button
               className='nextPageNum'
               data-idx='1'
@@ -57,11 +53,7 @@ class Products extends Component {
               2
             </button>
           </div>
-          <div
-            className={
-              this.props.onPageNum ? 'nextPageNumBox' : 'nowPageNumBox'
-            }
-          >
+          <div className={selectedArr[2] ? 'nowPageNumBox' : 'nextPageNumBox'}>
             <button
               className='nextPageNum'
               data-idx='2'
@@ -70,11 +62,7 @@ class Products extends Component {
               3
             </button>
           </div>
-          <div
-            className={
-              this.props.onPageNum ? 'nextPageNumBox' : 'nowPageNumBox'
-            }
-          >
+          <div className={selectedArr[3] ? 'nowPageNumBox' : 'nextPageNumBox'}>
             <button
               className='nextPageNum'
               data-idx='3'
@@ -83,11 +71,7 @@ class Products extends Component {
               4
             </button>
           </div>
-          <div
-            className={
-              this.props.onPageNum ? 'nextPageNumBox' : 'nowPageNumBox'
-            }
-          >
+          <div className={selectedArr[4] ? 'nowPageNumBox' : 'nextPageNumBox'}>
             <button
               className='nextPageNum'
               data-idx='4'

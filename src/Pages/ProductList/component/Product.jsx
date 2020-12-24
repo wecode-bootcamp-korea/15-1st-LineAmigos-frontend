@@ -12,46 +12,43 @@ class Product extends Component {
     }
   }
 
+  componentDidMount = () => {
+    !(
+      this.props.product.rate_average.rate__avg !== null &&
+      this.props.product.rate_average.rate__avg.toFixed(1)
+    ) &&
+      this.setState({
+        reviewRateContainer: false,
+      })
+  }
+
   handleWishBtn = () => {
     this.setState({
       wishBtn: !this.state.wishBtn,
     })
   }
 
-  // componentDidMount = () => {
-  //   const priceComma = this.props.product.price
-  //     .toString()
-  //     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-  //   if (!this.props.product.review) {
-  //     this.setState({
-  //       reviewRateContainer: false,
-  //     })
-  //   }
-  //   if (this.props.product.price !== null) {
-  //     this.setState({
-  //       price: priceComma,
-  //     })
-  //   }
-  // }
-
   goToDetail = () => {
-    this.props.history.push(`/productdetail/${this.props.id}`)
+    this.props.history.push(`/product/${this.props.id}`)
   }
 
-  handleDetailModal = () => {
-    this.props.onModal(this.props.modal)
+  handleDetailModal = (e) => {
+    this.props.onModal() // 모달 켜는 거
+    this.props.handleClickedProductId(this.props.id)
   }
+
+  numbersWithComma = (num) => {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+  }
+
   render() {
-    const { product_image, name, price } = this.props.product
-    const sum =
-      this.props.rate.length > 0 &&
-      (
-        this.props.rate.reduce((a, b) => {
-          return a + b
-        }) / this.props.rate.length
-      ).toFixed(1)
-
+    console.log('프롭스 아읻', this.props.id.filter)
+    const { product_image, name } = this.props.product
+    const fixedRate =
+      this.props.product.rate_average.rate__avg !== null &&
+      this.props.product.rate_average.rate__avg.toFixed(1)
     const deleteZero = this.props.product.price.replace('.00', '')
+    const review = this.props.product.content_amount.contents__count
 
     return (
       <div className='productContainer'>
@@ -77,7 +74,11 @@ class Product extends Component {
                 }
               />
             </div>
-            <div className='hoverViewBox' onClick={this.handleDetailModal}>
+            <div
+              className='hoverViewBox'
+              id={this.props.id}
+              onClick={this.handleDetailModal}
+            >
               <span className='hoverView'>+</span>
             </div>
           </div>
@@ -88,7 +89,9 @@ class Product extends Component {
               onClick={this.handleWishBtn}
             />
           </div>
-          <span className='productPrice'>{deleteZero}원</span>
+          <span className='productPrice'>
+            {this.numbersWithComma(deleteZero)}원
+          </span>
           <div
             className={
               this.state.reviewRateContainer
@@ -97,9 +100,9 @@ class Product extends Component {
             }
           >
             <span className='reviewText'>리뷰</span>
-            <span className='reviewNums'>{this.props.rate.length}</span>
+            <span className='reviewNums'>{review}</span>
             <span className='rateText'> - 평점 </span>
-            <span className='rateNums'>{+sum}</span>
+            <span className='rateNums'>{fixedRate}</span>
             <span className='rateText'> / 5</span>
           </div>
         </li>

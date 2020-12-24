@@ -10,6 +10,7 @@ class Filters extends Component {
       viewName: '20개씩보기',
     }
   }
+
   handleViewDropDown = () => {
     this.setState({
       viewDropdown: !this.state.viewDropdown,
@@ -23,6 +24,7 @@ class Filters extends Component {
   }
   render() {
     return (
+      //최신등록순 자리!!!!!!!!!
       <div className='filtersContainer'>
         <ul>
           {this.props.filterArr.map((filter) => (

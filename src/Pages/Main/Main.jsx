@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import Header from '../../Components/Header/Header'
 import Footer from '../../Components/Footer/Footer'
 import MainSlider from './MainSlider'
@@ -53,9 +54,7 @@ class Main extends React.Component {
         const newProductsList = data.PRODUCTS.map(product => {
           return {...product, isClicked: false}
        })
-       this.setState({
-         productsList: newProductsList
-       })
+       this.setState({productsList: newProductsList})
      }).catch(err => console.log(err))
 
     fetch('/data/reviews.json')
@@ -66,15 +65,13 @@ class Main extends React.Component {
        })
      }).catch(err => console.log(err))
   }
-  
-
 
   componentWillUnmount = () => {
     window.removeEventListener('scroll', this.handleScroll)
   }
 
   render() {
-    const { productsList, reviewsList } = this.state
+    const { productsList, reviewsList } = this.state 
     const { handleViewClick } = this
     return (
       <div className="Main">
@@ -94,4 +91,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main
+export default withRouter(Main)

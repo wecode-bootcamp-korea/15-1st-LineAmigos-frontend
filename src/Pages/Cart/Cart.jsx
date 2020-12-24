@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom'
-import header from '../../Components/Header/Header'
+import Header from '../../Components/Header/Header'
 import CartItem from './CartItem'
 import './Cart.scss';
 
@@ -233,6 +233,7 @@ class Cart extends React.Component {
     return (
       <div className="Cart">
         <div className="cartContainer">
+          <Header />
           <header>
             <div className="gnbContainer">
               <div className="leftIcons">

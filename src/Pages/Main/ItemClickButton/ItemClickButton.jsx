@@ -8,8 +8,7 @@ class ItemClickButton extends Component {
   }
 
   render() {
-    const { index, product, handleViewClick, itemId } = this.props
-    const { goToProductDetail } = this
+    const { index, product, handleViewClick } = this.props
     const priceWithComma = (+product.price).toLocaleString()
 
     return (
@@ -18,7 +17,6 @@ class ItemClickButton extends Component {
           <img 
             alt="Product" 
             src={product.product_image}
-            // onClick={goToProductDetail}
             onClick={() => handleViewClick(product.product_id)}
             className={product.isClicked?'click':''} />
           <div className={`button button${index}`}>

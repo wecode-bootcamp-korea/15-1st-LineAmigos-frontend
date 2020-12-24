@@ -12,7 +12,7 @@ class MainSlider extends Component {
   }
 
   componentDidMount = () => {
-    fetch('/data/productsInfos.json')
+    fetch('/data/mainSlider.json')
       .then(response => response.json())
       .then(data => {
         this.setState({

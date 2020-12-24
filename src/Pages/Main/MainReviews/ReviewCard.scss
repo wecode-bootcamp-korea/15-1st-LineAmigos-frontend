@@ -21,12 +21,12 @@
     margin-bottom: 16px;
     display: block;
     width: 400px;
-    // height: 400px;
+    height: 400px;
     // position: absolute;
 
     .productImage {
       width: 100%;
-      max-height: 450px;
+      height: 400px;
       border-radius: 16px 16px 0 0;
       // position: relative;
       object-fit: cover;
@@ -44,7 +44,7 @@
     .productName {
       margin: 8px 0;
       padding: 0 24px;
-      width: 380px;
+      width: 340px;
       font-size: 26px;
       font-weight: $font-weight-medium;
       line-height: 34px;

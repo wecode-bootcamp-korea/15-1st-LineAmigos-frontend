@@ -1,0 +1,32 @@
+{
+  "mainSliderImages": [
+    {
+      "id": 1,
+      "url": "/images/Main/main-slider-01.jpg",
+      "promotionLine1": "따뜻하게 집에서 즐겨요,",
+      "promotionLine2": "핑크빛 뮤직라인",
+      "subPromotion": "라인 아미고스에서 새로이 소개하는 뮤직라인"
+    },
+    {
+      "id": 2,
+      "url": "/images/Main/main-slider-02.jpg",
+      "promotionLine1": "하나만 소장해도",
+      "promotionLine2": "포근해지는 내 방",
+      "subPromotion": "인기만점 리빙템, 연말까지 최대 60% 할인"
+    },
+    {
+      "id": 3,
+      "url": "/images/Main/main-slider-03.jpg",
+      "promotionLine1": "센스만점",
+      "promotionLine2": "미니멀 연말선물",
+      "subPromotion": "취향 안 타는 연말 선물, 라인 아미고스에서 해결 끝"
+    },
+    {
+      "id": 4,
+      "url": "/images/Main/main-slider-04.jpg",
+      "promotionLine1": "무지개떡 지구본,",
+      "promotionLine2": "어디서 본 적 있지 않니?",
+      "subPromotion": "인테리어용으로, 교육용으로 센스만점"
+    }
+  ]
+}

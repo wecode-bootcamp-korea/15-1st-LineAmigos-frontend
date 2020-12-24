@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import './SliderCard.scss'
 
 class SliderCard extends Component {
@@ -11,12 +12,12 @@ class SliderCard extends Component {
   }
 
   goToProductDetail = (id) => {
-    this.props.history.push(`/product/${id}`)
+    this.props.history.push(`/productdetail/${id}`)
   }
 
   render() {
     const { isInCart } = this.state
-    const { goToProductDetail, addToCart } = this
+    const { goToProductDetail } = this
     const { type, product } = this.props
     const price = +(product.price).slice(0,-3)
     const discount = +product.discount
@@ -25,12 +26,15 @@ class SliderCard extends Component {
     return (
       <li 
         className="SliderCard"
-        onClick={goToProductDetail}>
+        onClick={() => goToProductDetail(product.product_id)}>
         <div className="productVisual">
           <img alt="Product" src={product.product_image} className="productImage" />
           <div className="action">
             <div className="icon">
-              <img alt="Add to wishlist" src='/images/add-to-wishlist.png' />
+              <img 
+                alt="Add to wishlist" 
+                src='/images/add-to-wishlist.png'
+                onClick={()=> alert('찜한 상품에 추가되었습니다.')} />
             </div>
             <div a
               className={`icon ${isInCart && 'clicked'}`}
@@ -52,4 +56,4 @@ class SliderCard extends Component {
   }
 }
 
-export default SliderCard;
+export default withRouter(SliderCard);

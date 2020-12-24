@@ -30,7 +30,7 @@ class ReviewCard extends Component {
 
   render() {
     const { spans } = this.state
-    const { review, goToProductDetail } = this.props
+    const { review } = this.props
     const { createdAtString } = this
     const rateStar = <i className="fas fa-star" />
 
@@ -43,8 +43,7 @@ class ReviewCard extends Component {
           <img 
             alt="product" 
             src={review.reviewed_image} 
-            className="productImage"
-            onClick={goToProductDetail} />
+            className="productImage"/>
         </div>
         <div className="productInfos" >
           <div className="productName">{review.product_name}</div>

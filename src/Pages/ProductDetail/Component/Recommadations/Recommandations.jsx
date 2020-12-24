@@ -29,8 +29,6 @@ class Recommandations extends Component {
         this.setState({
             Count: e.target.className==="nextBtns"? this.state.Count +1:this.state.Count-1
         })
-
-        console.log(this.state.recommandList)
     }
 
     render() {

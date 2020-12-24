@@ -11,6 +11,7 @@ class SliderCard extends Component {
   }
 
   goToProductDetail = (id) => {
+    console.log(id)
     this.props.history.push(`/product/${id}`)
   }
 
@@ -22,10 +23,12 @@ class SliderCard extends Component {
     const discount = +product.discount
     const discountedPrice = +(price*(100-discount)*0.01)
 
+    console.log(this.props.history)
+
     return (
       <li 
         className="SliderCard"
-        onClick={goToProductDetail}>
+        onClick={() => goToProductDetail(product.product_id)}>
         <div className="productVisual">
           <img alt="Product" src={product.product_image} className="productImage" />
           <div className="action">

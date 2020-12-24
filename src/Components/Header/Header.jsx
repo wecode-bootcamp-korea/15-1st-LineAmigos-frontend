@@ -72,7 +72,7 @@ class Header extends React.Component {
               <img alt="Naver logo" src="/images/naver-logo.png" />
               <div>
                 <img alt="Shop" src="/images/shop-bold.png" />
-                <span>네이버쇼핑</span>
+                <span><Link to={"/cart"}>네이버쇼핑</Link></span>
               </div>
             </div>
             <div 

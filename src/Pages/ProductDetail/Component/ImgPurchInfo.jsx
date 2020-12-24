@@ -79,7 +79,7 @@ class ImgPurchInfo extends Component {
                             <span className="reviewCount">{reviewArray&&reviewArray.length}</span>
                         </div>
                         <div>
-                            <span className="smallCount"> {reviewArray.length>0&&(reviewArray.reduce((acc, curr)=>acc+curr)/reviewArray.length).toFixed(1)} /5</span>
+                            <span className="smallCount"> {reviewArray.length>0?(reviewArray.reduce((acc, curr)=>acc+curr)/reviewArray.length).toFixed(1) : "0"} /5</span>
                         </div>
                     </div>        
                 </div>

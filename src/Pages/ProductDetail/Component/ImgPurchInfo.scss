@@ -20,6 +20,7 @@
             margin-top: 145px;
             padding: 30px;
             display: flex;
+            align-items: flex-end;
 
             div{
                 padding: 10px;
@@ -29,6 +30,7 @@
                     font-size: 22px;
                     font-weight: 600;
                 }
+
             }
         }
     }
@@ -91,7 +93,7 @@
 
             .basicFund{
                 ul{
-                    width: 90%;
+                    width: 100%;
                     list-style: none;
                     display: flex;
                     justify-content: space-between;

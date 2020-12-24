@@ -71,13 +71,8 @@ class Header extends React.Component {
     const { categoriesList, searchValue, searchList, isloggedIn, isNavFixed } = this.state
     const { handleSearchValue, handleLoginStatus, goToProductList, goToSearchResult, goToMainPage } = this
     const filteredList = searchList.filter((product) => 
-<<<<<<< HEAD
-      product.productName.toLowerCase().includes(searchValue.toLowerCase()) && product)
-      localStorage.getItem('token') && this.setState({isloggedIn: true})
-=======
       product.name.toLowerCase().includes(searchValue.toLowerCase()) && product)
     localStorage.getItem('token') && this.setState({isloggedIn: true})
->>>>>>> master
 
     return (
       <header 

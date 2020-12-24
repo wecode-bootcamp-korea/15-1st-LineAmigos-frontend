@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ImgSlide from './ImgSlide/ImgSlide';
+import { withRouter } from 'react-router-dom';
 import './ImgPurchInfo.scss';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -163,7 +164,7 @@ class ImgPurchInfo extends Component {
                             </span>
                         </div>
                         <div className="PCBtns">
-                            <button className="purchBtn" >
+                            <button className="purchBtn" onClick={()=> this.props.history.push('/cart')}>
                                 <i className="fab fa-node-js"/>
                                 구매하기
                             </button>
@@ -190,4 +191,4 @@ class ImgPurchInfo extends Component {
     }
 }
 
-export default ImgPurchInfo;
+export default withRouter(ImgPurchInfo)

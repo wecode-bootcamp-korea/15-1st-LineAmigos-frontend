@@ -17,7 +17,49 @@
 
 .slick-arrow{
 
-  @include slick-slider-button
+    width: 70px;
+    height: 70px;
+    position: relative;
+    cursor: pointer;
+
+    &{opacity: .2;}
+    &:hover{opacity: .8;}
+    &:first-of-type {
+        top: 350px; 
+        left: 20px;
+    }
+    &:last-of-type {
+        top: -292px; 
+        left: 545px;
+        transform: rotate(180deg);
+    }
+    &::before, &::after {
+        position: absolute;
+        left: 32px;
+        content: ' ';
+        height: 26px;
+        width: 2px;
+    }
+    &::before {
+        transform: rotate(45deg);
+        top: 12px;
+        background-color: #000;
+    }
+    &::after {
+        transform: rotate(-45deg);
+        top: 30px;
+        background-color: #000;
+    }
+    &.slick-arrow {
+        border: none;
+        &:hover {
+        border: 1px solid #000;
+        }
+        &::before{
+        font-size: 40px;
+        opacity: 1;
+        }
+    }
 
 }
 

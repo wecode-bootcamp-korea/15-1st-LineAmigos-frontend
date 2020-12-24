@@ -51,7 +51,9 @@
         font-weight: $font-weight-bold;
         cursor: pointer;
 
-        i {margin-right: 6px;}
+        i {
+          margin-right: 6px;
+        }
       }
 
       .share {
@@ -116,8 +118,12 @@
         font-size: $font-size-small;
         font-weight: $font-weight-medium;
         border-right: 1px solid #dbdbdb;
-        &.bold {font-weight: $font-weight-bold;}
-        &:first-of-type {padding-left: 0;}
+        &.bold {
+          font-weight: $font-weight-bold;
+        }
+        &:first-of-type {
+          padding-left: 0;
+        }
       }
     }
 
@@ -131,20 +137,26 @@
       color: #444;
       line-height: 24px;
 
-      .naver {height: 111px;}
+      .naver {
+        height: 111px;
+      }
 
       .QnA {
         margin-left: 100px;
         height: 111px;
 
-        span {font-weight: $font-weight-medium;}
+        span {
+          font-weight: $font-weight-medium;
+        }
       }
 
       .conflicts {
         margin-left: 100px;
         height: 67px;
 
-        span {font-weight: $font-weight-medium;}
+        span {
+          font-weight: $font-weight-medium;
+        }
       }
     }
 

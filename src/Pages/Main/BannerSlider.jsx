@@ -29,7 +29,7 @@ class BannerSlider extends Component {
               return (
                 <div key={index}>
                   <img alt="Ads" src={image} />
-                  <div className="getCoupon">쿠폰받기</div>
+                  <div className="getCoupon">쿠폰받기<span/></div>
                 </div>
               )
             })

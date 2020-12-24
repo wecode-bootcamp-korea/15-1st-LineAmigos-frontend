@@ -82,7 +82,7 @@ class Login extends Component {
           <img
             className='logoImg'
             alt='logo'
-            src='/images/line-amigos-logo.png'
+            src='/images/line-amigos-logo-default.png'
           />
         </header>
         <div className='loginForm'>

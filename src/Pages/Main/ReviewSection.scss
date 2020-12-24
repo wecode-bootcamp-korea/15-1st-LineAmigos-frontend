@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin: 80px 0 140px 0;
+  margin: 160px 0 140px 0;
   cursor: pointer;
   width: 1280px;
 
@@ -22,6 +22,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 10px;
-    grid-auto-rows: 100px;
+    grid-auto-rows: 760px;
   }
 }

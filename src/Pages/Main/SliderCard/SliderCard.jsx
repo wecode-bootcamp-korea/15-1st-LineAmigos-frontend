@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom'
 import './SliderCard.scss'
 
 class SliderCard extends Component {
@@ -11,8 +12,7 @@ class SliderCard extends Component {
   }
 
   goToProductDetail = (id) => {
-    console.log(id)
-    this.props.history.push(`/product/${id}`)
+    this.props.history.push(`/productdetail/${id}`)
   }
 
   render() {
@@ -22,8 +22,6 @@ class SliderCard extends Component {
     const price = +(product.price).slice(0,-3)
     const discount = +product.discount
     const discountedPrice = +(price*(100-discount)*0.01)
-
-    console.log(this.props.history)
 
     return (
       <li 
@@ -58,4 +56,4 @@ class SliderCard extends Component {
   }
 }
 
-export default SliderCard;
+export default withRouter(SliderCard);

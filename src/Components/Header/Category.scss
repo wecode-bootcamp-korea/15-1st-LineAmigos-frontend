@@ -81,6 +81,12 @@
         padding: 0 20px;
         height: 34px;
         font-weight: $font-weight-regular;
+        
+        .reset {
+          list-style: none;
+          text-decoration: none;
+          color: black;
+        }
 
         &:first-of-type {
           margin-top: 12px;

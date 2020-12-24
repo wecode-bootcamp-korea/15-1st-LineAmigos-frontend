@@ -19,7 +19,7 @@ class Category extends React.Component {
               {category.categories.length > 0 &&
                 category.categories.map((subCategory, index) => {
                   return (
-                    <li key={index}><Link to="/product/products_info?limit=20">{subCategory}</Link></li>
+                    <li key={index}><Link to="/product/products_info?limit=20" className="reset">{subCategory}</Link></li>
                   )
                 })
               }

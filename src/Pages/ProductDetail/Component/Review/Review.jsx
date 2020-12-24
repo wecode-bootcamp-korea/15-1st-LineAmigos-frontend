@@ -71,7 +71,7 @@ class Review extends Component {
     Filter = (e) =>{
         if(e.target.className === "monthReview"){
         this.setState({
-            revList: this.props.reviewList.filter(el=> el.is_monthly === false),
+            revList: this.props.reviewList.filter(el=> el.monthly_reviewed === true),
             clicked: {
                 photo: false,
                 storePick: false,
@@ -80,7 +80,7 @@ class Review extends Component {
     }
     if(e.target.className === "storePick"){
         this.setState({
-            revList: this.props.reviewList.filter(el=> el.review_rate === 5),
+            revList: this.props.reviewList.filter(el=> el.rate === 5),
             clicked: {
                 photo: false,
                 storePick: true,
@@ -89,7 +89,7 @@ class Review extends Component {
     }
     if(e.target.className === "photoandVideo"){
         this.setState({
-            revList: this.props.reviewList.filter(el=> el.review_image !== ""),
+            revList: this.props.reviewList.filter(el=> el.reviewed_image !== ""),
             clicked: {
                 photo: true,
                 storePick: false,
@@ -110,19 +110,34 @@ sortBy = (e) => {
 
     if(e.target.className === "dateOrder"){
         this.setState({
-            revList: this.props.reviewList.sort((a, b)=> new Date(b.review_created_time).getTime() - new Date(a.review_created_time).getTime()),
+            revList: this.props.reviewList.sort((a, b)=> new Date(b.created_time).getTime() - new Date(a.rcreated_time).getTime()),
+            clickedSort: {
+                date: true,
+                rateH: false,
+                rateL: false
+            }
         })
     }
 
     if(e.target.className === "rateOrder"){
         this.setState({
-            revList: this.props.reviewList.sort((a,b) => b.review_rate - a.review_rate),
+            revList: this.props.reviewList.sort((a,b) => b.rate - a.rate),
+            clickedSort: {
+                date: false,
+                rateH: true,
+                rateL: false
+            }
         })
     }
 
     if(e.target.className === "rateOrderDowntoUp"){
         this.setState({
-            revList: this.props.reviewList.sort((a,b) => a.review_rate - b.review_rate),
+            revList: this.props.reviewList.sort((a,b) => a.rate - b.rate),
+            clickedSort: {
+                date: false,
+                rateH: false,
+                rateL: true
+            }
         })
     }
 
@@ -187,8 +202,8 @@ sortBy = (e) => {
                         <div className="reviewFilter">
                             <span>랭킹순</span>
                             <span className={clickedSort.date? "sortClicked":"dateOrder"} onClick={this.sortBy}>최신순</span>
-                            <span className={clickedSort.date? "sortClicked":"rateOrder"} onClick={this.sortBy}>평점 높은순</span>
-                            <span className={clickedSort.date? "sortClicked":"rateOrderDowntoUp"} onClick={this.sortBy}>평점 낮은순</span>
+                            <span className={clickedSort.rateH? "sortClicked":"rateOrder"} onClick={this.sortBy}>평점 높은순</span>
+                            <span className={clickedSort.rateL? "sortClicked":"rateOrderDowntoUp"} onClick={this.sortBy}>평점 낮은순</span>
                         </div>
                     </div>
                     <div className="reviewContainer">
@@ -204,12 +219,12 @@ sortBy = (e) => {
                                         return(
                                                 <ReviewContent 
                                                 key={idx}
-                                                id={el.review_id}
-                                                date={el.review_created_time}
-                                                size={el.size}
-                                                content={el.review_contents}
-                                                image={el.review_image}
-                                                rate ={el.review_rate}
+                                                id={el.user}
+                                                date={el.created_time}
+                                                size={"단품"}
+                                                content={el.reviewed_body}
+                                                image={el.reviewed_image}
+                                                rate ={el.rate}
                                                 />
                                         )
                                     })
@@ -218,12 +233,12 @@ sortBy = (e) => {
                                         return(
                                                 <ReviewContent 
                                                 key={idx}
-                                                id={el.review_id}
-                                                date={el.review_created_time}
-                                                size={el.size}
-                                                content={el.review_contents}
-                                                image={el.review_image}
-                                                rate ={el.review_rate}
+                                                id={el.user}
+                                                date={el.created_time}
+                                                size={"단품"}
+                                                content={el.reviewed_body}
+                                                image={el.reviewed_image}
+                                                rate ={el.rate}
                                                 />
                                         )
                                     })

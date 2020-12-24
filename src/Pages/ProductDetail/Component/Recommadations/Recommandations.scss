@@ -1,10 +1,35 @@
-header{
-    font-size: 20px;
-    font-weight: bold;
+@import '../../../../styles/common.scss';
+
+.recomTop{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+
+    span{
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    button{
+        width: 25px;
+        height: 25px;
+        border: 1px solid $border-color;
+        background-color: #ffffff;
+
+        &:hover{
+            cursor: pointer;
+            background-color: gray;
+        }
+    }
 }
 
 .productList{
     display: flex;
     justify-content: space-evenly;
+    padding: 40px;
     list-style: none;
+
+    img{
+        height: 100%;
+    }
 }

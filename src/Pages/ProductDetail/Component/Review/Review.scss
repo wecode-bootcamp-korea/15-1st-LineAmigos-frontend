@@ -79,11 +79,11 @@ $borders: rgb(240,240,240);
 }
 
 .reviewRatings{
-    width: 100%;
+    width: 1280px;
     display: flex;
     justify-content: space-evenly;
     text-align: center;
-    padding: 40px;
+
     border-bottom: 1px solid black;
    
     .ratingType{
@@ -99,6 +99,7 @@ $borders: rgb(240,240,240);
             padding: 20px;
 
             &.stars{
+                display: flex;
                 font-size: 30px;
                 color: $RatingColor;
             }
@@ -136,6 +137,7 @@ $borders: rgb(240,240,240);
         padding: 20px;
 
         ul{
+            width: 100%;
             display: flex;
 
             li{
@@ -186,11 +188,16 @@ $borders: rgb(240,240,240);
             &:hover{
                 cursor: pointer;
             }
+
+            .sortClicked{
+                color: $font-color-blue;
+                text-decoration: underline;
+            }
         }
     }
 
     .reviewContainer{
-        width: 1240px;
+        width: 100%;
         padding-top: 30px;
         color: gray;
 

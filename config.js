@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 export const API = 'http://10.168.1.149:8000'
 
+=======
+>>>>>>> master
 // local mock data (eunjin) 
 export const PRODUCTS_INFO = "./public/data/productsInfos.json"
 export const REVIEWS_MAIN = "./public/data/reviews.json"
@@ -30,4 +33,12 @@ export const SORT_AVERAGE_API = 'http://10.168.1.149:8000/product/products_info?
 export const SORT_REVIEW_API = 'http://10.168.1.149:8000/product/products_info?sort=review' //-> 리뷰많은순 정렬
 export const SORT_LIKE_API = 'http://10.168.1.149:8000/product/products_info?sort=like' //-> 인기도순정렬
 export const SORT_LOWPRICE_API = 'http://10.168.1.149:8000/product/products_info?sort=price' // -> 낮은 가격 정렬
+<<<<<<< HEAD
 export const SORT_RECENT_API = 'http://10.168.1.149:8000/product/products_info?ordering=-id'  // ->최신등록순 상품정렬
+=======
+export const SORT_RECENT_API = 'http://10.168.1.149:8000/product/products_info?ordering=-id'  // ->최신등록순 상품정렬
+
+export const CATEGORY_API = 'http://10.168.1.149:8000/product/menu' //-> 메뉴/카테고리 정보
+export const BEST_PRODUCTS_API = 'http://10.168.1.149:8000/product/best' //-> 베스트상품 정보
+export const PRODUCT_DETAIL_API = 'http://10.168.1.149:8000/product/1' //-> 상세 제품 정보<int 1 ~ 64>
+>>>>>>> master

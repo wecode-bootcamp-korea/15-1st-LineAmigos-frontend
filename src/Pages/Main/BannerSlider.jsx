@@ -2,6 +2,18 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import './BannerSlider.scss'
 
+const mainSliderImages = [
+  "/images/banner-img-01.jpg",
+  "/images/banner-img-02.jpg",
+  "/images/banner-img-03.jpg",
+]
+
+const BANNERCOLOR = [
+  '#f5b326', 
+  '#d15574', 
+  '#4277b4'
+]
+
 class BannerSlider extends Component {
   render() {
     const SETTING = {
@@ -14,12 +26,6 @@ class BannerSlider extends Component {
       autoplaySpeed: 3000,
       draggable: true,
     }
-
-    const mainSliderImages = [
-      "/images/banner-01.jpg",
-      "/images/banner-02.jpg",
-      "/images/banner-03.jpg",
-    ]
     
     return (
     <div className="BannerSlider">
@@ -27,9 +33,15 @@ class BannerSlider extends Component {
           {
             mainSliderImages.map((image, index) => {
               return (
-                <div key={index}>
-                  <img alt="Ads" src={image} />
-                  <div className="getCoupon">쿠폰받기<span/></div>
+                <div className="banner" key={index} style={`background-color: ${BANNERCOLOR[index]};`}>
+                  <img alt="Ads" src={image} className="image" />
+                  <div className="titles">
+                    <div className="text">
+                      <p>라인 아미고스 고객님을 위한 혜택</p>
+                      <p>현금처럼 쓰는 적립금이 최대 5%, 멤버십 혜택!</p>
+                    </div>
+                    <div className="getCoupon">쿠폰받기</div>
+                  </div>
                 </div>
               )
             })

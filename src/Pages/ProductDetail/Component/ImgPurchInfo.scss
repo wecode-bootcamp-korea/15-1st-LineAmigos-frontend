@@ -20,6 +20,7 @@
             margin-top: 145px;
             padding: 30px;
             display: flex;
+            align-items: flex-end;
 
             div{
                 padding: 10px;
@@ -29,6 +30,7 @@
                     font-size: 22px;
                     font-weight: 600;
                 }
+
             }
         }
     }
@@ -91,6 +93,7 @@
 
             .basicFund{
                 ul{
+                    width: 100%;
                     list-style: none;
                     display: flex;
                     justify-content: space-between;
@@ -98,7 +101,7 @@
 
                     li{
                         font-size: 12px;
-                        color: $border-color;
+                        color: gray;
                     }
                 }
             }
@@ -126,7 +129,8 @@
                 }
 
                 .extraPointsList{
-                    
+                    width: 100%;   
+                    flex-direction: column;              
                     padding: 10px 0;
                     
                     li{
@@ -268,6 +272,7 @@
                 font-size: 15px;
                 color: white;
                 border: none;
+                cursor: pointer;
             }
 
             .cartLike{

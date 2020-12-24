@@ -1,4 +1,3 @@
-
 // local mock data (eunjin) 
 export const PRODUCTS_INFO = "./public/data/productsInfos.json"
 export const REVIEWS_MAIN = "./public/data/reviews.json"

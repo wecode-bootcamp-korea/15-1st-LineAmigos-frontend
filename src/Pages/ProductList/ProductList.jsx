@@ -257,7 +257,7 @@ class ProductList extends Component {
                 X
               </button>
             </div>
-            <div className='testBox'> 경오님 컴포넌트</div>
+            <div className='testBox'></div>
             <div className='bottomBtn'>
               <button className='detailBtn' onClick={this.goToDetail}>
                 상품 상세보기

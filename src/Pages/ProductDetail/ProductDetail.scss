@@ -5,11 +5,10 @@
     margin: 30px auto;
 
     .topContainer{
-        width: 100%;
+        width:90%;
         display: flex;
         justify-content: space-between;
-        
-        margin-top: 100px; //나중에 지우기
+        margin: 100px;
 
         i{
             padding: 3px;
@@ -70,15 +69,14 @@
         position: fixed;
         bottom:40px;
         right: 40px;
-        border: none;
+        border: 1px solid $border-color;
 
-        i{
+        i.fas{
             width: 100%;
+            margin: auto;
             font-size: 37px;
-            border: 1px solid $border-color;
-            padding: 5px;
             color: lightgray;
-        }
+        }        
     }
 }
 
@@ -147,7 +145,6 @@
 
          .detailsTap, .reviewTap, .qaTap, .clicked{
                     width: 100%;
-                    height: 100%;
                     font-weight: bold;
                     padding: 15px;
                     

@@ -11,9 +11,14 @@
   transition: transform 0.3s linear;
 
   &.scrolled {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    width: 100vw;
     position: fixed;
     top: -140px;
-    left: 0;
+    // left: 0;
     background: #fff;
   }
 
@@ -62,7 +67,6 @@
               text-decoration: none;
               color: black;
             }
-            
           }
         }
       }
@@ -140,10 +144,10 @@
           border-radius: 20px;
           padding-left: 16px;
           font-size: 12px;
-          color: rgba(0,0,0,.6);
+          color: rgba(0, 0, 0, 0.6);
 
           &::placeholder {
-            color: rgba(0,0,0,0.4);
+            color: rgba(0, 0, 0, 0.4);
           }
 
           &:focus {
@@ -235,7 +239,6 @@
     }
 
     .topMenuAndHover {
-
       .topMenu {
         display: flex;
         justify-content: space-between;

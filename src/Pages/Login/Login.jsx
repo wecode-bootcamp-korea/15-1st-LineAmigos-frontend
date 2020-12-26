@@ -134,7 +134,7 @@ class Login extends Component {
             </div>
           </div>
         </div>
-        <a className='signUpLink' href=''>
+        <a className='signUpLink' href='http://localhost:3000/signup'>
           아직 회원이 아니신가요?
         </a>
       </div>

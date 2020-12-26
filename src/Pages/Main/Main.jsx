@@ -47,8 +47,8 @@ class Main extends React.Component {
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
-    fetch('http://10.168.1.149:8000/product/products_info')
-    // fetch('/data/products.json')
+    // fetch('http://172.30.1.30:8000/product/products_info')
+    fetch('/data/products_list.json')
       .then(response => response.json())
       .then(data => {
         const newProductsList = data.PRODUCTS.map(product => {

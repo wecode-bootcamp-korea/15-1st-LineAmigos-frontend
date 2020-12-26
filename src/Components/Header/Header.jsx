@@ -39,16 +39,16 @@ class Header extends React.Component {
 
   componentDidMount = () => {
     window.addEventListener('scroll', this.handleScroll)
-    fetch('http://10.168.1.149:8000/product/menu')
-      // fetch('/data/productsInfos.json')
+    // fetch('http://10.168.1.149:8000/product/menu')
+      fetch('/data/categories.json')
       .then((response) => response.json())
       .then((data) => {
         this.setState({ categoriesList: data.main })
       })
       .catch((err) => console.log(err))
 
-    // fetch('/data/productsInfos.json')
-    fetch('http://10.168.1.149:8000/product/products_info')
+    fetch('/data/products_list.json')
+    // fetch('http://10.168.1.149:8000/product/products_info')
       .then((response) => response.json())
       .then((data) => {
         this.setState({ searchList: data.PRODUCTS })

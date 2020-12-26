@@ -22,7 +22,7 @@ class Cart extends React.Component {
 
   //getting modified cart data from backend
   getCartData = () => {
-    fetch('/data/productsInfos.json')
+    fetch('/data/cartItems.json')
     // fetch('http://10.58.4.1:8000/cart', { //session example
       .then(res => res.json())
       .then(res => {

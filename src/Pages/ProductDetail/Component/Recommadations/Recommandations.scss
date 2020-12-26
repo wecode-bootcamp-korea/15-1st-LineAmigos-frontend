@@ -1,35 +1,39 @@
 @import '../../../../styles/common.scss';
 
-.recomTop{
+.Recc {
+  .recomTop {
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
 
-    span{
-        font-size: 20px;
-        font-weight: bold;
+    span {
+      font-size: 20px;
+      font-weight: bold;
     }
 
-    button{
-        width: 25px;
-        height: 25px;
-        border: 1px solid $border-color;
-        background-color: #ffffff;
+    button {
+      width: 25px;
+      height: 25px;
+      border: 1px solid $border-color;
+      background-color: #ffffff;
 
-        &:hover{
-            cursor: pointer;
-            background-color: gray;
-        }
+      &:hover {
+        cursor: pointer;
+        background-color: gray;
+      }
     }
-}
+  }
 
-.productList{
+  .productList {
     display: flex;
     justify-content: space-evenly;
+    margin-bottom: 40px;
+    // flex-direction: column;
     padding: 40px;
     list-style: none;
 
-    img{
-        height: 100%;
+    img {
+      height: 100%;
     }
+  }
 }

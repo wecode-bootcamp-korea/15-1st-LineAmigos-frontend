@@ -21,6 +21,10 @@ class SignUp extends Component {
   }
 
   handleSignUpClcik = () => {
+    this.setState({
+      isValid: true,
+    })
+
     const {
       email,
       pw,
@@ -58,12 +62,6 @@ class SignUp extends Component {
     const { id, value } = event.target
     this.setState({
       [id]: value,
-    })
-  }
-
-  handleIsValid = () => {
-    this.setState({
-      isValid: true,
     })
   }
 
@@ -248,7 +246,7 @@ class SignUp extends Component {
           <button
             className='signUpBtn'
             type='submit'
-            onClick={this.handleIsValid}
+            onClick={this.handleSignUpClcik}
           >
             가입하기
           </button>

@@ -29,7 +29,7 @@ class Product extends Component {
   }
 
   goToDetail = () => {
-    this.props.history.push(`/product/${this.props.id}`)
+    this.props.history.push(`/productdetail/${this.props.id}`)
   }
 
   handleDetailModal = (e) => {

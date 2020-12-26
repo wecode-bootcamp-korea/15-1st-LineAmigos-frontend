@@ -229,7 +229,7 @@ class ProductList extends Component {
     return (
       <div className='ProductList'>
         <div className='container'>
-          {/* <Header /> */}
+          <Header />
           <header>
             <img
               alt='banner'
@@ -292,7 +292,7 @@ class ProductList extends Component {
               //클래스네임을 퍼치인포 프롭스로 넘기기
             })}
 
-            {/* <Footer /> */}
+            <Footer />
           </div>
         </div>
       </div>

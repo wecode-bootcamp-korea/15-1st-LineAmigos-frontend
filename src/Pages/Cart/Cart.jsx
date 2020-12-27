@@ -35,39 +35,30 @@ class Cart extends React.Component {
   }
 
   //한개씩 추가
-  addItem = (id) => {
+  modifyItemAmount = (id, modify) => {
     const { cartItems } = this.state
     const changedStatus = cartItems.map(item => {
       if (item.productId === id) {
-        item.amount++ 
-        // : item.amount--
-        // if (className.includes('plus')) {
-          // item.amount++ 
-        // }
+        modify === 'plus' ? item.amount++ : item.amount--
       }
       return item
     })
-    // console.log(e.target.className.includes('plus'))
-    // console.log(e.target)
-    // console.log(type)
-    this.setState({
-      cartItems: changedStatus
-    })
+    this.setState({cartItems: changedStatus})
   }
 
   //한개씩 빼기
-  subtractItem = (id) => {
-    const { cartItems } = this.state
-    const changedStatus = cartItems.map(item => {
-      if (item.productId === id) {
-        item.amount--
-      }
-      return item
-    })
-    this.setState({
-      cartItems: changedStatus
-    })
-  }
+  // subtractItem = (id) => {
+  //   const { cartItems } = this.state
+  //   const changedStatus = cartItems.map(item => {
+  //     if (item.productId === id) {
+  //       item.amount--
+  //     }
+  //     return item
+  //   })
+  //   this.setState({
+  //     cartItems: changedStatus
+  //   })
+  // }
 
   //개별 삭제버튼
   deleteItem = (id) => {
@@ -164,7 +155,7 @@ class Cart extends React.Component {
   backToShoppingPage = () => {this.props.history.goBack()}
 
   render() {
-    const { addItem, subtractItem, changeItemAmount, deleteItem, selectAllCartItemsHandler, goProductDetailPage, goToCheckOutPage, selectItemHandler, deleteSelectedItems } = this
+    const { modifyItemAmount, deleteItem, selectAllCartItemsHandler, goProductDetailPage, goToCheckOutPage, selectItemHandler, deleteSelectedItems } = this
     const { cartItems } = this.state
     const selectedItems = cartItems.filter(cartItem => cartItem.isChecked)
     const totalPrice = selectedItems.filter(item => item.isInStock).map(cartItem => cartItem.price).reduce((a, b) => a + b, 0)
@@ -223,8 +214,7 @@ class Cart extends React.Component {
                     isChecked={item.isChecked}
                     isInStock={item.isInStock}
                     deleteItem={deleteItem}
-                    addItem={addItem}
-                    subtractItem={subtractItem}
+                    modifyItemAmount={modifyItemAmount}
                     selectItemHandler={selectItemHandler} 
                     goProductDetailPage={goProductDetailPage} 
                     goToCheckOutPage={goToCheckOutPage}

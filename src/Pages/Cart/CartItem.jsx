@@ -4,7 +4,7 @@ import './CartItem.scss'
 class CartItem extends Component {
 
   render() {
-    const { id, name, price, saleRate, url, amount, isChecked, isInStock, deleteItem, selectItemHandler, addItem, subtractItem, goProductDetailPage, goToCheckOutPage } = this.props
+    const { id, name, price, saleRate, url, amount, isChecked, isInStock, deleteItem, selectItemHandler, modifyItemAmount, goProductDetailPage, goToCheckOutPage } = this.props
     const discountedPrice = price*(100-saleRate)*0.01
     const originalPriceEl = <div className='original'>{price.toLocaleString()}</div>
     const unavailable = <div className="unavailable">구매불가</div>
@@ -31,7 +31,8 @@ class CartItem extends Component {
                 <div className="discounted">{discountedPrice.toLocaleString()}원</div>
                 {saleRate !== 0 && originalPriceEl}
               </div>
-              <div className="delete"
+              <div 
+                className="delete"
                 onClick={() => deleteItem(id)}></div>
             </div>
           </div>
@@ -42,13 +43,13 @@ class CartItem extends Component {
                 id={id}
                 type={'plus'}
                 className={`plus ${ifSoldOutAddThisClass}`} 
-                onClick={() => isInStock ? addItem(id) : undefined}></span>
+                onClick={() => isInStock ? modifyItemAmount(id, 'plus') : undefined}></span>
               <span className={`amount ${!isInStock && 'soldOut'}`}>{amount}</span> 
               <span 
                 id={id}
                 type={'minus'}
                 className={`subtract ${ifSoldOutAddThisClass}`}
-                onClick={() => isInStock ? subtractItem(id) : undefined}></span>
+                onClick={() => isInStock ? modifyItemAmount(id, 'minus') : undefined}></span>
             </div>
           </div>
           

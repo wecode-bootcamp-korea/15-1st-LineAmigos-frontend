@@ -68,13 +68,26 @@ class SignUp extends Component {
   render() {
     const emailValidation = /^[a-z0-9_-]{5,20}$/
     const pwValidation = /^.*(?=^.{8,16}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[~,!,@,#,$,*,(,),=,+,_,.,|]).*$/
-    const checkBirthYear = this.state.birthYear.length === 4
-    const checkBirthYear2 = this.state.birthYear >= 1900
-    const checkBirthMonth = this.state.birthMonth.length === 2
-    const checkBirthMonth2 = this.state.birthMonth <= 12
-    const checkBirthDay = this.state.birthDay.length === 2
-    const checkBirthDay2 = this.state.birthDay <= 31
+    const birthYearValidation =
+      this.state.birthYear.length === 4 && this.state.birthYear >= 1900
+    const birthMonthValidation =
+      this.state.birthMonth.length === 2 && this.state.birthMonth <= 12
+    const birthDayValidation =
+      this.state.birthDay.length === 2 && this.state.birthDay <= 31
 
+    const {
+      email,
+      pw,
+      rePw,
+      isValid,
+      name,
+      birthYear,
+      birthMonth,
+      birthDay,
+      gender,
+      countryCode,
+      phoneNumber,
+    } = this.state
     return (
       <div className='signUp'>
         <header>
@@ -84,23 +97,21 @@ class SignUp extends Component {
             src='/images/line-amigos-logo-default.png'
           />
         </header>
-        <div className='IdPwForm'>
-          <div className='IdBox'>
+        <div className='idPwForm'>
+          <div className='idBox'>
             <span className='label'>아이디</span>
             <input
-              className='IdPwBox'
+              className='idPwBox'
               id='email'
               type='text'
               placeholder='@lineamigos.com'
-              value={this.state.email}
+              value={email}
               onChange={this.handleValueChange}
             />
             <span className='validationMassage'>
-              {this.state.isValid && !this.state.email
+              {isValid && !email
                 ? '필수 정보입니다.'
-                : '' ||
-                  (this.state.isValid &&
-                    !emailValidation.test(this.state.email))
+                : '' || (isValid && !emailValidation.test(email))
                 ? '5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.'
                 : ''}
             </span>
@@ -108,37 +119,33 @@ class SignUp extends Component {
           <div className='pwBox'>
             <span className='label'>비밀번호</span>
             <input
-              className='IdPwBox'
+              className='idPwBox'
               id='pw'
               type='password'
-              value={this.state.pw}
+              value={pw}
               onChange={this.handleValueChange}
               onKeyUp={this.handlePwValidation}
             />
             <span className='validationMassage'>
-              {
-                (this.state.isValid && !this.state.pw ? '필수 정보입니다.' : '',
-                this.state.isValid && !pwValidation.test(this.state.pw)
-                  ? '8~16자 영문 대/소문자, 숫자, 특수문자를 모두 사용하세요.'
-                  : '')
-              }
+              {isValid && !pw
+                ? '필수 정보입니다.'
+                : '' || (isValid && !pwValidation.test(pw))
+                ? '8~16자 영문 대/소문자, 숫자, 특수문자를 모두 사용하세요.'
+                : ''}
             </span>
           </div>
           <div className='rePwBox'>
             <span className='label'>비밀번호 재확인</span>
             <input
-              className='IdPwBox'
+              className='idPwBox'
               id='rePw'
               type='password'
-              value={this.state.rePw}
+              value={rePw}
               onChange={this.handleValueChange}
               onKeyUp={this.handleIsValid}
             />
             <span className='validationMassage'>
-              {this.state.rePwValidationMassage}
-              {this.state.isValid && this.state.rePw !== this.state.pw
-                ? '비밀번호가 일치하지않습니다.'
-                : ''}
+              {isValid && rePw !== pw ? '비밀번호가 일치하지않습니다.' : ''}
             </span>
           </div>
         </div>
@@ -148,11 +155,11 @@ class SignUp extends Component {
             className='name'
             id='name'
             type='text'
-            value={this.state.name}
+            value={name}
             onChange={this.handleValueChange}
           />
           <span className='validationMassage'>
-            {this.state.isValid && !this.state.name ? '필수 정보입니다.' : ''}
+            {isValid && !name ? '필수 정보입니다.' : ''}
           </span>
           <span className='label'>생년월일</span>
           <div className='birthDate'>
@@ -161,7 +168,7 @@ class SignUp extends Component {
               id='birthYear'
               type='text'
               placeholder='년(4자)'
-              value={this.state.birthYear}
+              value={birthYear}
               onChange={this.handleValueChange}
             />
             <input
@@ -169,7 +176,7 @@ class SignUp extends Component {
               id='birthMonth'
               type='text'
               placeholder='월'
-              value={this.state.birthMonth}
+              value={birthMonth}
               onChange={this.handleValueChange}
             />
             <input
@@ -177,26 +184,22 @@ class SignUp extends Component {
               id='birthDay'
               type='text'
               placeholder='일'
-              value={this.state.birthDay}
+              value={birthDay}
               onChange={this.handleValueChange}
             />
           </div>
           <span className='validationMassage'>
-            {this.state.isValid && (!checkBirthYear || !checkBirthYear2)
+            {isValid && !birthYearValidation
               ? '태어난 년도 4자리를 정확하게 입력하세요.'
               : ''}
           </span>
           <span className='validationMassage'>
-            {checkBirthYear &&
-            checkBirthYear2 &&
-            (!checkBirthMonth || !checkBirthMonth2)
+            {birthYearValidation && !birthMonthValidation
               ? '태어난 월 2자리를 정확하게 입력하세요.'
               : ''}
           </span>
           <span className='validationMassage'>
-            {checkBirthMonth &&
-            checkBirthMonth &&
-            (!checkBirthDay || !checkBirthDay2)
+            {birthMonthValidation && !birthDayValidation
               ? '태어난 일(날짜) 2자리를 정확하게 입력하세요.'
               : ''}
           </span>
@@ -204,7 +207,7 @@ class SignUp extends Component {
           <select
             className='genderDropdown'
             id='gender'
-            value={this.state.gender}
+            value={gender}
             onChange={this.handleValueChange}
           >
             <option value='none'>선택안함</option>
@@ -212,9 +215,7 @@ class SignUp extends Component {
             <option value='male'>남성</option>
           </select>
           <span className='validationMassage'>
-            {this.state.isValid && this.state.gender === 'none'
-              ? '필수 정보입니다.'
-              : ''}
+            {isValid && gender === 'none' ? '필수 정보입니다.' : ''}
           </span>
         </div>
         <div className='phoneValidationForm'>
@@ -222,7 +223,7 @@ class SignUp extends Component {
           <input
             className='countryNumber'
             type='text'
-            value={this.state.countryCode}
+            value={countryCode}
             placeholder='국가번호'
           />
           <input
@@ -230,7 +231,7 @@ class SignUp extends Component {
             id='phoneNumber'
             type='text'
             placeholder='전화번호 입력'
-            value={this.state.phoneNumber}
+            value={phoneNumber}
             onChange={this.handleValueChange}
           />
           <button className='validationBtn' type='submit'>

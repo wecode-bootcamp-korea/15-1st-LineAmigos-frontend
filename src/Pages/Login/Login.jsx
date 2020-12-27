@@ -9,7 +9,6 @@ class Login extends Component {
       pw: '',
       idValidation: '',
       pwValidation: '',
-      keepLogin: false,
       onOffBtn: false,
     }
   }
@@ -26,8 +25,7 @@ class Login extends Component {
       .then((response) => {
         if (response.message === 'SUCCESS') {
           this.props.history.push('/')
-        }
-        if (response.access_token) {
+        } else if (response.access_token) {
           localStorage.setItem('token', response.access_token)
         } else {
           alert('아이디 또는 비밀번호가 일치하지 않습니다.')
@@ -55,12 +53,6 @@ class Login extends Component {
     }
   }
 
-  handleKeepLogin = () => {
-    this.setState({
-      keepLogin: !this.state.keepLogin,
-    })
-  }
-
   handleOnOffBtn = () => {
     this.setState({
       onOffBtn: !this.state.onOffBtn,
@@ -68,14 +60,7 @@ class Login extends Component {
   }
 
   render() {
-    const {
-      id,
-      pw,
-      idValidation,
-      pwValidation,
-      keepLogin,
-      onOffBtn,
-    } = this.state
+    const { id, pw, idValidation, pwValidation, onOffBtn } = this.state
     return (
       <div className='container'>
         <header>

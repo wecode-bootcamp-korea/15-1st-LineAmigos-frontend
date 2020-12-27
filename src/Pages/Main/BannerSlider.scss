@@ -17,11 +17,12 @@
     }
 
     .slick-dots {
+      display: none;
       position: absolute;
       bottom: 14px;
 
       button {
-        @include slick-slider-button;
+        display: none;
         background: none;
         &:hover {
           background: none;
@@ -94,7 +95,7 @@
         padding: 20px 0;
         width: 320px;
         max-height: 60px;
-        border: 2px solid rgba(255,255,255,0.5);
+        border: 2px solid rgba(255, 255, 255, 0.5);
         color: #ddd;
         text-align: center;
         cursor: pointer;

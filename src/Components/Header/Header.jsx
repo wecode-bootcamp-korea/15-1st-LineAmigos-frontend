@@ -90,7 +90,9 @@ class Header extends React.Component {
               <div>
                 <img alt='Shop' src='/images/shop-bold.png' />
                 <span>
-                  <Link to={'/cart'}>장바구니</Link>
+                  <Link to={'/cart'} className='reset'>
+                    장바구니
+                  </Link>
                 </span>
               </div>
             </div>

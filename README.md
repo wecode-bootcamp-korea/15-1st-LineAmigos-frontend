@@ -136,8 +136,18 @@
 
 7. RESTfulAPI를 활용한 path parameter Review 기능 구현
 
+# 라인 아미고스 회고록
+
+안미현 - [라인프렌즈 클론 프로젝트 회고록](https://velog.io/@dev_cecy/%EB%9D%BC%EC%9D%B8%ED%94%84%EB%A0%8C%EC%A6%88-%ED%81%B4%EB%A1%A0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0%EB%A1%9D)
+
+문승희 - [[1차*PROJECT] Lineamigos*프로젝트 후기](https://codermun-log.tistory.com/187)
+
+오승현 - [<Line Amigos, Adios!> Wrapping Up the First Project](https://velog.io/@petersoh/Line-Amigos-Adios)
+
+강경오 - [1차 프로젝트 후기](https://velog.io/@kangko05/1%EC%B0%A8-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9B%84%EA%B8%B0)
+
 ## Reference
 
 - 이 프로젝트는 [라인프렌즈샵](https://brand.naver.com/linefriends) 사이트를 참조하여 학습목적으로 만들었습니다.
 - 실무수준의 프로젝트이지만 학습용으로 만들었기 때문에 이 코드를 활용하여 이득을 취하거나 무단 배포할 경우 법적으로 문제될 수 있습니다.
-- 이 프로젝트에서 사용하고 있는 사진 대부분은 위코드에서 구매한 것이므로 해당 프로젝트 외부인이 사용할 수 없습니다.ㅎ
+- 이 프로젝트에서 사용하고 있는 사진 대부분은 위코드에서 구매한 것이므로 해당 프로젝트 외부인이 사용할 수 없습니다.

@@ -140,6 +140,8 @@
 
 안미현 - [라인프렌즈 클론 프로젝트 회고록](https://velog.io/@dev_cecy/%EB%9D%BC%EC%9D%B8%ED%94%84%EB%A0%8C%EC%A6%88-%ED%81%B4%EB%A1%A0-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%ED%9A%8C%EA%B3%A0%EB%A1%9D)
 
+이은진 - [[Team Project] 라인프렌즈 스토어 클론 프로젝트](https://velog.io/@eunjin/Team-Project-라인프렌즈-스토어-클론-프로젝트)
+
 문승희 - [[1차*PROJECT] Lineamigos*프로젝트 후기](https://codermun-log.tistory.com/187)
 
 오승현 - [<Line Amigos, Adios!> Wrapping Up the First Project](https://velog.io/@petersoh/Line-Amigos-Adios)

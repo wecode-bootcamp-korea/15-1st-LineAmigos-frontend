@@ -32,8 +32,8 @@ class Product extends Component {
     this.props.history.push(`/productdetail/${this.props.id}`)
   }
 
-  handleDetailModal = (e) => {
-    this.props.onModal() // 모달 켜는 거
+  handleDetailModal = () => {
+    this.props.onModal()
     this.props.handleClickedProductId(this.props.id)
   }
 
@@ -42,7 +42,6 @@ class Product extends Component {
   }
 
   render() {
-    console.log('프롭스 아읻', this.props.id.filter)
     const { product_image, name } = this.props.product
     const fixedRate =
       this.props.product.rate_average.rate__avg !== null &&
@@ -62,14 +61,14 @@ class Product extends Component {
           <div className='hoverContainer'>
             <div
               className={
-                this.state.wishBtn ? 'treuHoverWishBox' : 'falseHoverWishBox'
+                this.state.wishBtn ? 'trueHoverWishBox' : 'falseHoverWishBox'
               }
               onClick={this.handleWishBtn}
             >
               <i
                 className={
                   this.state.wishBtn
-                    ? 'far fa-heart tureHoverWish'
+                    ? 'far fa-heart trueHoverWish'
                     : 'far fa-heart falseHoverWish'
                 }
               />

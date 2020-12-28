@@ -24,13 +24,11 @@ class ProductList extends Component {
       pageNum: false,
       currentIdx: '',
       pageArr: [],
-      modalSize: 'modalSize',
       detailModal: false,
       clickedId: 0,
     }
   }
 
-  //config파일에 API주소 변수로 담아두었지만, 아래 코드는 작업을 위해 남겨놓았습니다. 머지 후 삭제하겠습니다!
   componentDidMount = () => {
     fetch(`http://10.168.1.149:8000/product/products_info?limit=${LIMIT}`)
       .then((response) => response.json())
@@ -72,8 +70,6 @@ class ProductList extends Component {
 
     let updatedPageArr = [...this.state.pageArr]
     updatedPageArr = updatedPageArr.map((item) => {
-      console.log('셀렉어레이', updatedPageArr)
-      console.log('셀렉아이디', item.id)
       if (+offset === item.id) {
         item.selected = !item.selected
         return item
@@ -205,13 +201,12 @@ class ProductList extends Component {
   }
 
   handleClickedProductId = (clickedId) => {
-    console.log('현재 선택된 프로덕트 id: ', clickedId)
     this.setState({
       clickedId,
     })
   }
 
-  handleDetailModal = (e) => {
+  handleDetailModal = () => {
     this.setState({
       detailModal: !this.state.detailModal,
     })
@@ -225,7 +220,16 @@ class ProductList extends Component {
 
   render() {
     const rate = [5, 5, 5]
-
+    const {
+      productArr,
+      filterArr,
+      reviewArr,
+      currentIdx,
+      pageArr,
+      detailModal,
+      clickedId,
+      modalSize,
+    } = this.state
     return (
       <div className='ProductList'>
         <div className='container'>
@@ -245,25 +249,24 @@ class ProductList extends Component {
             />
           </header>
           <Filters
-            filterArr={this.state.filterArr}
+            filterArr={filterArr}
             onFilterMenu={this.handleFilterMenu}
             fetchViewFilter={this.fetchViewFilter}
             handleSorting={this.handleSorting}
           />
 
           <Products
-            productArr={this.state.productArr}
-            reviewArr={this.state.reviewArr}
+            productArr={productArr}
+            reviewArr={reviewArr}
             onModal={this.handleDetailModal}
-            onPageNum={this.handlePageNum}
             fetchProduct={this.fetchProduct}
-            currentIdx={this.state.currentIdx}
-            pageArr={this.state.pageArr}
+            currentIdx={currentIdx}
+            pageArr={pageArr}
             handleClickedProductId={this.handleClickedProductId}
           />
         </div>
 
-        <div className={this.state.detailModal ? 'modal' : 'modal hidden'}>
+        <div className={detailModal ? 'modal' : 'modal hidden'}>
           <div className='layout' onClick={this.handleDetailModal}></div>
           <div className='popup'>
             <div className='modalHeader'>
@@ -272,8 +275,8 @@ class ProductList extends Component {
                 X
               </button>
             </div>
-            {this.state.productArr.map((el) => {
-              if (el.product_id === this.state.clickedId) {
+            {productArr.map((el) => {
+              if (el.product_id === clickedId) {
                 return (
                   <ImgPurchInfo
                     id={el.product_id}
@@ -281,20 +284,15 @@ class ProductList extends Component {
                     imgUrl={el.product_image}
                     price={el.price}
                     reviewArray={rate}
-                    newClassName={this.state.modalSize}
                   />
                 )
               } else {
                 return null
               }
-              //호버인덱스 클릭아이디 === el.product_id &&
-              //모달창이 떴을 때 클래스네임적용 해서 원하는 사이즈 적용
-              //클래스네임을 퍼치인포 프롭스로 넘기기
             })}
-
-            <Footer />
           </div>
         </div>
+        <Footer />
       </div>
     )
   }

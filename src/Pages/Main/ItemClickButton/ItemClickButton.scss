@@ -64,7 +64,7 @@
     border: 5px solid white;
     cursor: pointer;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.9);
-    
+
     &:hover ~ .price {
       display: block;
     }
@@ -76,9 +76,9 @@
     display: none;
     margin-left: 10px;
     padding: 12px;
-    width: 140px;
-    height: 70px;
-    background: rgba(255,255,255,.8);
+    width: 160px;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.2);
 

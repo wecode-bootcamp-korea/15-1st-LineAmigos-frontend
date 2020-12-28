@@ -15,22 +15,22 @@
     }
   }
 
-  .IdPwForm {
-    .IdBox,
+  .idPwForm {
+    .idBox,
     .pwBox,
     .rePwBox {
       display: block;
       margin: 0 auto;
       width: 450px;
 
-      .IdPwBox {
+      .idPwBox {
         width: 450px;
         height: 50px;
         margin-bottom: 10px;
         border: 1px solid #dadada;
       }
 
-      .IdPwBox::placeholder {
+      .idPwBox::placeholder {
         padding-right: 5px;
         text-align: end;
         color: $font-color-lightgray;
@@ -56,8 +56,6 @@
     display: block;
     margin: 0 auto;
     width: 450px;
-    // height: 400px;
-    // padding-bottom: 30px;
 
     .name {
       width: 450px;

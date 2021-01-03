@@ -17,7 +17,7 @@ export const PRODUCT_REVIEW = './public/data/reviewData.json'
 export const ALPRODUCTS_API = 'http://10.168.1.149:8000/product/products_info' //-> 전체상품정보
 export const CATEGORY_API = 'http://10.168.1.149:8000/product/menu' //-> 메뉴/카테고리 정보
 export const REVIEWS_API = 'http://10.168.1.140:8000/review/reviews'  // -> 리뷰 데이터 
-export const SEARCH_API = 'http://10.168.1.149:8000/product/${this.props.match.params.id}`
+export const SEARCH_API = `http://10.168.1.149:8000/product/${this.props.match.params.id}`
 
 // 경오님 상세페이지 관련
 export const BEST_PRODUCTS_API = 'http://10.168.1.149:8000/product/best' //-> 베스트상품 정보

@@ -22,7 +22,7 @@ class Cart extends React.Component {
 
   //getting modified cart data from backend
   getCartData = () => {
-    fetch('/data/productsInfos.json')
+    fetch('/data/cartItems.json')
     // fetch('http://10.58.4.1:8000/cart', { //session example
       .then(res => res.json())
       .then(res => {
@@ -34,47 +34,31 @@ class Cart extends React.Component {
       }).catch(err => console.log(err))
   }
 
-  //click to add item amount one by one 
-  addCartItem = () => {
-    fetch('API', {
-    // fetch('http://10.58.4.1:8000/cart', { //session example
-      method: 'PATCH',
-      body: JSON.stringify({
-        // item_id: itemId
-      })
-    }).then(res => res.json())
-      .then(res => res.MESSAGE === "SUCCESS" &&
-        this.setState({cartItem: res.cartItems}))
-      .catch(err => console.log(err))
+  //한개씩 추가
+  modifyItemAmount = (id, modify) => {
+    const { cartItems } = this.state
+    const changedStatus = cartItems.map(item => {
+      if (item.productId === id) {
+        modify === 'plus' ? item.amount++ : item.amount--
+      }
+      return item
+    })
+    this.setState({cartItems: changedStatus})
   }
 
-  //click to subtract item amount one by one
-  subtractCartItem = () => {
-    fetch('API', {
-    // fetch('http://10.58.4.1:8000/cart', { //session example
-      method: 'PATCH',
-      body: JSON.stringify({
-        // item_id: itemId
-      })
-    }).then(res => res.json())
-      .then(res => res.MESSAGE === "SUCCESS" &&
-        this.setState({cartItem: res.cartItems}))
-      .catch(err => console.log(err))
-  }
-
-  //delete button click
-  deleteCartItem = () => {
-    fetch('API', {
-    // fetch('http://10.58.4.1:8000/cart', { //session example
-      method: 'DELETE',
-      body: JSON.stringify({
-        // item_id: itemId
-      })
-    }).then(res => res.json())
-      .then(res => res.MESSAGE === "SUCCESS" && 
-        this.setState({cartItem: res.cartItems}))
-      .catch(err => console.log(err))
-  }
+  //한개씩 빼기
+  // subtractItem = (id) => {
+  //   const { cartItems } = this.state
+  //   const changedStatus = cartItems.map(item => {
+  //     if (item.productId === id) {
+  //       item.amount--
+  //     }
+  //     return item
+  //   })
+  //   this.setState({
+  //     cartItems: changedStatus
+  //   })
+  // }
 
   //개별 삭제버튼
   deleteItem = (id) => {
@@ -94,37 +78,6 @@ class Cart extends React.Component {
     })
   }
 
-  //delete selected items => map selected items and deleteCartItem func 
-  deleteSelectedCartItems = () => {
-    const { cartItems } = this.state
-    const selectedItems = cartItems.filter(cartItem => cartItem.isChecked)
-    selectedItems.forEach(item => {
-        fetch('API', {
-        // fetch('http://10.58.4.1:8000/cart', { //session example
-          method: 'DELETE',
-          body: JSON.stringify({
-            item_id: item.id
-          })
-        }).then(res => res.json())
-          .then(res => res.MESSAGE === "SUCCESS" && this.getCartData())
-          .catch(err => console.log(err))
-      }
-    )
-  }
-
-  //select cart items
-  selectOneCartItemHandler = (e) => {
-    const { id } = e.target.id
-    const { cartItems } = this.state 
-    const newSelectedStatus = cartItems.map(cartItem => {
-      if (cartItem.productId === id) {
-        cartItem.isChecked = !this.state.cartItem.isChecked
-      }
-      return cartItem
-    })
-    this.setState({cartItems: newSelectedStatus})
-  }
-
   //토글하기
   selectItemHandler = (id) => {
     const { cartItems } = this.state
@@ -139,7 +92,7 @@ class Cart extends React.Component {
     })
   }
 
-  //select or unselect all items
+  //모두선택/모두선택해제
   selectAllCartItemsHandler = () => {
     const { cartItems, isSelectAllChecked } = this.state
     const selectStateBox = cartItems.map(item => {
@@ -150,7 +103,6 @@ class Cart extends React.Component {
       }
       return item
     })
-    
     this.setState({
       cartItems: selectStateBox,
       isSelectAllChecked: !isSelectAllChecked,
@@ -160,7 +112,7 @@ class Cart extends React.Component {
   //get cart data after rendered
   componentDidMount = () => {
     //this.getCartData()
-    fetch('/data/productsInfos.json')
+    fetch('/data/cartItems.json')
       .then(res => res.json())
       .then(data => {
         const itemsWithState = data.cartItems.map((item) => {
@@ -199,36 +151,16 @@ class Cart extends React.Component {
     }
   }
 
-  goToSingleCheckOutPage = (e) => {
-    const { id } = e.target.id
-    const { cartItems } = this.state
-    const targetItem = cartItems.filter(cartItem => cartItem.productId === id)
-    if (!targetItem.isChecked) {
-      alert('')
-    } else {
-      fetch('API', {
-        method: 'POST',
-        body: {
-          // id: targetItem.id
-        }
-      }).then(res => res.json())
-        .then(res => res.MESSAGE === 'SUCCESS' &&
-          this.props.history.push("/checkout"))
-    }
-  }
-
   backToMainPage = () => {this.props.history.push("/checkout")}
   backToShoppingPage = () => {this.props.history.goBack()}
-  // goToWishListPage = () => {this.props.history.push("/wishlist")}
 
   render() {
-    const { addCartItem, subtractCartItem, deleteCartItem, deleteItem, selectOneCartItemHandler, selectAllCartItemsHandler, goProductDetailPage, goToCheckOutPage, soldOutAlert, notSelectedAlert, selectItemHandler, deleteSelectedItems } = this
+    const { modifyItemAmount, deleteItem, selectAllCartItemsHandler, goProductDetailPage, goToCheckOutPage, selectItemHandler, deleteSelectedItems } = this
     const { cartItems } = this.state
     const selectedItems = cartItems.filter(cartItem => cartItem.isChecked)
     const totalPrice = selectedItems.filter(item => item.isInStock).map(cartItem => cartItem.price).reduce((a, b) => a + b, 0)
     const discountPrice = selectedItems.filter(item => item.isInStock).reduce((a, item) => a + item.price*item.saleRate*0.01, 0)
     const checkOutPrice = totalPrice - discountPrice
-    const shippingFee = 3000
 
     return (
       <div className="Cart">
@@ -281,11 +213,8 @@ class Cart extends React.Component {
                     amount={item.amount}
                     isChecked={item.isChecked}
                     isInStock={item.isInStock}
-                    addCartItem={addCartItem} 
-                    subtractCartItem={subtractCartItem} 
-                    deleteCartItem={deleteCartItem} 
                     deleteItem={deleteItem}
-                    selectOneCartItemHandler={selectOneCartItemHandler}
+                    modifyItemAmount={modifyItemAmount}
                     selectItemHandler={selectItemHandler} 
                     goProductDetailPage={goProductDetailPage} 
                     goToCheckOutPage={goToCheckOutPage}
@@ -295,7 +224,9 @@ class Cart extends React.Component {
             }
             </ul>
             <div className="row selectActions">
-              <div className={`checkbox ${this.state.isSelectAllChecked && 'checked'}`}><i className="fas fa-check"/></div>
+              <div 
+                className={`checkbox ${this.state.isSelectAllChecked && 'checked'}`}
+                onClick={selectAllCartItemsHandler}><i className="fas fa-check"/></div>
               <div className="buttons">
                 <div 
                   className="delete"
